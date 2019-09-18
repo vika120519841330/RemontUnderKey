@@ -124,11 +124,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Unit_Configuration.cs" />
+    <Compile Include="Configurations\Kind_Configuration.cs" />
+    <Compile Include="Configurations\Type_Configuration.cs" />
+    <Compile Include="Configurations\Job_Configuration.cs" />
+    <Compile Include="Context\MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RemontUnderKey.Infrastructure\RemontUnderKey.Infrastructure.csproj">
+      <Project>{4D32B262-025D-4EF5-9E80-3A9E5C750762}</Project>
+      <Name>RemontUnderKey.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\UnitOfJob_Infra.cs" />
+    <Compile Include="Models\Job_Infra.cs" />
+    <Compile Include="Models\KindOfJob_Infra.cs" />
+    <Compile Include="Models\TypeOfObject_Infra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
