@@ -14,9 +14,6 @@ namespace RemontUnderKey.Infrastructure.Models
         //Путь к картинке
         public string ImgSrc { get; set; }
 
-        //Наименование, которое будет отображаться при наведении курсора на фото
-        public string TitleOfPhoto { get; set; }
-
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("Repareobject_Infra")]
         public int? Repareobject_InfraId { get; set; }
