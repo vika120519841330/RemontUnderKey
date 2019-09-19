@@ -124,10 +124,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Photo_Configuration.cs" />
+    <Compile Include="Configurations\Job_Configuration.cs" />
     <Compile Include="Configurations\Unit_Configuration.cs" />
     <Compile Include="Configurations\Kind_Configuration.cs" />
     <Compile Include="Configurations\Type_Configuration.cs" />
-    <Compile Include="Configurations\Job_Configuration.cs" />
+    <Compile Include="Configurations\Repareobject_Configuration.cs" />
     <Compile Include="Context\MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

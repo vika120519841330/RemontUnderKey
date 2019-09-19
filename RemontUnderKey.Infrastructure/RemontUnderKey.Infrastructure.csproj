@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Repareobject_Infra.cs" />
+    <Compile Include="Models\Photo_Infra.cs" />
     <Compile Include="Models\UnitOfJob_Infra.cs" />
     <Compile Include="Models\Job_Infra.cs" />
     <Compile Include="Models\KindOfJob_Infra.cs" />
