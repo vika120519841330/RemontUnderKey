@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Comment_Domain.cs" />
+    <Compile Include="Models\Job_Domain.cs" />
+    <Compile Include="Models\KindOfJob_Domain.cs" />
+    <Compile Include="Models\Photo_Domain.cs" />
+    <Compile Include="Models\Repareobject_Domain.cs" />
+    <Compile Include="Models\TypeOfObject_Domain.cs" />
+    <Compile Include="Models\UnitOfJob_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\Comment_Infra_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RemontUnderKey.Domain\RemontUnderKey.Domain.csproj">
+      <Project>{BA938E5F-6DE5-400D-B621-24D2E2518983}</Project>
+      <Name>RemontUnderKey.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RemontUnderKey.Infrastructure\RemontUnderKey.Infrastructure.csproj">
+      <Project>{4D32B262-025D-4EF5-9E80-3A9E5C750762}</Project>
+      <Name>RemontUnderKey.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
