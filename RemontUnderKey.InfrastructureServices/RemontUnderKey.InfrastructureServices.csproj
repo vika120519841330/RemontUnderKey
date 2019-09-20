@@ -124,6 +124,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Comment_Configuration.cs" />
     <Compile Include="Configurations\Photo_Configuration.cs" />
     <Compile Include="Configurations\Job_Configuration.cs" />
     <Compile Include="Configurations\Unit_Configuration.cs" />

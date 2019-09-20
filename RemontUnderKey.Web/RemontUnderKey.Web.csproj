@@ -466,6 +466,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonforbackground.jpg" />
+    <Content Include="Content\LabelMain_2.png" />
+    <Content Include="Content\texture1.jpg" />
+    <Content Include="Content\texture2.jpg" />
+    <Content Include="Content\texture3.jpg" />
+    <Content Include="Content\texture5.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

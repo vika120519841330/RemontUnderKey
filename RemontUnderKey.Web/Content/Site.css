@@ -1,24 +1,67 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*background-image: url("fonforbackground.jpg");*/
+    background-image: url("texture2.jpg");
+    background-attachment: fixed;
+    background-position: left 100% 100%;
+    background-repeat: no-repeat;
+    color: #ffffff; /* Цвет текста */
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.mybar ul {
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем отступы*/
+    padding-left: 0; /*убираем отступы*/
+    margin-top: 40px; /*делаем отступ сверху*/
+}
+
+.mybar a {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    background: #000000; /*добавляем фон к пункту меню*/
+    color: #ffffff; /*меняем цвет ссылок*/
+    padding: 10px; /*добавляем отступ*/
+    font-family: arial; /*меняем шрифт*/
+    border-radius: 4px; /*добавляем скругление*/
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+}
+
+    .mybar a:hover {
+        background: #808080; /*добавляем эффект при наведении*/
+    }
+
+.mybar li {
+    list-style: none; /*убираем маркеры списка*/
+    float: left; /*Размещаем список горизонтально для реализации меню*/
+    font-size: 13px;
+    margin-right: 5px; /*Добавляем отступ у пунктов меню*/
+}
+
+.leftimg {
+    float: left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 7px; /* Отступы вокруг картинки */
+    border-radius: 6px; /*добавляем скругление*/
+    -moz-transition: all 0.5s 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.5s 0.3s 0.01s ease;
+    -webkit-transition: all 0.5s 0.3s 0.01s ease;
+}
+
+.rightimg {
+    float: right; /* Выравнивание по правому краю  */
+    margin: 7px 7px 7px 7px; /* Отступы вокруг картинки */
 }

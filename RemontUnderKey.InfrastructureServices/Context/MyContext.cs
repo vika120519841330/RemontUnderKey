@@ -21,6 +21,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<TypeOfObject_Infra> Types { get; set; }
         //Единица измерения для расценки единицы ремонтной работы
         public DbSet<UnitOfJob_Infra> UnitOfJobs { get; set; }
+        //Комментарии зарегистрированных пользователей
+        public DbSet<Comment_Infra> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -2776,6 +2778,16 @@ namespace RemontUnderKey.InfrastructureServices.Context
             #endregion
 
             #region
+            Comment_Infra c1 = new Comment_Infra
+            {
+                Id = 1,
+                UserName = "Стриго Виктория",
+                MessageFromUser = "Отличное качество выполненных работ! Специалисты отработали без нареканий и в срок.",
+                ApprovalForPublishing = true
+            };
+            #endregion
+
+            #region
             modelBuilder.Entity<Job_Infra>().HasData(j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18, j19, j20,
                                                      j21, j22, j23, j24, j25, j26, j27, j28, j29, j30, j31, j32, j33, j34, j35, j36, j37, j38, j39, j40,
                                                      j41, j42, j43, j44, j45, j46, j47, j48, j49, j50, j51, j52, j53, j54, j55, j56, j57, j58, j59, j60,
@@ -2805,13 +2817,22 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
             modelBuilder.Entity<UnitOfJob_Infra>().HasData(u1, u2, u3);
 
+            modelBuilder.Entity<Comment_Infra>().HasData(c1);
+
 
             modelBuilder.ApplyConfiguration<Job_Infra>(new Job_Configuration());
+
             modelBuilder.ApplyConfiguration<KindOfJob_Infra>(new Kind_Configuration());
+
             modelBuilder.ApplyConfiguration<TypeOfObject_Infra>(new Type_Configuration());
+
             modelBuilder.ApplyConfiguration<UnitOfJob_Infra>(new Unit_Configuration());
+
             modelBuilder.ApplyConfiguration<Repareobject_Infra>(new Repareobject_Configuration());
+
             modelBuilder.ApplyConfiguration<Photo_Infra>(new Photo_Configuration());
+
+            modelBuilder.ApplyConfiguration<Comment_Infra>(new Comment_Configuration());
 
             base.OnModelCreating(modelBuilder);
             #endregion
