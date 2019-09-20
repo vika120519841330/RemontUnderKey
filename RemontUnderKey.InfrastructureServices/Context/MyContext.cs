@@ -2455,252 +2455,327 @@ namespace RemontUnderKey.InfrastructureServices.Context
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/55.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p96 = new Photo_Infra
+            Photo_Infra p142 = new Photo_Infra
             {
-                Id = 96,
+                Id = 142,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/56.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p97 = new Photo_Infra
+            Photo_Infra p143 = new Photo_Infra
             {
-                Id = 97,
+                Id = 143,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/57.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p98 = new Photo_Infra
+            Photo_Infra p144 = new Photo_Infra
             {
-                Id = 98,
+                Id = 144,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/58.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p99 = new Photo_Infra
+            Photo_Infra p145 = new Photo_Infra
             {
-                Id = 99,
+                Id = 145,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/59.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p100 = new Photo_Infra
+            Photo_Infra p146 = new Photo_Infra
             {
-                Id = 100,
+                Id = 146,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/60.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p101 = new Photo_Infra
+            Photo_Infra p147 = new Photo_Infra
             {
-                Id = 101,
+                Id = 147,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/61.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p102 = new Photo_Infra
+            Photo_Infra p148 = new Photo_Infra
             {
-                Id = 102,
+                Id = 148,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/62.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p103 = new Photo_Infra
+            Photo_Infra p149 = new Photo_Infra
             {
-                Id = 103,
+                Id = 149,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/63.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p104 = new Photo_Infra
+            Photo_Infra p150 = new Photo_Infra
             {
-                Id = 104,
+                Id = 150,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/64.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p105 = new Photo_Infra
+            Photo_Infra p151 = new Photo_Infra
             {
-                Id = 105,
+                Id = 151,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/65.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p106 = new Photo_Infra
+            Photo_Infra p152 = new Photo_Infra
             {
-                Id = 106,
+                Id = 152,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/66.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p107 = new Photo_Infra
+            Photo_Infra p153 = new Photo_Infra
             {
-                Id = 107,
+                Id = 153,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/67.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p108 = new Photo_Infra
+            Photo_Infra p154 = new Photo_Infra
             {
-                Id = 108,
+                Id = 154,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/68.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p109 = new Photo_Infra
+            Photo_Infra p155 = new Photo_Infra
             {
-                Id = 109,
+                Id = 155,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/69.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p110 = new Photo_Infra
+            Photo_Infra p156 = new Photo_Infra
             {
-                Id = 110,
+                Id = 156,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/70.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p111 = new Photo_Infra
+            Photo_Infra p157 = new Photo_Infra
             {
-                Id = 111,
+                Id = 157,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/71.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p112 = new Photo_Infra
+            Photo_Infra p158 = new Photo_Infra
             {
-                Id = 112,
+                Id = 158,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/72.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p113 = new Photo_Infra
+            Photo_Infra p159 = new Photo_Infra
             {
-                Id = 113,
+                Id = 159,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/73.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p114 = new Photo_Infra
+            Photo_Infra p160 = new Photo_Infra
             {
-                Id = 114,
+                Id = 160,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/74.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p115 = new Photo_Infra
+            Photo_Infra p161 = new Photo_Infra
             {
-                Id = 115,
+                Id = 161,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/75.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p116 = new Photo_Infra
+            Photo_Infra p162 = new Photo_Infra
             {
-                Id = 116,
+                Id = 162,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/76.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p117 = new Photo_Infra
+            Photo_Infra p163 = new Photo_Infra
             {
-                Id = 117,
+                Id = 163,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/77.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p118 = new Photo_Infra
+            Photo_Infra p164 = new Photo_Infra
             {
-                Id = 118,
+                Id = 164,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/78.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p119 = new Photo_Infra
+            Photo_Infra p165 = new Photo_Infra
             {
-                Id = 119,
+                Id = 165,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/79.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p120 = new Photo_Infra
+            Photo_Infra p166 = new Photo_Infra
             {
-                Id = 120,
+                Id = 166,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/80.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p121 = new Photo_Infra
+            Photo_Infra p167 = new Photo_Infra
             {
-                Id = 121,
+                Id = 167,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/81.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p122 = new Photo_Infra
+            Photo_Infra p168 = new Photo_Infra
             {
-                Id = 122,
+                Id = 168,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/82.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p123 = new Photo_Infra
+            Photo_Infra p169 = new Photo_Infra
             {
-                Id = 123,
+                Id = 169,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/83.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p124 = new Photo_Infra
+            Photo_Infra p170 = new Photo_Infra
             {
-                Id = 124,
+                Id = 170,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/84.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p125 = new Photo_Infra
+            Photo_Infra p171 = new Photo_Infra
             {
-                Id = 125,
+                Id = 171,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/85.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p126 = new Photo_Infra
+            Photo_Infra p172 = new Photo_Infra
             {
-                Id = 126,
+                Id = 172,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/86.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p127 = new Photo_Infra
+            Photo_Infra p173 = new Photo_Infra
             {
-                Id = 127,
+                Id = 173,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/87.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p128 = new Photo_Infra
+            Photo_Infra p174 = new Photo_Infra
             {
-                Id = 128,
+                Id = 174,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/88.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p129 = new Photo_Infra
+            Photo_Infra p175 = new Photo_Infra
             {
-                Id = 129,
+                Id = 175,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/89.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p130 = new Photo_Infra
+            Photo_Infra p176 = new Photo_Infra
             {
-                Id = 130,
+                Id = 176,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/90.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p131 = new Photo_Infra
+            Photo_Infra p177 = new Photo_Infra
             {
-                Id = 131,
+                Id = 177,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/91.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p132 = new Photo_Infra
+            Photo_Infra p178 = new Photo_Infra
             {
-                Id = 132,
+                Id = 178,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/92.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p133 = new Photo_Infra
+            Photo_Infra p179 = new Photo_Infra
             {
-                Id = 133,
+                Id = 179,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/93.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p134 = new Photo_Infra
+            Photo_Infra p180 = new Photo_Infra
             {
-                Id = 134,
+                Id = 180,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/94.jpg",
                 Repareobject_InfraId = 2
             };
-            Photo_Infra p135 = new Photo_Infra
+            Photo_Infra p181 = new Photo_Infra
             {
-                Id = 135,
+                Id = 181,
                 ImgSrc = "~/Content/2_der_Kopichje_ul_Podgornaya/95.jpg",
                 Repareobject_InfraId = 2
             };
-        
-         
+
+
             #endregion
 
+            #region
+            //Обьект ремонта - "Минский р-н, а.г.Сёмково"
+            Photo_Infra p182 = new Photo_Infra
+            {
+                Id = 182,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/1.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p183 = new Photo_Infra
+            {
+                Id = 183,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/2.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p184 = new Photo_Infra
+            {
+                Id = 184,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/3.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p185 = new Photo_Infra
+            {
+                Id = 185,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/4.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p186 = new Photo_Infra
+            {
+                Id = 186,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/5.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p187 = new Photo_Infra
+            {
+                Id = 187,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/6.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p188 = new Photo_Infra
+            {
+                Id = 188,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/7.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p189 = new Photo_Infra
+            {
+                Id = 189,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/8.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p190 = new Photo_Infra
+            {
+                Id = 190,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/9.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p191 = new Photo_Infra
+            {
+                Id = 191,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/10.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p192 = new Photo_Infra
+            {
+                Id = 192,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/11.jpg",
+                Repareobject_InfraId = 3
+            };
+            Photo_Infra p193 = new Photo_Infra
+            {
+                Id = 193,
+                ImgSrc = "~/Content/3_reg_Minskij_ag_Semkovo/12.jpg",
+                Repareobject_InfraId = 3
+            };
+            #endregion
 
-
+            #region
             modelBuilder.Entity<Job_Infra>().HasData(j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18, j19, j20,
                                                      j21, j22, j23, j24, j25, j26, j27, j28, j29, j30, j31, j32, j33, j34, j35, j36, j37, j38, j39, j40,
                                                      j41, j42, j43, j44, j45, j46, j47, j48, j49, j50, j51, j52, j53, j54, j55, j56, j57, j58, j59, j60,
@@ -2710,10 +2785,24 @@ namespace RemontUnderKey.InfrastructureServices.Context
                                                      j121, j122, j123, j124, j125, j126, j127, j128, j129, j130, j131, j132, j133, j134, j135, j136, j137, j138, j139, j140,
                                                      j141, j142, j143, j144, j145, j146, j147, j148, j149, j150, j151, j152, j153, j154, j155, j156, j157, j158, j159, j160,
                                                      j161, j162, j163, j164, j165, j166, j167, j168, j169, j170, j171, j172, j173, j174, j175, j176);
+
             modelBuilder.Entity<KindOfJob_Infra>().HasData(k1, k2, k3, k4, k5, k6, k7);
-            modelBuilder.Entity<Photo_Infra>().HasData();
+
+            modelBuilder.Entity<Photo_Infra>().HasData(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
+                                                     p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38, p39, p40,
+                                                     p41, p42, p43, p44, p45, p46, p47, p48, p49, p50, p51, p52, p53, p54, p55, p56, p57, p58, p59, p60,
+                                                     p61, p62, p63, p64, p65, p67, p68, p69, p70, p71, p72, p73, p74, p75, p76, p77, p78, p79, p80,
+                                                     p81, p82, p83, p84, p85, p86, p87, p88, p89, p90, p91, p92, p93, p94, p95, p96, p97, p98, p99, p100,
+                                                     p101, p102, p103, p104, p105, p106, p107, p108, p109, p110, p111, p112, p113, p114, p115, p116, p117, p118, p119, p120,
+                                                     p121, p122, p123, p124, p125, p126, p127, p128, p129, p130, p131, p132, p133, p134, p135, p136, p137, p138, p139, p140,
+                                                     p141, p142, p143, p144, p145, p146, p147, p148, p149, p150, p151, p152, p153, p154, p155, p156, p157, p158, p159, p160,
+                                                     p161, p162, p163, p164, p165, p166, p167, p168, p169, p170, p171, p172, p173, p174, p175, p176, p177, p178, p179, p180,
+                                                     p181, p182, p183, p184, p185, p186, p187, p188, p189, p190, p191, p192, p193);
+
             modelBuilder.Entity<Repareobject_Infra>().HasData(o1, o2, o3);
+
             modelBuilder.Entity<TypeOfObject_Infra>().HasData(t1, t2, t3, t4, t5, t6);
+
             modelBuilder.Entity<UnitOfJob_Infra>().HasData(u1, u2, u3);
 
 
@@ -2724,9 +2813,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.ApplyConfiguration<Repareobject_Infra>(new Repareobject_Configuration());
             modelBuilder.ApplyConfiguration<Photo_Infra>(new Photo_Configuration());
 
-            
-
             base.OnModelCreating(modelBuilder);
+            #endregion
         }
     }
 }
