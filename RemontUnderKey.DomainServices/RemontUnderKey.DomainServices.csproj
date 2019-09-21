@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\UnitOfJob_Infra_Domain.cs" />
+    <Compile Include="Mappers\TypeOfObject_Infra_Domain.cs" />
+    <Compile Include="Mappers\Photo_Infra_Domain.cs" />
+    <Compile Include="Mappers\KindOfJob_Infra_Domain .cs" />
+    <Compile Include="Mappers\Job_Infra_Domain.cs" />
     <Compile Include="Mappers\Comment_Infra_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
