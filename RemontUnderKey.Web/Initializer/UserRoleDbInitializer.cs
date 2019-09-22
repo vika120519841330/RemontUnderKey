@@ -2,11 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using RemontUnderKey.Web.Identity;
 using RemontUnderKey.Web.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace RemontUnderKey.Web.Initializer
 {

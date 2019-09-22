@@ -262,9 +262,22 @@
     <Compile Include="Identity\EmailService.cs" />
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Initializer\UserRoleDbInitializer.cs" />
+    <Compile Include="Mappers\Comment_Domain_View.cs" />
+    <Compile Include="Mappers\Job_Domain_View.cs" />
+    <Compile Include="Mappers\KindOfJob_Domain_View .cs" />
+    <Compile Include="Mappers\Photo_Domain_View.cs" />
+    <Compile Include="Mappers\TypeOfObject_Domain_View.cs" />
+    <Compile Include="Mappers\UnitOfJob_Domain_View.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comment_View.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Job_View.cs" />
+    <Compile Include="Models\KindOfJob_View.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Photo_View.cs" />
+    <Compile Include="Models\Repareobject_View.cs" />
+    <Compile Include="Models\TypeOfObject_View.cs" />
+    <Compile Include="Models\UnitOfJob_View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -544,6 +557,10 @@
     <ProjectReference Include="..\RemontUnderKey.DependencyInjection\RemontUnderKey.DependencyInjection.csproj">
       <Project>{3a7b3eb5-f0fb-454b-bf55-99382b1140b9}</Project>
       <Name>RemontUnderKey.DependencyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RemontUnderKey.Domain\RemontUnderKey.Domain.csproj">
+      <Project>{ba938e5f-6de5-400d-b621-24d2e2518983}</Project>
+      <Name>RemontUnderKey.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
