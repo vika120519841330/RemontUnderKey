@@ -18,6 +18,7 @@ namespace RemontUnderKey.DomainServices.Mappers
                 {
                     Id = @this.Id,
                     UserName = @this.UserName,
+                    UserId = @this.UserId,
                     MessageFromUser = @this.MessageFromUser,
                     ApprovalForPublishing = @this.ApprovalForPublishing
                 };
@@ -35,6 +36,7 @@ namespace RemontUnderKey.DomainServices.Mappers
                 {
                     Id = @this.Id,
                     UserName = @this.UserName,
+                    UserId = @this.UserId,
                     MessageFromUser = @this.MessageFromUser,
                     ApprovalForPublishing = @this.ApprovalForPublishing
                 };

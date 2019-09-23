@@ -14,6 +14,5 @@ namespace RemontUnderKey.Infrastructure.Models
         public string TitleOfTypeOfObject { get; set; }
         //Описание типа обьекта ремонта
         public string DescriptionOfTypeOfObject { get; set; }
-
     }
 }

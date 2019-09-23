@@ -18,6 +18,7 @@ namespace RemontUnderKey.Web.Mappers
                 {
                     Id = @this.Id,
                     UserName = new ApplicationUser { UserName = @this.UserName},
+                    UserId = @this.UserId,
                     MessageFromUser = @this.MessageFromUser,
                     ApprovalForPublishing = @this.ApprovalForPublishing
                 };
@@ -35,6 +36,7 @@ namespace RemontUnderKey.Web.Mappers
                 {
                     Id = @this.Id,
                     UserName = @this.UserName.UserName,
+                    UserId = @this.UserId,
                     MessageFromUser = @this.MessageFromUser,
                     ApprovalForPublishing = @this.ApprovalForPublishing
                 };

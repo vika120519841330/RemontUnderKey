@@ -12,17 +12,13 @@ namespace RemontUnderKey.DependencyInjection.Modules
     {
         public void Register(IUnityContainer container)
         {
-            container.RegisterType<IBill, Bill_Service>(
+            container.RegisterType<, >(
                 //new HierarchicalLifetimeManager()
                 );
-            container.RegisterType<IClient, Client_Service>(
+            container.RegisterType<, >(
                 //new HierarchicalLifetimeManager()
                 );
 
-            //для работы с фейк-репозиторием
-            container.RegisterType<IDomain_InitializationService, Domain_InitializationService>(
-                //new HierarchicalLifetimeManager()
-                );
         }
     }
 }

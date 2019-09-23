@@ -165,5 +165,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RemontUnderKey.InfrastructureServices\RemontUnderKey.InfrastructureServices.csproj">
+      <Project>{2D23F5E3-ABDE-4E93-AEB2-0B9506BA3FCD}</Project>
+      <Name>RemontUnderKey.InfrastructureServices</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

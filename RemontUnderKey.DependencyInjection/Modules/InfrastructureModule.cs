@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 using Unity.Injection;
+using RemontUnderKey.InfrastructureServices.Context;
 
 namespace RemontUnderKey.DependencyInjection.Modules
 {
@@ -29,32 +30,12 @@ namespace RemontUnderKey.DependencyInjection.Modules
                 //new HierarchicalLifetimeManager(),        
                 new InjectionConstructor(optionsBuilder.Options));
 
-            // если работать с контекстом напрямую без фейк-репозитория - раскомментировать
-            container.RegisterType<IClient_Repository, Client_Repository>(
+            container.RegisterType<, >(
             //new ContainerControlledLifetimeManager()
             );
-            container.RegisterType<IBill_Repository, Bill_Repository>(
+            container.RegisterType<, >(
             //new ContainerControlledLifetimeManager()
             );
-
-
-            // для работы с  фейк-репозиторием - раскомментировать
-            //container.RegisterType<IInitializationService, InitializationService>(
-            //    //new HierarchicalLifetimeManager()
-            //    );
-            //container.RegisterType<IClient_Provider, FakeRepository>(
-            //    //new HierarchicalLifetimeManager()
-            //    );
-            //container.RegisterType<IBill_Provider, FakeRepository>(
-            //    //new HierarchicalLifetimeManager()
-            //    );
-            //container.RegisterType<IClient_Repository, FakeRepository>(
-            //    //new HierarchicalLifetimeManager()
-            //    );
-            //container.RegisterType<IBill_Repository, FakeRepository>(
-            //    //new HierarchicalLifetimeManager()
-            //    );
-
         }
     }
 }

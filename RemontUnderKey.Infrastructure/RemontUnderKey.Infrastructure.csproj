@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IComment_Repository.cs" />
+    <Compile Include="Interfaces\IUnit_Repository.cs" />
+    <Compile Include="Interfaces\IType_Repository.cs" />
+    <Compile Include="Interfaces\IObject_Repository.cs" />
+    <Compile Include="Interfaces\IPhoto_Repository.cs" />
+    <Compile Include="Interfaces\IKind_Repository.cs" />
+    <Compile Include="Interfaces\IJob_Repository.cs" />
     <Compile Include="Models\Comment_Infra.cs" />
     <Compile Include="Models\Repareobject_Infra.cs" />
     <Compile Include="Models\Photo_Infra.cs" />
@@ -51,8 +58,6 @@
     <Compile Include="Models\TypeOfObject_Infra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
