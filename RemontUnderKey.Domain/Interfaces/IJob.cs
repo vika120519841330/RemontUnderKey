@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using RemontUnderKey.Infrastructure.Models;
+using RemontUnderKey.Domain.Models;
 
-namespace RemontUnderKey.Infrastructure.Interfaces
+namespace RemontUnderKey.Domain.Interfaces
 {
-    public interface IJob_Repository
+    public interface IJob
     {
-        IEnumerable<Job_Infra> AllJobsByIdOfkind(int id); // получение коллекции всех подвидов ремонтных работ по id вида работ (KindOfJob)
-        IEnumerable<Job_Infra> GetAllJobs(); // получение всех объектов
-        Job_Infra GetJob(int id); // получение одного объекта по id
-        void CreateJob(Job_Infra item); // создание объекта
-        void UpdateJob(Job_Infra item); // обновление объекта
+        IEnumerable<Job_Domain> AllJobsByIdOfkind(int id); // получение коллекции всех подвидов ремонтных работ по id вида работ (KindOfJob)
+        IEnumerable<Job_Domain> GetAllJobs(); // получение всех объектов
+        Job_Domain GetJob(int id); // получение одного объекта по id
+        void CreateJob(Job_Domain item); // создание объекта
+        void UpdateJob(Job_Domain item); // обновление объекта
         void DeleteJob(int id); // удаление объекта по id
     }
 }

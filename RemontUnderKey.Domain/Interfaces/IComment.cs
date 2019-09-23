@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using RemontUnderKey.Domain.Models;
 
-namespace RemontUnderKey.Infrastructure.Interfaces
+namespace RemontUnderKey.Domain.Interfaces
 {
-    public interface IComment_Repository
+    public interface IComment
     {
-        IEnumerable<Comment_Infra> AllCommentsByIdOfUser(int id); // получение коллекции всех комментариев определенного пользователя по его id
-        IEnumerable<Comment_Infra> GetAllComments(); // получение всех объектов
-        Comment_Infra GetComment(int id); // получение одного объекта по id
-        void CreateComment(Comment_Infra item); // создание объекта
-        void UpdateComment(Comment_Infra item); // обновление объекта
+        IEnumerable<Comment_Domain> AllCommentsByIdOfUser(int id); // получение коллекции всех комментариев определенного пользователя по его id
+        IEnumerable<Comment_Domain> GetAllComments(); // получение всех объектов
+        Comment_Domain GetComment(int id); // получение одного объекта по id
+        void CreateComment(Comment_Domain item); // создание объекта
+        void UpdateComment(Comment_Domain item); // обновление объекта
         void DeleteComment(int id); // удаление объекта по id
     }
 }

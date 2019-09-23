@@ -58,6 +58,11 @@
     <Compile Include="Models\UnitOfJob_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RemontUnderKey.Infrastructure\RemontUnderKey.Infrastructure.csproj">
+      <Project>{4d32b262-025d-4ef5-9e80-3a9e5c750762}</Project>
+      <Name>RemontUnderKey.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

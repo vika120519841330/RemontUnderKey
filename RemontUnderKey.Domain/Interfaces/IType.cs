@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using RemontUnderKey.Infrastructure.Models;
+using RemontUnderKey.Domain.Models;
 
-namespace RemontUnderKey.Infrastructure.Interfaces
+namespace RemontUnderKey.Domain.Interfaces
 {
-    public interface IType_Repository
+    public interface IType
     {
-        IEnumerable<TypeOfObject_Infra> GetAllTypes(); // получение всех объектов
-        TypeOfObject_Infra GetTypeOfObject(int id); // получение одного объекта по id
-        void CreateTypeOfObject(TypeOfObject_Infra item); // создание объекта
-        void UpdateTypeOfObject(TypeOfObject_Infra item); // обновление объекта
+        IEnumerable<TypeOfObject_Domain> GetAllTypes(); // получение всех объектов
+        TypeOfObject_Domain GetTypeOfObject(int id); // получение одного объекта по id
+        void CreateTypeOfObject(TypeOfObject_Domain item); // создание объекта
+        void UpdateTypeOfObject(TypeOfObject_Domain item); // обновление объекта
         void DeleteTypeOfObject(int id); // удаление объекта по id
     }
 }
