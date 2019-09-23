@@ -262,6 +262,7 @@
     <Compile Include="Identity\EmailService.cs" />
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Initializer\UserRoleDbInitializer.cs" />
+    <Compile Include="Mappers\Repareobject_Domain_View.cs" />
     <Compile Include="Mappers\Comment_Domain_View.cs" />
     <Compile Include="Mappers\Job_Domain_View.cs" />
     <Compile Include="Mappers\KindOfJob_Domain_View .cs" />
