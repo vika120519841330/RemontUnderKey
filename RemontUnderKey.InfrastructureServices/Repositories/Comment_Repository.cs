@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RemontUnderKey.Infrastructure.Interfaces;
 using RemontUnderKey.Infrastructure.Models;
 using RemontUnderKey.InfrastructureServices.Context;
@@ -17,7 +14,7 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             this.context = _context;
         }
 
-        //Вспомогательный метод - возвращает список всех комментариев определенного пользователя по его id
+        //Вспомогательный метод - возвращает коллекцию всех комментариев, относящихся к определенному пользователю
         public IEnumerable<Comment_Infra> AllCommentsByIdOfUser(int id)
         {
             var commentsOfUser = context.Comments

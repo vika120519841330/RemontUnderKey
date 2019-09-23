@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IComment.cs" />
+    <Compile Include="Interfaces\IJob.cs" />
+    <Compile Include="Interfaces\IKind.cs" />
+    <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Interfaces\IPhoto.cs" />
+    <Compile Include="Interfaces\IType.cs" />
+    <Compile Include="Interfaces\IUnit.cs" />
     <Compile Include="Models\Comment_Domain.cs" />
     <Compile Include="Models\Job_Domain.cs" />
     <Compile Include="Models\KindOfJob_Domain.cs" />
@@ -51,5 +58,6 @@
     <Compile Include="Models\UnitOfJob_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

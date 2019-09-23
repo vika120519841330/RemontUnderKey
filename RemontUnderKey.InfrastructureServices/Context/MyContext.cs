@@ -20,7 +20,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
         //Типы обьектов ремонта  
         public DbSet<TypeOfObject_Infra> Types { get; set; }
         //Единица измерения для расценки единицы ремонтной работы
-        public DbSet<UnitOfJob_Infra> UnitOfJobs { get; set; }
+        public DbSet<UnitOfJob_Infra> Units { get; set; }
         //Комментарии зарегистрированных пользователей
         public DbSet<Comment_Infra> Comments { get; set; }
 
