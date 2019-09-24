@@ -262,6 +262,7 @@
     <Compile Include="Identity\EmailService.cs" />
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Initializer\UserRoleDbInitializer.cs" />
+    <Compile Include="Mappers\CallMee_Domain_View.cs" />
     <Compile Include="Mappers\Repareobject_Domain_View.cs" />
     <Compile Include="Mappers\Comment_Domain_View.cs" />
     <Compile Include="Mappers\Job_Domain_View.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="Mappers\TypeOfObject_Domain_View.cs" />
     <Compile Include="Mappers\UnitOfJob_Domain_View.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CallMee_View.cs" />
     <Compile Include="Models\Comment_View.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job_View.cs" />

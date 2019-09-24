@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\CallMee_Infra_Domain.cs" />
     <Compile Include="Mappers\Repareobject_Infra_Domain.cs" />
     <Compile Include="Mappers\UnitOfJob_Infra_Domain.cs" />
     <Compile Include="Mappers\TypeOfObject_Infra_Domain.cs" />

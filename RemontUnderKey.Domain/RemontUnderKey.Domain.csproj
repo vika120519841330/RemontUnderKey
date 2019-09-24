@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\IPhoto.cs" />
     <Compile Include="Interfaces\IType.cs" />
     <Compile Include="Interfaces\IUnit.cs" />
+    <Compile Include="Models\CallMee_Domain.cs" />
     <Compile Include="Models\Comment_Domain.cs" />
     <Compile Include="Models\Job_Domain.cs" />
     <Compile Include="Models\KindOfJob_Domain.cs" />

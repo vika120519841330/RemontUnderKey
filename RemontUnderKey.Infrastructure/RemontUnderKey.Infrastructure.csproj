@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\IPhoto_Repository.cs" />
     <Compile Include="Interfaces\IKind_Repository.cs" />
     <Compile Include="Interfaces\IJob_Repository.cs" />
+    <Compile Include="Models\CallMee_Infra.cs" />
     <Compile Include="Models\Comment_Infra.cs" />
     <Compile Include="Models\Repareobject_Infra.cs" />
     <Compile Include="Models\Photo_Infra.cs" />
