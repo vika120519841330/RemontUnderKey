@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICallMee.cs" />
     <Compile Include="Interfaces\IComment.cs" />
     <Compile Include="Interfaces\IJob.cs" />
     <Compile Include="Interfaces\IKind.cs" />

@@ -50,6 +50,7 @@
     <Compile Include="Mappers\Job_Infra_Domain.cs" />
     <Compile Include="Mappers\Comment_Infra_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CallMee_Service.cs" />
     <Compile Include="Services\Unit_Service.cs" />
     <Compile Include="Services\Type_Service.cs" />
     <Compile Include="Services\Photo_Service.cs" />

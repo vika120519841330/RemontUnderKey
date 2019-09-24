@@ -16,40 +16,41 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
 
         public IEnumerable<CallMee_Infra> GetAllCallMee()
         {
-            var comments = context.Comments
+            var calls = context.Calls
                 .ToList()
                 ;
-            return comments;
+            return calls;
         }
 
-        public Comment_Infra GetComment(int id)
+        public CallMee_Infra GetCallMee(int id)
         {
-            var comment = context.Comments
+            var call = context.Calls
                 .FirstOrDefault(_ => _.Id == id)
                 ;
-            return comment;
+            return call;
         }
 
-        public void CreateComment(Comment_Infra inst)
+        public void CreateCallMee(CallMee_Infra inst)
         {
-            context.Comments.Add(inst);
+            context.Calls.Add(inst);
             context.SaveChanges();
         }
 
-        public void UpdateComment(Comment_Infra inst)
+        public void UpdateCallMee(CallMee_Infra inst)
         {
-            var tempInst = context.Comments.FirstOrDefault(_ => _.Id == inst.Id);
+            var tempInst = context.Calls.FirstOrDefault(_ => _.Id == inst.Id);
             tempInst.Id = inst.Id;
-            tempInst.UserName = inst.UserName;
-            tempInst.UserId = inst.UserId;
-            tempInst.MessageFromUser = inst.MessageFromUser;
-            tempInst.ApprovalForPublishing = inst.ApprovalForPublishing;
+            tempInst.Name = inst.Name;
+            tempInst.Telephone = inst.Telephone;
+            tempInst.DateStamp = inst.DateStamp;
+            tempInst.Comments = inst.Comments;
+            tempInst.CallIsDone = inst.CallIsDone;
             context.SaveChanges();
         }
-        public void DeleteComment(int id)
+        public void DeleteCallMee(int id)
         {
-            var tmp = context.Comments.Find(id);
-            context.Comments.Remove(tmp);
+            var tmp = context.Calls.Find(id);
+            context.Calls.Remove(tmp);
             context.SaveChanges();
         }
     }

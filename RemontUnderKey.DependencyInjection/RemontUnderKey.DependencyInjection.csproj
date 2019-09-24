@@ -178,6 +178,10 @@
       <Project>{2D23F5E3-ABDE-4E93-AEB2-0B9506BA3FCD}</Project>
       <Name>RemontUnderKey.InfrastructureServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RemontUnderKey.Infrastructure\RemontUnderKey.Infrastructure.csproj">
+      <Project>{4d32b262-025d-4ef5-9e80-3a9e5c750762}</Project>
+      <Name>RemontUnderKey.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

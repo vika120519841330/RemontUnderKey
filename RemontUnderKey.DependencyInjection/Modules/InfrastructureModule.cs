@@ -1,14 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RemontUnderKey.DependencyInjection.Interfaces;
 using System.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity;
 using Unity.Injection;
 using RemontUnderKey.InfrastructureServices.Context;
+using RemontUnderKey.InfrastructureServices.Repositories;
+using RemontUnderKey.Infrastructure.Interfaces;
+
 
 namespace RemontUnderKey.DependencyInjection.Modules
 {
@@ -27,13 +25,31 @@ namespace RemontUnderKey.DependencyInjection.Modules
             }
 
             container.RegisterType<MyContext>(
-                //new HierarchicalLifetimeManager(),        
-                new InjectionConstructor(optionsBuilder.Options));
+            //new HierarchicalLifetimeManager(),        
+            new InjectionConstructor(optionsBuilder.Options));
 
-            container.RegisterType<, >(
+            container.RegisterType<ICallMee_Repository, CallMee_Repository>(
             //new ContainerControlledLifetimeManager()
             );
-            container.RegisterType<, >(
+            container.RegisterType<IComment_Repository, Comment_Repository>(
+            //new ContainerControlledLifetimeManager()
+            );
+            container.RegisterType <IJob_Repository, Job_Repository> (
+            //new ContainerControlledLifetimeManager()
+            );
+            container.RegisterType <IKind_Repository, Kind_Repository> (
+            //new ContainerControlledLifetimeManager()
+            );
+            container.RegisterType <IObject_Repository, Object_Repository> (
+            //new ContainerControlledLifetimeManager()
+            );
+            container.RegisterType <IPhoto_Repository, Photo_Repository> (
+            //new ContainerControlledLifetimeManager()
+            );
+            container.RegisterType <IType_Repository, Type_Repository> (
+            //new ContainerControlledLifetimeManager()
+            );
+            container.RegisterType <IUnit_Repository, Unit_Repository> (
             //new ContainerControlledLifetimeManager()
             );
         }

@@ -2,7 +2,7 @@
 @model IEnumerable<KindOfJob_View>
 
 <body>
-    <table class="table">
+    <table class="mytable">
         <tr>
             <th>
                 Виды работ
@@ -23,7 +23,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="3">
                     @Html.Action("AllJobsByIdOfkind", "Job", new { id = item.Id })
                 </td>
             </tr>

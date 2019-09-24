@@ -30,7 +30,7 @@ namespace RemontUnderKey.DependencyInjection.Modules
             container.RegisterType<IUnit, Unit_Service>(
                 //new HierarchicalLifetimeManager()
                 );
-            container.RegisterType<, >(
+            container.RegisterType<ICallMee, CallMee_Service>(
                 //new HierarchicalLifetimeManager()
                 );
 

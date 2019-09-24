@@ -23,6 +23,9 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<UnitOfJob_Infra> Units { get; set; }
         //Комментарии зарегистрированных пользователей
         public DbSet<Comment_Infra> Comments { get; set; }
+        //Комментарии зарегистрированных пользователей
+        public DbSet<CallMee_Infra> Calls { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -2788,6 +2791,19 @@ namespace RemontUnderKey.InfrastructureServices.Context
             #endregion
 
             #region
+            CallMee_Infra cm1 = new CallMee_Infra
+            {
+                Id = 1,
+                Name = "Тестовый пользователь",
+                DateStamp = new System.DateTime(2019, 9, 24),
+                Telephone = "+375 44 752 82 63",
+                Comments = "Комментарий к обратному звонку",
+                CallIsDone = true
+
+            };
+            #endregion
+
+            #region
             modelBuilder.Entity<Job_Infra>().HasData(j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18, j19, j20,
                                                      j21, j22, j23, j24, j25, j26, j27, j28, j29, j30, j31, j32, j33, j34, j35, j36, j37, j38, j39, j40,
                                                      j41, j42, j43, j44, j45, j46, j47, j48, j49, j50, j51, j52, j53, j54, j55, j56, j57, j58, j59, j60,
@@ -2819,6 +2835,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
             modelBuilder.Entity<Comment_Infra>().HasData(c1);
 
+            modelBuilder.Entity<CallMee_Infra>().HasData(cm1);
+
 
             modelBuilder.ApplyConfiguration<Job_Infra>(new Job_Configuration());
 
@@ -2833,6 +2851,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.ApplyConfiguration<Photo_Infra>(new Photo_Configuration());
 
             modelBuilder.ApplyConfiguration<Comment_Infra>(new Comment_Configuration());
+
+            modelBuilder.ApplyConfiguration<CallMee_Infra>(new CallMee_Configuration());
 
             base.OnModelCreating(modelBuilder);
             #endregion

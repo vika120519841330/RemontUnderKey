@@ -65,3 +65,10 @@ textarea {
     float: right; /* Выравнивание по правому краю  */
     margin: 7px 7px 7px 7px; /* Отступы вокруг картинки */
 }
+table.mytable {
+    border: 3px;
+    color: #ffffff;
+    align-content: flex-start;
+    vertical-align: bottom;
+    font-style: oblique;
+}
