@@ -166,6 +166,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RemontUnderKey.DomainServices\RemontUnderKey.DomainServices.csproj">
+      <Project>{20e42160-efd9-4870-b562-be5d6e62d10d}</Project>
+      <Name>RemontUnderKey.DomainServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RemontUnderKey.Domain\RemontUnderKey.Domain.csproj">
+      <Project>{ba938e5f-6de5-400d-b621-24d2e2518983}</Project>
+      <Name>RemontUnderKey.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RemontUnderKey.InfrastructureServices\RemontUnderKey.InfrastructureServices.csproj">
       <Project>{2D23F5E3-ABDE-4E93-AEB2-0B9506BA3FCD}</Project>
       <Name>RemontUnderKey.InfrastructureServices</Name>

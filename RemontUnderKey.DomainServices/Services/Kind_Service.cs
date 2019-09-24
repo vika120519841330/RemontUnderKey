@@ -17,7 +17,7 @@ namespace RemontUnderKey.DomainServices.Services
 
         public IEnumerable<KindOfJob_Domain> GetAllKinds()
         {
-            var kinds = repository.GetAllKinds()
+            IEnumerable<KindOfJob_Domain> kinds = repository.GetAllKinds()
                 .Select(_ => _.KindOfJobFromInfraToDomain())
                 .ToList()
                 ;

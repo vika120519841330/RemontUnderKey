@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IComment_Repository.cs" />
+    <Compile Include="Interfaces\ICallMee_Repository.cs" />
     <Compile Include="Interfaces\IUnit_Repository.cs" />
     <Compile Include="Interfaces\IType_Repository.cs" />
     <Compile Include="Interfaces\IObject_Repository.cs" />

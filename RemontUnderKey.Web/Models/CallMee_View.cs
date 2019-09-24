@@ -74,7 +74,10 @@ namespace RemontUnderKey.Web.Models
                 datestamp = HttpContext.Current.Timestamp;
             }
         }
-        //Пожелания касательно обратного звонка
-        public string Wishes { get; set; }
+        //Комментарии админа касательно обратного звонка
+        public string Comments { get; set; }
+        // Отметка о произведенном обратном звонке
+        public bool CallIsDone { get; set; }
+
     }
 }

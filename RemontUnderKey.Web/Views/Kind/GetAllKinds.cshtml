@@ -1,0 +1,32 @@
+﻿@using RemontUnderKey.Web.Models
+@model IEnumerable<KindOfJob_View>
+
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                Виды работ
+            </th>
+            <th>
+                Единица измерения
+            </th>
+            <th>
+                Стоимость, долл. по курсу НБ РБ
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td colspan="3">
+                    @Html.DisplayFor(modelItem => item.TitleOfKindOfJob)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Action("AllJobsByIdOfkind", "Job", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</body>

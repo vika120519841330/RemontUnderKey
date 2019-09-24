@@ -15,7 +15,8 @@ namespace RemontUnderKey.Web.Mappers
                     Name = @this.Name,
                     Telephone = @this.Telephone,
                     DateStamp = @this.DateStamp,
-                    Wishes = @this.Wishes
+                    Comments = @this.Comments,
+                    CallIsDone = @this.CallIsDone
                 };
             }
             else
@@ -33,7 +34,8 @@ namespace RemontUnderKey.Web.Mappers
                     Name = @this.Name,
                     Telephone = @this.Telephone,
                     DateStamp = @this.DateStamp,
-                    Wishes = @this.Wishes
+                    Comments = @this.Comments,
+                    CallIsDone = @this.CallIsDone
                 };
             }
             else

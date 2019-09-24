@@ -8,6 +8,8 @@ namespace RemontUnderKey.Domain.Models
         public string Name { get; set; }
         public string Telephone { get; set; }
         public DateTime DateStamp { get; set; }
-        public string Wishes { get; set; }
+        public string Comments { get; set; }
+        public bool CallIsDone { get; set; }
+
     }
 }
