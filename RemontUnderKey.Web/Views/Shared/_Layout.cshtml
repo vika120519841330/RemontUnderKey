@@ -10,25 +10,27 @@
 
 </head>
 <body>
-    <a href="@Url.Action( "Index", "Home")">
-        <img class="leftimg" src="~/Content/LabelMain_2.png" />
-    </a>
-    <ul class="mybar" style="float: right">
-        <li class="mybar">@Html.Partial("_LoginPartial")</li>
-    </ul>
-    <br />
-    <br />
-    <ul class="mybar">
-        <li class="mybar">@Html.ActionLink("ВИДЫ РАБОТ", "ListOfJobs", "Job")</li>
-        <li class="mybar">@Html.ActionLink("ЦЕНЫ", "GetAllKinds", "Kind")</li>
-        <li class="mybar">@Html.ActionLink("ФОТОГАЛЕРЕЯ", "PhotoGalery", "Project")</li>
-        <li class="mybar">@Html.ActionLink("ГАРАНТИИ", "Guarantee", "Contact")</li>
-        <li class="mybar">@Html.ActionLink("ОТЗЫВЫ", "Comments", "Comment")</li>
-        <li class="mybar">@Html.ActionLink("ДОКУМЕНТАЦИЯ", "Certificate", "Contact")</li>
-        <li class="mybar">@Html.ActionLink("НАШИ СПЕЦИАЛИСТЫ", "Specialists", "Contact")</li>
-        <li class="mybar">@Html.ActionLink("КОНТАКТЫ", "Contacts", "Contact")</li>
-    </ul>
-
+    <div class="mybardiv">
+        <a href="@Url.Action( "Index", "Home")">
+            <img class="leftimg" src="~/Content/LabelMain_2.png" />
+        </a>
+        <ul class="mybar" style="float: right">
+            <li class="mybar">@Html.Partial("_LoginPartial")</li>
+        </ul>
+        <br />
+        <br />
+        <ul class="mybar">
+            <li class="mybar">@Html.ActionLink("ВИДЫ РАБОТ", "ListOfJobs", "Job")</li>
+            <li class="mybar">@Html.ActionLink("ЦЕНЫ", "GetAllKinds", "Kind")</li>
+            <li class="mybar">@Html.ActionLink("ФОТОГАЛЕРЕЯ", "PhotoGalery", "Project")</li>
+            @*<li class="mybar">@Html.ActionLink("ГАРАНТИИ", "Guarantee", "Contact")</li>*@
+            <li class="mybar">@Html.ActionLink("ОТЗЫВЫ", "Comments", "Comment")</li>
+            <li class="mybar">@Html.ActionLink("О НАС", "AboutUs", "About")</li>
+            @*<li class="mybar">@Html.ActionLink("ДОКУМЕНТАЦИЯ", "Certificate", "Contact")</li>*@
+            @*<li class="mybar">@Html.ActionLink("НАШИ СПЕЦИАЛИСТЫ", "Specialists", "Contact")</li>*@
+            <li class="mybar">@Html.ActionLink("КОНТАКТЫ", "Contacts", "Contact")</li>
+        </ul>
+    </div>
     <br />
     <br />
     <br />

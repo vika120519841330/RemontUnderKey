@@ -25,7 +25,7 @@ namespace RemontUnderKey.Web.Controllers
                 ;
             return PartialView(jobsOfKind);
         }
-
+       
         [HttpGet]
         public ActionResult GetAllJobs()
         {

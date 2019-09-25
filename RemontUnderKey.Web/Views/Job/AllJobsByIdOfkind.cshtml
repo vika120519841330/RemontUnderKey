@@ -1,17 +1,17 @@
 ﻿@using RemontUnderKey.Web.Models
 @model IEnumerable<Job_View>
 
-<table>
+<table class="mytable2">
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td width="80%">
             @Html.DisplayFor(modelItem => item.TitleOfJob)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitOfJob_ViewId)
+        <td width="10%">
+            @Html.Action("GetUnit", "Unit", new { id = item.UnitOfJob_ViewId })
         </td>
-        <td>
+        <td width="10%">
             @Html.DisplayFor(modelItem => item.PriceOfUnitOfJob)
         </td>
     </tr>

@@ -16,7 +16,7 @@ namespace RemontUnderKey.Web.Controllers
         }
         public ActionResult GetAllKinds()
         {
-            ViewBag.Title = "СТОИМОСТЬ РЕМОНТА ПОД КЛЮЧ:";
+            ViewBag.Title = "СТОИМОСТЬ РЕМОНТА ПОД КЛЮЧ";
             ViewBag.Header = "ЦЕНЫ НА ОТДЕЛОЧНЫЕ РАБОТЫ, НЕОБХОДИМЫЕ ДЛЯ КОМПЛЕКСНОГО РЕМОНТА КВАРТИРЫ ПОД КЛЮЧ";
             IEnumerable<KindOfJob_View> kinds = service.GetAllKinds()
                 .Select(_ => _.KindOfJobFromDomainToView())

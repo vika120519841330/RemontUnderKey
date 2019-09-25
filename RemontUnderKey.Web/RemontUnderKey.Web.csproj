@@ -248,6 +248,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KindController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -545,6 +546,7 @@
     <Content Include="Views\Job\AllJobsByIdOfkind.cshtml" />
     <Content Include="Views\Kind\GetAllKinds.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Unit\GetUnit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
