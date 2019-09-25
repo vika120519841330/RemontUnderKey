@@ -112,4 +112,7 @@ table.mytable2 {
         padding: 1px 2px 1px 5px;
         vertical-align: top;
     }
+    table.mytable2 tr:hover td {
+        background: #808080;
+    }
 
