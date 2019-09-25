@@ -1,15 +1,21 @@
 ﻿body {
     /*background-image: url("fonforbackground.jpg");*/
     background-image: url("texture2.jpg");
-    background-attachment: fixed;
+    background-attachment: fixed; /* Фиксируем фон веб-страницы */
     background-position: left 100% 100%;
     background-repeat: no-repeat;
     color: #ffffff; /* Цвет текста */
+    overflow: scroll;
+    background-size: auto;
+    height: 100%; /* высота элемента */
+    margin: 0; /* внешний отступ со всех сторон */
 }
 
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    position: center;
+    z-index: 1;
 }
 
 .dl-horizontal dt {
@@ -66,9 +72,11 @@ textarea {
     margin: 7px 7px 7px 7px; /* Отступы вокруг картинки */
 }
 table.mytable {
-    border: 3px;
-    color: #ffffff;
-    align-content: flex-start;
+    color: #000000;
     vertical-align: bottom;
     font-style: oblique;
+    border: 2px solid black; /*устанавливаем для таблицы внешнюю границу черного цвета толщиной 3px*/
+    background-image: url("Wrinkled Paper.jpg");
+    background-attachment: scroll;
+    background-color: white;
 }

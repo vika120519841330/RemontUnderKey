@@ -1,5 +1,8 @@
+using RemontUnderKey.Web.Identity;
+using RemontUnderKey.Web.Initializer;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +15,9 @@ namespace RemontUnderKey.Web
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<ApplicationDbContext>(new UserRoleDbInitializer());
+
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

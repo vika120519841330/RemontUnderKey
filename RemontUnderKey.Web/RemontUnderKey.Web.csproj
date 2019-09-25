@@ -490,6 +490,7 @@
     <Content Include="Content\texture2.jpg" />
     <Content Include="Content\texture3.jpg" />
     <Content Include="Content\texture5.jpg" />
+    <Content Include="Content\Wrinkled Paper.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -543,6 +544,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Job\AllJobsByIdOfkind.cshtml" />
     <Content Include="Views\Kind\GetAllKinds.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
