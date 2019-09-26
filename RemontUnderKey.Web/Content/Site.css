@@ -117,22 +117,25 @@ table.mytable2 {
     }
 
 table.mytable3 {
-
-        border: 2px solid black;
-        background-image: url("smokeBrushes_normal_16.png");
-        background-attachment: scroll;
-        background-color: white;
-        max-width: 500px;
-        width: 500px;
-        height: 800px;
-        max-height: 800px;
-
-    }
+    border: 0px;
+    background-image: url("TornCardboardTexture.jpg");
+    background-color: white;
+    width: 1000px;
+    height: 705px;
+}
     table.mytable3 td {
         color: #000000;
-        font-style: oblique;
-        font-size: large;
+        font-style: initial;
+        font-size: 60px;
         align-content: center;
         vertical-align: central;
     }
-
+@font-face {
+    font-family: 'My_brush_font';
+    src: url('../fonts/VTKS ANIMAL 2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+p.brushp {
+    font-family: My_brush_font
+}

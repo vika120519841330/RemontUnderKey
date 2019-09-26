@@ -55,7 +55,7 @@ namespace RemontUnderKey.Web.Controllers
             else
             {
                 service.CreateCallMee(inst.CallMeeFromViewToDomain());
-                ViewBag.Result = "ЗАЯВКА НА ОБРАТНЫЙ ЗВОНОК ПРИНЯТА!";
+                ViewBag.Result = "Zajavka na zvonok prinjata!";
                 return View("CreateCallMee_Success");
             }
         }
