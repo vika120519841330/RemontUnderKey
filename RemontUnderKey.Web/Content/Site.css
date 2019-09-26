@@ -97,7 +97,7 @@ table.mytable {
 table.mytable2 {
     color: #000000;
     font-style: oblique;
-    border: 2px solid black; 
+    border: 2px solid black;
     background-attachment: scroll;
     max-width: 100%;
     width: 100%;
@@ -114,5 +114,25 @@ table.mytable2 {
     }
     table.mytable2 tr:hover td {
         background: #808080;
+    }
+
+table.mytable3 {
+
+        border: 2px solid black;
+        background-image: url("smokeBrushes_normal_16.png");
+        background-attachment: scroll;
+        background-color: white;
+        max-width: 500px;
+        width: 500px;
+        height: 800px;
+        max-height: 800px;
+
+    }
+    table.mytable3 td {
+        color: #000000;
+        font-style: oblique;
+        font-size: large;
+        align-content: center;
+        vertical-align: central;
     }
 

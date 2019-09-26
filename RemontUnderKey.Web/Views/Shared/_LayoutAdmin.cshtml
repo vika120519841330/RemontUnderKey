@@ -29,22 +29,24 @@
             <li class="mybar">@Html.ActionLink("КОНТАКТЫ", "Contacts", "Contact")</li>
         </ul>
     </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - @ViewBag.Title </p>
-            </footer>
-        </div>
+    @RenderBody()
+    <div style="color: white; font-size: small; padding-left: 20px; padding-right: 20px">
+        <hr />
+        <footer>
+            <p>
+                &copy; @DateTime.Now.Year - @ViewBag.Title
+            </p>
+        </footer>
+    </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

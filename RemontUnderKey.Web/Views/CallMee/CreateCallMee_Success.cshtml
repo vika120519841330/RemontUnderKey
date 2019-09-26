@@ -1,9 +1,13 @@
 ﻿    <body>
-    <div style="align-content:center; vertical-align:central; height: 1000px">
-        @ViewBag.Result       
-    </div>
+        <table class="mytable3">
+            <tr>
+                <td>
+                    @ViewBag.Result
+                </td>
+            </tr>
+        </table>
         <br />
-    <div>
+    <div style="color: white; font-size: small">
         @Html.ActionLink("ВЕРНУТЬСЯ НА ГЛАВНУЮ", "Index", "Home")
     </div>
 </body>
