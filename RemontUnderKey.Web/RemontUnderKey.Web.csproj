@@ -501,6 +501,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\VTKS ANIMAL 2.ttf" />
+    <Content Include="fonts\ofont.ru_Grunge.ttf" />
+    <Content Include="fonts\ofont.ru_Beast Impacted.ttf" />
+    <Content Include="fonts\ofont.ru_DS Eraser2.ttf" />
     <None Include="Properties\PublishProfiles\RemontUnderKey - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\RemontUnderKey - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

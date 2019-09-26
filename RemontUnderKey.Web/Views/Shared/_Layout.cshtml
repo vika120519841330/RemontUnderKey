@@ -11,10 +11,11 @@
 </head>
 <body>
     <div class="mybardiv">
-        <a href="@Url.Action( "Index", "Home")">
-            <img class="leftimg" src="~/Content/LabelMain_2.png" />
+        <a class="eraser" style="float: left; padding-left: 2px; font-size: 50px" href="@Url.Action( "Index", "Home")">
+            @*<img class="leftimg" src="~/Content/LabelMain_2.png" />*@
+            REMONT
         </a>
-        <ul class="mybar" style="float: right">
+        <ul class="mybar" style="float: right; padding-right: 10px">
             <li class="mybar">@Html.Partial("_LoginPartial")</li>
         </ul>
         <br />
@@ -37,8 +38,8 @@
             @RenderBody()
             <div style="color: white; font-size: small; padding-left: 20px; padding-right: 20px">
                 <hr/>
-                <footer>
-                    <p>
+                <footer style="color: #ffffff">
+                    <p class="beast">
                         @Html.ActionLink("ВЕРНУТЬСЯ НА ГЛАВНУЮ", "Index", "Home")
                     </p>
                     <p>
