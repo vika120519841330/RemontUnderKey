@@ -246,6 +246,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\CallMeeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KindController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
@@ -549,6 +550,9 @@
     <Content Include="Views\Kind\GetAllKinds.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Unit\GetUnit.cshtml" />
+    <Content Include="Views\CallMee\GetAllCallMee.cshtml" />
+    <Content Include="Views\CallMee\CreateCallMee.cshtml" />
+    <Content Include="Views\CallMee\CreateCallMee_Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
