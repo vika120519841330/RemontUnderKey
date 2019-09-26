@@ -25,6 +25,11 @@
                 </tr>
                 <tr>
                     <td colspan="3">
+                        @Html.DisplayFor(modelItem => item.DescriptionOfKindOfJob)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
                         @Html.Action("AllJobsByIdOfkind", "Job", new { id = item.Id })
                     </td>
                 </tr>
