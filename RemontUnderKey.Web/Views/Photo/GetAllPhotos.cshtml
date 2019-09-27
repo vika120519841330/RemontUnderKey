@@ -1,22 +1,18 @@
 ﻿@using RemontUnderKey.Web.Models
-@model List<string>
+@model IEnumerable<Photo_View>
 
 
-<body>
-    <table class="mytable3">
-        @foreach (string item in Model)
+    <body>
+        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @*<a href="@Url.Action( "GetPhoto", "Photo", new { id = item.Id})">*@
-                        <img style="align-content: center" src=@item />
-                        @*<img style="align-content: center" src="~/Content/1_Minsk_ul_Lojinskaja/1.jpg" />*@
-                    @*</a>*@
-                </td>
-                <td>
-                    Наименование обьекта
-                </td>
-            </tr>
+            <a href="@Url.Action( "GetPhoto", "Photo", new { id = item.Id})">
+                <img src=@item.ImgSrc alt="@item.ImgSrc"
+                     style="
+                     align-content: center;
+                     width: 300px;
+                     image-rendering: optimizeSpeed;
+                     white-space: normal;
+                     image-orientation: unset;" />
+            </a>
         }
-    </table>
-</body>
+    </body>

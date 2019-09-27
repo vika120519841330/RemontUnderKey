@@ -33,14 +33,14 @@ namespace RemontUnderKey.Web.Controllers
                 .Select(_ => _.PhotoFromDomainToView())
                 .ToList()
                 ;
-            int countOfPhotos = photos.Count();
-            List<string> listOfaddressOfphoto = new List<string>(countOfPhotos);
-            foreach(Photo_View addr in photos)
-            {
-                listOfaddressOfphoto.Add(addr.ImgSrc);
-            }
-            ViewBag.AllAddressOfPhotos = listOfaddressOfphoto;
-            return View(listOfaddressOfphoto);
+            //int countOfPhotos = photos.Count();
+            //List<string> listOfaddressOfphoto = new List<string>(countOfPhotos);
+            //foreach(Photo_View addr in photos)
+            //{
+            //    listOfaddressOfphoto.Add(addr.ImgSrc);
+            //}
+            //ViewBag.AllAddressOfPhotos = listOfaddressOfphoto;
+            return View(photos);
         }
         public ActionResult GetPhoto(int id)
         {

@@ -560,6 +560,7 @@
     <Content Include="Views\CallMee\CreateCallMee.cshtml" />
     <Content Include="Views\CallMee\CreateCallMee_Success.cshtml" />
     <Content Include="Views\Photo\GetAllPhotos.cshtml" />
+    <Content Include="Views\Photo\GetPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
