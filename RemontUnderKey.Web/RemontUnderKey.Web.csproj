@@ -249,6 +249,7 @@
     <Compile Include="Controllers\CallMeeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KindController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -558,6 +559,7 @@
     <Content Include="Views\CallMee\GetAllCallMee.cshtml" />
     <Content Include="Views\CallMee\CreateCallMee.cshtml" />
     <Content Include="Views\CallMee\CreateCallMee_Success.cshtml" />
+    <Content Include="Views\Photo\GetAllPhotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

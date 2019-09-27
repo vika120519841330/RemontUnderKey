@@ -1,0 +1,22 @@
+﻿@using RemontUnderKey.Web.Models
+@model List<string>
+
+
+<body>
+    <table class="mytable3">
+        @foreach (string item in Model)
+        {
+            <tr>
+                <td>
+                    @*<a href="@Url.Action( "GetPhoto", "Photo", new { id = item.Id})">*@
+                        <img style="align-content: center" src=@item />
+                        @*<img style="align-content: center" src="~/Content/1_Minsk_ul_Lojinskaja/1.jpg" />*@
+                    @*</a>*@
+                </td>
+                <td>
+                    Наименование обьекта
+                </td>
+            </tr>
+        }
+    </table>
+</body>
