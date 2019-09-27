@@ -27,8 +27,9 @@ namespace RemontUnderKey.Web.Controllers
             return PartialView(photosOfObject);
         }
 
-        public ActionResult GetAllPhotos()
+        public ActionResult PhotoGalery()
         {
+            ViewBag.Title = "ФОТОГАЛЕРЕЯ";
             IEnumerable<Photo_View> photos = service.GetAllPhotos()
                 .Select(_ => _.PhotoFromDomainToView())
                 .ToList()
@@ -40,7 +41,7 @@ namespace RemontUnderKey.Web.Controllers
             //    listOfaddressOfphoto.Add(addr.ImgSrc);
             //}
             //ViewBag.AllAddressOfPhotos = listOfaddressOfphoto;
-            return View(photos);
+            return View("PhotoGalery");
         }
         public ActionResult GetPhoto(int id)
         {
