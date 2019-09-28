@@ -25,6 +25,16 @@ namespace RemontUnderKey.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+            //add me
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/demo.css",
+                      "~/Content/style.css",
+                      "~/Content/elastislide.css",
+                      "~/Content/reset.css"));
+
+
         }
     }
 }
