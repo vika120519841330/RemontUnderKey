@@ -27,22 +27,18 @@ namespace RemontUnderKey.Web.Controllers
             return PartialView(photosOfObject);
         }
 
-        public ActionResult PhotoGalery()
+        public ActionResult GetAllPhotos()
         {
-            ViewBag.Title = "ФОТОГАЛЕРЕЯ";
-            IEnumerable<Photo_View> photos = service.GetAllPhotos()
+            ViewBag.Title = "НАША ФОТОГАЛЕРЕЯ ОБЬЕКТОВ РЕМОНТА";
+            ViewBag.Message = "ПРИЯТНОГО ПРОСМОТРА!";
+
+            IEnumerable <Photo_View> Photos = service.GetAllPhotos()
                 .Select(_ => _.PhotoFromDomainToView())
                 .ToList()
-                ;
-            //int countOfPhotos = photos.Count();
-            //List<string> listOfaddressOfphoto = new List<string>(countOfPhotos);
-            //foreach(Photo_View addr in photos)
-            //{
-            //    listOfaddressOfphoto.Add(addr.ImgSrc);
-            //}
-            //ViewBag.AllAddressOfPhotos = listOfaddressOfphoto;
-            return View("PhotoGalery");
+               ;
+            return View("PhotoGalery", Photos);
         }
+
         public ActionResult GetPhoto(int id)
         {
             Photo_View photo = service.GetPhoto(id)

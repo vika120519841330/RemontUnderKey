@@ -16,6 +16,7 @@
                 <p>
                     @ViewBag.Message
                 </p>
+                <br />
                 <div class="eraser">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -24,6 +25,7 @@
                             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
+                    <br />
                     <div class="form-group">
                         @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -31,11 +33,14 @@
                             @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
                         </div>
                     </div>
+                    <br />
+                    <br />
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="ОТПРАВИТЬ" class="btn btn-default" />
                         </div>
                     </div>
+                    <br />
                 </div>
             </div>
             }

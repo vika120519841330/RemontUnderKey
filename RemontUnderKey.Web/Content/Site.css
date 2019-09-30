@@ -1,14 +1,14 @@
 ﻿body {
-    /*background-image: url("fonforbackground.jpg");*/
-    background-image: url("texture2.jpg");
+    /*background-image: url("texture2.jpg");*/
+    background-image: url("texture5.jpg");
     background-attachment: fixed; /* Фиксируем фон веб-страницы */
     background-position: left 100% 100%;
-    background-repeat: no-repeat;
-    color: #ffffff; /* Цвет текста */
-    overflow: scroll;
+    background-repeat: no-repeat; /*Отменяем повторение фона*/
+    color: #ffffff; /* Цвет текста - белый */
+    overflow: scroll; /*Добавляем полосы прокрутки, если блочный элемент целиком не помещается и выходит за область заданных размеров. */
     background-size: auto;
-    height: 100%; /* высота элемента */
-    margin: 0; /* внешний отступ со всех сторон */
+    height: 100%; /* Высота элемента */
+    margin: 0; /* Внешний отступ со всех сторон */
 }
 
 .body-content {
@@ -86,12 +86,14 @@ table.mytable {
     width: 95%;
 }
     table.mytable th {
-        padding: 2px 2px 1px 5px;
+        padding: 4px 4px 4px 4px;
         vertical-align: top;
+        font-weight: bold;
     }
     table.mytable td {
-        padding: 2px 2px 1px 5px;
+        padding: 4px 4px 4px 4px;
         vertical-align: top;
+        font-weight: bold;
     }
 
 table.mytable2 {
@@ -101,15 +103,15 @@ table.mytable2 {
     background-attachment: scroll;
     max-width: 100%;
     width: 100%;
+    margin: 2px 2px 2px 2px;
+    padding: 2px 2px 2px 2px;
 }
 
     table.mytable2 th {
-        padding: 1px 2px 1px 5px;
         vertical-align: top;
     }
 
     table.mytable2 td {
-        padding: 1px 2px 1px 5px;
         vertical-align: top;
     }
     table.mytable2 tr:hover td {

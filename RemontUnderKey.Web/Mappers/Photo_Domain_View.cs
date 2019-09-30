@@ -18,6 +18,7 @@ namespace RemontUnderKey.Web.Mappers
                 {
                     Id = @this.Id,
                     ImgSrc = @this.ImgSrc,
+                    ImgSrcMini = @this.ImgSrcMini,
                     Repareobject_ViewId = @this.Repareobject_DomainId
                 };
             }
@@ -34,6 +35,7 @@ namespace RemontUnderKey.Web.Mappers
                 {
                     Id = @this.Id,
                     ImgSrc = @this.ImgSrc,
+                    ImgSrcMini = @this.ImgSrcMini,
                     Repareobject_DomainId = @this.Repareobject_ViewId
                 };
             }

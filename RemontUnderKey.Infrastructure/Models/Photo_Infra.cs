@@ -14,6 +14,9 @@ namespace RemontUnderKey.Infrastructure.Models
         //Путь к картинке
         public string ImgSrc { get; set; }
 
+        //Путь к миниатюрной картинке
+        public string ImgSrcMini { get; set; }
+
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("Repareobject_Infra")]
         public int? Repareobject_InfraId { get; set; }

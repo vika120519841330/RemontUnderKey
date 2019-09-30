@@ -15,6 +15,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<KindOfJob_Infra> Kinds { get; set; }
         //Фото выполненных ремонтных работ
         public DbSet<Photo_Infra> Photos { get; set; }
+
         //Завершенные обьекты ремонтных работ
         public DbSet<Repareobject_Infra> Repareobjects { get; set; }
         //Типы обьектов ремонта  
@@ -29,6 +30,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //KindOfJob
             #region
             KindOfJob_Infra k1 = new KindOfJob_Infra
              {
@@ -97,6 +99,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
+            //TypeOfObject
             #region
             TypeOfObject_Infra t1 = new TypeOfObject_Infra
             {
@@ -136,6 +139,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
+            //UnitOfJob
             #region
             UnitOfJob_Infra u1 = new UnitOfJob_Infra
             {
@@ -155,8 +159,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
             #endregion
 
-            #region
             //KindOfJob - Демонтажные работы
+            #region
             Job_Infra j1 = new Job_Infra
             {
                 Id = 1,
@@ -329,8 +333,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
-            #region
             //KindOfJob - Ремонт потолка
+            #region
             Job_Infra j22 = new Job_Infra
             {
                 Id = 22,
@@ -463,15 +467,15 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 38,
                 TitleOfJob = "Покраска узких участков шириной менее 30 смОклейка, шпатлевание примыканий и окраска пенополистирольного," +
-                " полиуретанового потолочного плинтуса до 5 см высотой (6см - по 5 у.е., 7 см - по 6 у.е., 8 см - по 7 у.е. за м.пог. И т.д.)",
+                " полиуретанового потолочного плинтуса до 5 см высотой (6см - по 5 у.е., 7 см - по 6 у.е., 8 см - по 7 у.е. за м.пог. и т.д.)",
                 PriceOfUnitOfJob = 4.0,
                 KindOfJob_InfraId = 2,
                 UnitOfJob_InfraId = 3
             };
             #endregion
 
-            #region
             //KindOfJob - Ремонт стен
+            #region
             Job_Infra j39 = new Job_Infra
             {
                 Id = 39,
@@ -698,8 +702,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
-            #region
             //KindOfJob - Ремонт пола
+            #region
             Job_Infra j67 = new Job_Infra
             {
                 Id = 67,
@@ -870,8 +874,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
-            #region
             //KindOfJob - Облицовка плиткой
+            #region
             Job_Infra j88 = new Job_Infra
             {
                 Id = 88,
@@ -880,6 +884,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
                 KindOfJob_InfraId = 5,
                 UnitOfJob_InfraId = 2
             };
+
             Job_Infra j89 = new Job_Infra
             {
                 Id = 89,
@@ -1018,8 +1023,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
-            #region
             //KindOfJob - Электромонтажные работы
+            #region
             Job_Infra j106 = new Job_Infra
             {
                 Id = 106,
@@ -1270,8 +1275,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
+            //Job
             #region
-            //KindOfJob - Электромонтажные работы
             Job_Infra j137 = new Job_Infra
             {
                 Id = 137,
@@ -1594,6 +1599,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
+            //Repareobject
             #region
             Repareobject_Infra o1 = new Repareobject_Infra
             {
@@ -1615,1171 +1621,1364 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
-            #region
             //Обьект ремонта - "г.Минск, ул.Ложинская"
+            #region
             Photo_Infra p1 = new Photo_Infra
             {
                 Id = 1,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/1.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/1.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p2 = new Photo_Infra
             {
                 Id = 2,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/2.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/2.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p3 = new Photo_Infra
             {
                 Id = 3,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/3.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/3.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p4 = new Photo_Infra
             {
                 Id = 4,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/4.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p5 = new Photo_Infra
             {
                 Id = 5,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/5.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/5.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p6 = new Photo_Infra
             {
                 Id = 6,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/6.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/6.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p7 = new Photo_Infra
             {
                 Id = 7,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/7.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/7.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p8 = new Photo_Infra
             {
                 Id = 8,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/8.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/8.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p9 = new Photo_Infra
             {
                 Id = 9,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/9.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/9.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p10 = new Photo_Infra
             {
                 Id = 10,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/10.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/10.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p11 = new Photo_Infra
             {
                 Id = 11,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/11.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/11.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p12 = new Photo_Infra
             {
                 Id = 12,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/12.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/12.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p13 = new Photo_Infra
             {
                 Id = 13,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/13.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/13.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p14 = new Photo_Infra
             {
                 Id = 14,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/14.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/14.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p15 = new Photo_Infra
             {
                 Id = 15,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/15.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/15.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p16 = new Photo_Infra
             {
                 Id = 16,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/16.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/16.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p17 = new Photo_Infra
             {
                 Id = 17,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/17.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/17.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p18 = new Photo_Infra
             {
                 Id = 18,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/18.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/18.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p19 = new Photo_Infra
             {
                 Id = 19,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/19.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/19.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p20 = new Photo_Infra
             {
                 Id = 20,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/20.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/20.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p21 = new Photo_Infra
             {
                 Id = 21,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/21.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/21.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p22 = new Photo_Infra
             {
                 Id = 22,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/22.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/22.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p23 = new Photo_Infra
             {
                 Id = 23,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/23.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/23.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p24 = new Photo_Infra
             {
                 Id = 24,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/24.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/24.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p25 = new Photo_Infra
             {
                 Id = 25,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/25.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/25.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p26 = new Photo_Infra
             {
                 Id = 26,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/26.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/26.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p27 = new Photo_Infra
             {
                 Id = 27,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/27.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/27.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p28 = new Photo_Infra
             {
                 Id = 28,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/28.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/28.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p29 = new Photo_Infra
             {
                 Id = 29,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/29.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/29.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p30 = new Photo_Infra
             {
                 Id = 30,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/30.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/30.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p31 = new Photo_Infra
             {
                 Id = 31,
                 ImgSrc = "~/Content/1_Minsk_ul_Lojinskaja/31.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/31.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p32 = new Photo_Infra
             {
                 Id = 32,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/32.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/32.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p33 = new Photo_Infra
             {
                 Id = 33,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/33.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/33.jpg",
                 Repareobject_InfraId = 1
             }; Photo_Infra p34 = new Photo_Infra
             {
                 Id = 34,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/34.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/34.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p35 = new Photo_Infra
             {
                 Id = 35,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/35.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/35.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p36 = new Photo_Infra
             {
                 Id = 36,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/36.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/36.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p37 = new Photo_Infra
             {
                 Id = 37,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/37.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/37.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p38 = new Photo_Infra
             {
                 Id = 38,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/38.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/38.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p39 = new Photo_Infra
             {
                 Id = 39,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/39.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/39.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p40 = new Photo_Infra
             {
                 Id = 40,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/40.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/40.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p41 = new Photo_Infra
             {
                 Id = 41,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/41.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/41.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p42 = new Photo_Infra
             {
                 Id = 42,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/42.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/42.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p43 = new Photo_Infra
             {
                 Id = 43,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/43.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/43.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p44 = new Photo_Infra
             {
                 Id = 44,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/44.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/44.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p45 = new Photo_Infra
             {
                 Id = 45,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/45.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/45.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p46 = new Photo_Infra
             {
                 Id = 46,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/46.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/46.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p47 = new Photo_Infra
             {
                 Id = 47,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/47.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/47.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p48 = new Photo_Infra
             {
                 Id = 48,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/48.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/48.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p49 = new Photo_Infra
             {
                 Id = 49,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/49.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/49.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p50 = new Photo_Infra
             {
                 Id = 50,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/50.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/50.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p51 = new Photo_Infra
             {
                 Id = 51,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/51.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/51.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p52 = new Photo_Infra
             {
                 Id = 52,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/52.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/50.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p53 = new Photo_Infra
             {
                 Id = 53,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/53.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/53.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p54 = new Photo_Infra
             {
                 Id = 54,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/54.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/54.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p55 = new Photo_Infra
             {
                 Id = 55,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/55.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/55.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p56 = new Photo_Infra
             {
                 Id = 56,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/56.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/56.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p57 = new Photo_Infra
             {
                 Id = 57,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/57.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/57.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p58 = new Photo_Infra
             {
                 Id = 58,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/58.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/58.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p59 = new Photo_Infra
             {
                 Id = 59,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/59.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/59.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p60 = new Photo_Infra
             {
                 Id = 60,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/60.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/60.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p61 = new Photo_Infra
             {
                 Id = 61,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/61.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/61.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p62 = new Photo_Infra
             {
                 Id = 62,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/62.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/62.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p63 = new Photo_Infra
             {
                 Id = 63,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/63.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/63.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p64 = new Photo_Infra
             {
                 Id = 64,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/64.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/64.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p65 = new Photo_Infra
             {
                 Id = 65,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/65.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/65.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p67 = new Photo_Infra
             {
                 Id = 67,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/67.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/66.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p68 = new Photo_Infra
             {
                 Id = 68,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/68.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/68.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p69 = new Photo_Infra
             {
                 Id = 69,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/69.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/69.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p70 = new Photo_Infra
             {
                 Id = 70,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/70.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/70.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p71 = new Photo_Infra
             {
                 Id = 71,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/71.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/71.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p72 = new Photo_Infra
             {
                 Id = 72,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/72.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/72.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p73 = new Photo_Infra
             {
                 Id = 73,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/73.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/73.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p74 = new Photo_Infra
             {
                 Id = 74,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/74.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/74.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p75 = new Photo_Infra
             {
                 Id = 75,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/75.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/75.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p76 = new Photo_Infra
             {
                 Id = 76,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/76.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/76.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p77 = new Photo_Infra
             {
                 Id = 77,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/77.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/77.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p78 = new Photo_Infra
             {
                 Id = 78,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/78.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/78.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p79 = new Photo_Infra
             {
                 Id = 79,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/79.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/79.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p80 = new Photo_Infra
             {
                 Id = 80,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/80.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/80.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p81 = new Photo_Infra
             {
                 Id = 81,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/81.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/81.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p82 = new Photo_Infra
             {
                 Id = 82,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/82.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/82.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p83 = new Photo_Infra
             {
                 Id = 83,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/83.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/83.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p84 = new Photo_Infra
             {
                 Id = 84,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/84.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/84.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p85 = new Photo_Infra
             {
                 Id = 85,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/85.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/85.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p86 = new Photo_Infra
             {
                 Id = 86,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/86.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/86.jpg",
                 Repareobject_InfraId = 1
             };
             #endregion
 
-            #region
             //Обьект ремонта - "Минский р-н, д.Копище, ул.Подгорная"
+            #region
             Photo_Infra p87 = new Photo_Infra
             {
                 Id = 87,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/1.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/1.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p88 = new Photo_Infra
             {
                 Id = 88,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/2.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/2.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p89 = new Photo_Infra
             {
                 Id = 89,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/3.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/3.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p90 = new Photo_Infra
             {
                 Id = 90,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/4.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/4.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p91 = new Photo_Infra
             {
                 Id = 91,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/5.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/5.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p92 = new Photo_Infra
             {
                 Id = 92,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/6.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/6.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p93 = new Photo_Infra
             {
                 Id = 93,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/7.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/7.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p94 = new Photo_Infra
             {
                 Id = 94,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/8.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/8.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p95 = new Photo_Infra
             {
                 Id = 95,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/9.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/9.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p96 = new Photo_Infra
             {
                 Id = 96,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/10.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/10.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p97 = new Photo_Infra
             {
                 Id = 97,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/10.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/11.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p98 = new Photo_Infra
             {
                 Id = 98,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/12.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/12.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p99 = new Photo_Infra
             {
                 Id = 99,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/13.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/13.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p100 = new Photo_Infra
             {
                 Id = 100,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/14.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/14.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p101 = new Photo_Infra
             {
                 Id = 101,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/15.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/15.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p102 = new Photo_Infra
             {
                 Id = 102,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/16.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/16.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p103 = new Photo_Infra
             {
                 Id = 103,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/17.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/17jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p104 = new Photo_Infra
             {
                 Id = 104,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/18.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/18.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p105 = new Photo_Infra
             {
                 Id = 105,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/19.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/19.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p106 = new Photo_Infra
             {
                 Id = 106,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/20.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/20.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p107 = new Photo_Infra
             {
                 Id = 107,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/21.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/21.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p108 = new Photo_Infra
             {
                 Id = 108,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/22.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/22.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p109 = new Photo_Infra
             {
                 Id = 109,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/23.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/23.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p110 = new Photo_Infra
             {
                 Id = 110,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/24.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/24.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p111 = new Photo_Infra
             {
                 Id = 111,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/25.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/25.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p112 = new Photo_Infra
             {
                 Id = 112,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/26.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/26.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p113 = new Photo_Infra
             {
                 Id = 113,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/27.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/27.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p114 = new Photo_Infra
             {
                 Id = 114,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/28.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/28.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p115 = new Photo_Infra
             {
                 Id = 115,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/29.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/29.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p116 = new Photo_Infra
             {
                 Id = 116,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/30.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/30.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p117 = new Photo_Infra
             {
                 Id = 117,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/31.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/31.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p118 = new Photo_Infra
             {
                 Id = 118,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/32.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/32.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p119 = new Photo_Infra
             {
                 Id = 119,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/33.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/33.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p120 = new Photo_Infra
             {
                 Id = 120,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/34.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/34.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p121 = new Photo_Infra
             {
                 Id = 121,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/35.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/35.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p122 = new Photo_Infra
             {
                 Id = 122,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/36.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/36.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p123 = new Photo_Infra
             {
                 Id = 123,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/37.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/37.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p124 = new Photo_Infra
             {
                 Id = 124,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/38.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/38.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p125 = new Photo_Infra
             {
                 Id = 125,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/39.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/39.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p126 = new Photo_Infra
             {
                 Id = 126,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/40.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/40.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p127 = new Photo_Infra
             {
                 Id =127,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/41.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/41.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p128 = new Photo_Infra
             {
                 Id = 128,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/42.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/42.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p129 = new Photo_Infra
             {
                 Id = 129,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/43.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/43.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p130 = new Photo_Infra
             {
                 Id = 130,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/44.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/44.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p131 = new Photo_Infra
             {
                 Id = 131,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/45.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/45.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p132 = new Photo_Infra
             {
                 Id = 132,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/46.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/46.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p133 = new Photo_Infra
             {
                 Id = 133,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/47.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/47.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p134 = new Photo_Infra
             {
                 Id = 134,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/48.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/48.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p135 = new Photo_Infra
             {
                 Id = 135,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/49.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/49.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p136 = new Photo_Infra
             {
                 Id = 136,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/50.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/50.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p137 = new Photo_Infra
             {
                 Id = 137,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/51.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/51.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p138 = new Photo_Infra
             {
                 Id = 138,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/52.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/52.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p139 = new Photo_Infra
             {
                 Id = 139,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/53.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/53.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p140 = new Photo_Infra
             {
                 Id = 140,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/54.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/54.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p141 = new Photo_Infra
             {
                 Id = 141,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/55.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/55.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p142 = new Photo_Infra
             {
                 Id = 142,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/56.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/56.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p143 = new Photo_Infra
             {
                 Id = 143,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/57.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/57.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p144 = new Photo_Infra
             {
                 Id = 144,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/58.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/58.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p145 = new Photo_Infra
             {
                 Id = 145,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/59.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/59.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p146 = new Photo_Infra
             {
                 Id = 146,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/60.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/60.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p147 = new Photo_Infra
             {
                 Id = 147,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/61.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/61.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p148 = new Photo_Infra
             {
                 Id = 148,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/62.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/62.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p149 = new Photo_Infra
             {
                 Id = 149,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/63.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/63.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p150 = new Photo_Infra
             {
                 Id = 150,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/64.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/64.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p151 = new Photo_Infra
             {
                 Id = 151,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/65.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/65.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p152 = new Photo_Infra
             {
                 Id = 152,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/66.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/.66",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p153 = new Photo_Infra
             {
                 Id = 153,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/67.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/67.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p154 = new Photo_Infra
             {
                 Id = 154,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/68.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/68.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p155 = new Photo_Infra
             {
                 Id = 155,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/69.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/69.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p156 = new Photo_Infra
             {
                 Id = 156,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/70.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/70.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p157 = new Photo_Infra
             {
                 Id = 157,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/71.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/71.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p158 = new Photo_Infra
             {
                 Id = 158,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/72.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/72.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p159 = new Photo_Infra
             {
                 Id = 159,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/73.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/73.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p160 = new Photo_Infra
             {
                 Id = 160,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/74.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/74.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p161 = new Photo_Infra
             {
                 Id = 161,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/75.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/75.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p162 = new Photo_Infra
             {
                 Id = 162,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/76.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/76.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p163 = new Photo_Infra
             {
                 Id = 163,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/77.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/77.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p164 = new Photo_Infra
             {
                 Id = 164,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/78.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/78.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p165 = new Photo_Infra
             {
                 Id = 165,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/79.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/79.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p166 = new Photo_Infra
             {
                 Id = 166,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/80.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/80.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p167 = new Photo_Infra
             {
                 Id = 167,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/81.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/81.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p168 = new Photo_Infra
             {
                 Id = 168,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/82.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/82.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p169 = new Photo_Infra
             {
                 Id = 169,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/83.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/83.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p170 = new Photo_Infra
             {
                 Id = 170,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/84.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/84.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p171 = new Photo_Infra
             {
                 Id = 171,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/85.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/85.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p172 = new Photo_Infra
             {
                 Id = 172,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/86.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/86.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p173 = new Photo_Infra
             {
                 Id = 173,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/87.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/87.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p174 = new Photo_Infra
             {
                 Id = 174,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/88.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/88.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p175 = new Photo_Infra
             {
                 Id = 175,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/89.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/89.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p176 = new Photo_Infra
             {
                 Id = 176,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/90.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/90.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p177 = new Photo_Infra
             {
                 Id = 177,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/91.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/91.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p178 = new Photo_Infra
             {
                 Id = 178,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/92.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/92.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p179 = new Photo_Infra
             {
                 Id = 179,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/93.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/93.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p180 = new Photo_Infra
             {
                 Id = 180,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/94.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/94.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p181 = new Photo_Infra
             {
                 Id = 181,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/95.jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/95.jpg",
                 Repareobject_InfraId = 2
             };
 
 
             #endregion
 
-            #region
             //Обьект ремонта - "Минский р-н, а.г.Сёмково"
+            #region
             Photo_Infra p182 = new Photo_Infra
             {
                 Id = 182,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/1.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/1.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p183 = new Photo_Infra
             {
                 Id = 183,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/2.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/2.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p184 = new Photo_Infra
             {
                 Id = 184,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/3.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/3.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p185 = new Photo_Infra
             {
                 Id = 185,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/4.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/4.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p186 = new Photo_Infra
             {
                 Id = 186,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/5.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/5.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p187 = new Photo_Infra
             {
                 Id = 187,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/6.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/6.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p188 = new Photo_Infra
             {
                 Id = 188,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/7.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/7.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p189 = new Photo_Infra
             {
                 Id = 189,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/8.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/8.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p190 = new Photo_Infra
             {
                 Id = 190,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/9.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/9.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p191 = new Photo_Infra
             {
                 Id = 191,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/10.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/10.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p192 = new Photo_Infra
             {
                 Id = 192,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/11.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/11.jpg",
                 Repareobject_InfraId = 3
             };
             Photo_Infra p193 = new Photo_Infra
             {
                 Id = 193,
                 ImgSrc = "/Content/3_reg_Minskij_ag_Semkovo/12.jpg",
+                ImgSrcMini = "/Content/3_reg_Minskij_ag_Semkovo/mini/12.jpg",
                 Repareobject_InfraId = 3
             };
             #endregion
 
+            //Comment
             #region
             Comment_Infra c1 = new Comment_Infra
             {
@@ -2790,6 +2989,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
+            //CallMee
             #region
             CallMee_Infra cm1 = new CallMee_Infra
             {
@@ -2826,6 +3026,16 @@ namespace RemontUnderKey.InfrastructureServices.Context
                                                      p141, p142, p143, p144, p145, p146, p147, p148, p149, p150, p151, p152, p153, p154, p155, p156, p157, p158, p159, p160,
                                                      p161, p162, p163, p164, p165, p166, p167, p168, p169, p170, p171, p172, p173, p174, p175, p176, p177, p178, p179, p180,
                                                      p181, p182, p183, p184, p185, p186, p187, p188, p189, p190, p191, p192, p193);
+            //modelBuilder.Entity<Photo_mini_Infra>().HasData(mp1, mp2, mp3, mp4, mp5, mp6, mp7, mp8, mp9, mp10, mp11, mp12, mp13, mp14, mp15, mp16, mp17, mp18, mp19, mp20,
+            //                                         mp21, mp22, mp23, mp24, mp25, mp26, mp27, mp28, mp29, mp30, mp31, mp32, mp33, mp34, mp35, mp36, mp37, mp38, mp39, mp40,
+            //                                         mp41, mp42, mp43, mp44, mp45, mp46, mp47, mp48, mp49, mp50, mp51, mp52, mp53, mp54, mp55, mp56, mp57, mp58, mp59, mp60,
+            //                                         mp61, mp62, mp63, mp64, mp65, mp67, mp68, mp69, mp70, mp71, mp72, mp73, mp74, mp75, mp76, mp77, mp78, mp79, mp80,
+            //                                         mp81, mp82, mp83, mp84, mp85, mp86, mp87, mp88, mp89, mp90, mp91, mp92, mp93, mp94, mp95, mp96, mp97, mp98, mp99, mp100,
+            //                                         mp101, mp102, mp103, mp104, mp105, mp106, mp107, mp108, mp109, mp110, mp111, mp112, mp113, mp114, mp115, mp116, mp117, mp118, mp119, mp120,
+            //                                         mp121, mp122, mp123, mp124, mp125, mp126, mp127, mp128, mp129, mp130, mp131, mp132, mp133, mp134, mp135, mp136, mp137, mp138, mp139, mp140,
+            //                                         mp141, mp142, mp143, mp144, mp145, mp146, mp147, mp148, mp149, mp150, mp151, mp152, mp153, mp154, mp155, mp156, mp157, mp158, mp159, mp160,
+            //                                         mp161, mp162, mp163, mp164, mp165, mp166, mp167, mp168, mp169, mp170, mp171, mp172, mp173, mp174, mp175, mp176, mp177, mp178, mp179, mp180,
+            //                                         mp181, mp182, mp183, mp184, mp185, mp186, mp187, mp188, mp189, mp190, mp191, mp192, mp193);
 
             modelBuilder.Entity<Repareobject_Infra>().HasData(o1, o2, o3);
 
@@ -2836,7 +3046,6 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.Entity<Comment_Infra>().HasData(c1);
 
             modelBuilder.Entity<CallMee_Infra>().HasData(cm1);
-
 
             modelBuilder.ApplyConfiguration<Job_Infra>(new Job_Configuration());
 
@@ -2849,6 +3058,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.ApplyConfiguration<Repareobject_Infra>(new Repareobject_Configuration());
 
             modelBuilder.ApplyConfiguration<Photo_Infra>(new Photo_Configuration());
+
+            //modelBuilder.ApplyConfiguration<Photo_mini_Infra>(new Photo_mini_Configuration());
 
             modelBuilder.ApplyConfiguration<Comment_Infra>(new Comment_Configuration());
 

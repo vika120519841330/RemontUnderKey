@@ -12,7 +12,10 @@ namespace RemontUnderKey.Web.Models
         public int Id { get; set; }
 
         //Путь к картинке
-        public string ImgSrc { get; set; }
+        public string ImgSrc { get; set; } 
+
+        //Путь к миниатюрной картинке
+        public string ImgSrcMini { get; set; }
 
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("Repareobject_View")]
