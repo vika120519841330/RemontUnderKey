@@ -19,6 +19,6 @@ namespace RemontUnderKey.Web.Models
 
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("Repareobject_View")]
-        public int? Repareobject_ViewId { get; set; }
+        public int Repareobject_ViewId { get; set; }
     }
 }

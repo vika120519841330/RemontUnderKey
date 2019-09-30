@@ -10,9 +10,12 @@ namespace RemontUnderKey.DomainServices.Services
     public class Photo_Service : IPhoto
     {
         private readonly IPhoto_Repository repository;
-        public Photo_Service(IPhoto_Repository _repository)
+        private readonly IObject_Repository objrepository;
+
+        public Photo_Service(IPhoto_Repository _repository, IObject_Repository _objrepository)
         {
             this.repository = _repository;
+            this.objrepository = _objrepository;
         }
 
         //Вспомогательный метод - возвращает коллекцию всех фото, относящихся к определенному обьекту ремонта (Repareobject)
@@ -26,6 +29,14 @@ namespace RemontUnderKey.DomainServices.Services
             return photosOfObject;
         }
 
+        //Вспомогательный метод -  получение обьекта ремонта (Repareobject) по его id 
+        public Repareobject_Domain GetRepareObjectById(int id)
+        {
+            Repareobject_Domain repareObject = objrepository.GetRepareobject(id)
+                .RepareobjectFromInfraToDomain()
+                ;
+            return repareObject;
+        }
         public IEnumerable<Photo_Domain> GetAllPhotos()
         {
             var photos = repository.GetAllPhotos()

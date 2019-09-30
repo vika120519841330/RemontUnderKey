@@ -27,18 +27,33 @@ namespace RemontUnderKey.Web.Controllers
             return PartialView(photosOfObject);
         }
 
-        public ActionResult GetAllPhotos()
+        //Вспомогательный метод -  получение наименования обьекта ремонта (Repareobject) к которому относится фото
+        public string GetTitleOfRepareObject(int id)
+        {
+            string titleRepareObject = service.GetRepareObjectById(id).AddressOfRepareobject;
+            return titleRepareObject;
+        }
+
+        public ActionResult PhotoGalery()
         {
             ViewBag.Title = "НАША ФОТОГАЛЕРЕЯ ОБЬЕКТОВ РЕМОНТА";
             ViewBag.Message = "ПРИЯТНОГО ПРОСМОТРА!";
-
+            List<PhotoGalery_View> PhotoGalery = new List<PhotoGalery_View>();
             IEnumerable <Photo_View> Photos = service.GetAllPhotos()
                 .Select(_ => _.PhotoFromDomainToView())
                 .ToList()
                ;
-            return View("PhotoGalery", Photos);
+            foreach (Photo_View photo in Photos)
+            {
+                PhotoGalery.Add(
+                    new PhotoGalery_View{Id = photo.Id,
+                                        ImgSrc = photo.ImgSrc,
+                                        ImgSrcMini = photo.ImgSrcMini,
+                                        Repareobject_ViewId = photo.Repareobject_ViewId,
+                                        TitleOfRepareObject = service.GetRepareObjectById(photo.Repareobject_ViewId).AddressOfRepareobject});
+            }
+            return View(PhotoGalery);
         }
-
         public ActionResult GetPhoto(int id)
         {
             Photo_View photo = service.GetPhoto(id)

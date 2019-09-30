@@ -1,5 +1,5 @@
 ﻿@using RemontUnderKey.Web.Models
-@model IEnumerable<Photo_View>
+@model List<PhotoGalery_View>
 
 @section Header {
     <link rel="shortcut icon" href="~/favicon.ico">
@@ -46,11 +46,11 @@
                 </div>
                 <div class="es-carousel">
                     <ul>
-                        @foreach (Photo_View item in Model)
+                        @foreach (PhotoGalery_View item in Model)
                         {
                             <li>
                                 <a href="#">
-                                    <img src="@item.ImgSrcMini" data-large="@Url.Content(item.ImgSrc)" alt="" data-description="" />
+                                    <img src="@item.ImgSrcMini" data-large="@Url.Content(item.ImgSrc)" alt="@item.TitleOfRepareObject" data-description="@item.TitleOfRepareObject" />
                                 </a>
                             </li>
                         }

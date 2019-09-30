@@ -6,6 +6,7 @@ namespace RemontUnderKey.Domain.Interfaces
     public interface IPhoto
     {
         IEnumerable<Photo_Domain> AllPhotosByIdOfObject(int id); // получение коллекции всех фото по id обьекта ремонта (Repareobject)
+        Repareobject_Domain GetRepareObjectById(int id); // получение обьекта ремонта (Repareobject) по его id 
         IEnumerable<Photo_Domain> GetAllPhotos(); // получение всех объектов
         Photo_Domain GetPhoto(int id); // получение одного объекта по id
         void CreatePhoto(Photo_Domain item); // создание объекта

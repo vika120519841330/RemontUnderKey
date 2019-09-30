@@ -1648,7 +1648,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 4,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/4.jpg",
-                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/4.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p5 = new Photo_Infra
@@ -1983,7 +1983,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 52,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/52.jpg",
-                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/50.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/52.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p53 = new Photo_Infra
@@ -2081,7 +2081,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 67,
                 ImgSrc = "/Content/1_Minsk_ul_Lojinskaja/67.jpg",
-                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/66.jpg",
+                ImgSrcMini = "/Content/1_Minsk_ul_Lojinskaja/mini/67.jpg",
                 Repareobject_InfraId = 1
             };
             Photo_Infra p68 = new Photo_Infra
@@ -2337,7 +2337,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 103,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/17.jpg",
-                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/17jpg",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/17.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p104 = new Photo_Infra
@@ -2680,7 +2680,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 152,
                 ImgSrc = "/Content/2_der_Kopichje_ul_Podgornaya/66.jpg",
-                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/.66",
+                ImgSrcMini = "/Content/2_der_Kopichje_ul_Podgornaya/mini/66.jpg",
                 Repareobject_InfraId = 2
             };
             Photo_Infra p153 = new Photo_Infra

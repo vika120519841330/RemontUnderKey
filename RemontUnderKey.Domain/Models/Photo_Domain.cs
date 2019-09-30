@@ -19,6 +19,6 @@ namespace RemontUnderKey.Domain.Models
 
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("Repareobject_Domain")]
-        public int? Repareobject_DomainId { get; set; }
+        public int Repareobject_DomainId { get; set; }
     }
 }

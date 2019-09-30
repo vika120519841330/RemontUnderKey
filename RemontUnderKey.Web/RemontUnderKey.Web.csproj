@@ -282,6 +282,7 @@
     <Compile Include="Models\Job_View.cs" />
     <Compile Include="Models\KindOfJob_View.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PhotoGalery_View.cs" />
     <Compile Include="Models\Photo_View.cs" />
     <Compile Include="Models\Repareobject_View.cs" />
     <Compile Include="Models\TypeOfObject_View.cs" />
