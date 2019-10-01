@@ -1,6 +1,5 @@
 ﻿body {
-    /*background-image: url("texture2.jpg");*/
-    background-image: url("texture5.jpg");
+    background-image: url("texture2.jpg");
     background-attachment: fixed; /* Фиксируем фон веб-страницы */
     background-position: left 100% 100%;
     background-repeat: no-repeat; /*Отменяем повторение фона*/
