@@ -16,7 +16,6 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/Site.css")
     @RenderSection("Header", required: false)
-
 </head>
 <body>
     <div class="mybardiv">
@@ -37,11 +36,50 @@
             <li class="mybar">@Html.ActionLink("ЗАКАЗАТЬ ЗВОНОК", "CreateCallMee", "CallMee")</li>
             <li class="mybar">@Html.ActionLink("КОНТАКТЫ", "Contacts", "Contact")</li>
         </ul>
+        <ul class="mybaricon">
+            <li class="mybaricon" style="width: 100px">&nbsp;</li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a title="Позвонить нам" href="tel:+375447528263"><img src="~/Content/Icon/phone.png" /></a>
+                </div>
+            </li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a title="E-Mail" href="mailto:repareunderkey@gmail.com"><img src="~/Content/Icon/mail.png" /></a>
+                </div>
+            </li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a id="vb_pk" title="Viber" href="viber://chat?number=+375447528263"><img src="~/Content/Icon/viber.png" /></a>
+                </div>
+            </li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a id="vb_mb" title="Viber" href="viber://add?number=375447528263"><img src="~/Content/Icon/viber.png" /></a>
+                </div>
+            </li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a id="sc_pk" title="Skype" href="skype:live:4b3ca9f7045c1a83?chat"><img src="~/Content/Icon/skype.png" /></a>
+                </div>
+            </li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a id="sc_mb" title="Skype" href="skype:live:4b3ca9f7045c1a83?call"><img src="~/Content/Icon/skype.png" /></a>
+                </div>
+            </li>
+            <li class="mybaricon">
+                <div class="block">
+                    <a title="Telegram" href="tg://resolve?domain=VikaStrigo"><img src="~/Content/Icon/telegram.png" /></a>
+                </div>
+            </li>
+        </ul>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
+    <p></p>
+    <div style="width: 100%; padding-left: 8px; padding-top: 70px; align-content: flex-start; float: left">
+        <span class="eraser" style="font-size: 14px; position: fixed">&nbsp;+375(44)752-82-63</span>
+    </div>
+    <div style="vertical-align: 20px">&nbsp;</div>
     <br />
     @RenderBody()
     @RenderSection("Body", required: false)
@@ -49,13 +87,16 @@
     <div style="color: white; font-size: small; padding-left: 20px; padding-right: 20px">
         <hr />
         <footer style="color: #ffffff">
-            <p class="beast">
-                @Html.ActionLink("ВЕРНУТЬСЯ НА ГЛАВНУЮ", "Index", "Home")
+            <p>
+                <a class="eraser" style="float: left; padding-left: 2px; font-size: 12px; align-content: center" href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/Icon/home.png" style="margin: 10px 10px 0px 0px; " />
+                    <span style="align-self: center; ">&nbsp;НА ГЛАВНУЮ</span>
+                </a>
             </p>
             <br />
-            <p>
+            <div class="eraser" style="float: right">
                 &copy; @DateTime.Now.Year - @ViewBag.Title
-            </p>
+            </div>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

@@ -496,6 +496,14 @@
     <Content Include="Content\demo.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fonforbackground.jpg" />
+    <Content Include="Content\Icon\home.png" />
+    <Content Include="Content\Icon\mail.png" />
+    <Content Include="Content\Icon\phone.png" />
+    <Content Include="Content\Icon\skype.png" />
+    <Content Include="Content\Icon\social-media.png" />
+    <Content Include="Content\Icon\telegram.png" />
+    <Content Include="Content\Icon\viber.png" />
+    <Content Include="Content\Icon\vk.png" />
     <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\10.jpg" />
     <Content Include="Content\images\11.jpg" />
@@ -557,7 +565,6 @@
     <Content Include="Content\texture1.jpg" />
     <Content Include="Content\texture2.jpg" />
     <Content Include="Content\texture3.jpg" />
-    <Content Include="Content\texture5.jpg" />
     <Content Include="Content\TornCardboardTexture.jpg" />
     <Content Include="Content\Wrinkled Paper.jpg" />
     <Content Include="favicon.ico" />

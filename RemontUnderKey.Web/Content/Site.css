@@ -30,7 +30,10 @@ textarea {
 div.mybardiv {
     position: fixed;
     width: 100%;
+    vertical-align: top;
+    padding-top: 0px;
 }
+
 .mybar ul {
     list-style: none; /*убираем маркеры списка*/
     margin: 0; /*убираем отступы*/
@@ -49,16 +52,36 @@ div.mybardiv {
     -o-transition: all 0.3s 0.01s ease;
     -webkit-transition: all 0.3s 0.01s ease;
 }
-
     .mybar a:hover {
         background: #808080; /*добавляем эффект при наведении*/
     }
-
 .mybar li {
     list-style: none; /*убираем маркеры списка*/
     float: left; /*Размещаем список горизонтально для реализации меню*/
     font-size: 13px;
     margin-right: 5px; /*Добавляем отступ у пунктов меню*/
+}
+
+.mybaricon ul {
+    list-style: none; /*убираем маркеры списка*/
+    background: none;
+    margin: 0px 0px 0px 0px; /*убираем отступы*/
+    padding: 0px 0px 0px 0px; /*отступы*/
+    vertical-align: top;
+}
+.mybaricon a {
+    background: #ffffff; /*добавляем фон к пункту меню*/
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+}
+.mybaricon a:hover {
+    background: none;
+}
+.mybaricon li {
+    list-style: none; /*убираем маркеры списка*/
+    float: left; /*Размещаем список горизонтально для реализации меню*/
+    font-size: 20px;
+    vertical-align: top;
+    padding: 0px 0px 0px 5px; /*отступы*/
 }
 
 .leftimg {
@@ -69,7 +92,6 @@ div.mybardiv {
     -o-transition: all 0.5s 0.3s 0.01s ease;
     -webkit-transition: all 0.5s 0.3s 0.01s ease;
 }
-
 .rightimg {
     float: right; /* Выравнивание по правому краю  */
     margin: 7px 7px 7px 7px; /* Отступы вокруг картинки */
@@ -168,3 +190,50 @@ p.grunge {
     font-family: My_eraser_font;
 }
 
+#vb_mb {
+    display: none
+}
+
+@media (max-width:1024px) {
+    #vb_pk {
+        display: none
+    }
+
+    #vb_mb {
+        display: block
+    }
+}
+
+#sc_mb {
+    display: none
+}
+
+@media (max-width:1024px) {
+    #sc_pk {
+        display: none
+    }
+
+    #sc_mb {
+        display: block
+    }
+}
+.block {
+    display: block;
+    float: left;
+    opacity: 1;
+    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 550ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 550ms;
+}
+
+    .block:hover {
+        -webkit-transform: scale(1.2,1.2);
+        -webkit-transition-timing-function: ease-out;
+        -webkit-transition-duration: 550ms;
+        -moz-transform: scale(1.2,1.2);
+        -moz-transition-timing-function: ease-out;
+        -moz-transition-duration: 550ms;
+    }
