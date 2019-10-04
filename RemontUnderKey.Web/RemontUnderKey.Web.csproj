@@ -250,6 +250,7 @@
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KindController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -492,16 +493,22 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bricks.jpg" />
+    <Content Include="Content\bricks2.jpg" />
     <Content Include="Content\demo_OLD.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\elastislide.css" />
     <Content Include="Content\fonforbackground.jpg" />
+    <Content Include="Content\Icon\banknotes_money.png" />
+    <Content Include="Content\Icon\calcul_icon.png" />
+    <Content Include="Content\Icon\car_icon.png" />
     <Content Include="Content\Icon\home.png" />
     <Content Include="Content\Icon\mail.png" />
     <Content Include="Content\Icon\phone.png" />
     <Content Include="Content\Icon\skype.png" />
     <Content Include="Content\Icon\social-media.png" />
     <Content Include="Content\Icon\telegram.png" />
+    <Content Include="Content\Icon\tracktransport.png" />
     <Content Include="Content\Icon\viber.png" />
     <Content Include="Content\Icon\vk.png" />
     <Content Include="Content\images\1.jpg" />
@@ -559,7 +566,6 @@
     <Content Include="Content\images\thumbs\8.jpg" />
     <Content Include="Content\images\thumbs\9.jpg" />
     <Content Include="Content\images\views.png" />
-    <Content Include="Content\LabelMain_2.png" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\texture1.jpg" />
@@ -577,6 +583,7 @@
     <Content Include="fonts\ofont.ru_Grunge.ttf" />
     <Content Include="fonts\ofont.ru_Beast Impacted.ttf" />
     <Content Include="fonts\ofont.ru_DS Eraser2.ttf" />
+    <Content Include="fonts\ofont.ru_PF Stamps Pro Flex.ttf" />
     <None Include="Properties\PublishProfiles\RemontUnderKey - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\RemontUnderKey - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -640,6 +647,7 @@
     <Content Include="Views\Photo\PhotoGalery_OLD.cshtml" />
     <Content Include="Views\Photo\PhotoGalery.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Type\GetAllTitleOfTypes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\1_Minsk_ul_Lojinskaja\mini\" />

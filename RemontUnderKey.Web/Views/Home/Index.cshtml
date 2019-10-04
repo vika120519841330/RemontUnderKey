@@ -1,23 +1,44 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@section Body {
+        <div style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+            <table class="homeindex">
+                <tr>
+                    <th colspan="6">
+                        @Html.Action("GetAllTitleOfTypes", "Type")
+                    </th>
+                </tr>
+                <tr>
+                    <td style="width:5%">
+                        <img class="icon" src="~/Content/Icon/tracktransport.png"/>
+                    </td>
+                    <td style="width:28%">@ViewBag.TD1</td>
+                    <td style="width:5%">
+                        <img class="icon" src="~/Content/Icon/calcul_icon.png" />
+                    </td>
+                    <td style="width:28%">@ViewBag.TD2</td>
+                    <td style="width:5%">
+                        <img class="icon" src="~/Content/Icon/banknotes_money.png" />
+                    </td>
+                    <td style="width:28%">@ViewBag.TD3</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
 }
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 
 

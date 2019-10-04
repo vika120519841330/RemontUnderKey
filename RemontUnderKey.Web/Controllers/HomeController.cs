@@ -10,21 +10,13 @@ namespace RemontUnderKey.Web.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "ДОМАШНЯЯ СТРАНИЦА";
+            ViewBag.Salute = "ПОД КЛЮЧ В МИНСКЕ И МИНСКОЙ ОБЛАСТИ";
+            ViewBag.TD1 = "Бесплатный выезд специалиста и смета на в течение одной недели";
+            ViewBag.TD2 = "Фиксированная стоимость, согласно условиям договора";
+            ViewBag.TD3 = "Средняя стоимость ремонта 250 бел. руб за м2";
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

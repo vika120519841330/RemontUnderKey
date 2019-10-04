@@ -1,0 +1,14 @@
+﻿@using RemontUnderKey.Web.Models
+@model IEnumerable<TypeOfObject_View>
+
+    <div>
+        @foreach (var item in Model)
+        {
+            <span>
+                @Html.ActionLink(item.TitleOfTypeOfObject, "GetAllDiscrOfTypes", new { id = item.Id })
+            </span>
+        }
+    <span style="color: white">
+        @ViewBag.Salute
+    </span>
+    </div>

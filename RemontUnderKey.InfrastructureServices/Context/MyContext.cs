@@ -104,37 +104,37 @@ namespace RemontUnderKey.InfrastructureServices.Context
             TypeOfObject_Infra t1 = new TypeOfObject_Infra
             {
                 Id = 1,
-                TitleOfTypeOfObject = "Ремонт квартир",
+                TitleOfTypeOfObject = "РЕМОНТ КВАРТИР,",
                 DescriptionOfTypeOfObject = ""
             };
             TypeOfObject_Infra t2 = new TypeOfObject_Infra
             {
                 Id = 2,
-                TitleOfTypeOfObject = "Ремонт коттеджей и домов",
+                TitleOfTypeOfObject = " КОТТЕДЖЕЙ И ДОМОВ,",
                 DescriptionOfTypeOfObject = ""
             };
             TypeOfObject_Infra t3 = new TypeOfObject_Infra
             {
                 Id = 3,
-                TitleOfTypeOfObject = "Ремонт офисов",
+                TitleOfTypeOfObject = " ОФИСОВ,",
                 DescriptionOfTypeOfObject = ""
             };
             TypeOfObject_Infra t4 = new TypeOfObject_Infra
             {
                 Id = 4,
-                TitleOfTypeOfObject = "Ремонт складов",
+                TitleOfTypeOfObject = " СКЛАДОВ,",
                 DescriptionOfTypeOfObject = ""
             };
             TypeOfObject_Infra t5 = new TypeOfObject_Infra
             {
                 Id = 5,
-                TitleOfTypeOfObject = "Ремонт ресторанов и баров",
+                TitleOfTypeOfObject = " МАГАЗИНОВ,",
                 DescriptionOfTypeOfObject = ""
             };
             TypeOfObject_Infra t6 = new TypeOfObject_Infra
             {
                 Id = 6,
-                TitleOfTypeOfObject = "Ремонт магазинов",
+                TitleOfTypeOfObject = " РЕСТОРАНОВ И БАРОВ.",
                 DescriptionOfTypeOfObject = ""
             };
             #endregion
