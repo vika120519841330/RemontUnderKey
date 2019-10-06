@@ -13,6 +13,7 @@ namespace RemontUnderKey.DomainServices.Mappers
                 {
                     Id = @this.Id,
                     TitleOfTypeOfObject = @this.TitleOfTypeOfObject,
+                    ImgSrc = @this.ImgSrc,
                     DescriptionOfTypeOfObject = @this.DescriptionOfTypeOfObject
                 };
             }
@@ -29,6 +30,7 @@ namespace RemontUnderKey.DomainServices.Mappers
                 {
                     Id = @this.Id,
                     TitleOfTypeOfObject = @this.TitleOfTypeOfObject,
+                    ImgSrc = @this.ImgSrc,
                     DescriptionOfTypeOfObject = @this.DescriptionOfTypeOfObject
                 };
             }

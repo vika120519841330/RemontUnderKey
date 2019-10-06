@@ -1,14 +1,29 @@
 ﻿@using RemontUnderKey.Web.Models
 @model IEnumerable<TypeOfObject_View>
 
-    <div>
-        @foreach (var item in Model)
-        {
-            <span>
-                @Html.ActionLink(item.TitleOfTypeOfObject, "GetAllDiscrOfTypes", new { id = item.Id })
-            </span>
-        }
+<div>
+    @foreach (var item in Model)
+    {
+        <span>
+            <a href="#@item.Id">
+                @*@Html.ActionLink(item.TitleOfTypeOfObject, "GetAllDiscrOfTypes", "Type", new { id = item.Id })*@
+                @item.TitleOfTypeOfObject
+            </a>
+        </span>
+    }
     <span style="color: white">
         @ViewBag.Salute
     </span>
+</div>
+<!-- Модальное окно -->
+@foreach (var item in Model)
+{
+    <a href="#x" class="overlay" id="@item.Id"></a>
+    <div class="popup">
+        <img class="is-image" src="@item.ImgSrc" alt="@item.TitleOfTypeOfObject" />
+        <h1>
+            @item.DescriptionOfTypeOfObject
+        </h1>
+        <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
     </div>
+}

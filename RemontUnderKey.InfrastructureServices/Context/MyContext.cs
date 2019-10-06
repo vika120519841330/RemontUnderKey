@@ -105,37 +105,43 @@ namespace RemontUnderKey.InfrastructureServices.Context
             {
                 Id = 1,
                 TitleOfTypeOfObject = "РЕМОНТ КВАРТИР,",
-                DescriptionOfTypeOfObject = ""
+                ImgSrc = "/Content/Advertising/flat",
+                DescriptionOfTypeOfObject = "Описание РЕМОНТ КВАРТИР"
             };
             TypeOfObject_Infra t2 = new TypeOfObject_Infra
             {
                 Id = 2,
                 TitleOfTypeOfObject = " КОТТЕДЖЕЙ И ДОМОВ,",
-                DescriptionOfTypeOfObject = ""
+                ImgSrc = "/Content/Advertising/house",
+                DescriptionOfTypeOfObject = "Описание КОТТЕДЖЕЙ И ДОМОВ"
             };
             TypeOfObject_Infra t3 = new TypeOfObject_Infra
             {
                 Id = 3,
                 TitleOfTypeOfObject = " ОФИСОВ,",
-                DescriptionOfTypeOfObject = ""
+                ImgSrc = "/Content/Advertising/cabinet.jpg",
+                DescriptionOfTypeOfObject = "Описание ОФИСОВ"
             };
             TypeOfObject_Infra t4 = new TypeOfObject_Infra
             {
                 Id = 4,
                 TitleOfTypeOfObject = " СКЛАДОВ,",
-                DescriptionOfTypeOfObject = ""
+                ImgSrc = "/Content/Advertising/storage",
+                DescriptionOfTypeOfObject = "Описание СКЛАДОВ"
             };
             TypeOfObject_Infra t5 = new TypeOfObject_Infra
             {
                 Id = 5,
                 TitleOfTypeOfObject = " МАГАЗИНОВ,",
-                DescriptionOfTypeOfObject = ""
+                ImgSrc = "/Content/Advertising/shop",
+                DescriptionOfTypeOfObject = "Описание МАГАЗИНОВ"
             };
             TypeOfObject_Infra t6 = new TypeOfObject_Infra
             {
                 Id = 6,
                 TitleOfTypeOfObject = " РЕСТОРАНОВ И БАРОВ.",
-                DescriptionOfTypeOfObject = ""
+                ImgSrc = "/Content/Advertising/bar",
+                DescriptionOfTypeOfObject = "Описание РЕСТОРАНОВ И БАРОВ."
             };
             #endregion
 

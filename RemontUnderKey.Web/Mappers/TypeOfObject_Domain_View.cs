@@ -18,6 +18,7 @@ namespace RemontUnderKey.Web.Mappers
                 {
                     Id = @this.Id,
                     TitleOfTypeOfObject = @this.TitleOfTypeOfObject,
+                    ImgSrc = @this.ImgSrc,
                     DescriptionOfTypeOfObject = @this.DescriptionOfTypeOfObject
                 };
             }
@@ -34,6 +35,7 @@ namespace RemontUnderKey.Web.Mappers
                 {
                     Id = @this.Id,
                     TitleOfTypeOfObject = @this.TitleOfTypeOfObject,
+                    ImgSrc = @this.ImgSrc,
                     DescriptionOfTypeOfObject = @this.DescriptionOfTypeOfObject
                 };
             }

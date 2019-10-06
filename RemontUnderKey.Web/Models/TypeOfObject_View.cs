@@ -14,6 +14,7 @@ namespace RemontUnderKey.Web.Models
         public string TitleOfTypeOfObject { get; set; }
         //Описание типа обьекта ремонта
         public string DescriptionOfTypeOfObject { get; set; }
-
+        //Путь к картинке(красивой, рекламирующей тип ремонтных работ)
+        public string ImgSrc { get; set; }
     }
 }

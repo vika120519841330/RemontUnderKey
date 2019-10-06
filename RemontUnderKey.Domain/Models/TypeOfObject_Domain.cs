@@ -10,10 +10,14 @@ namespace RemontUnderKey.Domain.Models
     {
         // Идентификатор
         public int Id { get; set; }
+
         //Наименование типа обьекта ремонта
         public string TitleOfTypeOfObject { get; set; }
+
         //Описание типа обьекта ремонта
         public string DescriptionOfTypeOfObject { get; set; }
 
+        //Путь к картинке(красивой, рекламирующей тип ремонтных работ)
+        public string ImgSrc { get; set; }
     }
 }
