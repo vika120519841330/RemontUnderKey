@@ -6,7 +6,6 @@
     {
         <span>
             <a href="#@item.Id">
-                @*@Html.ActionLink(item.TitleOfTypeOfObject, "GetAllDiscrOfTypes", "Type", new { id = item.Id })*@
                 @item.TitleOfTypeOfObject
             </a>
         </span>
@@ -20,10 +19,10 @@
 {
     <a href="#x" class="overlay" id="@item.Id"></a>
     <div class="popup">
-        <img class="is-image" src="@item.ImgSrc" alt="@item.TitleOfTypeOfObject" />
-        <h1>
+        <img src="@item.ImgSrc" alt="@item.TitleOfTypeOfObject" />
+        <p>
             @item.DescriptionOfTypeOfObject
-        </h1>
+        </p>
         <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
     </div>
 }

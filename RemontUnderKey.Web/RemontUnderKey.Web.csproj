@@ -489,7 +489,13 @@
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\7.jpg" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\8.jpg" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\9.jpg" />
-    <Content Include="Content\Advertising\cabinet.jpg" />
+    <Content Include="Content\Advertising\bar.jpg" />
+    <Content Include="Content\Advertising\flat.jpg" />
+    <Content Include="Content\Advertising\garage.jpg" />
+    <Content Include="Content\Advertising\house.jpg" />
+    <Content Include="Content\Advertising\office.jpg" />
+    <Content Include="Content\Advertising\shop.jpg" />
+    <Content Include="Content\Advertising\storage.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
