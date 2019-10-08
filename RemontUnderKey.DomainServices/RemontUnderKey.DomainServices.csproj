@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mappers\CallMee_Infra_Domain.cs" />
+    <Compile Include="Mappers\Stage_Infra_Domain.cs" />
     <Compile Include="Mappers\Repareobject_Infra_Domain.cs" />
     <Compile Include="Mappers\UnitOfJob_Infra_Domain.cs" />
     <Compile Include="Mappers\TypeOfObject_Infra_Domain.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Mappers\Comment_Infra_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CallMee_Service.cs" />
+    <Compile Include="Services\Stage_Service.cs" />
     <Compile Include="Services\Unit_Service.cs" />
     <Compile Include="Services\Type_Service.cs" />
     <Compile Include="Services\Photo_Service.cs" />

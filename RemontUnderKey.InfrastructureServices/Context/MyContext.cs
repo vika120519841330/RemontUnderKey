@@ -15,7 +15,6 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<KindOfJob_Infra> Kinds { get; set; }
         //Фото выполненных ремонтных работ
         public DbSet<Photo_Infra> Photos { get; set; }
-
         //Завершенные обьекты ремонтных работ
         public DbSet<Repareobject_Infra> Repareobjects { get; set; }
         //Типы обьектов ремонта  
@@ -24,8 +23,10 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<UnitOfJob_Infra> Units { get; set; }
         //Комментарии зарегистрированных пользователей
         public DbSet<Comment_Infra> Comments { get; set; }
-        //Комментарии зарегистрированных пользователей
+        //Заявки на звонок пользователей
         public DbSet<CallMee_Infra> Calls { get; set; }
+        //Этапы работ
+        public DbSet<Stage_Infra> Stages { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -3032,6 +3033,48 @@ namespace RemontUnderKey.InfrastructureServices.Context
             };
             #endregion
 
+            //Stage
+            #region
+            Stage_Infra s1 = new Stage_Infra
+            {
+                Id = 1,
+                ImgSrc = "/Content/Icon/Stage/Stage_1.png",
+                DescriptionOfStage = "Консультация по телефону, либо онлайн"
+            };
+            Stage_Infra s2 = new Stage_Infra
+            {
+                Id = 2,
+                ImgSrc = "/Content/Icon/Stage/Stage_2.png",
+                DescriptionOfStage = "Выезд на объект, замер"
+            };
+            Stage_Infra s3 = new Stage_Infra
+            {
+                Id = 3,
+                ImgSrc = "/Content/Icon/Stage/Stage_3.png",
+                DescriptionOfStage = "Составление сметы, заключение договора"
+            };
+            Stage_Infra s4 = new Stage_Infra
+            {
+                Id = 4,
+                ImgSrc = "/Content/Icon/Stage/Stage_4.png",
+                DescriptionOfStage = "Выполнение ремонтных работ согласно договору"
+            };
+            Stage_Infra s5 = new Stage_Infra
+            {
+                Id = 5,
+                ImgSrc = "/Content/Icon/Stage/Stage_5.png",
+                DescriptionOfStage = "Составление акта выполненных работ"
+            };
+            Stage_Infra s6 = new Stage_Infra
+            {
+                Id = 6,
+                ImgSrc = "/Content/Icon/Stage/Stage_6.png",
+                DescriptionOfStage = "Передача готового объекта заказчику"
+            };
+
+            #endregion
+
+
             #region
             modelBuilder.Entity<Job_Infra>().HasData(j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18, j19, j20,
                                                      j21, j22, j23, j24, j25, j26, j27, j28, j29, j30, j31, j32, j33, j34, j35, j36, j37, j38, j39, j40,
@@ -3055,17 +3098,6 @@ namespace RemontUnderKey.InfrastructureServices.Context
                                                      p141, p142, p143, p144, p145, p146, p147, p148, p150, p151, p152, p153, p154, p155, p156, p157, p158, p159, p160,
                                                      p161, p162, p163, p164, p166, p167, p168, p169, p170, p171, p172, p173, p174, p175, p176, p177, p178, p179, p180,
                                                      p181, p182, p184, p185, p186, p187, p188, p189, p190, p191, p192, p193);
-            //modelBuilder.Entity<Photo_mini_Infra>().HasData(mp1, mp2, mp3, mp4, mp5, mp6, mp7, mp8, mp9, mp10, mp11, mp12, mp13, mp14, mp15, mp16, mp17, mp18, mp19, mp20,
-            //                                         mp21, mp22, mp23, mp24, mp25, mp26, mp27, mp28, mp29, mp30, mp31, mp32, mp33, mp34, mp35, mp36, mp37, mp38, mp39, mp40,
-            //                                         mp41, mp42, mp43, mp44, mp45, mp46, mp47, mp48, mp49, mp50, mp51, mp52, mp53, mp54, mp55, mp56, mp57, mp58, mp59, mp60,
-            //                                         mp61, mp62, mp63, mp64, mp65, mp67, mp68, mp69, mp70, mp71, mp72, mp73, mp74, mp75, mp76, mp77, mp78, mp79, mp80,
-            //                                         mp81, mp82, mp83, mp84, mp85, mp86, mp87, mp88, mp89, mp90, mp91, mp92, mp93, mp94, mp95, mp96, mp97, mp98, mp99, mp100,
-            //                                         mp101, mp102, mp103, mp104, mp105, mp106, mp107, mp108, mp109, mp110, mp111, mp112, mp113, mp114, mp115, mp116, mp117, mp118, mp119, mp120,
-            //                                         mp121, mp122, mp123, mp124, mp125, mp126, mp127, mp128, mp129, mp130, mp131, mp132, mp133, mp134, mp135, mp136, mp137, mp138, mp139, mp140,
-            //                                         mp141, mp142, mp143, mp144, mp145, mp146, mp147, mp148, mp149, mp150, mp151, mp152, mp153, mp154, mp155, mp156, mp157, mp158, mp159, mp160,
-            //                                         mp161, mp162, mp163, mp164, mp165, mp166, mp167, mp168, mp169, mp170, mp171, mp172, mp173, mp174, mp175, mp176, mp177, mp178, mp179, mp180,
-            //                                         mp181, mp182, mp183, mp184, mp185, mp186, mp187, mp188, mp189, mp190, mp191, mp192, mp193);
-
             modelBuilder.Entity<Repareobject_Infra>().HasData(o1, o2, o3);
 
             modelBuilder.Entity<TypeOfObject_Infra>().HasData(t1, t2, t3, t4, t5, t6, t7);
@@ -3075,6 +3107,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.Entity<Comment_Infra>().HasData(c1);
 
             modelBuilder.Entity<CallMee_Infra>().HasData(cm1);
+
+            modelBuilder.Entity<Stage_Infra>().HasData(s1, s2, s3, s4, s5, s6);
 
             modelBuilder.ApplyConfiguration<Job_Infra>(new Job_Configuration());
 
@@ -3088,7 +3122,7 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
             modelBuilder.ApplyConfiguration<Photo_Infra>(new Photo_Configuration());
 
-            //modelBuilder.ApplyConfiguration<Photo_mini_Infra>(new Photo_mini_Configuration());
+            modelBuilder.ApplyConfiguration<Stage_Infra>(new Stage_Configuration());
 
             modelBuilder.ApplyConfiguration<Comment_Infra>(new Comment_Configuration());
 

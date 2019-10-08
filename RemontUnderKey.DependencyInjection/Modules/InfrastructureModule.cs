@@ -52,6 +52,9 @@ namespace RemontUnderKey.DependencyInjection.Modules
             container.RegisterType <IUnit_Repository, Unit_Repository> (
             //new ContainerControlledLifetimeManager()
             );
+            container.RegisterType<IStage_Repository, Stage_Repository>(
+            //new ContainerControlledLifetimeManager()
+            );
         }
     }
 }

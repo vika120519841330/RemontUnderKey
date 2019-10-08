@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IComment_Repository.cs" />
     <Compile Include="Interfaces\ICallMee_Repository.cs" />
+    <Compile Include="Interfaces\IStage_Repository.cs" />
     <Compile Include="Interfaces\IUnit_Repository.cs" />
     <Compile Include="Interfaces\IType_Repository.cs" />
     <Compile Include="Interfaces\IObject_Repository.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Interfaces\IJob_Repository.cs" />
     <Compile Include="Models\CallMee_Infra.cs" />
     <Compile Include="Models\Comment_Infra.cs" />
+    <Compile Include="Models\Stage_Infra.cs" />
     <Compile Include="Models\Repareobject_Infra.cs" />
     <Compile Include="Models\Photo_Infra.cs" />
     <Compile Include="Models\UnitOfJob_Infra.cs" />

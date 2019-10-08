@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="Configurations\CallMee_Configuration.cs" />
     <Compile Include="Configurations\Comment_Configuration.cs" />
+    <Compile Include="Configurations\Stage_Configuration.cs" />
     <Compile Include="Configurations\Photo_Configuration.cs" />
     <Compile Include="Configurations\Job_Configuration.cs" />
     <Compile Include="Configurations\Unit_Configuration.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Context\MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CallMee_Repository.cs" />
+    <Compile Include="Repositories\Stage_Repository.cs" />
     <Compile Include="Repositories\Unit_Repository.cs" />
     <Compile Include="Repositories\Type_Repository.cs" />
     <Compile Include="Repositories\Photo_Repository.cs" />

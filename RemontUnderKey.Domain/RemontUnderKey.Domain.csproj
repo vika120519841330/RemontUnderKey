@@ -47,6 +47,7 @@
     <Compile Include="Interfaces\IJob.cs" />
     <Compile Include="Interfaces\IKind.cs" />
     <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Interfaces\IStage.cs" />
     <Compile Include="Interfaces\IPhoto.cs" />
     <Compile Include="Interfaces\IType.cs" />
     <Compile Include="Interfaces\IUnit.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Models\Comment_Domain.cs" />
     <Compile Include="Models\Job_Domain.cs" />
     <Compile Include="Models\KindOfJob_Domain.cs" />
+    <Compile Include="Models\Stage_Domain.cs" />
     <Compile Include="Models\Photo_Domain.cs" />
     <Compile Include="Models\Repareobject_Domain.cs" />
     <Compile Include="Models\TypeOfObject_Domain.cs" />

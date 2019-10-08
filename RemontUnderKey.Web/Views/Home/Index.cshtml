@@ -1,43 +1,105 @@
 ﻿@section Body {
-        <div style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
-            <table class="homeindex">
-                <tr>
-                    <th colspan="6">
-                        @Html.Action("GetAllTitleOfTypes", "Type")
-                    </th>
-                </tr>
-                <tr>
-                    <td style="width:5%">
-                        <img class="icon" src="~/Content/Icon/tracktransport.png"/>
-                    </td>
-                    <td style="width:28%">@ViewBag.TD1</td>
-                    <td style="width:5%">
-                        <img class="icon" src="~/Content/Icon/calcul_icon.png" />
-                    </td>
-                    <td style="width:28%">@ViewBag.TD2</td>
-                    <td style="width:5%">
-                        <img class="icon" src="~/Content/Icon/banknotes_money.png" />
-                    </td>
-                    <td style="width:28%">@ViewBag.TD3</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
+    <div class="homeindex">
+        <table class="homeindex">
+            <tr>
+                <th colspan="6">
+                    @Html.Action("GetAllTitleOfTypes", "Type")
+                </th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="width:5%">
+                    <img class="icon" src="~/Content/Icon/tracktransport.png" />
+                </td>
+                <td style="width:28%">@ViewBag.TD1</td>
+                <td style="width:5%">
+                    <img class="icon" src="~/Content/Icon/calcul_icon.png" />
+                </td>
+                <td style="width:28%">@ViewBag.TD2</td>
+                <td style="width:5%">
+                    <img class="icon" src="~/Content/Icon/banknotes_money.png" />
+                </td>
+                <td style="width:28%">@ViewBag.TD3</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="homeindex2">
+        <table class="homeindex2">
+            <tr>
+                <th colspan="6" align="center">
+                    @ViewBag.Salute2
+                </th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Action("GetStage", "Stage", new { id = 1 })
+                </td>
+                <td>==========>></td>
+                <td>
+                    @Html.Action("GetStage", "Stage", new { id = 2 })
+                </td>
+                <td>==========>></td>
+                <td>
+                    @Html.Action("GetStage", "Stage", new { id = 3 })
+                </td>
+                <td>==========>></td>
+            </tr>
+            <tr>
+                <td>==========>></td>
+                <td>
+                    @Html.Action("GetStage", "Stage", new { id = 4 })
+                </td>
+                <td>==========>></td>
+                <td>
+                    @Html.Action("GetStage", "Stage", new { id = 5 })
+                </td>
+                <td>==========>></td>
+                <td>
+                    @Html.Action("GetStage", "Stage", new { id = 6 })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
 }
 
 

@@ -33,6 +33,7 @@ div.mybardiv {
     vertical-align: top;
     padding-top: 0px;
     margin-top: 20px; /*делаем отступ сверху*/
+    z-index: 30;
 }
 
 .mybar ul {
@@ -238,15 +239,40 @@ p.grunge {
         -moz-transition-timing-function: ease-out;
         -moz-transition-duration: 550ms;
     }
+div.homeindex {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 2px inset rgba(0, 0, 0, 0.65);
+    opacity: 0.5; /* Полупрозрачность элемента */
+    transition-property: border, opacity;
+    transition-timing-function: linear; /*писывает скорость перехода объекта от одного значения к другому*/
+    transition-delay: .1s; /*изменение свойства происходит не моментально, а с некоторой задержкой*/
+}
+    div.homeindex:hover {
+        border: 4px solid rgba(0, 0, 0, 0.65);
+        opacity: 1.0; /* Полупрозрачность элемента */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.65); /* Параметры тени */
+    }
+
 table.homeindex {
     border: 0px;
-    background-image: url("bricks2.jpg");
+    background-image: url("bricks_black.jpg");
     background-attachment: scroll; /* Фиксируем фон веб-страницы */
     background-repeat: round; /*повторение фона*/
     width: 100%;
     height: 768px;
     color: white;
     font-family: My_Flex_font;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
     table.homeindex th {
         font-size: 50px;
@@ -261,11 +287,72 @@ table.homeindex {
         vertical-align: central;
         padding-top: 10px;
         padding-left: 10px;
+        margin-bottom: 0px;
+        margin-top: 0px;
     }
         table .homeindex a:hover  {
         background: #808080;
         color: black;
     }
+div.homeindex2 {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 2px inset #ccc;
+    opacity: 0.5; /* Полупрозрачность элемента */
+    transition-property: border, opacity;
+    transition-timing-function: linear; /*писывает скорость перехода объекта от одного значения к другому*/
+    transition-delay: .1s; /*изменение свойства происходит не моментально, а с некоторой задержкой*/
+}
+
+    div.homeindex2:hover {
+        border: 4px solid #ccc;
+        opacity: 1.0; /* Полупрозрачность элемента */
+        box-shadow: 0 0 10px #ccc; /* Параметры тени */
+    }
+table.homeindex2 {
+    border: 0px;
+    background-image: url("bricks_white.jpg");
+    background-attachment: scroll; /* Фиксируем фон веб-страницы */
+    background-repeat: round; /*повторение фона*/
+    width: 100%;
+    height: 768px;
+    color: black;
+    font-family: My_Flex_font;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+    table.homeindex2 th {
+        font-size: 50px;
+        align-content: flex-start;
+        vertical-align: text-top;
+        padding-top: 100px;
+        padding-left: 100px;
+    }
+
+    table.homeindex2 td {
+        font-size: 20px;
+        align-content: flex-start;
+        vertical-align: central;
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    table .homeindex2 a:hover {
+        background: #808080;
+        color: black;
+    }
+
 
 @font-face {
     font-family: 'My_Flex_font';
@@ -379,7 +466,6 @@ a:hover {
         content: "X";
         text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
     }
-
     .close:hover {
         background-color: rgba(252, 20, 0, 0.8);
         -webkit-transform: rotate(360deg);

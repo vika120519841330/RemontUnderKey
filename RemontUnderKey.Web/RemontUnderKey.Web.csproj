@@ -250,6 +250,7 @@
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KindController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\StageController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
@@ -269,6 +270,7 @@
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Initializer\UserRoleDbInitializer.cs" />
     <Compile Include="Mappers\CallMee_Domain_View.cs" />
+    <Compile Include="Mappers\Stage_Domain_View.cs" />
     <Compile Include="Mappers\Repareobject_Domain_View.cs" />
     <Compile Include="Mappers\Comment_Domain_View.cs" />
     <Compile Include="Mappers\Job_Domain_View.cs" />
@@ -284,6 +286,7 @@
     <Compile Include="Models\KindOfJob_View.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PhotoGalery_View.cs" />
+    <Compile Include="Models\Stage_View.cs" />
     <Compile Include="Models\Photo_View.cs" />
     <Compile Include="Models\Repareobject_View.cs" />
     <Compile Include="Models\TypeOfObject_View.cs" />
@@ -500,8 +503,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bricks.jpg" />
-    <Content Include="Content\bricks2.jpg" />
+    <Content Include="Content\bricks_black.jpg" />
+    <Content Include="Content\bricks_white.jpg" />
     <Content Include="Content\demo_OLD.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\elastislide.css" />
@@ -514,6 +517,12 @@
     <Content Include="Content\Icon\phone.png" />
     <Content Include="Content\Icon\skype.png" />
     <Content Include="Content\Icon\social-media.png" />
+    <Content Include="Content\Icon\Stage\Stage_1.png" />
+    <Content Include="Content\Icon\Stage\Stage_2.png" />
+    <Content Include="Content\Icon\Stage\Stage_3.png" />
+    <Content Include="Content\Icon\Stage\Stage_4.png" />
+    <Content Include="Content\Icon\Stage\Stage_5.png" />
+    <Content Include="Content\Icon\Stage\Stage_6.png" />
     <Content Include="Content\Icon\telegram.png" />
     <Content Include="Content\Icon\tracktransport.png" />
     <Content Include="Content\Icon\viber.png" />
@@ -605,6 +614,7 @@
     <Content Include="Views\Photo\PhotoGalery.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Type\GetAllTitleOfTypes.cshtml" />
+    <Content Include="Views\Stage\GetStage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\1_Minsk_ul_Lojinskaja\mini\" />

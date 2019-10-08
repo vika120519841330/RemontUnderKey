@@ -1,0 +1,18 @@
+﻿@using RemontUnderKey.Web.Models
+@model Stage_View
+
+    <div style="width: 100%">
+
+        <div style="width: 5%">
+            @Html.DisplayFor(model => model.Id)
+        </div>
+
+        <div style="width: 10%">
+            <img class="icon" src="@Url.Content(Model.ImgSrc)" />
+        </div>
+
+        <div style="width: 85%">
+            @Html.DisplayFor(model => model.DescriptionOfStage)
+        </div>
+
+    </div>

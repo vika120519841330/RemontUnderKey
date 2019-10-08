@@ -33,8 +33,9 @@ namespace RemontUnderKey.DependencyInjection.Modules
             container.RegisterType<ICallMee, CallMee_Service>(
                 //new HierarchicalLifetimeManager()
                 );
-
-
+            container.RegisterType<IStage, Stage_Service>(
+                //new ContainerControlledLifetimeManager()
+                );
         }
     }
 }
