@@ -192,10 +192,10 @@ p.grunge {
     font-family: My_eraser_font;
 }
 
+/*ЛОГИКА для использования Viber для НЕмобильных и мобильных устройств*/
 #vb_mb {
     display: none
 }
-
 @media (max-width:1024px) {
     #vb_pk {
         display: none
@@ -205,11 +205,10 @@ p.grunge {
         display: block
     }
 }
-
+/*ЛОГИКА для использования Scype для НЕмобильных и мобильных устройств*/
 #sc_mb {
     display: none
 }
-
 @media (max-width:1024px) {
     #sc_pk {
         display: none
@@ -219,6 +218,7 @@ p.grunge {
         display: block
     }
 }
+
 .block {
     display: block;
     float: left;
@@ -230,7 +230,6 @@ p.grunge {
     -moz-transition-timing-function: ease-out;
     -moz-transition-duration: 550ms;
 }
-
     .block:hover {
         -webkit-transform: scale(1.2,1.2);
         -webkit-transition-timing-function: ease-out;
@@ -239,6 +238,7 @@ p.grunge {
         -moz-transition-timing-function: ease-out;
         -moz-transition-duration: 550ms;
     }
+
 div.homeindex {
     padding-left: 0px;
     padding-right: 0px;
@@ -331,19 +331,20 @@ table.homeindex2 {
 }
 
     table.homeindex2 th {
-        font-size: 50px;
-        align-content: flex-start;
+        font-size: 70px;
+        font-weight: bold;
+        text-align: center;
+        align-content: center;
         vertical-align: text-top;
-        padding-top: 100px;
-        padding-left: 100px;
+        padding-top: 50px;
     }
 
     table.homeindex2 td {
-        font-size: 20px;
+        font-size: 30px;
         align-content: flex-start;
-        vertical-align: central;
-        padding-top: 10px;
-        padding-left: 10px;
+        vertical-align: top;
+        padding-top: 0px;
+        padding-left: 0px;
         margin-bottom: 0px;
         margin-top: 0px;
     }
