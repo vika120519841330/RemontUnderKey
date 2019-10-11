@@ -8,7 +8,7 @@ namespace RemontUnderKey.Web.Models
     public static class AppSettings
     {
         // конечная ссылка на наш опубликованный bot
-        public static string Url { get; set; } = "https://repareunderkey.azurewebsites.net:443/{0}";
+        public static string Url { get; set; } = "https://remontunderkey.azurewebsites.net:443/{0}";
 
         // название контакта нашего опубликованного botа
         public static string Name { get; set; } = "repareunderkeybot";

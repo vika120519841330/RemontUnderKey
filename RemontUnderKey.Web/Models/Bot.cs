@@ -26,14 +26,11 @@ namespace RemontUnderKey.Web.Models
             commandsList.Add(new HelloCommand());
             // TODO: add more commands
 
-            {
-                // создаем новый экземпляр с api-ключом, который записан в статическом классе AppSettings
-                client = new TelegramBotClient(AppSettings.Key);
-                var hook = string.Format(AppSettings.Url, "api/message/update");
-                await client.SetWebhookAsync(hook);
-                return client;
-            }
+            // создаем новый экземпляр с api-ключом, который записан в статическом классе AppSettings
+            client = new TelegramBotClient(AppSettings.Key);
+            var hook = string.Format(AppSettings.Url, "api/message/update");
+            await client.SetWebhookAsync(hook);
+            return client;
         }
-
     }
 }
