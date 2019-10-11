@@ -13,7 +13,7 @@ namespace RemontUnderKey.Web.Commands
         // метод сопоставляет команду, введенную пользователем с текущей командой (сопоставление по 2-м параметрам - по имени нашей команды и имени нашего бота)
         public bool Contains(string command)
         {
-            return command.Contains(this.Name) && command.Contains(AppSettings.Name);
+            return ((command.Contains(this.Name)) && (command.Contains(AppSettings.Name)));
         }
     }
 }

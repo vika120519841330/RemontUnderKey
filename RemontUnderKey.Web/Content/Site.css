@@ -28,6 +28,7 @@ textarea {
 }
 
 div.mybardiv {
+    font-family: My_Flex_font;
     position: fixed;
     width: 100%;
     vertical-align: top;
@@ -40,6 +41,7 @@ div.mybardiv {
     list-style: none; /*убираем маркеры списка*/
     margin: 0; /*убираем отступы*/
     padding-left: 0; /*убираем отступы*/
+    font-size: 16px;
 }
 
 .mybar a {
@@ -47,7 +49,6 @@ div.mybardiv {
     background: #000000; /*добавляем фон к пункту меню*/
     color: #ffffff; /*меняем цвет ссылок*/
     padding: 10px; /*добавляем отступ*/
-    font-family: arial; /*меняем шрифт*/
     border-radius: 4px; /*добавляем скругление*/
     -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
     -o-transition: all 0.3s 0.01s ease;
@@ -62,6 +63,7 @@ div.mybardiv {
     float: left; /*Размещаем список горизонтально для реализации меню*/
     font-size: 13px;
     margin-right: 5px; /*Добавляем отступ у пунктов меню*/
+    font-size: 16px;
 }
 
 .mybaricon ul {
@@ -100,6 +102,7 @@ div.mybardiv {
 }
 table.mytable {
     color: #000000;
+    font-family: My_Flex_font;
     font-style: oblique;
     border: 2px solid black; /*устанавливаем для таблицы внешнюю границу черного цвета толщиной 3px*/
     background-image: url("Wrinkled Paper.jpg");
@@ -112,15 +115,20 @@ table.mytable {
         padding: 4px 4px 4px 4px;
         vertical-align: top;
         font-weight: bold;
+        font-size: larger;
+        font-style: oblique;
     }
     table.mytable td {
         padding: 4px 4px 4px 4px;
         vertical-align: top;
-        font-weight: bold;
+        font-weight: normal;
+        font-size: medium;
+        font-style: oblique;
     }
 
 table.mytable2 {
     color: #000000;
+    font-family: My_Flex_font;
     font-style: oblique;
     border: 2px solid black;
     background-attachment: scroll;
@@ -132,10 +140,16 @@ table.mytable2 {
 
     table.mytable2 th {
         vertical-align: top;
+        font-weight: bold;
+        font-size: larger;
+        font-style: oblique;
     }
 
     table.mytable2 td {
         vertical-align: top;
+        font-weight: normal;
+        font-size: medium;
+        font-style: oblique;
     }
     table.mytable2 tr:hover td {
         background: #808080;

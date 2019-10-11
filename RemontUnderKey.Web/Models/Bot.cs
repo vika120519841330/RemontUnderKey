@@ -2,6 +2,7 @@
 using Telegram.Bot;
 using RemontUnderKey.Web.Commands;
 using System.Collections.Generic;
+using System;
 
 namespace RemontUnderKey.Web.Models
 {
@@ -27,7 +28,7 @@ namespace RemontUnderKey.Web.Models
             // TODO: add more commands
 
             // создаем новый экземпляр с api-ключом, который записан в статическом классе AppSettings
-            client = new TelegramBotClient(AppSettings.Key);
+            client = new TelegramBotClient(AppSettings.Key) { Timeout = TimeSpan.FromSeconds(10)};
             var hook = string.Format(AppSettings.Url, "api/message/update");
             await client.SetWebhookAsync(hook);
             return client;
