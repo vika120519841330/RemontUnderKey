@@ -717,6 +717,7 @@
     <Content Include="Content\Icon\banknotes_money.png" />
     <Content Include="Content\Icon\calcul_icon.png" />
     <Content Include="Content\Icon\car_icon.png" />
+    <Content Include="Content\Icon\footsteps.png" />
     <Content Include="Content\Icon\home.png" />
     <Content Include="Content\Icon\mail.png" />
     <Content Include="Content\Icon\phone.png" />

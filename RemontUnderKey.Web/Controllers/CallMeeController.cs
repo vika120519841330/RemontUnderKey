@@ -7,11 +7,15 @@ using RemontUnderKey.Web.Mappers;
 using RemontUnderKey.Web.Models;
 using System.Net;
 using System.ComponentModel.DataAnnotations;
+using Telegram.Bot;
+using Telegram.Bot.Types;
 
 namespace RemontUnderKey.Web.Controllers
 {
     public class CallMeeController : Controller
     {
+        //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-группу
+        private string redirectToTelegramMessage;
         private readonly ICallMee service;
         public CallMeeController(ICallMee _service)
         {
@@ -54,10 +58,26 @@ namespace RemontUnderKey.Web.Controllers
             }
             else
             {
+                // Сформировать текстовое сообщение для перенаправления в telegram-группу
+                redirectToTelegramMessage = (inst.DateStamp.ToString() + " "+ inst.Name + " " + inst.Telephone + ";");
+                // Вызвать метод, инициализирующий telegram-bot
+                RedirectToTelegram(redirectToTelegramMessage);
                 service.CreateCallMee(inst.CallMeeFromViewToDomain());
                 ViewBag.Result = "Zajavka na zvonok prinjata!";
                 return View("CreateCallMee_Success");
             }
+        }
+        // Вспомогательный метод -
+       private async void RedirectToTelegram (string msg)
+        {
+            // Создание экземпляра бота
+            TelegramBotClient client = await Bot.Get();
+            string usr = "repareunderkey";
+            await client.SendTextMessageAsync
+                (
+                chatId: new ChatId(username: usr),
+                text: msg
+                );
         }
     }
 }

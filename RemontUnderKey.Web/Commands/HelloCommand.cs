@@ -14,7 +14,8 @@ namespace RemontUnderKey.Web.Commands
             var messageId = message.MessageId;
             // отправка текстового сообщения (в кач. параметров - ChatId, текстовое сообщение для пользователя и аргумент replyToMessageId
             // для цитирования отправленного пользователем сообщения)
-            await client.SendTextMessageAsync(chatId, "Hello!", replyToMessageId: messageId);
+            await client.SendTextMessageAsync(chatId, "Hello!", replyToMessageId: messageId)
+                .ConfigureAwait(false);
         }
     }
 }
