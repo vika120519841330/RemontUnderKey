@@ -66,7 +66,7 @@ namespace RemontUnderKey.Web.Controllers
                 ViewBag.Result = "Zajavka na zvonok prinjata!";
 
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
-                redirectToTelegramMessage = (inst.DateStamp.ToString() + " " + inst.Name + " " + inst.Telephone + ";").ToString();
+                redirectToTelegramMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
                 // Вызвать метод, инициализирующий telegram-bot
                 await Task.Run(() => RedirectToTelegram(redirectToTelegramMessage));
                 Thread.Sleep(8000);
@@ -76,7 +76,7 @@ namespace RemontUnderKey.Web.Controllers
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота заданному получателю(тому, кто обрабатывает заявки на телеф.звонки)
         private async void RedirectToTelegram(string msg)
         {
-            // Username telegram-канала
+            // Username telegram-канала, !!! the bot must be an administrator in the channel!!!
             string usr = "@REMONT_CANAL";
             //Инициализация экзумпляра бота
             client = await Bot.Get();
