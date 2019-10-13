@@ -5,12 +5,11 @@ using System.Linq;
 using System.Web.Mvc;
 using RemontUnderKey.Web.Mappers;
 using RemontUnderKey.Web.Models;
-using System.Net;
-using System.ComponentModel.DataAnnotations;
-using Telegram.Bot;
-using Telegram.Bot.Types;
 using System.Threading.Tasks;
-using System.Web.Http.Results;
+using Telegram.Bot;
+using Telegram.Bot.Args;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 using System.Threading;
 
 namespace RemontUnderKey.Web.Controllers
@@ -18,6 +17,8 @@ namespace RemontUnderKey.Web.Controllers
     public class CallMeeController : Controller
     {
         //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-аккаунт
+        private static TelegramBotClient client;
+
         private string redirectToTelegramMessage;
         private readonly ICallMee service;
         public CallMeeController(ICallMee _service)
@@ -73,16 +74,33 @@ namespace RemontUnderKey.Web.Controllers
             }
         }
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота заданному получателю(тому, кто обрабатывает заявки на телеф.звонки)
-       private async void RedirectToTelegram (string msg)
+        private async void RedirectToTelegram(string msg)
         {
-            // Создание экземпляра бота
-            TelegramBotClient client = await Bot.Get();
-            string usr = "@VikaStrigo";
+            // Username telegram-канала
+            string usr = "@REMONT_CANAL";
+            //Инициализация экзумпляра бота
+            client = await Bot.Get();
+            //    // Создание экземпляра бота
+            //    client = new TelegramBotClient(AppSettings.Key);
+            //    client.StartReceiving();
             await client.SendTextMessageAsync
                 (
-                chatId: new ChatId(username: usr),
+                chatId: usr,
                 text: msg
                 );
+                
+            //    client.OnMessage += BotOnMessageReceived;
+            //    client.OnMessageEdited += BotOnMessageReceived;
+            //    client.StopReceiving();
         }
+        //private async void BotOnMessageReceived(object sender, MessageEventArgs messageEventArgs)
+        //{
+        //    var message = messageEventArgs.Message;
+        //    if (message?.Type == MessageType.Text)
+        //    {
+        //        await client.SendTextMessageAsync(message.Chat.Id, message.Text);
+        //    }
+
+        //}
     }
 }

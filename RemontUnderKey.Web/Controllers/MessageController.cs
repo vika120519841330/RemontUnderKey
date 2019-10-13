@@ -11,7 +11,7 @@ namespace RemontUnderKey.Web.Controllers
         // при обращении по этому маршруту будет обрабатываться инф-я, присланная телеграммом
         // в параметре Update содржится актуальная инфо для бота
         [Route(@"api/message/update")] // webhook uri part
-        public async Task<OkResult> Update ([FromBody] Update update)
+        public async Task<OkResult> Update([FromBody] Update update)
         {
             // получим список доступных команд, чтобы в дальнейшем выбрать нужную с помощью цикла foreach
             var commands = Bot.Commands;
