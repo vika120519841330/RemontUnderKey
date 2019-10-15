@@ -740,6 +740,7 @@
     <Content Include="Content\images\nav_thumbs.png" />
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\images\views.png" />
+    <Content Include="Content\Images_my\Registration_certificate.jpg" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\texture1.jpg" />
@@ -785,7 +786,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout_OLD.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -821,6 +821,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Type\GetAllTitleOfTypes.cshtml" />
     <Content Include="Views\Stage\GetStage.cshtml" />
+    <Content Include="Views\Home\Certificate.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -513,3 +513,29 @@ a:hover {
     width: auto;
     height: auto;
 }
+div.homeCertificate {
+    width: 1024px;
+    margin-left: 15%;
+    border: 1px inset #000000;
+    transition-property: border;
+    transition-timing-function: linear; /*описывает скорость перехода объекта от одного значения к другому*/
+    transition-delay: .5s; /*изменение свойства происходит не моментально, а с некоторой задержкой*/
+}
+    div.homeCertificate:hover {
+        border: 4px solid #000000;
+        box-shadow: 0 0 10px #000000; /* Параметры тени */
+    }
+    div.homeCertificate img {
+        width: 100%;
+        height: auto;
+        object-position: center;
+    }
+p.homeCertificate {
+    padding: 20px 0px 40px 0px ;
+    text-align: center;
+    font-family: My_Flex_font;
+    font-size: xx-large;
+    color: #ffffff;
+}
+
+

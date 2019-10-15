@@ -18,6 +18,12 @@ namespace RemontUnderKey.Web.Controllers
             ViewBag.Salute2 = "РЕМОНТ - 6 ШАГОВ И КОМФОРТ НА ДЕСЯТКИ ЛЕТ!";
             return View();
         }
+        public ActionResult Certificate()
+        {
+            ViewBag.Title = "СВИДЕТЕЛЬСТВО О РЕГИСТРАЦИИ";
+            ViewBag.Salute = "ВЫПОЛНЯЕМ РЕМОНТ ПО ВЫСОКИМ СТАНДАРТАМ";
+            return View();
+        }
 
     }
 }
