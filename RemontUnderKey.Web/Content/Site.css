@@ -70,7 +70,7 @@ div.mybardiv {
     list-style: none; /*убираем маркеры списка*/
     background: none;
     margin: 0px 0px 0px 0px; /*убираем отступы*/
-    padding: 0px 0px 0px 0px; /*отступы*/
+    padding: 0px 0px 10px 5px; /*отступы*/
     vertical-align: top;
 }
 .mybaricon a {
@@ -84,8 +84,7 @@ div.mybardiv {
     list-style: none; /*убираем маркеры списка*/
     float: left; /*Размещаем список горизонтально для реализации меню*/
     font-size: 20px;
-    vertical-align: top;
-    padding: 0px 0px 0px 8px; /*отступы*/
+    padding: 0px 0px 0px 5px; /*отступы*/
 }
 
 .leftimg {
@@ -537,5 +536,20 @@ p.homeCertificate {
     font-size: xx-large;
     color: #ffffff;
 }
+table.contactTable {
+    font-family: My_Flex_font;
+    color: white;
+    font-style: normal;
+    margin: 10px 0px 0px 5%;
+    background-attachment: scroll;
+    width: 90%;
+}
+    table.contactTable th{
+        font-size: xx-large;
+        text-align: center;
+    }
+    table.contactTable td {
+        font-size: x-large;
+    }
 
 

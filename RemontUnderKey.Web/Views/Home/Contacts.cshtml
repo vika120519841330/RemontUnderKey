@@ -1,0 +1,49 @@
+﻿@section Body {
+
+    <div style="width: 100%; text-align: left">
+        <table class="contactTable" border="0">
+            <tr>
+                <th colspan="2">
+                    @ViewBag.Salute
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>&emsp; </p>
+                </td>
+            </tr>
+            <tr>
+                <td class="block" width="50%" align="left" valign="top" style="padding-left: 5px;">@ViewBag.Title</td>
+                <td rowspan="7" width="50%" align="right" style="padding-right: 3%;">
+                    <script type="text/javascript" charset="utf-8" async src=@ViewBag.Mapjscript></script>
+                </td>
+            </tr>
+            <tr>
+                <td  class="block" valign="bottom">
+                    @ViewBag.WorkPlace
+                </td>
+            </tr>
+            <tr>
+                <td class="block" valign="bottom">
+                    @ViewBag.WorkTime
+                </td>
+            </tr>
+            <tr>
+                <td class="block" valign="bottom">
+                    <a title="Позвонить нам" href=@ViewBag.Phone><img src="~/Content/Icon/phone.png" />&emsp; @ViewBag.Phone</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="block" valign="bottom">
+                    <a title="E-Mail" href="mailto:" @ViewBag.Email><img src="~/Content/Icon/mail.png" /> &emsp; @ViewBag.Email</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="block" valign="bottom">
+                    <blink><ins>@Html.ActionLink("ЗАКАЗАТЬ ЗВОНОК", "CreateCallMee", "CallMee")</ins></blink>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+}

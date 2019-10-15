@@ -4,13 +4,13 @@
 <div>
     @foreach (var item in Model)
     {
-        <span>
+        <span class="block">
             <a href="#@item.Id">
                 @item.TitleOfTypeOfObject
             </a>
         </span>
     }
-    <span style="color: white">
+    <span class="block" style="color: white">
         @ViewBag.Salute
     </span>
 </div>
