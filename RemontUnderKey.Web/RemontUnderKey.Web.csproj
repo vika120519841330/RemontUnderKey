@@ -709,6 +709,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bricks_black.jpg" />
+    <Content Include="Content\bricks_red.jpg" />
     <Content Include="Content\bricks_white.jpg" />
     <Content Include="Content\demo_OLD.css" />
     <Content Include="Content\demo.css" />
@@ -741,7 +742,9 @@
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\images\views.png" />
     <Content Include="Content\Images_my\Registration_certificate.jpg" />
+    <Content Include="Content\Images_my\specialist_photo.jpg" />
     <Content Include="Content\reset.css" />
+    <Content Include="Content\stone.jpg" />
     <Content Include="Content\style.css" />
     <Content Include="Content\texture1.jpg" />
     <Content Include="Content\texture2.jpg" />
@@ -823,6 +826,8 @@
     <Content Include="Views\Stage\GetStage.cshtml" />
     <Content Include="Views\Home\Certificate.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Home\AboutSpecialist.cshtml" />
+    <Content Include="Views\Home\Responsebility.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

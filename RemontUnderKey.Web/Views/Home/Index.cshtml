@@ -147,6 +147,48 @@
             </tr>
         </table>
     </div>
+    <div class="homeindex3">
+        <table border="0">
+            <tr>
+                <th colspan="2">@ViewBag.Salute3</th>
+            </tr>
+            <tr>
+                <td width="30%" rowspan="2">
+                    <img src="~/Content/Images_my/specialist_photo.jpg" alt="Фото специалиста по ремонту" title="Александр, специалист по строительным работам"  data-description="Александр, специалист по строительным работам" />
+                </td>
+                <td width="70%">
+                    <p>
+                        @ViewBag.AboutMee
+                    </p>
+                        <ul>
+                            @foreach (string item1 in (List<string>)TempData["AboutSpecList"])
+                            {
+                            <li>
+                                @item1
+                                <br />
+                            </li>
+                            }
+                        </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        @ViewBag.Help
+                    </p>
+                    <ul>
+                        @foreach (string item2 in (List<string>)TempData["RepsonseList"])
+                        {
+                        <li>
+                            @item2
+                            <br />
+                        </li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
 
 }
 
