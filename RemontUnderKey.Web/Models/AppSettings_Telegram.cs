@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RemontUnderKey.Web.Models
 {
-    public static class AppSettings
+    public static class AppSettings_Telegram
     {
         // конечная ссылка на наш опубликованный bot
         public static string Url { get; set; } = "https://remontunderkey.azurewebsites.net:443/{0}";

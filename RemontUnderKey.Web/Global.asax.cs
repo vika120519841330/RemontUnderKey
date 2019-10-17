@@ -27,7 +27,7 @@ namespace RemontUnderKey.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // Вызов первичной инициализации бота
-            Bot.Get();
+            Bot_Telegram.Get();
         }
     }
 }

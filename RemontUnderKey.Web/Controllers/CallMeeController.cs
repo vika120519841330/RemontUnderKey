@@ -67,8 +67,12 @@ namespace RemontUnderKey.Web.Controllers
 
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
                 redirectToTelegramMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
+
                 // Вызвать метод, инициализирующий telegram-bot
                 await Task.Run(() => RedirectToTelegram(redirectToTelegramMessage));
+
+                // Вызвать метод, инициализирующий viber-bot
+
                 Thread.Sleep(8000);
                 return View("CreateCallMee_Success");
             }
@@ -78,29 +82,13 @@ namespace RemontUnderKey.Web.Controllers
         {
             // Username telegram-канала, !!! the bot must be an administrator in the channel!!!
             string usr = "@REMONT_CANAL";
-            //Инициализация экзумпляра бота
-            client = await Bot.Get();
-            //    // Создание экземпляра бота
-            //    client = new TelegramBotClient(AppSettings.Key);
-            //    client.StartReceiving();
+            //Инициализация экзумпляра telegram-бота
+            client = await Bot_Telegram.Get();
             await client.SendTextMessageAsync
                 (
                 chatId: usr,
                 text: msg
                 );
-                
-            //    client.OnMessage += BotOnMessageReceived;
-            //    client.OnMessageEdited += BotOnMessageReceived;
-            //    client.StopReceiving();
         }
-        //private async void BotOnMessageReceived(object sender, MessageEventArgs messageEventArgs)
-        //{
-        //    var message = messageEventArgs.Message;
-        //    if (message?.Type == MessageType.Text)
-        //    {
-        //        await client.SendTextMessageAsync(message.Chat.Id, message.Text);
-        //    }
-
-        //}
     }
 }

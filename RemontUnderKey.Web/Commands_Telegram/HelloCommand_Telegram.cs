@@ -1,9 +1,9 @@
 ﻿using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace RemontUnderKey.Web.Commands
+namespace RemontUnderKey.Web.Commands_Telegram
 {
-    public class HelloCommand : Command
+    public class HelloCommand_Telegram : Command_Telegram
     {
         // имя команды
         public override string Name => "hello";

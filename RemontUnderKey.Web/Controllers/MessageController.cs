@@ -14,13 +14,13 @@ namespace RemontUnderKey.Web.Controllers
         public async Task<OkResult> Update([FromBody] Update update)
         {
             // получим список доступных команд, чтобы в дальнейшем выбрать нужную с помощью цикла foreach
-            var commands = Bot.Commands;
+            var commands = Bot_Telegram.Commands;
 
             // подготовим сообщение для бота
             var message = update.Message;
 
             // подготовим телеграмм бот-клиент, чтобы отсылать сообщение клиенту
-            var client = await Bot.Get();
+            var client = await Bot_Telegram.Get();
 
             foreach (var command in commands)
             {
