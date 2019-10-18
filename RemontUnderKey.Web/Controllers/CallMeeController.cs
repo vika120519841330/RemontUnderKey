@@ -11,15 +11,26 @@ using Telegram.Bot.Args;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using System.Threading;
+using Viber.Bot;
+using System.IO;
+using ViberAPI;
+using ViberAPI.Enums;
+using Microsoft.Extensions.Configuration;
+using System.Collections.ObjectModel;
 
 namespace RemontUnderKey.Web.Controllers
 {
     public class CallMeeController : Controller
     {
-        //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-аккаунт
-        private static TelegramBotClient client;
+        //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-channel
+        private static TelegramBotClient tg_client;
 
-        private string redirectToTelegramMessage;
+        //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в viber-public-аккаунт
+        private static ViberBotClient vb_client;
+
+        //перенаправляемое в мессенджеры сообщение
+        private string redirectMessage;
+
         private readonly ICallMee service;
         public CallMeeController(ICallMee _service)
         {
@@ -66,29 +77,72 @@ namespace RemontUnderKey.Web.Controllers
                 ViewBag.Result = "Zajavka na zvonok prinjata!";
 
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
-                redirectToTelegramMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
+                redirectMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
 
                 // Вызвать метод, инициализирующий telegram-bot
-                await Task.Run(() => RedirectToTelegram(redirectToTelegramMessage));
+                await Task.Run(() => RedirectToTelegram(redirectMessage));
+                Thread.Sleep(4000);
 
                 // Вызвать метод, инициализирующий viber-bot
+                await Task.Run(() => RedirectToViber(redirectMessage));
+                Thread.Sleep(4000);
 
-                Thread.Sleep(8000);
                 return View("CreateCallMee_Success");
             }
         }
-        // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота заданному получателю(тому, кто обрабатывает заявки на телеф.звонки)
-        private async void RedirectToTelegram(string msg)
+        // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в telegram-channel
+        private async void RedirectToTelegram(string tmsg)
         {
             // Username telegram-канала, !!! the bot must be an administrator in the channel!!!
             string usr = "@REMONT_CANAL";
             //Инициализация экзумпляра telegram-бота
-            client = await Bot_Telegram.Get();
-            await client.SendTextMessageAsync
+            tg_client = await Bot_Telegram.Get();
+            await tg_client.SendTextMessageAsync
                 (
                 chatId: usr,
-                text: msg
+                text: tmsg
                 );
+        }
+        // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в viber-public-аккаунт
+        //private async Task RedirToViber(string vmsg)
+        //{
+        //    vb_client = await Bot_Viber.Get();
+        //    var result = await vb_client.SendTextMessageAsync(
+        //        new TextMessage
+        //        {
+
+        //            Receiver = AppSettings_Viber.Admin,
+        //            Sender = new UserBase
+        //                {
+        //                    Name = AppSettings_Viber.AccountName
+        //                },
+        //                Text = vmsg
+        //        });
+        //    return;
+        //}
+
+
+        // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в viber-public-аккаунт
+        private async void RedirectToViber(string vmsg)
+        {
+            vb_client = new ViberBotClient("4a716aadb067d444-822a77e31aa08d4f-84f0c888d1a5e200");
+            await vb_client.SetWebhookAsync(
+                url: "https://remontunderkey.azurewebsites.net/hook/receiveMessage",
+                eventTypes: null
+                );
+            var result = await vb_client.SendTextMessageAsync
+                (
+                     new TextMessage
+                     {
+                         Receiver = "VikaStrigo",
+                         Sender = new UserBase
+                         {
+                             Name = "Жбанков Юра"
+                         },
+                         Text = vmsg
+                     }
+                );
+            return;
         }
     }
 }

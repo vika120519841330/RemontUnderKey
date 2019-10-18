@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemontUnderKey.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemontUnderKey.DependencyInjection", "RemontUnderKey.DependencyInjection\RemontUnderKey.DependencyInjection.csproj", "{3A7B3EB5-F0FB-454B-BF55-99382B1140B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemontUnderKey.ViberAPI", "ViberAPI\RemontUnderKey.ViberAPI.csproj", "{C63D4540-FCE3-48C5-B186-771588E1C830}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3A7B3EB5-F0FB-454B-BF55-99382B1140B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A7B3EB5-F0FB-454B-BF55-99382B1140B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A7B3EB5-F0FB-454B-BF55-99382B1140B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C63D4540-FCE3-48C5-B186-771588E1C830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63D4540-FCE3-48C5-B186-771588E1C830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63D4540-FCE3-48C5-B186-771588E1C830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63D4540-FCE3-48C5-B186-771588E1C830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

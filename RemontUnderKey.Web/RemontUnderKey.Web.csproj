@@ -85,8 +85,8 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
@@ -193,6 +193,9 @@
     <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Viber.Bot, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Viber.Bot.1.0.1\lib\net461\Viber.Bot.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -262,8 +265,10 @@
     <Compile Include="Commands_Telegram\Command_Telegram.cs" />
     <Compile Include="Commands_Telegram\HelloCommand_Telegram.cs" />
     <Compile Include="Controllers\CallMeeController.cs" />
+    <Compile Include="Controllers\HookController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\KindController.cs" />
+    <Compile Include="Controllers\ViberController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\StageController.cs" />
@@ -295,7 +300,9 @@
     <Compile Include="Mappers\TypeOfObject_Domain_View.cs" />
     <Compile Include="Mappers\UnitOfJob_Domain_View.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppSettings_Viber.cs" />
     <Compile Include="Models\AppSettings_Telegram.cs" />
+    <Compile Include="Models\Bot_Viber.cs" />
     <Compile Include="Models\Bot_Telegram.cs" />
     <Compile Include="Models\CallMee_View.cs" />
     <Compile Include="Models\Comment_View.cs" />
@@ -763,6 +770,7 @@
     <Content Include="fonts\ofont.ru_DS Eraser2.ttf" />
     <Content Include="fonts\ofont.ru_PF Stamps Pro Flex.ttf" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\mini\OneDrive - Ярлык.lnk" />
+    <Content Include="Controllers\appsettings.json" />
     <None Include="Properties\PublishProfiles\RemontUnderKey - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gallery.js" />
@@ -849,6 +857,10 @@
     <ProjectReference Include="..\RemontUnderKey.Domain\RemontUnderKey.Domain.csproj">
       <Project>{ba938e5f-6de5-400d-b621-24d2e2518983}</Project>
       <Name>RemontUnderKey.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViberAPI\RemontUnderKey.ViberAPI.csproj">
+      <Project>{C63D4540-FCE3-48C5-B186-771588E1C830}</Project>
+      <Name>RemontUnderKey.ViberAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
