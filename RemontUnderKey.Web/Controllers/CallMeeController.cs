@@ -22,6 +22,8 @@ namespace RemontUnderKey.Web.Controllers
 {
     public class CallMeeController : Controller
     {
+        HookController hc;
+
         //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-channel
         private static TelegramBotClient tg_client;
 
@@ -54,6 +56,7 @@ namespace RemontUnderKey.Web.Controllers
             return View();
         }
         [HttpPost]
+        //[Route("CallMee/CreateCallMee")]
         public async Task<ViewResult> CreateCallMee(CallMee_View inst)
         {
             inst.DateStamp = DateTime.Now;
@@ -80,12 +83,11 @@ namespace RemontUnderKey.Web.Controllers
                 redirectMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
 
                 // Вызвать метод, инициализирующий telegram-bot
-                await Task.Run(() => RedirectToTelegram(redirectMessage));
-                Thread.Sleep(4000);
-
+                //await Task.Run(() => RedirectToTelegram(redirectMessage));
+                hc = new HookController();
+                var accinfo = hc.RegisterWebhook();
                 // Вызвать метод, инициализирующий viber-bot
                 await Task.Run(() => RedirectToViber(redirectMessage));
-                Thread.Sleep(4000);
 
                 return View("CreateCallMee_Success");
             }
@@ -104,45 +106,37 @@ namespace RemontUnderKey.Web.Controllers
                 );
         }
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в viber-public-аккаунт
-        //private async Task RedirToViber(string vmsg)
-        //{
-        //    vb_client = await Bot_Viber.Get();
-        //    var result = await vb_client.SendTextMessageAsync(
-        //        new TextMessage
-        //        {
-
-        //            Receiver = AppSettings_Viber.Admin,
-        //            Sender = new UserBase
-        //                {
-        //                    Name = AppSettings_Viber.AccountName
-        //                },
-        //                Text = vmsg
-        //        });
-        //    return;
-        //}
-
+        private async Task RedirectToViber(string vmsg)
+        {
+            var tempmessage =  hc.Post(vmsg);
+        }
 
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в viber-public-аккаунт
-        private async void RedirectToViber(string vmsg)
-        {
-            vb_client = new ViberBotClient("4a716aadb067d444-822a77e31aa08d4f-84f0c888d1a5e200");
-            await vb_client.SetWebhookAsync(
-                url: "https://remontunderkey.azurewebsites.net/hook/receiveMessage",
-                eventTypes: null
-                );
-            var result = await vb_client.SendTextMessageAsync
-                (
-                     new TextMessage
-                     {
-                         Receiver = "VikaStrigo",
-                         Sender = new UserBase
-                         {
-                             Name = "Жбанков Юра"
-                         },
-                         Text = vmsg
-                     }
-                );
-            return;
-        }
+        //private async void RedirectToViber(string vmsg)
+        //{
+        //    vb_client = new ViberBotClient("4a716aadb067d444-822a77e31aa08d4f-84f0c888d1a5e200");
+
+        //    var accountInfo = await vb_client.GetAccountInfoAsync();
+
+
+
+        //    await vb_client.SetWebhookAsync(
+        //        url: "https://remontunderkey.azurewebsites.net/hook/receivemessage",
+        //        eventTypes: null
+        //        );
+        //    var result = await vb_client.SendTextMessageAsync
+        //        (
+        //             new TextMessage
+        //             {
+        //                 Receiver = "VikaStrigo",
+        //                 Sender = new UserBase
+        //                 {
+        //                     Name = "Жбанков Юра"
+        //                 },
+        //                 Text = vmsg
+        //             }
+        //        );
+        //    return;
+        //}
     }
 }

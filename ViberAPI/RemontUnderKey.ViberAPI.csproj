@@ -49,6 +49,7 @@
     <Compile Include="Models\DTO\LocationDTO.cs" />
     <Compile Include="Models\DTO\MemberDTO.cs" />
     <Compile Include="Models\DTO\PublicAccountInfoDTO.cs" />
+    <Compile Include="Models\DTO\RegistrationResponse1.cs" />
     <Compile Include="Models\DTO\RegistrationResponse.cs" />
     <Compile Include="Models\DTO\WebhookSettingsDTO.cs" />
     <Compile Include="Models\MessageTypes\Message.cs" />
