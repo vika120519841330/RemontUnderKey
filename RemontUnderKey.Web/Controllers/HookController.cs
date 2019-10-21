@@ -42,6 +42,7 @@ namespace RemontUnderKey.Web.Controllers
                 //receiver = webhook.GetPublicAccountInfo().members.FirstOrDefault(x => x.role == "admin").id,
                 sender = new Sender
                 {
+                    //сообщения будут приходить от имени бота
                     name = "remontunderkey"
                 },
                 type = "text",

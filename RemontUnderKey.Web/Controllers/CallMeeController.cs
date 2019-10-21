@@ -68,20 +68,32 @@ namespace RemontUnderKey.Web.Controllers
 
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
                 redirectMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
-
-                // Вызвать метод, инициализирующий telegram-bot
-                await Task.Run(() => RedirectToTelegram(redirectMessage));
-                //установить webhook
-                hc = new HookController();
-                var accinfo = hc.RegisterWebhook();
+                //Инициализировать массив синхронных задач
+                Task[] taskList = new Task[2]
+                {
+                    // Вызвать метод, инициализирующий viber-bot
+                    new Task(() => RedirectToViber(redirectMessage)),
+                    // Вызвать метод, инициализирующий telegram-bot
+                    new Task(() => RedirectToTelegram(redirectMessage))
+                };
+                foreach(var t in taskList)
+                {
+                    t.Start();
+                }
+                //Ожидаем завершения всех задач из массива задач
+                Task.WaitAll(taskList);
+                
+                //Последовательный запуск задач
                 // Вызвать метод, инициализирующий viber-bot
-                await Task.Run(() => RedirectToViber(redirectMessage));
+                //await Task.Run(() => RedirectToViber(redirectMessage));
+                // Вызвать метод, инициализирующий telegram-bot
+                //await Task.Run(() => RedirectToTelegram(redirectMessage));
 
                 return View("CreateCallMee_Success");
             }
         }
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в telegram-channel
-        private async void RedirectToTelegram(string tmsg)
+        private async Task RedirectToTelegram(string tmsg)
         {
             // Username telegram-канала, !!! the bot must be an administrator in the channel!!!
             string usr = "@REMONT_CANAL";
@@ -92,11 +104,16 @@ namespace RemontUnderKey.Web.Controllers
                 chatId: usr,
                 text: tmsg
                 );
+            return;
         }
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в viber-public-аккаунт
         private async Task RedirectToViber(string vmsg)
         {
+            //установить webhook
+            hc = new HookController();
+            var accinfo = hc.RegisterWebhook();
             var tempmessage =  hc.Post(vmsg);
+            return;
         }
     }
 }
