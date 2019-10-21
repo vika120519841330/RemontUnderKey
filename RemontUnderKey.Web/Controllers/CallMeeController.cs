@@ -7,16 +7,6 @@ using RemontUnderKey.Web.Mappers;
 using RemontUnderKey.Web.Models;
 using System.Threading.Tasks;
 using Telegram.Bot;
-using Telegram.Bot.Args;
-using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
-using System.Threading;
-using Viber.Bot;
-using System.IO;
-using ViberAPI;
-using ViberAPI.Enums;
-using Microsoft.Extensions.Configuration;
-using System.Collections.ObjectModel;
 
 namespace RemontUnderKey.Web.Controllers
 {
@@ -26,9 +16,6 @@ namespace RemontUnderKey.Web.Controllers
 
         //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-channel
         private static TelegramBotClient tg_client;
-
-        //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в viber-public-аккаунт
-        private static ViberBotClient vb_client;
 
         //перенаправляемое в мессенджеры сообщение
         private string redirectMessage;
