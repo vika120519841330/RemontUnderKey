@@ -77,7 +77,7 @@ namespace ViberAPI
         }
         public string Post(Message message)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://chatapi.viber.com/pa/post");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://chatapi.viber.com/pa/send_message");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 

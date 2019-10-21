@@ -83,7 +83,8 @@ namespace RemontUnderKey.Web.Controllers
                 redirectMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
 
                 // Вызвать метод, инициализирующий telegram-bot
-                //await Task.Run(() => RedirectToTelegram(redirectMessage));
+                await Task.Run(() => RedirectToTelegram(redirectMessage));
+                //установить webhook
                 hc = new HookController();
                 var accinfo = hc.RegisterWebhook();
                 // Вызвать метод, инициализирующий viber-bot
@@ -110,33 +111,5 @@ namespace RemontUnderKey.Web.Controllers
         {
             var tempmessage =  hc.Post(vmsg);
         }
-
-        // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в viber-public-аккаунт
-        //private async void RedirectToViber(string vmsg)
-        //{
-        //    vb_client = new ViberBotClient("4a716aadb067d444-822a77e31aa08d4f-84f0c888d1a5e200");
-
-        //    var accountInfo = await vb_client.GetAccountInfoAsync();
-
-
-
-        //    await vb_client.SetWebhookAsync(
-        //        url: "https://remontunderkey.azurewebsites.net/hook/receivemessage",
-        //        eventTypes: null
-        //        );
-        //    var result = await vb_client.SendTextMessageAsync
-        //        (
-        //             new TextMessage
-        //             {
-        //                 Receiver = "VikaStrigo",
-        //                 Sender = new UserBase
-        //                 {
-        //                     Name = "Жбанков Юра"
-        //                 },
-        //                 Text = vmsg
-        //             }
-        //        );
-        //    return;
-        //}
     }
 }
