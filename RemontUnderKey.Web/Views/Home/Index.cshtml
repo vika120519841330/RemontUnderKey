@@ -153,7 +153,7 @@
                 <th colspan="2">@ViewBag.Salute3</th>
             </tr>
             <tr>
-                <td width="30%" rowspan="2">
+                <td width="30%" rowspan="3">
                     <img src="~/Content/Images_my/specialist_photo.jpg"
                          alt="Фото специалиста по ремонту"
                          title="Александр, специалист по строительным работам"
@@ -163,15 +163,15 @@
                     <p>
                         @ViewBag.AboutMee
                     </p>
-                        <ul>
-                            @foreach (string item1 in (List<string>)TempData["AboutSpecList"])
-                            {
+                    <ul>
+                        @foreach (string item1 in (List<string>)TempData["AboutSpecList"])
+                        {
                             <li>
                                 @item1
                                 <br />
                             </li>
-                            }
-                        </ul>
+                        }
+                    </ul>
                 </td>
             </tr>
             <tr>
@@ -182,17 +182,31 @@
                     <ul>
                         @foreach (string item2 in (List<string>)TempData["RepsonseList"])
                         {
-                        <li>
-                            @item2
-                            <br />
-                        </li>
+                            <li>
+                                @item2
+                                <br />
+                            </li>
                         }
                     </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#InviteMee" class="eraserbuttonindex">
+                        ПРИГЛАСИТЬ МЕНЯ НА ОБЬЕКТ ДЛЯ РАСЧЕТА СМЕТЫ
+                    </a>
+                    <p> &emsp; </p>
                 </td>
             </tr>
         </table>
     </div>
 
+    <!-- Модальное окно  -->
+    <a href="#x" class="overlay" id="InviteMee"></a>
+    <div class="popup">
+        @Html.Action("CreateCallMeeIndex", "CallMee")
+        <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
+    </div>
 }
 
 

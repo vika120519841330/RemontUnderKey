@@ -1,0 +1,43 @@
+﻿@using RemontUnderKey.Web.Models
+@model CallMee_View
+
+    <div>
+        @using (Html.BeginForm("CreateCallMeeContacts", "CallMee", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <hr class="eraser" />
+            <p style="font-size:xx-large; text-align: center;" class="eraser">@ViewBag.Title</p>
+            <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <p>
+                    @ViewBag.Message
+                </p>
+                <div class="eraser">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <p> &emsp; </p>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <p> &emsp; </p>
+                    <div>
+                        <input type="submit" value="ОТПРАВИТЬ" class="eraserbutton" />
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <hr class="eraser" />
+        }
+    </div>
+
+
+

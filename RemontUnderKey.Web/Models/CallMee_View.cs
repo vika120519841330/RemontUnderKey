@@ -25,7 +25,7 @@ namespace RemontUnderKey.Web.Models
         public DateTime DateStamp { get; set; }
 
         //Комментарии админа касательно обратного звонка
-        [Display(Name = "Комментарии касательно сделанного обратного звонка:")]
+        [Display(Name = "Вопрос или комментарий:")]
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 

@@ -43,9 +43,17 @@ namespace RemontUnderKey.Web.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult CreateCallMeePartial()
+        public ActionResult CreateCallMeeContacts()
         {
             ViewBag.Title = "ЗАЯВКА НА ОБРАТНЫЙ ЗВОНОК";
+            return PartialView();
+        }
+
+        [HttpGet]
+        public ActionResult CreateCallMeeIndex()
+        {
+            ViewBag.Title = "ПРИГЛАСИТЬ МЕНЯ НА ОБЬЕКТ ДЛЯ РАСЧЕТА СМЕТЫ";
+            ViewBag.Title2 = "Пригласите мастера к себе на объект для составления сметы";
             return PartialView();
         }
 
@@ -99,9 +107,10 @@ namespace RemontUnderKey.Web.Controllers
                 return View("CreateCallMee_Success");
             }
         }
+
         [HttpPost]
-        //[Route("CallMee/CreateCallMeePartial")]
-        public async Task<ViewResult> CreateCallMeePartial(CallMee_View inst)
+        //[Route("CallMee/CreateCallMeeContacts")]
+        public async Task<ViewResult> CreateCallMeeContacts(CallMee_View inst)
         {
             inst.DateStamp = DateTime.Now;
             inst.Comments = "Комментарий";
@@ -110,13 +119,13 @@ namespace RemontUnderKey.Web.Controllers
             {
                 ModelState.AddModelError("CreateCallMeeNull", "Укажите имя и контактный телефон для обратного звонка!!!");
                 ViewBag.Message = "Укажите имя и контактный телефон для обратного звонка!!!";
-                return View("CreateCallMeePartial");
+                return View("CreateCallMeeContacts");
             }
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("CreateCallMeeNotVal", "Указанные для запроса обратного звонка данные не валидны!!!");
                 ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
-                return View("CreateCallMeePartial");
+                return View("CreateCallMeeContacts");
             }
             else
             {
@@ -124,6 +133,45 @@ namespace RemontUnderKey.Web.Controllers
                 ViewBag.Result = "Zajavka na zvonok prinjata!";
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
                 redirectMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
+                //Инициализировать массив синхронных задач
+                Task[] taskList = new Task[2]
+                {
+                    // Вызвать метод, инициализирующий viber-bot
+                    new Task(() => RedirectToViber(redirectMessage)),
+                    // Вызвать метод, инициализирующий telegram-bot
+                    new Task(() => RedirectToTelegram(redirectMessage))
+                };
+                foreach (var t in taskList)
+                {
+                    t.Start();
+                }
+                //Ожидаем завершения всех задач из массива задач
+                Task.WaitAll(taskList);
+                return View("CreateCallMee_Success");
+            }
+        }
+        public async Task<ViewResult> CreateCallMeeIndex(CallMee_View inst)
+        {
+            inst.DateStamp = DateTime.Now;
+            ViewBag.Title = "ПРИГЛАСИТЬ МЕНЯ НА ОБЬЕКТ ДЛЯ РАСЧЕТА СМЕТЫ";
+            if (inst == null)
+            {
+                ModelState.AddModelError("CreateCallMeeNull", "Укажите имя и контактный телефон для обратного звонка!!!");
+                ViewBag.Message = "Укажите имя и контактный телефон для обратного звонка!!!";
+                return View("CreateCallMeeIndex");
+            }
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("CreateCallMeeNotVal", "Указанные для запроса обратного звонка данные не валидны!!!");
+                ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                return View("CreateCallMeeIndex");
+            }
+            else
+            {
+                ViewBag.Result = "Zajavka prinjata!";
+                service.CreateCallMee(inst.CallMeeFromViewToDomain());
+                // Сформировать текстовое сообщение для перенаправления в telegram-группу
+                redirectMessage = (inst.DateStamp.ToString() + ", " + inst.Name + ", " + inst.Telephone + ", " + inst.Comments + ";").ToString();
                 //Инициализировать массив синхронных задач
                 Task[] taskList = new Task[2]
                 {

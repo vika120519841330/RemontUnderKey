@@ -2,11 +2,11 @@
 @model CallMee_View
 
     <div>
-        @using (Html.BeginForm("CreateCallMeePartial", "CallMee", FormMethod.Post))
+        @using (Html.BeginForm("CreateCallMeeIndex", "CallMee", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <hr class="eraser" />
-            <p style="font-size:xx-large; text-align: center;" class="eraser">@ViewBag.Title</p>
+            <p style="font-size: large; text-align: center; font-family: My_eraser_font;">@ViewBag.Title2</p>
             <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <p>
@@ -29,8 +29,16 @@
                         </div>
                     </div>
                     <p> &emsp; </p>
+                    <div class="form-group">
+                       @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="width: 100%; box-sizing: border-box;">
+                            @Html.TextAreaFor(model => model.Comments, 5, 200, null)
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <p> &emsp; </p>
                     <div>
-                        <input type="submit" value="ОТПРАВИТЬ" class="eraserbutton" />
+                        <input type="submit" value="ПРИГЛАСИТЬ НА ОБЬЕКТ" class="callmeebuttonindex" />
                     </div>
                     <br />
                 </div>

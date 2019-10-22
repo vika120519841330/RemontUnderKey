@@ -642,3 +642,45 @@ table.contactTable {
     color: black; /* Цвет текста и ссылки */
 }
 
+.eraserbuttonindex {
+    display: inline-block; /* Строчно-блочный элемент */
+    padding: 5px 10px; /* Добавляем поля */
+    text-decoration: none; /* Убираем подчёркивание у ссылки */
+    cursor: pointer; /* Курсор в виде руки */
+    background-color: white; /* Фон для браузеров*/
+    border-radius: 10px; /* Скругляем уголки */
+    border: 1px solid black; /* Добавляем синюю рамку */
+    font-family: My_Flex_font;
+    font-size: large;
+    font-weight: bolder;
+    color: black; /* Цвет текста и ссылки */
+    text-align: center;
+}
+.eraserbuttonindex:hover{
+    background-color: black; /* Фон для браузеров*/
+    border: 1px solid white; /* Добавляем синюю рамку */
+    color: white; /* Цвет текста и ссылки */
+    text-align: center;
+}
+.callmeebuttonindex {
+    display: inline-block; /* Строчно-блочный элемент */
+    width: 30%;
+    padding: 1px 1px 1px 1px; /* Добавляем поля */
+    text-decoration: none; /* Убираем подчёркивание у ссылки */
+    cursor: pointer; /* Курсор в виде руки */
+    background-color: white; /* Фон для браузеров*/
+    border-radius: 10px; /* Скругляем уголки */
+    border: 1px solid black; /* Добавляем синюю рамку */
+    font-family: My_eraser_font;
+    font-size: medium;
+    font-weight: bolder;
+    color: black; /* Цвет текста и ссылки */
+    text-align: center;
+}
+
+    .callmeebuttonindex:hover {
+        background-color: black; /* Фон для браузеров*/
+        border: 1px solid white; /* Добавляем синюю рамку */
+        color: white; /* Цвет текста и ссылки */
+        text-align: center;
+    }
