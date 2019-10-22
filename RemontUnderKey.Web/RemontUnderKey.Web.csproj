@@ -828,6 +828,7 @@
     <Content Include="Views\Stage\GetStage.cshtml" />
     <Content Include="Views\Home\Certificate.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\CallMee\CreateCallMeePartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -19,7 +19,7 @@
                 </td>
             </tr>
             <tr>
-                <td  class="block" valign="bottom">
+                <td class="block" valign="bottom">
                     @ViewBag.WorkPlace
                 </td>
             </tr>
@@ -40,10 +40,18 @@
             </tr>
             <tr>
                 <td class="block" valign="bottom">
-                    <blink><ins>@Html.ActionLink("ЗАКАЗАТЬ ЗВОНОК", "CreateCallMee", "CallMee")</ins></blink>
+                    <a href="#CallMee">
+                        <ins>ЗАКАЗАТЬ ЗВОНОК</ins>
+                    </a>
                 </td>
             </tr>
         </table>
+    </div>
+    <!-- Модальное окно  -->
+    <a href="#x" class="overlay" id="CallMee"></a>
+    <div class="popup">
+        @Html.Action("CreateCallMeePartial", "CallMee")
+        <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
     </div>
 
 }

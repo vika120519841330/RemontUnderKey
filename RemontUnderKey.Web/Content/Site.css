@@ -476,7 +476,7 @@ a:hover {
     bottom: 0;
     left: 0;
     z-index: 10;
-    display: none;
+    display: none;/*модальное окно скрыто, пока пользователь не кликнет ссылку*/
     /* фон затемнения */
     background-color: rgba(0, 0, 0, 0.65);
     position: fixed; /* фиксированное поцизионирование */
@@ -629,5 +629,16 @@ table.contactTable {
     table.contactTable td {
         font-size: x-large;
     }
-
+.eraserbutton {
+    display: inline-block; /* Строчно-блочный элемент */
+    padding: 5px 20px; /* Добавляем поля */
+    text-decoration: none; /* Убираем подчёркивание у ссылки */
+    cursor: pointer; /* Курсор в виде руки */
+    background-color: white; /* Фон для браузеров*/
+    border-radius: 10px; /* Скругляем уголки */
+    border: 1px solid black; /* Добавляем синюю рамку */
+    font-family: My_eraser_font;
+    font-size: large;
+    color: black; /* Цвет текста и ссылки */
+}
 

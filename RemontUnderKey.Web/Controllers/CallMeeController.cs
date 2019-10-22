@@ -42,6 +42,13 @@ namespace RemontUnderKey.Web.Controllers
             ViewBag.Title = "ЗАЯВКА НА ОБРАТНЫЙ ЗВОНОК";
             return View();
         }
+        [HttpGet]
+        public ActionResult CreateCallMeePartial()
+        {
+            ViewBag.Title = "ЗАЯВКА НА ОБРАТНЫЙ ЗВОНОК";
+            return PartialView();
+        }
+
         [HttpPost]
         //[Route("CallMee/CreateCallMee")]
         public async Task<ViewResult> CreateCallMee(CallMee_View inst)
@@ -92,6 +99,49 @@ namespace RemontUnderKey.Web.Controllers
                 return View("CreateCallMee_Success");
             }
         }
+        [HttpPost]
+        //[Route("CallMee/CreateCallMeePartial")]
+        public async Task<ViewResult> CreateCallMeePartial(CallMee_View inst)
+        {
+            inst.DateStamp = DateTime.Now;
+            inst.Comments = "Комментарий";
+            ViewBag.Title = $"ЗАЯВКА НА ОБРАТНЫЙ ЗВОНОК";
+            if (inst == null)
+            {
+                ModelState.AddModelError("CreateCallMeeNull", "Укажите имя и контактный телефон для обратного звонка!!!");
+                ViewBag.Message = "Укажите имя и контактный телефон для обратного звонка!!!";
+                return View("CreateCallMeePartial");
+            }
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("CreateCallMeeNotVal", "Указанные для запроса обратного звонка данные не валидны!!!");
+                ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                return View("CreateCallMeePartial");
+            }
+            else
+            {
+                service.CreateCallMee(inst.CallMeeFromViewToDomain());
+                ViewBag.Result = "Zajavka na zvonok prinjata!";
+                // Сформировать текстовое сообщение для перенаправления в telegram-группу
+                redirectMessage = (inst.DateStamp.ToString() + "   " + inst.Name + " " + inst.Telephone + ";").ToString();
+                //Инициализировать массив синхронных задач
+                Task[] taskList = new Task[2]
+                {
+                    // Вызвать метод, инициализирующий viber-bot
+                    new Task(() => RedirectToViber(redirectMessage)),
+                    // Вызвать метод, инициализирующий telegram-bot
+                    new Task(() => RedirectToTelegram(redirectMessage))
+                };
+                foreach (var t in taskList)
+                {
+                    t.Start();
+                }
+                //Ожидаем завершения всех задач из массива задач
+                Task.WaitAll(taskList);
+                return View("CreateCallMee_Success");
+            }
+        }
+
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в telegram-channel
         private async Task RedirectToTelegram(string tmsg)
         {
