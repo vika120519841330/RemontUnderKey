@@ -1,0 +1,39 @@
+﻿@using RemontUnderKey.Web.Models
+@model IEnumerable<Comment_View>
+
+@section Body{ 
+    <div class="comment">
+        <p>
+            @Html.ActionLink("ОСТАВИТЬ СВОЙ ОТЗЫВ", "CreateComment", "Comment")
+        </p>
+        <table class="comment">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+                <tr>
+                    <td style="font-weight: bold">
+                        @Html.DisplayFor(modelItem => item.UserName.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MessageFromUser)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

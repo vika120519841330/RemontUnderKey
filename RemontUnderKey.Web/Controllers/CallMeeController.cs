@@ -12,7 +12,7 @@ namespace RemontUnderKey.Web.Controllers
 {
     public class CallMeeController : Controller
     {
-        HookController hc;
+        private HookController hc;
 
         //при поступлении заявки на обратный телефонный звонок - происходит пересылка текстового сообщения в telegram-channel
         private static TelegramBotClient tg_client;
@@ -172,20 +172,18 @@ namespace RemontUnderKey.Web.Controllers
                 service.CreateCallMee(inst.CallMeeFromViewToDomain());
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
                 redirectMessage = (inst.DateStamp.ToString() + ", " + inst.Name + ", " + inst.Telephone + ", " + inst.Comments + ";").ToString();
+
                 //Инициализировать массив синхронных задач
-                Task[] taskList = new Task[2]
+                var taskList = new Task[2]
                 {
-                    // Вызвать метод, инициализирующий viber-bot
-                    new Task(() => RedirectToViber(redirectMessage)),
                     // Вызвать метод, инициализирующий telegram-bot
-                    new Task(() => RedirectToTelegram(redirectMessage))
+                    RedirectToTelegram(redirectMessage),
+                    // Вызвать метод, инициализирующий viber-bot
+                    RedirectToViber(redirectMessage)
                 };
-                foreach (var t in taskList)
-                {
-                    t.Start();
-                }
-                //Ожидаем завершения всех задач из массива задач
-                Task.WaitAll(taskList);
+
+                await Task.WhenAll(taskList);
+
                 return View("CreateCallMee_Success");
             }
         }

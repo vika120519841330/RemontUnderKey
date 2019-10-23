@@ -261,6 +261,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Commands_Telegram\Command_Telegram.cs" />
     <Compile Include="Commands_Telegram\HelloCommand_Telegram.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CallMeeController.cs" />
     <Compile Include="Controllers\HookController.cs" />
     <Compile Include="Controllers\JobController.cs" />
@@ -743,6 +744,7 @@
     <Content Include="Content\images\nav_thumbs.png" />
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\images\views.png" />
+    <Content Include="Content\Images_my\dalle.jpg" />
     <Content Include="Content\Images_my\Registration_certificate.jpg" />
     <Content Include="Content\Images_my\specialist_photo.jpg" />
     <Content Include="Content\reset.css" />
@@ -830,6 +832,7 @@
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\CallMee\CreateCallMeeContacts.cshtml" />
     <Content Include="Views\CallMee\CreateCallMeeIndex.cshtml" />
+    <Content Include="Views\Comment\GetAllComments.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

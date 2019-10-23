@@ -656,12 +656,12 @@ table.contactTable {
     color: black; /* Цвет текста и ссылки */
     text-align: center;
 }
-.eraserbuttonindex:hover{
-    background-color: black; /* Фон для браузеров*/
-    border: 1px solid white; /* Добавляем синюю рамку */
-    color: white; /* Цвет текста и ссылки */
-    text-align: center;
-}
+    .eraserbuttonindex:hover{
+        background-color: black; /* Фон для браузеров*/
+        border: 1px solid white; /* Добавляем синюю рамку */
+        color: white; /* Цвет текста и ссылки */
+        text-align: center;
+    }
 .callmeebuttonindex {
     display: inline-block; /* Строчно-блочный элемент */
     width: 30%;
@@ -677,10 +677,37 @@ table.contactTable {
     color: black; /* Цвет текста и ссылки */
     text-align: center;
 }
-
     .callmeebuttonindex:hover {
         background-color: black; /* Фон для браузеров*/
         border: 1px solid white; /* Добавляем синюю рамку */
         color: white; /* Цвет текста и ссылки */
         text-align: center;
     }
+table.comment {
+    color: white;
+    font-family: My_Flex_font;
+    font-style: oblique;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+}
+    table.comment td {
+        background-color: white;
+        font-weight: normal;
+        font-size: medium;
+        vertical-align: top;
+        text-align: left;
+        color: black;
+    }
+div.comment {
+    display: block;
+    background-image: url("/Content/Images_my/dalle.jpg");
+    background-attachment: local;
+    background-repeat: repeat-y;
+    background-color: black;
+    width: 800px;
+    height: auto;
+    min-height: 800px;
+    vertical-align: top;
+    text-align: center;
+    margin: 3% 25% 25% 25%;
+}
