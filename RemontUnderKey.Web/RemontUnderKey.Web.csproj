@@ -714,6 +714,7 @@
     <Content Include="Content\bricks_black.jpg" />
     <Content Include="Content\bricks_red.jpg" />
     <Content Include="Content\bricks_white.jpg" />
+    <Content Include="Content\Comments_Style.css" />
     <Content Include="Content\demo_OLD.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\elastislide.css" />
@@ -833,6 +834,7 @@
     <Content Include="Views\CallMee\CreateCallMeeContacts.cshtml" />
     <Content Include="Views\CallMee\CreateCallMeeIndex.cshtml" />
     <Content Include="Views\Comment\GetAllComments.cshtml" />
+    <Content Include="Views\Comment\GetComment.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

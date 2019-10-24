@@ -29,6 +29,7 @@ namespace RemontUnderKey.Web
 
             //add me
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/Comments_Style.css",
                       "~/Content/demo.css",
                       "~/Content/style.css",
                       "~/Content/elastislide.css",

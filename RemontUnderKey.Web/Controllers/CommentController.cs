@@ -32,16 +32,29 @@ namespace RemontUnderKey.Web.Controllers
                 ;
             return View(comments);
         }
-
+        //вспомогательный метод - возвращает текст комментария пользователя
         [HttpGet]
-        [Route("Comment/GetComment")]
-        public ActionResult GetComment(int id)
+        [Route("Comment/GetCommentText")]
+        public string GetCommentText(int id)
         {
             Comment_View comment = service.GetComment(id)
                 .CommentFromDomainToView()
                 ;
-            return View(comment);
+            string text = comment.MessageFromUser;
+            return text;
         }
+        //вспомогательный метод - возвращает имя пользователя
+        [HttpGet]
+        [Route("Comment/GetCommentUserName")]
+        public string GetCommentUserName(int id)
+        {
+            Comment_View comment = service.GetComment(id)
+                .CommentFromDomainToView()
+                ;
+            string name = comment.UserName.UserName;
+            return name;
+        }
+
         //Опубликовать отзыв на сайте вправе только зарегистрированный пользователь
         [HttpGet]
         [Route("Comment/CreateComment")]

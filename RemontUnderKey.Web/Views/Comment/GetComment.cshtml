@@ -1,0 +1,36 @@
+﻿@model RemontUnderKey.Web.Models.Comment_View
+
+<div>
+    <h4>Comment_View</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageFromUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageFromUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalForPublishing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalForPublishing)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

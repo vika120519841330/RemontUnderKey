@@ -683,31 +683,36 @@ table.contactTable {
         color: white; /* Цвет текста и ссылки */
         text-align: center;
     }
-table.comment {
-    color: white;
-    font-family: My_Flex_font;
-    font-style: oblique;
-    border-collapse: separate;
-    border-spacing: 10px 20px;
-}
-    table.comment td {
-        background-color: white;
-        font-weight: normal;
-        font-size: medium;
-        vertical-align: top;
-        text-align: left;
-        color: black;
-    }
 div.comment {
     display: block;
-    background-image: url("/Content/Images_my/dalle.jpg");
-    background-attachment: local;
-    background-repeat: repeat-y;
-    background-color: black;
-    width: 800px;
+    width: auto;
     height: auto;
-    min-height: 800px;
-    vertical-align: top;
-    text-align: center;
-    margin: 3% 25% 25% 25%;
+    padding: 2% 30% 2% 38%;
+    -webkit-transform: scale(1,1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 550ms;
+    -moz-transform: scale(1,1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 550ms;
 }
+
+    div.comment:hover {
+        -webkit-transform: scale(1.2,1.2);
+        -webkit-transition-timing-function: ease-out;
+        -webkit-transition-duration: 550ms;
+        -moz-transform: scale(1.2,1.2);
+        -moz-transition-timing-function: ease-out;
+        -moz-transition-duration: 550ms;
+    }
+.comment a {
+    color: white;
+    font-weight: bolder;
+    font-style: oblique;
+    font-size: x-large;
+    font-family: My_eraser_font;
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+}
+    .comment a:hover {
+        color: #ccc;
+        text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    }
