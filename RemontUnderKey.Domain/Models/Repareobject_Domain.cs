@@ -14,6 +14,6 @@ namespace RemontUnderKey.Domain.Models
         public string AddressOfRepareobject { get; set; }
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("TypeOfObject_Domain")]
-        public int? TypeOfObject_DomainId { get; set; }
+        public int TypeOfObject_DomainId { get; set; }
     }
 }

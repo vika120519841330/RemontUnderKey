@@ -259,6 +259,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\CurrencyDisplayAttribute.cs" />
     <Compile Include="Commands_Telegram\Command_Telegram.cs" />
     <Compile Include="Commands_Telegram\HelloCommand_Telegram.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -835,6 +836,7 @@
     <Content Include="Views\CallMee\CreateCallMeeIndex.cshtml" />
     <Content Include="Views\Comment\GetAllComments.cshtml" />
     <Content Include="Views\Comment\GetComment.cshtml" />
+    <Content Include="Views\CallMee\CreateCallMeeIndex_NotPartly.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

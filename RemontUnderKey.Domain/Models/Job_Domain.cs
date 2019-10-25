@@ -12,12 +12,8 @@ namespace RemontUnderKey.Domain.Models
         public int Id { get; set; }
         public string TitleOfJob { get; set; }
         public double PriceOfUnitOfJob { get; set; }
-        // Это свойство будет использоваться как внешний ключ
-        [ForeignKey("KindOfJob_Domain")]
-        public int? KindOfJob_DomainId { get; set; }
-        // Это свойство будет использоваться как внешний ключ
-        [ForeignKey("UnitOfJob_Domain")]
-        public int? UnitOfJob_DomainId { get; set; }
+        public int KindOfJob_DomainId { get; set; }
+        public int UnitOfJob_DomainId { get; set; }
 
     }
 }

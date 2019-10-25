@@ -14,6 +14,6 @@ namespace RemontUnderKey.Infrastructure.Models
         public string AddressOfRepareobject { get; set; }
         // Это свойство будет использоваться как внешний ключ
         [ForeignKey("TypeOfObject_Infra")]
-        public int? TypeOfObject_InfraId { get; set; }
+        public int TypeOfObject_InfraId { get; set; }
     }
 }

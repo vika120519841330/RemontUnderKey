@@ -17,7 +17,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Name, new {@class = "eraser", placeholder = Html.DisplayNameFor(m => m.Name) })
+                        @Html.TextBoxFor(model => model.Name, new {@class = "eraser",  @style = "border-radius: 10px;", placeholder = Html.DisplayNameFor(m => m.Name) })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Telephone, new { @class = "eraser", placeholder = Html.DisplayNameFor(m => m.Telephone) })
+                        @Html.TextBoxFor(model => model.Telephone, new { @class = "eraser",  @style = "border-radius: 10px;", placeholder = Html.DisplayNameFor(m => m.Telephone) })
                         @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10" style="width: 100%; box-sizing: border-box;">
-                        @Html.TextAreaFor(model => model.Comments, 5, 200, new { @class = "eraser", placeholder = Html.DisplayNameFor(m => m.Comments)})
+                        @Html.TextAreaFor(model => model.Comments, 5, 200, new { @class = "eraser",  @style = "border-radius: 10px;", placeholder = Html.DisplayNameFor(m => m.Comments)})
                         @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
                     </div>
                 </div>

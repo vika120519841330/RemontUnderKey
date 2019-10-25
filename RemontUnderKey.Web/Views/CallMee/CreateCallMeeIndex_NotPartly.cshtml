@@ -4,13 +4,7 @@
 
     <body>
         <div style="padding-left: 20px; padding-right: 20px">
-            @using (Ajax.BeginForm("CreateCallMee", "CallMee", new AjaxOptions
-            {
-                /*UpdateTargetId = "results",*/
-                LoadingElementId = "loading",
-                LoadingElementDuration = 1000
-            }))
-            /*@using (Html.BeginForm("CreateCallMee", "CallMee", FormMethod.Post))*/
+            @using (Html.BeginForm("CreateCallMeeIndex", "CallMee", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <hr class="eraser" />
@@ -23,10 +17,10 @@
                     </p>
                 </div>
                 <br />
-                <div class="form-horizontal" style="padding-left: 43%; padding-top: 3%;">
+                <div class="form-horizontal" style="padding-top: 1.5%;">
                     <div class="eraser">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-left: 7%;"  })
+                        <div class="form-group" style="padding-left: 43%; ">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-left: 6%;" })
                             <div class="col-md-10">
                                 @Html.TextBoxFor(model => model.Name, new { @class = "eraser", @style = "border-radius: 10px;", @placeholder = "Имя:" })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "eraserdanger" })
@@ -34,8 +28,8 @@
                         </div>
                         <p> &emsp; </p>
                         <p> &emsp; </p>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-left: 3%;"  })
+                        <div class="form-group" style="padding-left: 43%; ">
+                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-left: 2%;" })
                             <div class="col-md-10">
                                 @Html.TextBoxFor(model => model.Telephone, new { @class = "eraser", @style = "border-radius: 10px;", placeholder = Html.DisplayNameFor(m => m.Telephone) })
                                 @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "eraserdanger" })
@@ -43,14 +37,17 @@
                         </div>
                         <p> &emsp; </p>
                         <p> &emsp; </p>
-                        <p> &emsp; </p>
-                        <div>
-                            <div>
-                                <input style="background-color: white; color: black; font-size: large; border-radius: 5px;" type="submit" value="ОТПРАВИТЬ" class="eraser" />
+                        <div class="form-group" style="padding-left: 40.5%; ">
+                            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2", @style = "padding-left: 5%;" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Comments, 5, 200, new { @class = "eraser", @style = "border-radius: 10px;", placeholder = Html.DisplayNameFor(m => m.Comments) })
+                                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "eraserdanger" })
                             </div>
                         </div>
-                        <div id="loading" class="eraser" style="display:none; color:Red; font-weight:bold;">
-                            <p>Идет загрузка...</p>
+                        <p> &emsp; </p>
+                        <p> &emsp; </p>
+                        <div style="padding-left: 43%; ">
+                            <input style="background-color: white; color: black; font-size: large; border-radius: 5px;" type="submit" value="ОТПРАВИТЬ" class="eraser" />
                         </div>
                         <br />
                     </div>

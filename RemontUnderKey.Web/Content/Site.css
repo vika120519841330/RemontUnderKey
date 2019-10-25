@@ -204,7 +204,10 @@ p.grunge {
 .eraser {
     font-family: My_eraser_font;
 }
-
+.eraserdanger {
+    font-family: My_eraser_font;
+    color: red;
+}
 /*ЛОГИКА для использования Viber для НЕмобильных и мобильных устройств*/
 #vb_mb {
     display: none

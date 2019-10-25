@@ -119,13 +119,13 @@ namespace RemontUnderKey.Web.Controllers
             {
                 ModelState.AddModelError("CreateCallMeeNull", "Укажите имя и контактный телефон для обратного звонка!!!");
                 ViewBag.Message = "Укажите имя и контактный телефон для обратного звонка!!!";
-                return View("CreateCallMeeContacts");
+                return View("CreateCallMee");
             }
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("CreateCallMeeNotVal", "Указанные для запроса обратного звонка данные не валидны!!!");
                 ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
-                return View("CreateCallMeeContacts");
+                return View("CreateCallMee");
             }
             else
             {
@@ -158,13 +158,13 @@ namespace RemontUnderKey.Web.Controllers
             {
                 ModelState.AddModelError("CreateCallMeeNull", "Укажите имя и контактный телефон для обратного звонка!!!");
                 ViewBag.Message = "Укажите имя и контактный телефон для обратного звонка!!!";
-                return View("CreateCallMeeIndex");
+                return View("~/Views/CallMee/CreateCallMeeIndex_NotPartly.cshtml");
             }
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("CreateCallMeeNotVal", "Указанные для запроса обратного звонка данные не валидны!!!");
                 ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
-                return View("CreateCallMeeIndex");
+                return View("~/Views/CallMee/CreateCallMeeIndex_NotPartly.cshtml");
             }
             else
             {

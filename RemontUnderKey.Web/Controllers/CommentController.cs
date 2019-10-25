@@ -56,17 +56,18 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         //Опубликовать отзыв на сайте вправе только зарегистрированный пользователь
+        [Authorize(Roles = "admin, user")]
         [HttpGet]
         [Route("Comment/CreateComment")]
-        public ActionResult CreateComment()
+        public void CreateComment()
         {
             ViewBag.Title = $"ОСТАВЬТЕ СВОЙ ОТЗЫВ:";
             ViewBag.Warning = $"ДЛЯ ПУБЛИКАЦИИ ОТЗЫВА, ПРОЙДИТЕ РЕГИСТРАЦИЮ НА САЙТЕ!";
             if (!( User.IsInRole("admin") || User.IsInRole("user") ) )
             {
-                return View("Login", "Account");
+                RedirectToRoute("Login", "Account");
             }
-            else return View("CreateComment");
+            else RedirectToRoute("CreateComment", "Comment");
         }
 
         [HttpPost]
