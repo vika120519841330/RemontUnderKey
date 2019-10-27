@@ -7,6 +7,8 @@ using RemontUnderKey.Web.Mappers;
 using RemontUnderKey.Web.Models;
 using System.Threading.Tasks;
 using Telegram.Bot;
+using RemontUnderKey.Web.Identity;
+using System.Web.Mvc;
 
 namespace RemontUnderKey.Web.Controllers
 {
@@ -16,10 +18,13 @@ namespace RemontUnderKey.Web.Controllers
         private HookController hc;
         private static TelegramBotClient tg_client;
         private string redirectMessage;
+        private ApplicationUserManager userManager;
 
-        public CommentController(IComment _service)
+
+        public CommentController(IComment _service, ApplicationUserManager _userManager)
         {
             this.service = _service;
+            this.userManager = _userManager;
         }
         [HttpGet]
         [Route("Comment/GetAllComments")]
@@ -51,7 +56,7 @@ namespace RemontUnderKey.Web.Controllers
             Comment_View comment = service.GetComment(id)
                 .CommentFromDomainToView()
                 ;
-            string name = comment.UserName.UserName;
+            string name = comment.UserName;
             return name;
         }
 
@@ -59,36 +64,55 @@ namespace RemontUnderKey.Web.Controllers
         [Authorize(Roles = "admin, user")]
         [HttpGet]
         [Route("Comment/CreateComment")]
-        public void CreateComment()
+        public ActionResult CreateComment()
         {
             ViewBag.Title = $"ОСТАВЬТЕ СВОЙ ОТЗЫВ:";
             ViewBag.Warning = $"ДЛЯ ПУБЛИКАЦИИ ОТЗЫВА, ПРОЙДИТЕ РЕГИСТРАЦИЮ НА САЙТЕ!";
-            if (!( User.IsInRole("admin") || User.IsInRole("user") ) )
+            if (!(User.IsInRole("admin") || User.IsInRole("user")))
             {
-                RedirectToRoute("Login", "Account");
+                return RedirectToAction("Login", "Account");
             }
-            else RedirectToRoute("CreateComment", "Comment");
+            else
+            {
+                return View("CreateComment");
+            }
+        }
+        //вспомогательный метод - возвращает идентификац.номер и имя зарегистрированного пользователя
+        public List<string> GetDataAboutUser()
+        {
+            string userid;
+            string username;
+            List<string> ListOfUsersIdName;
+            username = User.Identity.Name;
+            ApplicationUser user = userManager.Users.FirstOrDefault(_ => _.UserName == username);
+            userid = user.Id;
+            ListOfUsersIdName = new List<string>() { userid, username };
+            return ListOfUsersIdName;
         }
 
         [HttpPost]
         [Route("Comment/CreateComment")]
         public async Task<ViewResult> CreateComment(Comment_View inst)
         {
-            ViewBag.Title = $"ОСТАВЬТЕ СВОЙ ОТЗЫВ:";
             if (inst == null)
             {
                 ModelState.AddModelError("CreateCommentNull", "Оставьте свой отзыв!!!");
                 ViewBag.Message = "Оставьте свой отзыв!!!";
                 return View("CreateComment");
             }
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("CreateCallMeeNotVal", "Указанные данные для отправки отзыва не валидны!!!");
-                ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
-                return View("CreateComment");
-            }
-            else
-            {
+            var tempList = GetDataAboutUser();
+            inst.UserId = tempList[0];
+            inst.UserName = tempList[1];
+            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА";
+            ViewBag.Salute = $"{inst.UserName} ОСТАВЬТЕ СВОЙ ОТЗЫВ!";
+            //if (!ModelState.IsValid)
+            //{
+            //    ModelState.AddModelError("CreateCommentNotVal", "Указанные данные для отправки отзыва не валидны!!!");
+            //    ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+            //    return View("CreateComment");
+            //}
+            //else
+            //{
                 service.CreateComment(inst.CommentFromViewToDomain());
                 ViewBag.Result = "Thank you! Your feedback is accepted and sent for moderation!";
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
@@ -107,8 +131,8 @@ namespace RemontUnderKey.Web.Controllers
                 }
                 //Ожидаем завершения всех задач из массива задач
                 Task.WaitAll(taskList);
-                return View("CreateComment_Success");
-            }
+                return View("CreateComment");
+            //}
         }
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в telegram-channel
         private async Task RedirectToTelegram(string tmsg)

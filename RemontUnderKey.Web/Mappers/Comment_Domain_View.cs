@@ -17,7 +17,7 @@ namespace RemontUnderKey.Web.Mappers
                 return new Comment_View()
                 {
                     Id = @this.Id,
-                    UserName = new ApplicationUser { UserName = @this.UserName},
+                    UserName = @this.UserName,
                     UserId = @this.UserId,
                     MessageFromUser = @this.MessageFromUser,
                     ApprovalForPublishing = @this.ApprovalForPublishing
@@ -35,7 +35,7 @@ namespace RemontUnderKey.Web.Mappers
                 return new Comment_Domain()
                 {
                     Id = @this.Id,
-                    UserName = @this.UserName.UserName,
+                    UserName = @this.UserName,
                     UserId = @this.UserId,
                     MessageFromUser = @this.MessageFromUser,
                     ApprovalForPublishing = @this.ApprovalForPublishing

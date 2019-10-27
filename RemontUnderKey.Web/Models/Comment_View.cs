@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Security.Principal;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,16 +18,18 @@ namespace RemontUnderKey.Web.Models
         [Display(Name = "Идентификационный номер:")]
         public int Id { get; set; }
 
-        [ConfigurationProperty("Имя пользователя:", IsRequired = true, DefaultValue = "Имя пользователя")]
+        [ConfigurationProperty("Имя пользователя:", IsRequired = false, DefaultValue = "Имя пользователя")]
         [DataType(DataType.Text)]
         [UIHint("String")]
         [Display(Name = "Имя пользователя:")]
-        public ApplicationUser UserName { get; set; }
+        public string UserName { get; set; } 
 
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
+        [ConfigurationProperty("Идентификатор пользователя", IsRequired = false, IsKey = false)]
         [Display(Name = "Идентификатор пользователя:")]
-        public int UserId { get; set; }
+        [UIHint("String")]
+        public string UserId { get; set; }
 
         [Required(ErrorMessage = "Оставьте свой отзыв!")]
         [ConfigurationProperty("Отзыв пользователя:", IsRequired = true, DefaultValue = "Оставьте свой отзыв")]
