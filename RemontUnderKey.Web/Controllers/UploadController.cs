@@ -55,8 +55,6 @@ namespace RemontUnderKey.Web.Controllers
                     fileupload.InputStream.CopyTo(ms);
                     array = ms.GetBuffer();
                 }
-                //upload.Comment_ViewId = inst.Comment_ViewId;
-                //upload.File = array;
                 inst.File = array;
                 ViewBag.ResultFromUpload = "Загрузка прошла успешно!";
                 int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());

@@ -320,9 +320,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Identity_RemontUnderKey_DB_281019_vA.mdf" />
-    <Content Include="App_Data\Identity_RemontUnderKey_DB_281019_vA_log.ldf">
-      <DependentUpon>Identity_RemontUnderKey_DB_281019_vA.mdf</DependentUpon>
+    <Content Include="App_Data\Identity_RemontUnderKey_DB_291019_v1.mdf" />
+    <Content Include="App_Data\Identity_RemontUnderKey_DB_291019_v1_log.ldf">
+      <DependentUpon>Identity_RemontUnderKey_DB_291019_v1.mdf</DependentUpon>
     </Content>
     <Content Include="Content\1_Minsk_ul_Lojinskaja\1.jpg" />
     <Content Include="Content\1_Minsk_ul_Lojinskaja\10.jpg" />
@@ -772,7 +772,6 @@
     <Content Include="fonts\ofont.ru_DS Eraser2.ttf" />
     <Content Include="fonts\ofont.ru_PF Stamps Pro Flex.ttf" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\mini\OneDrive - Ярлык.lnk" />
-    <None Include="Properties\PublishProfiles\RemontUnderKey - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gallery.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -846,6 +845,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
