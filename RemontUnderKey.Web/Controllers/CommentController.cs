@@ -8,7 +8,7 @@ using RemontUnderKey.Web.Models;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using RemontUnderKey.Web.Identity;
-using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace RemontUnderKey.Web.Controllers
 {
@@ -19,7 +19,6 @@ namespace RemontUnderKey.Web.Controllers
         private static TelegramBotClient tg_client;
         private string redirectMessage;
         private ApplicationUserManager userManager;
-
 
         public CommentController(IComment _service, ApplicationUserManager _userManager)
         {
@@ -37,6 +36,17 @@ namespace RemontUnderKey.Web.Controllers
                 ;
             return View(comments);
         }
+
+        [HttpGet]
+        [Route("Comment/GetComment")]
+        public Comment_View GetComment(int id)
+        {
+            Comment_View comment = service.GetComment(id)
+                .CommentFromDomainToView()
+                ;
+            return comment;
+        }
+
         //вспомогательный метод - возвращает текст комментария пользователя
         [HttpGet]
         [Route("Comment/GetCommentText")]
@@ -74,66 +84,63 @@ namespace RemontUnderKey.Web.Controllers
             }
             else
             {
-                return View("CreateComment");
+                var tempList = GetDataAboutUser();
+                Comment_View inst = new Comment_View();
+                inst.UserId = tempList[0];
+                inst.UserName = tempList[1];
+                int? tempIdOfComment = service.CreateComment(inst.CommentFromViewToDomain());
+                inst = service.GetComment(tempIdOfComment).CommentFromDomainToView();
+                return View("CreateComment", inst);
             }
         }
-        //вспомогательный метод - возвращает идентификац.номер и имя зарегистрированного пользователя
-        public List<string> GetDataAboutUser()
+
+        [HttpGet]
+        [Route("Comment/CreateCommentRedirect")]
+        public ActionResult CreateCommentRedirect([System.Web.Http.FromBody]Comment_View inst)
         {
-            string userid;
-            string username;
-            List<string> ListOfUsersIdName;
-            username = User.Identity.Name;
-            ApplicationUser user = userManager.Users.FirstOrDefault(_ => _.UserName == username);
-            userid = user.Id;
-            ListOfUsersIdName = new List<string>() { userid, username };
-            return ListOfUsersIdName;
+                return View("CreateComment", inst);
         }
 
         [HttpPost]
-        [Route("Comment/CreateComment")]
-        public async Task<ViewResult> CreateComment(Comment_View inst)
+        [Route("Comment/CreateComment/")]
+        public async Task<ViewResult> CreateComment([System.Web.Http.FromBody]Comment_View inst)
         {
+            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА";
+            ViewBag.Salute = $"{inst.UserName} ОСТАВЬТЕ СВОЙ ОТЗЫВ!";
             if (inst == null)
             {
                 ModelState.AddModelError("CreateCommentNull", "Оставьте свой отзыв!!!");
                 ViewBag.Message = "Оставьте свой отзыв!!!";
-                return View("CreateComment");
+                return View("CreateComment", inst);
             }
-            var tempList = GetDataAboutUser();
-            inst.UserId = tempList[0];
-            inst.UserName = tempList[1];
-            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА";
-            ViewBag.Salute = $"{inst.UserName} ОСТАВЬТЕ СВОЙ ОТЗЫВ!";
-            //if (!ModelState.IsValid)
-            //{
-            //    ModelState.AddModelError("CreateCommentNotVal", "Указанные данные для отправки отзыва не валидны!!!");
-            //    ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
-            //    return View("CreateComment");
-            //}
-            //else
-            //{
-                service.CreateComment(inst.CommentFromViewToDomain());
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("CreateCommentNotVal", "Указанные данные для отправки отзыва не валидны!!!");
+                ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                return View("CreateComment", inst);
+            }
+            else
+            {
+                service.UpdateComment(inst.CommentFromViewToDomain());
                 ViewBag.Result = "Thank you! Your feedback is accepted and sent for moderation!";
                 // Сформировать текстовое сообщение для перенаправления в telegram-группу
-                redirectMessage = (DateTime.Now.ToString() + inst.UserName + " " + " ОТЗЫВ: " + inst.MessageFromUser + ";").ToString();
+                redirectMessage = (DateTime.Now.ToString() + " " + inst.UserName + " " + " ОТЗЫВ: " + inst.MessageFromUser + ";").ToString();
                 //Инициализировать массив синхронных задач
-                Task[] taskList = new Task[2]
+                var taskList = new Task[2]
                 {
-                    // Вызвать метод, инициализирующий viber-bot
-                    new Task(() => RedirectToViber(redirectMessage)),
                     // Вызвать метод, инициализирующий telegram-bot
-                    new Task(() => RedirectToTelegram(redirectMessage))
+                    RedirectToTelegram(redirectMessage),
+                    // Вызвать метод, инициализирующий viber-bot
+                    RedirectToViber(redirectMessage)
                 };
-                foreach(var t in taskList)
-                {
-                    t.Start();
-                }
+
+                await Task.WhenAll(taskList);
                 //Ожидаем завершения всех задач из массива задач
                 Task.WaitAll(taskList);
-                return View("CreateComment");
-            //}
+                return View("CreateCommentSuccess");
+            }
         }
+       
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в telegram-channel
         private async Task RedirectToTelegram(string tmsg)
         {
@@ -156,6 +163,26 @@ namespace RemontUnderKey.Web.Controllers
             var accinfo = hc.RegisterWebhook();
             var tempmessage =  hc.Post(vmsg);
             return;
+        }
+
+        //вспомогательный метод - возвращает идентификац.номер и имя зарегистрированного пользователя
+        public List<string> GetDataAboutUser()
+        {
+            string userid;
+            string username;
+            List<string> ListOfUsersIdName;
+            username = User.Identity.Name;
+            ApplicationUser user = userManager.Users.FirstOrDefault(_ => _.UserName == username);
+            userid = user.Id;
+            ListOfUsersIdName = new List<string>() { userid, username };
+            return ListOfUsersIdName;
+        }
+
+        //вспомогательный метод - возвращает идентификац.номер и имя зарегистрированного 
+        public RedirectToRouteResult AddFileRedirect(int id)
+        {
+            int temp = id;
+            return RedirectToAction("AddFile", "Upload", new { id = temp });
         }
     }
 }

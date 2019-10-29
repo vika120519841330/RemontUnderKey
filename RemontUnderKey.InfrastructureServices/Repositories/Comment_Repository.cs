@@ -32,7 +32,7 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             return comments;
         }
 
-        public Comment_Infra GetComment(int id)
+        public Comment_Infra GetComment(int? id)
         {
             var comment = context.Comments
                 .FirstOrDefault(_ => _.Id == id)
@@ -40,10 +40,16 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             return comment;
         }
 
-        public void CreateComment(Comment_Infra inst)
+        //Метод возвращает Id вновь созданного Отзыва
+        public int? CreateComment(Comment_Infra inst)
         {
+            string tempUserName = inst.UserName;
             context.Comments.Add(inst);
             context.SaveChanges();
+            int tempId = context.Comments
+                .FirstOrDefault(_ => _.UserName == tempUserName).Id
+                ;
+            return tempId;
         }
 
         public void UpdateComment(Comment_Infra inst)
@@ -56,7 +62,7 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             tempInst.ApprovalForPublishing = inst.ApprovalForPublishing;
             context.SaveChanges();
         }
-        public void DeleteComment(int id)
+        public void DeleteComment(int? id)
         {
             var tmp = context.Comments.Find(id);
             context.Comments.Remove(tmp);

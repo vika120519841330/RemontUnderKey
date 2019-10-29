@@ -36,7 +36,7 @@ namespace RemontUnderKey.Web.Models
         [DataType(DataType.MultilineText)]
         [UIHint("MultilineText")]
         [Display(Name = "Отзыв пользователя:")]
-        public string MessageFromUser { get; set; }
+        public string MessageFromUser { get; set; } = "";
 
         // Это свойство будет исп-ся администратором сайта для одобрения публикации отзыва на сайте
         [ConfigurationProperty("Отметка о модерации отзыва:", IsRequired = false, DefaultValue = "Отметьте флажок в случае публикации отзыва")]

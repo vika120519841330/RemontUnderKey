@@ -35,7 +35,7 @@ namespace RemontUnderKey.DomainServices.Services
             return comments;
         }
 
-        public Comment_Domain GetComment(int id)
+        public Comment_Domain GetComment(int? id)
         {
             var comment = repository.GetComment(id)
                 .CommentFromInfraToDomain()
@@ -43,16 +43,17 @@ namespace RemontUnderKey.DomainServices.Services
             return comment;
         }
 
-        public void CreateComment(Comment_Domain inst)
+        //Метод возвращает Id вновь созданного Отзыва
+        public int? CreateComment(Comment_Domain inst)
         {
-            repository.CreateComment(inst.CommentFromDomainToInfra());
+            return repository.CreateComment(inst.CommentFromDomainToInfra());
         }
 
         public void UpdateComment(Comment_Domain inst)
         {
             repository.UpdateComment(inst.CommentFromDomainToInfra());
         }
-        public void DeleteComment(int id)
+        public void DeleteComment(int? id)
         {
             repository.DeleteComment(id);
         }

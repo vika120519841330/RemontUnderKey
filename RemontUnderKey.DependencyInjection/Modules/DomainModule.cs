@@ -36,6 +36,10 @@ namespace RemontUnderKey.DependencyInjection.Modules
             container.RegisterType<IStage, Stage_Service>(
                 //new ContainerControlledLifetimeManager()
                 );
+            container.RegisterType<IUpload, Upload_Service>(
+                //new HierarchicalLifetimeManager()
+                );
+
         }
     }
 }

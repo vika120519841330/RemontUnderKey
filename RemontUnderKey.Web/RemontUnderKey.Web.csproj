@@ -298,6 +298,7 @@
     <Compile Include="Mappers\Photo_Domain_View.cs" />
     <Compile Include="Mappers\TypeOfObject_Domain_View.cs" />
     <Compile Include="Mappers\UnitOfJob_Domain_View.cs" />
+    <Compile Include="Mappers\Upload_Domain_View.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppSettings_Viber.cs" />
     <Compile Include="Models\AppSettings_Telegram.cs" />
@@ -314,14 +315,14 @@
     <Compile Include="Models\Repareobject_View.cs" />
     <Compile Include="Models\TypeOfObject_View.cs" />
     <Compile Include="Models\UnitOfJob_View.cs" />
-    <Compile Include="Models\Upload.cs" />
+    <Compile Include="Models\Upload_View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Identity_RemontUnderKey.mdf" />
-    <Content Include="App_Data\Identity_RemontUnderKey_log.ldf">
-      <DependentUpon>Identity_RemontUnderKey.mdf</DependentUpon>
+    <Content Include="App_Data\Identity_RemontUnderKey_DB_281019_vA.mdf" />
+    <Content Include="App_Data\Identity_RemontUnderKey_DB_281019_vA_log.ldf">
+      <DependentUpon>Identity_RemontUnderKey_DB_281019_vA.mdf</DependentUpon>
     </Content>
     <Content Include="Content\1_Minsk_ul_Lojinskaja\1.jpg" />
     <Content Include="Content\1_Minsk_ul_Lojinskaja\10.jpg" />
@@ -841,6 +842,7 @@
     <Content Include="Views\CallMee\CreateCallMeeIndex_NotPartly.cshtml" />
     <Content Include="Views\Upload\AddFile.cshtml" />
     <Content Include="Views\Comment\CreateComment.cshtml" />
+    <Content Include="Views\Comment\CreateCommentSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />

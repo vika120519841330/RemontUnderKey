@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IUpload_Repository.cs" />
     <Compile Include="Interfaces\IComment_Repository.cs" />
     <Compile Include="Interfaces\ICallMee_Repository.cs" />
     <Compile Include="Interfaces\IStage_Repository.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Models\Job_Infra.cs" />
     <Compile Include="Models\KindOfJob_Infra.cs" />
     <Compile Include="Models\TypeOfObject_Infra.cs" />
+    <Compile Include="Models\Upload_Infra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

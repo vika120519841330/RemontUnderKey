@@ -27,7 +27,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<CallMee_Infra> Calls { get; set; }
         //Этапы работ
         public DbSet<Stage_Infra> Stages { get; set; }
-
+        //Этапы работ
+        public DbSet<Upload_Infra> Uploads { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -3127,6 +3128,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.ApplyConfiguration<Comment_Infra>(new Comment_Configuration());
 
             modelBuilder.ApplyConfiguration<CallMee_Infra>(new CallMee_Configuration());
+
+            modelBuilder.ApplyConfiguration<Upload_Infra>(new Upload_Configuration());
 
             base.OnModelCreating(modelBuilder);
             #endregion

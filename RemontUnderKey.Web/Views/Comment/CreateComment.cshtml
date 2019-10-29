@@ -16,25 +16,31 @@
                 @ViewBag.Message
             </p>
             @Html.HiddenFor(x => x.Id)
-            <div class="eraser">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.MessageFromUser, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.MessageFromUser, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MessageFromUser, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <p> &emsp; </p>
-                <div>
-                    @Html.ActionLink("ЗАГРУЗИТЬ ФОТО", "AddFile", "Upload")
-                </div>
-                <p> &emsp; </p>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="ОТПРАВИТЬ" class="eraserbutton" />
-                    </div>
+            @Html.HiddenFor(x => x.UserId)
+            @Html.HiddenFor(x => x.UserName)
+
+        <div class="eraser">
+            <div class="form-group">
+                @Html.LabelFor(model => model.MessageFromUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MessageFromUser, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MessageFromUser, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <p> &emsp; </p>
+            <div>
+                @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id })
+            </div>
+            <p> &emsp; </p>
+            <p>
+                @ViewBag.ResultFromUpload
+            </p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="ОТПРАВИТЬ" class="eraserbutton" />
+                </div>
+            </div>
+        </div>
         </div>
     }
 }

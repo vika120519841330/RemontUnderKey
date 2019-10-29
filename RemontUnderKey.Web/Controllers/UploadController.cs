@@ -1,45 +1,76 @@
-﻿using RemontUnderKey.Web.Models;
-using System;
-using System.Collections.Generic;
+﻿using RemontUnderKey.Domain.Interfaces;
+using RemontUnderKey.Web.Models;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RemontUnderKey.Web.Mappers;
+using RemontUnderKey.Web.Identity;
 
 namespace RemontUnderKey.Web.Controllers
 {
     public class UploadController : Controller
     {
+        private readonly IUpload service;
+        private readonly IComment comservice;
+        private CommentController comcontr;
+        ApplicationUserManager userManager;
+        private Upload_View upload;
+        private Comment_View comment;
+
+
+        public UploadController(IUpload _service, IComment _comservice, ApplicationUserManager _userManager)
+        {
+            this.service = _service;
+            this.comservice = _comservice;
+            this.userManager = _userManager;
+            this.comcontr = new CommentController(this.comservice, this.userManager);
+
+        }
+
+        [HttpGet]
+        [Route("Upload/AddFile/id")]
+        public ActionResult AddFile(int id)
+        {
+            ViewBag.Salute = "Выберите файл для загрузки:";
+            ViewBag.Title = "ЗАГРУЗКА ФАЙЛА / ИЗОБРАЖЕНИЯ";
+            TempData["IdOfComment"] = id;
+            return View("AddFile");
+        }
+
         [HttpPost]
-        public ActionResult AddFile(Upload model, List<HttpPostedFileBase> templateFile)
+        public ActionResult AddFile(Upload_View inst, HttpPostedFileBase fileupload)
         {
             ViewBag.Title = "ЗАГРУЗКА ФАЙЛА / ИЗОБРАЖЕНИЯ";
-            if (templateFile == null && templateFile.Count > 0)
+            //Comment_View comment = comcontr.GetComment(upload.Comment_ViewId);
+            if (fileupload != null && fileupload.ContentLength > 0 && fileupload.ContentLength < 200000)
             {
-                foreach (HttpPostedFileBase file in templateFile)
+                byte[] array;
+                // получить имя файла
+                var fileName = Path.GetFileName(fileupload.FileName);
+                // сохранить файл в папку Files в проекте
+                fileupload.SaveAs(Server.MapPath("~/Files/" + fileName));
+                // считать содержимое загружаемого файла в байтовый массив
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        // получить имя файла
-                        var fileName = Path.GetFileName(file.FileName);
-                        // сохранить файл в папку Files в проекте
-                        file.SaveAs(Server.MapPath("~/Files/" + fileName));
-                        // считать содержимое загружаемого файла в байтовый массив
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            file.InputStream.CopyTo(ms);
-                            byte[] array = ms.GetBuffer();
-                            model.File.Add(array);
-                        }
-                    }
+                    fileupload.InputStream.CopyTo(ms);
+                    array = ms.GetBuffer();
                 }
-                ViewBag.Result = "Загрузка прошла успешно!";
-                return RedirectToAction("CreateComment", "Comment");
+                //upload.Comment_ViewId = inst.Comment_ViewId;
+                //upload.File = array;
+                inst.File = array;
+                ViewBag.ResultFromUpload = "Загрузка прошла успешно!";
+                int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());
+                inst = service.GetUpload(tempIdOfUpload).UploadFromDomainToView();
+                comment = comservice.GetComment(inst.Comment_ViewId).CommentFromDomainToView();
+                return RedirectToAction("../Comment/CreateCommentRedirect", comment);
             }
             else
             {
-                ViewBag.Result = "Файлы загружены!";
-                return RedirectToAction("CreateComment", "Comment");
+                ViewBag.Result = "Файл не удалось загрузить! Размер загружаемого файла не должен превышать 2 МБайт!";
+                int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());
+                inst = service.GetUpload(tempIdOfUpload).UploadFromDomainToView();
+                comment = comservice.GetComment(inst.Comment_ViewId).CommentFromDomainToView();
+                return RedirectToAction("../Comment/CreateCommentRedirect", comment);
             }
         }
     }
