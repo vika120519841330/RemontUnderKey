@@ -320,9 +320,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Identity_RemontUnderKey_DB_291019_v1.mdf" />
-    <Content Include="App_Data\Identity_RemontUnderKey_DB_291019_v1_log.ldf">
-      <DependentUpon>Identity_RemontUnderKey_DB_291019_v1.mdf</DependentUpon>
+    <Content Include="App_Data\Identity_RemontUnderKey_DBv1.mdf" />
+    <Content Include="App_Data\Identity_RemontUnderKey_DBv1_log.ldf">
+      <DependentUpon>Identity_RemontUnderKey_DBv1.mdf</DependentUpon>
     </Content>
     <Content Include="Content\1_Minsk_ul_Lojinskaja\1.jpg" />
     <Content Include="Content\1_Minsk_ul_Lojinskaja\10.jpg" />
@@ -827,7 +827,7 @@
     <Content Include="Views\CallMee\CreateCallMee_Success.cshtml" />
     <Content Include="Views\Photo\GetAllPhotos.cshtml" />
     <Content Include="Views\Photo\GetPhoto.cshtml" />
-    <Content Include="Views\Photo\PhotoGalery_OLD.cshtml" />
+    <Content Include="Views\OLD\PhotoGalery_OLD.cshtml" />
     <Content Include="Views\Photo\PhotoGalery.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Type\GetAllTitleOfTypes.cshtml" />
@@ -837,11 +837,23 @@
     <Content Include="Views\CallMee\CreateCallMeeContacts.cshtml" />
     <Content Include="Views\CallMee\CreateCallMeeIndex.cshtml" />
     <Content Include="Views\Comment\GetAllComments.cshtml" />
-    <Content Include="Views\Comment\GetComment.cshtml" />
     <Content Include="Views\CallMee\CreateCallMeeIndex_NotPartly.cshtml" />
     <Content Include="Views\Upload\AddFile.cshtml" />
     <Content Include="Views\Comment\CreateComment.cshtml" />
     <Content Include="Views\Comment\CreateCommentSuccess.cshtml" />
+    <Content Include="Views\OLD\CreateCommentOLD.cshtml" />
+    <Content Include="Views\OLD\AddFilePartial.cshtml" />
+    <Content Include="Views\OLD\AddFilePartialSucces.cshtml" />
+    <Content Include="Views\Comment\AllFilesByNameOfUser.cshtml" />
+    <Content Include="Views\Comment\AllFilesByNameOfUserWithoutPhoto.cshtml" />
+    <Content Include="Views\Comment\AllUploadsByNameOfUser.cshtml" />
+    <Content Include="Views\Comment - Copy\AllFilesByNameOfUser - Copy - Copy.cshtml" />
+    <Content Include="Views\Comment - Copy\AllFilesByNameOfUser - Copy.cshtml" />
+    <Content Include="Views\Comment - Copy\AllFilesByNameOfUser.cshtml" />
+    <Content Include="Views\Comment - Copy\AllFilesByNameOfUserWithoutPhoto.cshtml" />
+    <Content Include="Views\Comment - Copy\CreateComment.cshtml" />
+    <Content Include="Views\Comment - Copy\CreateCommentSuccess.cshtml" />
+    <Content Include="Views\Comment - Copy\GetAllComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />

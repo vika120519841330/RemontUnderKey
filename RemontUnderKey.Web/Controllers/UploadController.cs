@@ -12,19 +12,14 @@ namespace RemontUnderKey.Web.Controllers
     {
         private readonly IUpload service;
         private readonly IComment comservice;
-        private CommentController comcontr;
         ApplicationUserManager userManager;
-        private Upload_View upload;
         private Comment_View comment;
-
 
         public UploadController(IUpload _service, IComment _comservice, ApplicationUserManager _userManager)
         {
             this.service = _service;
             this.comservice = _comservice;
             this.userManager = _userManager;
-            this.comcontr = new CommentController(this.comservice, this.userManager);
-
         }
 
         [HttpGet]
@@ -36,17 +31,45 @@ namespace RemontUnderKey.Web.Controllers
             TempData["IdOfComment"] = id;
             return View("AddFile");
         }
-
+        // вспомогательный метод
+        private ActionResult RedirectToCreateComment(Upload_View inst)
+        {
+            int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());
+            inst = service.GetUpload(tempIdOfUpload).UploadFromDomainToView();
+            comment = comservice.GetComment(inst.Comment_ViewId).CommentFromDomainToView();
+            return RedirectToAction("../Comment/CreateCommentRedirect", comment);
+        }
         [HttpPost]
         public ActionResult AddFile(Upload_View inst, HttpPostedFileBase fileupload)
         {
             ViewBag.Title = "ЗАГРУЗКА ФАЙЛА / ИЗОБРАЖЕНИЯ";
-            //Comment_View comment = comcontr.GetComment(upload.Comment_ViewId);
-            if (fileupload != null && fileupload.ContentLength > 0 && fileupload.ContentLength < 200000)
+            if (fileupload == null)
+            {
+                ViewBag.Result = "Передумали загружать фото?";
+                return RedirectToCreateComment(inst);
+            }
+            else if(fileupload.ContentLength <= 0)
+            {
+                ViewBag.Result = "Что-то пошло не так! Файл не удалось загрузить!";
+                return RedirectToCreateComment(inst);
+            }
+            else if (fileupload.ContentLength > 200000)
+            {
+                ViewBag.Result = "Файл не удалось загрузить! Размер загружаемого файла не должен превышать 2 МБайт!";
+                return RedirectToCreateComment(inst);
+            }
+
+            else if (fileupload.ContentType != "image/jpeg")
+            {
+                ViewBag.Result = "Файл не удалось загрузить! Загружаемое фото должно быть в формате JPEG!";
+                return RedirectToCreateComment(inst);
+            }
+            else
             {
                 byte[] array;
                 // получить имя файла
                 var fileName = Path.GetFileName(fileupload.FileName);
+                inst.FileName = fileName.ToString();
                 // сохранить файл в папку Files в проекте
                 fileupload.SaveAs(Server.MapPath("~/Files/" + fileName));
                 // считать содержимое загружаемого файла в байтовый массив
@@ -57,18 +80,7 @@ namespace RemontUnderKey.Web.Controllers
                 }
                 inst.File = array;
                 ViewBag.ResultFromUpload = "Загрузка прошла успешно!";
-                int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());
-                inst = service.GetUpload(tempIdOfUpload).UploadFromDomainToView();
-                comment = comservice.GetComment(inst.Comment_ViewId).CommentFromDomainToView();
-                return RedirectToAction("../Comment/CreateCommentRedirect", comment);
-            }
-            else
-            {
-                ViewBag.Result = "Файл не удалось загрузить! Размер загружаемого файла не должен превышать 2 МБайт!";
-                int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());
-                inst = service.GetUpload(tempIdOfUpload).UploadFromDomainToView();
-                comment = comservice.GetComment(inst.Comment_ViewId).CommentFromDomainToView();
-                return RedirectToAction("../Comment/CreateCommentRedirect", comment);
+                return RedirectToCreateComment(inst);
             }
         }
     }

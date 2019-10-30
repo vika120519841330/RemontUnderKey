@@ -30,6 +30,26 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             return upload;
         }
 
+        //Вспомогательный метод - возвращает файл, относящийся к определенному комментарию(по id комментария)
+        public IEnumerable<Upload_Infra> GetAllUploadByIdOfComment(int? id)
+        {
+            List<Upload_Infra> upload = context.Uploads
+                .Where(_ => _.Comment_InfraId == id)
+                .ToList()
+                ;
+            if (upload != null)
+            {
+                return upload;
+            }
+            else
+            {
+                List<Upload_Infra> templist = new List<Upload_Infra>();
+                Upload_Infra temp = new Upload_Infra{ };
+                templist.Add(temp);
+                return templist;
+            }
+        }
+
         //Метод возвращает Id вновь созданного Файла
         public int? CreateUpload(Upload_Infra inst)
         {

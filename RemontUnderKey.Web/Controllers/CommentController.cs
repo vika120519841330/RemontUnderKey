@@ -15,14 +15,16 @@ namespace RemontUnderKey.Web.Controllers
     public class CommentController : Controller
     {
         private readonly IComment service;
+        private readonly IUpload upservice;
         private HookController hc;
         private static TelegramBotClient tg_client;
         private string redirectMessage;
         private ApplicationUserManager userManager;
 
-        public CommentController(IComment _service, ApplicationUserManager _userManager)
+        public CommentController(IComment _service, IUpload _upservice, ApplicationUserManager _userManager)
         {
             this.service = _service;
+            this.upservice = _upservice;
             this.userManager = _userManager;
         }
         [HttpGet]
@@ -47,44 +49,22 @@ namespace RemontUnderKey.Web.Controllers
             return comment;
         }
 
-        //вспомогательный метод - возвращает текст комментария пользователя
-        [HttpGet]
-        [Route("Comment/GetCommentText")]
-        public string GetCommentText(int id)
-        {
-            Comment_View comment = service.GetComment(id)
-                .CommentFromDomainToView()
-                ;
-            string text = comment.MessageFromUser;
-            return text;
-        }
-        //вспомогательный метод - возвращает имя пользователя
-        [HttpGet]
-        [Route("Comment/GetCommentUserName")]
-        public string GetCommentUserName(int id)
-        {
-            Comment_View comment = service.GetComment(id)
-                .CommentFromDomainToView()
-                ;
-            string name = comment.UserName;
-            return name;
-        }
-
         //Опубликовать отзыв на сайте вправе только зарегистрированный пользователь
         [Authorize(Roles = "admin, user")]
         [HttpGet]
         [Route("Comment/CreateComment")]
         public ActionResult CreateComment()
         {
-            ViewBag.Title = $"ОСТАВЬТЕ СВОЙ ОТЗЫВ:";
-            ViewBag.Warning = $"ДЛЯ ПУБЛИКАЦИИ ОТЗЫВА, ПРОЙДИТЕ РЕГИСТРАЦИЮ НА САЙТЕ!";
+            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ";
+            ViewBag.Salute = $"{User.Identity.Name} ОСТАВЬТЕ СВОЙ ОТЗЫВ:";
             if (!(User.IsInRole("admin") || User.IsInRole("user")))
             {
+                ViewBag.Warning = $"ДЛЯ ПУБЛИКАЦИИ ОТЗЫВА, ПРОЙДИТЕ РЕГИСТРАЦИЮ НА САЙТЕ!";
                 return RedirectToAction("Login", "Account");
             }
             else
             {
-                var tempList = GetDataAboutUser();
+                List<string> tempList = GetDataAboutUser();
                 Comment_View inst = new Comment_View();
                 inst.UserId = tempList[0];
                 inst.UserName = tempList[1];
@@ -133,7 +113,6 @@ namespace RemontUnderKey.Web.Controllers
                     // Вызвать метод, инициализирующий viber-bot
                     RedirectToViber(redirectMessage)
                 };
-
                 await Task.WhenAll(taskList);
                 //Ожидаем завершения всех задач из массива задач
                 Task.WaitAll(taskList);
@@ -184,5 +163,77 @@ namespace RemontUnderKey.Web.Controllers
             int temp = id;
             return RedirectToAction("AddFile", "Upload", new { id = temp });
         }
+
+        //вспомогательный метод - возвращает текст комментария пользователя
+        [HttpGet]
+        [Route("Comment/GetCommentText")]
+        public string GetCommentText(int id)
+        {
+            Comment_View comment = service.GetComment(id)
+                .CommentFromDomainToView()
+                ;
+            string text = comment.MessageFromUser;
+            return text;
+        }
+
+        //вспомогательный метод - возвращает имя пользователя
+        [HttpGet]
+        [Route("Comment/GetCommentUserName")]
+        public string GetCommentUserName(int id)
+        {
+            Comment_View comment = service.GetComment(id)
+                .CommentFromDomainToView()
+                ;
+            string name = comment.UserName;
+            return name;
+        }
+
+        // Вспомогательный метод - возвращает коллекцию всех загруженных файлов определенного пользователя по его Id
+        public PartialViewResult AllUploadsByNameOfUser()
+        {
+            string UserName = GetDataAboutUser().ElementAt(1).ToString();
+            List<Upload_View> listOfAllUploadsOfUser = new List<Upload_View>();
+            List<FileResult> ListOfFilesOfUser = new List<FileResult>();
+            var temp = upservice.AllUploadsByNameOfUser(UserName);
+            if ((temp != null) && (temp.Count() > 0))
+            {
+                listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
+                                                 .Select(_ => _.UploadFromDomainToView())
+                                                 .ToList();
+                //foreach (Upload_View upload in listOfAllUploadsOfUser)
+                //{
+                //    ListOfFilesOfUser.Add(ViewFile(upload));
+                //}
+                //return PartialView("AllFilesByNameOfUser", ListOfFilesOfUser);
+                return PartialView("AllUploadsByNameOfUser", listOfAllUploadsOfUser);
+            }
+            else return PartialView("AllFilesByNameOfUserWithoutPhoto");
+        }
+
+        // Вспомогательный метод --v1-- возвращает загруженный ранее файл в формате, пригодном для рендеринга в представлении
+        public FileResult ViewFile(Upload_View upload)
+        {
+            byte[] file = upload.File;
+            if ((file != null) && (file.Length > 0))
+            {
+                return File(file, "image/jpeg");
+            }
+            else
+            {
+                return new FilePathResult(HttpContext.Server.MapPath($"~/File/{upload.FileName}"), "image/jpeg");
+            }
+        }
+
+        // Вспомогательный метод --v2-- возвращает загруженный ранее файл в формате, пригодном для рендеринга в представлении
+        public ActionResult GetFile(Upload_View upload)
+        {
+            byte[] file = upload.File;
+            if ((file != null) && (file.Length > 0))
+            {
+                return File(file, "image/jpeg");
+            }
+            else return PartialView("AllFilesByNameOfUserWithoutPhoto");
+        }
+
     }
 }

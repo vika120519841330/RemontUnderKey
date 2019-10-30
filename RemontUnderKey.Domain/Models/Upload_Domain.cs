@@ -11,5 +11,6 @@ namespace RemontUnderKey.Domain.Models
         public int? Id { get; set; }
         public int? Comment_DomainId { get; set; }
         public byte[] File { get; set; }
+        public string FileName { get; set; }
     }
 }

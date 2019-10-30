@@ -29,11 +29,7 @@
             </div>
             <p> &emsp; </p>
             <div>
-                @Html.Action("AllUploadsByNameOfUser", new {  UserName = @User.Identity.Name })
-            </div>
-            <p> &emsp; </p>
-            <div>
-                @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id})
+                @Html.Action("AddFileRedirectToPartial", new { id = Model.Id })
             </div>
             <p> &emsp; </p>
             <p>

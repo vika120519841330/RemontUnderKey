@@ -13,6 +13,7 @@
                 @ViewBag.Message
             </p>
             @Html.HiddenFor(m => m.Comment_ViewId, new { @Value = (int)@TempData["IdOfComment"] })
+            @Html.HiddenFor(m => m.Id)
             <div class="eraser">
                 <p>
                     @ViewBag.Salute
@@ -25,6 +26,7 @@
                         <p> &emsp; </p>
                         @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
                     </div>
+                    @Html.HiddenFor(model => model.FileName, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
                 <p> &emsp; </p>
                 <div>

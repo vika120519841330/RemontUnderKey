@@ -10,10 +10,43 @@ namespace RemontUnderKey.DomainServices.Services
     public class Upload_Service : IUpload
     {
         private readonly IUpload_Repository repository;
-        public Upload_Service(IUpload_Repository _repository)
+        private readonly IComment_Repository comrepository;
+        public Upload_Service(IUpload_Repository _repository, IComment_Repository _comrepository)
         {
             this.repository = _repository;
+            this.comrepository = _comrepository;
         }
+        // Вспомогательный метод - возвращает коллекцию всех загруженных файлов определенного пользователя по его имени
+        public List<Upload_Domain> AllUploadsByNameOfUser(string UserName)
+        {
+            List<Upload_Domain> listOfAllUploadsOfUser = new List<Upload_Domain>();
+
+            IEnumerable<Comment_Domain> listOfAllCommentsOfUser = new List<Comment_Domain>();
+            var temp = comrepository.AllCommentsByNameOfUser(UserName);
+            if (temp == null)
+            {
+                return listOfAllUploadsOfUser;
+            }
+            else
+            {
+                listOfAllCommentsOfUser = comrepository.AllCommentsByNameOfUser(UserName)
+                    .Select(_ => _.CommentFromInfraToDomain())
+                    .ToList()
+                    ;
+                foreach (Comment_Domain comment in listOfAllCommentsOfUser)
+                {
+                    var tempList = repository.GetAllUploadByIdOfComment(comment.Id)
+                        .Select(_ => _.UploadFromInfraToDomain())
+                        .ToList()
+                        ;
+                    if (tempList != null)
+                        listOfAllUploadsOfUser.AddRange(tempList);
+                    else return listOfAllUploadsOfUser;
+                }
+            }
+                return listOfAllUploadsOfUser;
+        }
+
         public IEnumerable<Upload_Domain> GetAllUpload()
         {
             var uploads = repository.GetAllUpload()
@@ -29,6 +62,15 @@ namespace RemontUnderKey.DomainServices.Services
                 .UploadFromInfraToDomain()
                 ;
             return comment;
+        }
+
+        //Вспомогательный метод - возвращает файл, относящийся к определенному комментарию(по id комментария)
+        public IEnumerable<Upload_Domain> GetAllUploadByIdOfComment(int? id)
+        {
+            return repository.GetAllUploadByIdOfComment(id)
+                .Select(_ => _.UploadFromInfraToDomain())
+                .ToList()
+                ;
         }
 
         public int? CreateUpload(Upload_Domain inst)

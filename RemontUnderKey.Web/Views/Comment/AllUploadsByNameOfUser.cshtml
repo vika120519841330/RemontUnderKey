@@ -1,0 +1,11 @@
+﻿@using RemontUnderKey.Web.Models
+@model IEnumerable<Upload_View>
+
+@foreach (var item in Model)
+{
+    <div>
+        <img src="@Url.Action("GetFile", "Comment", new {upload = @item })" />
+    </div>
+
+
+}

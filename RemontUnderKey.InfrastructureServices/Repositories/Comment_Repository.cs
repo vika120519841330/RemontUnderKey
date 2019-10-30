@@ -15,13 +15,27 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
         }
 
         //Вспомогательный метод - возвращает коллекцию всех комментариев, относящихся к определенному пользователю
-        public IEnumerable<Comment_Infra> AllCommentsByIdOfUser(string id)
+        public IEnumerable<Comment_Infra> AllCommentsByNameOfUser(string UserName)
         {
-            var commentsOfUser = context.Comments
-                .Where(_ => _.UserId == id)
+            List<Comment_Infra> commentsOfUser = new List<Comment_Infra>();
+            var temp = context.Comments
+                .Where(_ => _.UserName == UserName)
                 .ToList()
                 ;
-            return commentsOfUser;
+            if (temp != null)
+            {
+                commentsOfUser = context.Comments
+                .Where(_ => _.UserName == UserName)
+                .ToList()
+                ;
+                return commentsOfUser;
+            }
+            else
+            {
+                var t = new Comment_Infra { };
+                commentsOfUser.Add(t);
+                return commentsOfUser;
+            }
         }
 
         public IEnumerable<Comment_Infra> GetAllComments()

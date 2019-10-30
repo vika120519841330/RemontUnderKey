@@ -30,5 +30,12 @@ namespace RemontUnderKey.Web.Models
         [DataType(DataType.Upload)]
         [Display(Name = "Загружаемый файл:")]
         public byte[] File { get; set; }
+
+        //Наименование загруженного файла
+        [ConfigurationProperty("Наименование файла:", IsRequired = true, DefaultValue = "Наименование файла")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Наименование файла:")]
+        public string FileName { get; set; }
+
     }
 }
