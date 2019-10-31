@@ -109,14 +109,6 @@ namespace RemontUnderKey.Web.Controllers
                                             .Select(_ => _.UploadFromDomainToView())
                                             .ToList()
                                             ;
-                    //if ((tempUpload != null) && (tempUpload.Count() > 0))
-                    //{
-                    //    ViewBag.Result = $"ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
-                    //}
-                    //else
-                    //{
-                    //    ViewBag.Result = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
-                    //}
                     return View("CreateComment", inst);
                 }
             }
@@ -171,6 +163,22 @@ namespace RemontUnderKey.Web.Controllers
                 await Task.WhenAll(taskList);
                 //Ожидаем завершения всех задач из массива задач
                 Task.WaitAll(taskList);
+                // удаляем все пустые и сохранененные отзывы текущего пользователя из БД
+                var AllCommentsByUser = service.AllCommentsByNameOfUser(User.Identity.Name)
+                                                                        .Select(_ => _.CommentFromDomainToView())
+                                                                        .ToList()
+                                                                        ;
+                foreach(var comment in AllCommentsByUser)
+                {
+                    var AllUploadsByAllCommentsByUser = upservice.GetAllUploadByIdOfComment(comment.Id)
+                                                                        .Select(_ => _.UploadFromDomainToView())
+                                                                        .ToList()
+                                                                        ;
+                    if((comment.MessageFromUser.Length == 0) && (AllUploadsByAllCommentsByUser.Count == 0))
+                    {
+                        service.DeleteComment(comment.Id);
+                    }
+                }
                 return View("CreateCommentSuccess");
             }
         }
