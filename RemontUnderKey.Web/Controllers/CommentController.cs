@@ -69,40 +69,82 @@ namespace RemontUnderKey.Web.Controllers
         public ActionResult CreateComment()
         {
             ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ";
-            ViewBag.Salute = $"{User.Identity.Name} ОСТАВЬТЕ СВОЙ ОТЗЫВ:";
             if (!(User.IsInRole("admin") || User.IsInRole("user")))
             {
-                ViewBag.Warning = $"ДЛЯ ПУБЛИКАЦИИ ОТЗЫВА, ПРОЙДИТЕ РЕГИСТРАЦИЮ НА САЙТЕ!";
                 return RedirectToAction("Login", "Account");
             }
             else
             {
-                List<string> tempList = GetDataAboutUser();
-                Comment_View inst = new Comment_View();
-                inst.UserId = tempList[0];
-                inst.UserName = tempList[1];
-                int? tempIdOfComment = service.CreateComment(inst.CommentFromViewToDomain());
-                inst = service.GetComment(tempIdOfComment).CommentFromDomainToView();
-                return View("CreateComment", inst);
+                //проверяем, есть ли у текущего пользователя ранее оставленные комментарии по его логину
+                string UserName = GetDataAboutUser().ElementAt(1).ToString();
+                string UserId = GetDataAboutUser().ElementAt(0).ToString();
+                IEnumerable<Comment_View> ListOfCommentsOfCurrentUser = service.AllCommentsByNameOfUser(UserName)
+                                                                        .Select(_ => _.CommentFromDomainToView())
+                                                                        .ToList()
+                                                                        ;
+                //если сохраненных отзывов нет - создаем новые
+                string lengthOfAllCommentsOfUser = "";
+                foreach (Comment_View tempComment in ListOfCommentsOfCurrentUser)
+                {
+                    lengthOfAllCommentsOfUser = String.Concat(lengthOfAllCommentsOfUser, tempComment.MessageFromUser);
+                }
+                if (lengthOfAllCommentsOfUser.Length == 0)
+                {
+                    ViewBag.Salute = $"ПОЛЬЗОВАТЕЛЬ {UserName} ОСТАВЬТЕ, ПОЖАЛУЙСТА, СВОЙ ПЕРВЫЙ ОТЗЫВ НА САЙТЕ!";
+                    Comment_View inst = new Comment_View();
+                    inst.UserId = UserId;
+                    inst.UserName = UserName;
+                    int? tempIdOfComment = service.CreateComment(inst.CommentFromViewToDomain());
+                    inst = service.GetComment(tempIdOfComment).CommentFromDomainToView();
+                    return View("CreateComment", inst);
+                }
+                else
+                {
+                    //если сохраненные отзывовы есть - редактируем последний(заменяем старый на новый), дабы пользователь не мог оставить более одного отзыва на сайте
+                    ViewBag.Salute = $"ПОЛЬЗОВАТЕЛЬ {UserName} МОЖЕТЕ ОСТАВИТЬ ЕЩЕ ОДИН ОТЗЫВ НА НАШЕМ САЙТЕ!";
+                    // Получение последного оставленного текущим пользователем отзыва
+                    Comment_View inst = ListOfCommentsOfCurrentUser.Last();
+                    // Рендеринг одного или другого уведомления в зависимости от того, загружал текущий пользователь фото или нет
+                    List<Upload_View> tempUpload = upservice.AllUploadsByNameOfUser(UserName)
+                                            .Select(_ => _.UploadFromDomainToView())
+                                            .ToList()
+                                            ;
+                    //if ((tempUpload != null) && (tempUpload.Count() > 0))
+                    //{
+                    //    ViewBag.Result = $"ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
+                    //}
+                    //else
+                    //{
+                    //    ViewBag.Result = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
+                    //}
+                    return View("CreateComment", inst);
+                }
             }
         }
 
         [HttpGet]
         [Route("Comment/CreateCommentRedirect")]
-        public ActionResult CreateCommentRedirect([System.Web.Http.FromBody]Comment_View inst)
+        public ActionResult CreateCommentRedirect([System.Web.Http.FromBody]Comment_View inst, string resultUpload)
         {
-                return View("CreateComment", inst);
+            int idofComment = inst.Id;
+            List<Upload_View> temp = upservice.GetAllUploadByIdOfComment(idofComment)
+                                            .Select(_ => _.UploadFromDomainToView())
+                                            .ToList()
+                                            ;
+            string nameOfLastUpload = temp.Last().FileName;
+            ViewBag.ResultFromUpload = resultUpload;
+            return View("CreateComment", inst);
         }
 
         [HttpPost]
         [Route("Comment/CreateComment/")]
         public async Task<ViewResult> CreateComment([System.Web.Http.FromBody]Comment_View inst)
         {
-            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА";
-            ViewBag.Salute = $"{inst.UserName} ОСТАВЬТЕ СВОЙ ОТЗЫВ!";
-            if (inst == null)
+            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ";
+            ViewBag.Salute = $"{inst.UserName} НЕ ЗАБУДЬТЕ ОСТАВИТЬ СВОЙ ОТЗЫВ!";
+            if (inst.MessageFromUser.Length == 0)
             {
-                ModelState.AddModelError("CreateCommentNull", "Оставьте свой отзыв!!!");
+                ModelState.AddModelError("CreateCommentNull", "Вы не добавили свой отзыв!!!");
                 ViewBag.Message = "Оставьте свой отзыв!!!";
                 return View("CreateComment", inst);
             }
@@ -132,7 +174,7 @@ namespace RemontUnderKey.Web.Controllers
                 return View("CreateCommentSuccess");
             }
         }
-       
+
         // Вспомогательный метод - пересылает строковое сообщение с помощью телеграмм-бота в telegram-channel
         private async Task RedirectToTelegram(string tmsg)
         {
@@ -153,7 +195,7 @@ namespace RemontUnderKey.Web.Controllers
             //установить webhook
             hc = new HookController();
             var accinfo = hc.RegisterWebhook();
-            var tempmessage =  hc.Post(vmsg);
+            var tempmessage = hc.Post(vmsg);
             return;
         }
 
@@ -170,14 +212,14 @@ namespace RemontUnderKey.Web.Controllers
             return ListOfUsersIdName;
         }
 
-        //вспомогательный метод - возвращает идентификац.номер и имя зарегистрированного 
+        //вспомогательный метод - возвращает идентификац.номер текущего пользователя для дальнейшей передачи в представление 
         public RedirectToRouteResult AddFileRedirect(int id)
         {
             int temp = id;
             return RedirectToAction("AddFile", "Upload", new { id = temp });
         }
 
-        //вспомогательный метод - возвращает текст комментария пользователя
+        //вспомогательный метод - возвращает текст отзыва пользователя
         [HttpGet]
         [Route("Comment/GetCommentText")]
         public string GetCommentText(int id)
@@ -201,7 +243,7 @@ namespace RemontUnderKey.Web.Controllers
             return name;
         }
 
-        // Вспомогательный метод - возвращает коллекцию всех загруженных файлов определенного пользователя по его Id
+        // Вспомогательный метод - возвращает коллекцию всех загруженных файлов определенного пользователя по его логину
         public PartialViewResult AllUploadsByNameOfUser()
         {
             string UserName = GetDataAboutUser().ElementAt(1).ToString();
@@ -212,24 +254,27 @@ namespace RemontUnderKey.Web.Controllers
                 listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
                                                  .Select(_ => _.UploadFromDomainToView())
                                                  .ToList();
+                ViewBag.Result = $"РАНЕЕ ЗАГРУЖЕННЫЕ ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
                 return PartialView("AllUploadsByNameOfUser", listOfAllUploadsOfUser);
             }
-            else if ((temp != null) && (temp.Count() == 0))
-            { 
-                listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
-                                                 .Select(_ => _.UploadFromDomainToView())
-                                                 .ToList();
-                List<string> ListFileStringPath = new List<string>();
-                foreach (Upload_View tempUpl in listOfAllUploadsOfUser)
-                {
-                    ListFileStringPath.Add(tempUpl.FileName);
-                }
-                return PartialView("AllFilePathesByUser", ListFileStringPath);
-            }
+            // 2-ой способ
+            //{ 
+            //    listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
+            //                                     .Select(_ => _.UploadFromDomainToView())
+            //                                     .ToList();
+            //    List<string> ListFileStringPath = new List<string>();
+            //    foreach (Upload_View tempUpl in listOfAllUploadsOfUser)
+            //    {
+            //        ListFileStringPath.Add(tempUpl.FileName);
+            //    }
+            //    ViewBag.Result = $"РАНЕЕ ЗАГРУЖЕННЫЕ ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
+            //    return PartialView("AllFilePathesByUser", ListFileStringPath);
+            //}
             else
             {
+                ViewBag.Result = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
                 return PartialView("AllFilesByNameOfUserWithoutPhoto");
             }
-        }
+        }        
     }
 }

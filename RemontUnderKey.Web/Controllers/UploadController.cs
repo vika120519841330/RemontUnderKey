@@ -27,36 +27,38 @@ namespace RemontUnderKey.Web.Controllers
         public ActionResult AddFile(int id)
         {
             ViewBag.Salute = "Выберите файл для загрузки:";
-            ViewBag.Title = "ЗАГРУЗКА ФАЙЛА / ИЗОБРАЖЕНИЯ";
+            ViewBag.Title = "ЗАГРУЗКА ИЗОБРАЖЕНИЯ ИЛИ ФОТО";
             TempData["IdOfComment"] = id;
             return View("AddFile");
         }
         // вспомогательный метод
-        private ActionResult RedirectToCreateComment(Upload_View inst)
+        private ActionResult RedirectToCreateComment(Upload_View inst, string resultUpload)
         {
+            ViewBag.Title = "РЕЗУЛЬТАТ ЗАГРУЗКИ ФОТО ИЛИ ИЗОБРАЖЕНИЯ";
             int? tempIdOfUpload = service.CreateUpload(inst.UploadFromViewToDomain());
             inst = service.GetUpload(tempIdOfUpload).UploadFromDomainToView();
             comment = comservice.GetComment(inst.Comment_ViewId).CommentFromDomainToView();
+            ViewBag.ResultFromUpload = resultUpload;
             return RedirectToAction("../Comment/CreateCommentRedirect", comment);
         }
         [HttpPost]
         public ActionResult AddFile(Upload_View inst, HttpPostedFileBase fileupload)
         {
-            ViewBag.Title = "ЗАГРУЗКА ФАЙЛА / ИЗОБРАЖЕНИЯ";
+            string resultUpload = "";
             if (fileupload == null)
             {
-                ViewBag.Result = "Передумали загружать фото?";
-                return RedirectToCreateComment(inst);
+                resultUpload = "Передумали загружать фото?";
+                return RedirectToCreateComment(inst, resultUpload);
             }
             else if(fileupload.ContentLength <= 0)
             {
-                ViewBag.Result = "Что-то пошло не так! Файл не удалось загрузить!";
-                return RedirectToCreateComment(inst);
+                resultUpload = "Что-то пошло не так! Файл не удалось загрузить!";
+                return RedirectToCreateComment(inst, resultUpload);
             }
             else if (fileupload.ContentLength > 200000)
             {
-                ViewBag.Result = "Файл не удалось загрузить! Размер загружаемого файла не должен превышать 2 МБайт!";
-                return RedirectToCreateComment(inst);
+                resultUpload = "Файл не удалось загрузить! Размер загружаемого файла не должен превышать 2 МБайт!";
+                return RedirectToCreateComment(inst, resultUpload);
             }
             //MIME-типы Image Types, допустимые для загрузки пользователем
             #region
@@ -98,8 +100,8 @@ namespace RemontUnderKey.Web.Controllers
                   || fileupload.ContentType == "image/*"))
                   #endregion
             {
-                ViewBag.Result = "Файл не удалось загрузить! Загружаемый тип файла должен относиться к image!";
-                return RedirectToCreateComment(inst);
+                resultUpload = "Файл не удалось загрузить! Загружаемый тип файла должен относиться к типу image!";
+                return RedirectToCreateComment(inst, resultUpload);
             }
             else
             {
@@ -116,8 +118,8 @@ namespace RemontUnderKey.Web.Controllers
                     array = ms.GetBuffer();
                 }
                 inst.File = array;
-                ViewBag.ResultFromUpload = string.Format($"{inst.FileName} был успешно загружен!");
-                return RedirectToCreateComment(inst);
+                resultUpload = string.Format($"{inst.FileName} был успешно загружен!");
+                return RedirectToCreateComment(inst, resultUpload);
             }
         }
     }

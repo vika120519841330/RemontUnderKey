@@ -31,6 +31,7 @@ namespace RemontUnderKey.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            ViewBag.Warning = $"ДЛЯ ПУБЛИКАЦИИ ОТЗЫВА, ВОЙДИТЕ В СВОЙ АККАУНТ ЛИБО ПРОЙДИТЕ РЕГИСТРАЦИЮ НА САЙТЕ!";
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

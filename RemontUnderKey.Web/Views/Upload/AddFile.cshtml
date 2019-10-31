@@ -35,5 +35,17 @@
             </div>
         </div>
     }
+    <div>
+        @ViewBag.ResultFromUpload
+    </div>
+    <div>
+        @ViewBag.Result
+    </div>
+    <div>
+        <button class="eraserbutton">
+            @Html.ActionLink("НЕ ЗАГРУЖАТЬ, ВЕРНУТЬСЯ НАЗАД", "CreateComment", "Comment")
+        </button>
+    </div>
+
 }
 

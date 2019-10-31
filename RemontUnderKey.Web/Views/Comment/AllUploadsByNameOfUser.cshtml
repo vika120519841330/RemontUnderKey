@@ -1,10 +1,12 @@
 ﻿@using RemontUnderKey.Web.Models
 @model IEnumerable<Upload_View>
 
+<div>
+    @ViewBag.Result
+</div>
 @foreach (var item in Model)
 {
     <div>
-
         @{
             if (item.File != null)
             {
@@ -12,7 +14,6 @@
                 string imageType = item.FileType;
                 string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
                 <img src="@imageSrc" width="150" height="150" />
-
             }
         }
     </div>
