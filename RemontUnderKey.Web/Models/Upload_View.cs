@@ -32,10 +32,16 @@ namespace RemontUnderKey.Web.Models
         public byte[] File { get; set; }
 
         //Наименование загруженного файла
-        [ConfigurationProperty("Наименование файла:", IsRequired = true, DefaultValue = "Наименование файла")]
+        [ConfigurationProperty("Наименование файла:", IsRequired = true, DefaultValue = "stone.jpg")]
         [DataType(DataType.Text)]
         [Display(Name = "Наименование файла:")]
         public string FileName { get; set; }
+
+        //MIME-тип загруженного файла
+        [ConfigurationProperty("Тип загружаемого файла:", IsRequired = true, DefaultValue = "image/jpg")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Тип загружаемого файла:")]
+        public string FileType { get; set; }
 
     }
 }

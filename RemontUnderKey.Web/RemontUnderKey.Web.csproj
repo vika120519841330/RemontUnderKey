@@ -320,10 +320,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Identity_RemontUnderKey_DB_301019.mdf" />
-    <Content Include="App_Data\Identity_RemontUnderKey_DB_301019_log.ldf">
-      <DependentUpon>Identity_RemontUnderKey_DB_301019.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\1_Minsk_ul_Lojinskaja\1.jpg" />
     <Content Include="Content\1_Minsk_ul_Lojinskaja\10.jpg" />
     <Content Include="Content\1_Minsk_ul_Lojinskaja\11.jpg" />
@@ -844,12 +840,13 @@
     <Content Include="Views\OLD\CreateCommentOLD.cshtml" />
     <Content Include="Views\OLD\AddFilePartial.cshtml" />
     <Content Include="Views\OLD\AddFilePartialSucces.cshtml" />
-    <Content Include="Views\Comment\AllFileResultsByUser.cshtml" />
+    <Content Include="Views\OLD\AllFileResultsByUser.cshtml" />
     <Content Include="Views\Comment\AllFilesByNameOfUserWithoutPhoto.cshtml" />
     <Content Include="Views\Comment\AllUploadsByNameOfUser.cshtml" />
     <Content Include="Views\Comment\AllFilePathesByUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Files\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>

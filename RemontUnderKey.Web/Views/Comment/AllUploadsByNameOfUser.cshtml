@@ -9,7 +9,8 @@
             if (item.File != null)
             {
                 string imageBase64 = Convert.ToBase64String(item.File);
-                string imageSrc = string.Format("data:image/jpg;base64,{0}", imageBase64);
+                string imageType = item.FileType;
+                string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
                 <img src="@imageSrc" width="150" height="150" />
 
             }

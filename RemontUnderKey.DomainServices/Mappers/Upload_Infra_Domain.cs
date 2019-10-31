@@ -15,6 +15,7 @@ namespace RemontUnderKey.DomainServices.Mappers
                     Id = @this.Id,
                     Comment_DomainId = @this.Comment_InfraId,
                     FileName = @this.FileName,
+                    FileType = @this.FileType,
                     File = @this.File
                 };
             }
@@ -32,6 +33,7 @@ namespace RemontUnderKey.DomainServices.Mappers
                     Id = @this.Id,
                     Comment_InfraId = @this.Comment_DomainId,
                     FileName = @this.FileName,
+                    FileType = @this.FileType,
                     File = @this.File
                 };
             }
