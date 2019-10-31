@@ -4,8 +4,15 @@
 @foreach (var item in Model)
 {
     <div>
-        <img src="@Url.Action("GetFile", "Comment", new {upload = @item })" />
+
+        @{
+            if (item.File != null)
+            {
+                string imageBase64 = Convert.ToBase64String(item.File);
+                string imageSrc = string.Format("data:image/jpg;base64,{0}", imageBase64);
+                <img src="@imageSrc" width="150" height="150" />
+
+            }
+        }
     </div>
-
-
 }

@@ -1,0 +1,15 @@
+﻿@model List<FileResult>
+@foreach (FileResult item in Model)
+{
+    <div>
+        @{
+            if (item != null)
+            {
+                string imgsrc = String.Concat("~/Files/", @item.FileDownloadName);
+                <img src=" @imgsrc" width="150" height="150" />
+                @*<img src="~/Files/11.jpg" width="150" height="150" />*@
+
+            }
+        }
+    </div>
+}

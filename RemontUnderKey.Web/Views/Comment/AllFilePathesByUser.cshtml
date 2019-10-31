@@ -1,0 +1,13 @@
+﻿@model List<string>
+@foreach (string item in Model)
+{
+    <div>
+        @{
+            if (item.Length > 0)
+            {
+                string imgsrc = String.Concat("~/Files/", @item);
+                <img src=@Url.Content(@imgsrc) width="150" height="150" />
+            }
+        }
+    </div>
+}

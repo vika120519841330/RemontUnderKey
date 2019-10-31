@@ -32,6 +32,19 @@ namespace RemontUnderKey.Web.Controllers
         public ActionResult GetAllComments()
         {
             IEnumerable<Comment_View> comments = service.GetAllComments()
+                .Where(_ => _.ApprovalForPublishing == true)
+                .Select(_ => _.CommentFromDomainToView())
+                .OrderBy(t => t.Id)
+                .ToList()
+                ;
+            return View(comments);
+        }
+
+        [HttpGet]
+        [Route("Comment/GetAllCommentsWithoutFilter")]
+        public ActionResult GetAllCommentsWithoutFilter()
+        {
+            IEnumerable<Comment_View> comments = service.GetAllComments()
                 .Select(_ => _.CommentFromDomainToView())
                 .OrderBy(t => t.Id)
                 .ToList()
@@ -193,47 +206,30 @@ namespace RemontUnderKey.Web.Controllers
         {
             string UserName = GetDataAboutUser().ElementAt(1).ToString();
             List<Upload_View> listOfAllUploadsOfUser = new List<Upload_View>();
-            List<FileResult> ListOfFilesOfUser = new List<FileResult>();
             var temp = upservice.AllUploadsByNameOfUser(UserName);
             if ((temp != null) && (temp.Count() > 0))
             {
                 listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
                                                  .Select(_ => _.UploadFromDomainToView())
                                                  .ToList();
-                //foreach (Upload_View upload in listOfAllUploadsOfUser)
-                //{
-                //    ListOfFilesOfUser.Add(ViewFile(upload));
-                //}
-                //return PartialView("AllFilesByNameOfUser", ListOfFilesOfUser);
                 return PartialView("AllUploadsByNameOfUser", listOfAllUploadsOfUser);
             }
-            else return PartialView("AllFilesByNameOfUserWithoutPhoto");
-        }
-
-        // Вспомогательный метод --v1-- возвращает загруженный ранее файл в формате, пригодном для рендеринга в представлении
-        public FileResult ViewFile(Upload_View upload)
-        {
-            byte[] file = upload.File;
-            if ((file != null) && (file.Length > 0))
-            {
-                return File(file, "image/jpeg");
+            else if ((temp != null) && (temp.Count() == 0))
+            { 
+                listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
+                                                 .Select(_ => _.UploadFromDomainToView())
+                                                 .ToList();
+                List<string> ListFileStringPath = new List<string>();
+                foreach (Upload_View tempUpl in listOfAllUploadsOfUser)
+                {
+                    ListFileStringPath.Add(tempUpl.FileName);
+                }
+                return PartialView("AllFilePathesByUser", ListFileStringPath);
             }
             else
             {
-                return new FilePathResult(HttpContext.Server.MapPath($"~/File/{upload.FileName}"), "image/jpeg");
+                return PartialView("AllFilesByNameOfUserWithoutPhoto");
             }
         }
-
-        // Вспомогательный метод --v2-- возвращает загруженный ранее файл в формате, пригодном для рендеринга в представлении
-        public ActionResult GetFile(Upload_View upload)
-        {
-            byte[] file = upload.File;
-            if ((file != null) && (file.Length > 0))
-            {
-                return File(file, "image/jpeg");
-            }
-            else return PartialView("AllFilesByNameOfUserWithoutPhoto");
-        }
-
     }
 }
