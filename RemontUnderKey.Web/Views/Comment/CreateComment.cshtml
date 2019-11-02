@@ -6,12 +6,11 @@
     {
         @Html.AntiForgeryToken()
         <hr class="eraser" />
-        <p style="font-size:xx-large; text-align: center;" class="eraser">@ViewBag.Salute</p>
+        <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font; ">@ViewBag.Salute</p>
         <p> &emsp; </p>
-        <p style="font-size:xx-large; text-align: center;" class="eraser">@ViewBag.Result</p>
         <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <p>
+            <p style=" font-family:My_Flex_font;">
                 @ViewBag.Message
             </p>
             @Html.HiddenFor(x => x.Id)
@@ -42,12 +41,11 @@
             </div>
         </div>
     }
-    <div>
+    <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
         @ViewBag.Result
-    </div>
-    <>
+    </p>
+    <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
         @ViewBag.ResultFromUpload
-    </>
-
+    </p>
 
 }

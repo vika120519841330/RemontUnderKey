@@ -751,6 +751,7 @@
     <Content Include="Content\reset.css" />
     <Content Include="Content\stone.jpg" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\StyleLogin.css" />
     <Content Include="Content\texture1.jpg" />
     <Content Include="Content\texture2.jpg" />
     <Content Include="Content\texture3.jpg" />
@@ -768,8 +769,11 @@
     <Content Include="fonts\ofont.ru_DS Eraser2.ttf" />
     <Content Include="fonts\ofont.ru_PF Stamps Pro Flex.ttf" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\mini\OneDrive - Ярлык.lnk" />
+    <None Include="Properties\PublishProfiles\remontunderkey - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\remontunderkey - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gallery.js" />
+    <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -800,7 +804,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Login_OLD.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -844,11 +848,10 @@
     <Content Include="Views\Comment\AllFilesByNameOfUserWithoutPhoto.cshtml" />
     <Content Include="Views\Comment\AllUploadsByNameOfUser.cshtml" />
     <Content Include="Views\Comment\AllFilePathesByUser.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Files\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

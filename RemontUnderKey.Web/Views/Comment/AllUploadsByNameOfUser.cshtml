@@ -6,15 +6,20 @@
 </div>
 @foreach (var item in Model)
 {
-    <div>
-        @{
-            if (item.File != null)
-            {
-                string imageBase64 = Convert.ToBase64String(item.File);
-                string imageType = item.FileType;
-                string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
-                <img src="@imageSrc" width="150" height="150" />
-            }
+<span>
+    @{
+        if (item.File != null)
+        {
+            int lenthoffile = item.File.Length;
+            string imageBase64 = Convert.ToBase64String(item.File);
+            string imageType = item.FileType;
+            string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
+            <img src="@imageSrc" width="150" height="150" />
+            <span>
+                @lenthoffile
+            </span>
+
         }
-    </div>
+    }
+</span>
 }

@@ -34,7 +34,9 @@ namespace RemontUnderKey.Web
                       "~/Content/style.css",
                       "~/Content/elastislide.css",
                       "~/Content/reset.css"));
-
+            //add me
+            bundles.Add(new StyleBundle("~/Content/mycss").Include(
+                      "~/Content/StyleLogin.css"));
 
         }
     }

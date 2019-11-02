@@ -60,7 +60,7 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             context.Uploads.Add(temp);
             context.SaveChanges();
             Upload_Infra tempId = context.Uploads
-                .FirstOrDefault(_ => _.Comment_InfraId == temp.Comment_InfraId)
+                .Last(_ => _.Comment_InfraId == temp.Comment_InfraId)
                 ;
                 return tempId.Id;
         }

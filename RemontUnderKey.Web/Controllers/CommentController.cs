@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using RemontUnderKey.Web.Identity;
 using System.Web.Routing;
+using System.Collections;
 
 namespace RemontUnderKey.Web.Controllers
 {
@@ -115,17 +116,21 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         [HttpGet]
-        [Route("Comment/CreateCommentRedirect")]
-        public ActionResult CreateCommentRedirect([System.Web.Http.FromBody]Comment_View inst, string resultUpload)
+        [Route("Comment/CreateCommentRedirect/{id:int}/{res:string}")]
+        public ViewResult CreateCommentRedirect(int id, string res)
         {
-            int idofComment = inst.Id;
-            List<Upload_View> temp = upservice.GetAllUploadByIdOfComment(idofComment)
-                                            .Select(_ => _.UploadFromDomainToView())
-                                            .ToList()
-                                            ;
-            string nameOfLastUpload = temp.Last().FileName;
+            int commentId = id;
+            string resultUpload = res;
+            Comment_View comment = service.GetComment(commentId).CommentFromDomainToView();
+            int idofComment = comment.Id;
+            //List<Upload_View> temp = upservice.GetAllUploadByIdOfComment(idofComment)
+            //                                .Select(_ => _.UploadFromDomainToView())
+            //                                .ToList()
+            //                                ;
+            //string nameOfLastUpload = temp.Last().FileName;
+            //ViewBag.UploadName = nameOfLastUpload;
             ViewBag.ResultFromUpload = resultUpload;
-            return View("CreateComment", inst);
+            return View("CreateComment", comment);
         }
 
         [HttpPost]
@@ -168,13 +173,13 @@ namespace RemontUnderKey.Web.Controllers
                                                                         .Select(_ => _.CommentFromDomainToView())
                                                                         .ToList()
                                                                         ;
-                foreach(var comment in AllCommentsByUser)
+                foreach (var comment in AllCommentsByUser)
                 {
                     var AllUploadsByAllCommentsByUser = upservice.GetAllUploadByIdOfComment(comment.Id)
                                                                         .Select(_ => _.UploadFromDomainToView())
                                                                         .ToList()
                                                                         ;
-                    if((comment.MessageFromUser.Length == 0) && (AllUploadsByAllCommentsByUser.Count == 0))
+                    if ((comment.MessageFromUser.Length == 0) && (AllUploadsByAllCommentsByUser.Count == 0))
                     {
                         service.DeleteComment(comment.Id);
                     }
@@ -265,7 +270,9 @@ namespace RemontUnderKey.Web.Controllers
                 ViewBag.Result = $"РАНЕЕ ЗАГРУЖЕННЫЕ ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
                 return PartialView("AllUploadsByNameOfUser", listOfAllUploadsOfUser);
             }
-            // 2-ой способ
+            #region
+            // 2-ой способ 
+            //закомментированно, т.к. при deploy on azure will fail
             //{ 
             //    listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
             //                                     .Select(_ => _.UploadFromDomainToView())
@@ -278,6 +285,7 @@ namespace RemontUnderKey.Web.Controllers
             //    ViewBag.Result = $"РАНЕЕ ЗАГРУЖЕННЫЕ ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
             //    return PartialView("AllFilePathesByUser", ListFileStringPath);
             //}
+            #endregion
             else
             {
                 ViewBag.Result = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
