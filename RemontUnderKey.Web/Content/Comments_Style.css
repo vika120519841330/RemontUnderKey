@@ -5,10 +5,16 @@
     font-family: Tahoma, Geneva, sans-serif;
 }
 
+
+
 #gamucto-necagus {
     padding: 0 10px 30px 10px;
     margin-top: 30px 0px 0px;
 }
+
+
+
+
 
 
 
@@ -22,15 +28,27 @@
 
 
 
+
+
+
+
         #gamucto-necagus .carousel-control.left {
             left: -12px;
         }
 
 
 
+
+
+
+
         #gamucto-necagus .carousel-control.right {
             right: -12px !important;
         }
+
+
+
+
 
 
 
@@ -43,15 +61,27 @@
 
 
 
+
+
+
+
         #gamucto-necagus .carousel-indicators li {
             background: #d0cbcb;
         }
 
 
 
+
+
+
+
         #gamucto-necagus .carousel-indicators .active {
             background: #312f2f;
         }
+
+
+
+
 
 
 
@@ -64,6 +94,10 @@
 
 
 
+
+
+
+
 .item blockquote {
     border-left: none;
     margin: 0;
@@ -71,9 +105,17 @@
 
 
 
+
+
+
+
     .item blockquote img {
         margin-bottom: 10px;
     }
+
+
+
+
 
 
 
@@ -86,7 +128,13 @@
 
 
 
+
+
+
+
 @media (min-width: 768px) {
+
+
 
     #gamucto-necagus {
         margin-bottom: 0;
@@ -97,7 +145,15 @@
 
 
 
+
+
+
+
 @media (max-width: 768px) {
+
+
+
+
 
 
 
@@ -107,12 +163,20 @@
 
 
 
+
+
+
+
         #gamucto-necagus .carousel-indicators li {
             display: inline-block;
             margin: 0px 5px;
             width: 15px;
             height: 15px;
         }
+
+
+
+
 
 
 

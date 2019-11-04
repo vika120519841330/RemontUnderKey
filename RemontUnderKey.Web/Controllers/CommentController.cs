@@ -57,7 +57,6 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Comment/GetComment/id")]
         public ActionResult GetComment(int id)
         {
-            ViewBag.Salute = "ОТЗЫВ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
             ViewBag.Title = "ПРОСМОТР ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
             Comment_View comment = service.GetComment(id)
                 .CommentFromDomainToView()
@@ -133,7 +132,7 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Comment/CreateComment/")]
         public async Task<ViewResult> CreateComment([System.Web.Http.FromBody]Comment_View inst)
         {
-            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ";
+            ViewBag.Title = "ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ";
             ViewBag.Salute = $"{inst.UserName} НЕ ЗАБУДЬТЕ ОСТАВИТЬ СВОЙ ОТЗЫВ!";
             if (inst.MessageFromUser.Length == 0)
             {

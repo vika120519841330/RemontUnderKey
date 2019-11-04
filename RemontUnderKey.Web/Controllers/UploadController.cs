@@ -50,20 +50,18 @@ namespace RemontUnderKey.Web.Controllers
             string resultUpload = "";
             if (fileupload == null)
             {
-                (Upload_View, string) corteg = (inst, resultUpload);
-                return RedirectToAction("../Comment/CreateCommentRedirect", corteg);
+                resultUpload = "Что-то пошло не так! Файл не удалось загрузить!";
+                return RedirectToRoute(new { controller = "Comment", action = "CreateCommentRedirect", id = inst.Comment_ViewId, res = resultUpload });
             }
             else if(fileupload.ContentLength <= 0)
             {
                 resultUpload = "Что-то пошло не так! Файл не удалось загрузить!";
-                (Upload_View, string) corteg = (inst, resultUpload);
-                return RedirectToAction("../Comment/CreateCommentRedirect", corteg);
+                return RedirectToRoute(new { controller = "Comment", action = "CreateCommentRedirect", id = inst.Comment_ViewId, res = resultUpload });
             }
             else if (fileupload.ContentLength > 2 * 1024 * 1024)
             {
                 resultUpload = "Файл не удалось загрузить! Размер загружаемого файла не должен превышать 2 МБайт!";
-                (Upload_View, string) corteg = (inst, resultUpload);
-                return RedirectToAction("../Comment/CreateCommentRedirect", corteg);
+                return RedirectToRoute(new { controller = "Comment", action = "CreateCommentRedirect", id = inst.Comment_ViewId, res = resultUpload });
 
             }
             //MIME-типы Image Types, допустимые для загрузки пользователем
@@ -77,8 +75,7 @@ namespace RemontUnderKey.Web.Controllers
             #endregion
             {
                 resultUpload = "Файл не удалось загрузить! Загружаемый тип файла должен относиться к типу image!";
-                (Upload_View, string) corteg = (inst, resultUpload);
-                return RedirectToAction("../Comment/CreateCommentRedirect", corteg);
+                return RedirectToRoute(new { controller = "Comment", action = "CreateCommentRedirect", id = inst.Comment_ViewId, res = resultUpload });
             }
             else
             {

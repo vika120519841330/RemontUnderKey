@@ -720,3 +720,39 @@ div.comment {
         color: #ccc;
         text-decoration: none; /*убираем подчеркивание текста ссылок*/
     }
+textarea.createComment {
+    overflow: no-display;
+    max-width: 800px;
+    max-height: 700px;
+    width: 700px;
+    height: 200px;
+    word-spacing: normal;
+    text-wrap: none;/*перенос слов на другую строку выключен*/
+    color: black;
+    font-family: My_eraser_font;
+    font-size: small;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+div.upload {
+    display: block;
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 150ms;
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 150ms;
+    font-family: My_eraser_font;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+    div.upload:hover {
+        -webkit-transition-duration: 150ms;
+        -moz-transition-timing-function: ease-out;
+        -moz-transition-duration: 150ms;
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+
