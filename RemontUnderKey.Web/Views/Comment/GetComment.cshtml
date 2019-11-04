@@ -1,0 +1,22 @@
+﻿@using RemontUnderKey.Web.Models
+@model Comment_View
+
+@section Body{
+        <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font; ">@ViewBag.Salute</p>
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.UserId)
+            @Html.HiddenFor(x => x.UserName)
+        <div class="eraser">
+            <div>
+                @Html.LabelFor(model => model.MessageFromUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DisplayFor(model => model.MessageFromUser, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <p> &emsp; </p>
+            <div>
+                @Html.Action("AllUploadsByIdOfComment", new { id = Model.Id })
+            </div>
+            <div>
+                @Html.ActionLink("НАЗАД К ОТЗЫВАМ", "GetAllComments")
+            </div>
+        </div>
+}

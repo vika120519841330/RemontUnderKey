@@ -15,7 +15,7 @@ namespace RemontUnderKey.DomainServices.Services
             this.repository = _repository;
         }
 
-        //Вспомогательный метод - возвращает коллекцию всех комментариев, относящихся к определенному пользователю
+        //Вспомогательный метод - возвращает коллекцию всех комментариев, относящихся к определенному пользователю по его имени
         public IEnumerable<Comment_Domain> AllCommentsByNameOfUser(string UserName)
         {
             var commentsOfUser = repository.AllCommentsByNameOfUser(UserName)

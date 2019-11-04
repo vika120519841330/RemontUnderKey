@@ -26,6 +26,14 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         [HttpGet]
+        [Route("upload/getfile/id")]
+        public PartialViewResult GetFile(int id)
+        {
+            Upload_View upload = service.GetUpload(id).UploadFromDomainToView();
+            return PartialView(upload);
+        }
+
+        [HttpGet]
         [Route("Upload/AddFile/id")]
         public ActionResult AddFile(int id)
         {

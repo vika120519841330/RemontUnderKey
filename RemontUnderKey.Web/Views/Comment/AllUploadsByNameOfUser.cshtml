@@ -1,25 +1,29 @@
 ﻿@using RemontUnderKey.Web.Models
-@model IEnumerable<Upload_View>
+@model List<Upload_View>
 
 <div>
-    @ViewBag.Result
-</div>
-@foreach (var item in Model)
-{
-<span>
-    @{
-        if (item.File != null)
-        {
-            int lenthoffile = item.File.Length;
-            string imageBase64 = Convert.ToBase64String(item.File);
-            string imageType = item.FileType;
-            string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
-            <img src="@imageSrc" width="150" height="150" />
-            <span>
-                @lenthoffile
-            </span>
-
-        }
+    @for (int i = 0; i < 16; i = i + 1)
+    {
+        string imageBase64 = Convert.ToBase64String(@Model.ToList()[i].File);
+        string imageType = @Model.ToList()[i].FileType;
+        string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
+        <span class="block" style="margin: 2px 2px 2px 2px;">
+            <a href="#@Model.ToList()[i].Id">
+                <img src="@imageSrc" width="150" height="150" alt="@Model.ToList()[i].FileName" title="@Model.ToList()[i].FileName" />
+            </a>
+        </span>
     }
-</span>
-}
+</div>
+<p> &emsp; </p>
+    <!-- Модальное окно -->
+    @for (int i = 0; i < 16; i = i + 1)
+    {
+        string imageBase64_2 = Convert.ToBase64String(@Model.ToList()[i].File);
+        string imageType_2 = @Model.ToList()[i].FileType;
+        string imageSrc_2 = string.Format("data:{1};base64,{0}", imageBase64_2, imageType_2);
+        <a href="#x" class="overlay" id="@Model.ToList()[i].Id"></a>
+        <div class="popup" style="width: 640px; height: auto;">
+            <img src="@imageSrc_2" alt="@Model.ToList()[i].FileName" title="@Model.ToList()[i].FileName" />
+            <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
+        </div>
+    }

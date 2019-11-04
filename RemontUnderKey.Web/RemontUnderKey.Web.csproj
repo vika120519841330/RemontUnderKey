@@ -847,8 +847,13 @@
     <Content Include="Views\OLD\AllFileResultsByUser.cshtml" />
     <Content Include="Views\Comment\AllFilesByNameOfUserWithoutPhoto.cshtml" />
     <Content Include="Views\Comment\AllUploadsByNameOfUser.cshtml" />
-    <Content Include="Views\Comment\AllFilePathesByUser.cshtml" />
+    <Content Include="Views\OLD\AllFilePathesByUser.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Comment\FirstOrDefaultUploadByIdOfUser.cshtml" />
+    <Content Include="Views\Comment\DefaultImgSrc.cshtml" />
+    <Content Include="Views\Comment\GetComment.cshtml" />
+    <Content Include="Views\Upload\GetFile.cshtml" />
+    <Content Include="Views\Comment\AllUploadsByIdOfComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

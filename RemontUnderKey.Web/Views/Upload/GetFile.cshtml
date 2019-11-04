@@ -1,0 +1,28 @@
+﻿@using RemontUnderKey.Web.Models
+@model Upload_View
+
+@{
+    if (@Model != null)
+    {
+        int lenthoffile = @Model.File.Length;
+        string imageBase64 = Convert.ToBase64String(@Model.File);
+        string imageType = @Model.FileType;
+        string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
+    
+    <div>
+        <span class="block">
+            <a href="#@Model.Id">
+                <img src="@imageSrc" width="150" height="150" alt="@Model.FileName" />
+            </a>
+        </span>
+    </div>
+
+    <!-- Модальное окно -->
+    <a href="#x" class="overlay" id="@Model.Id"></a>
+    <div class="popup">
+        <img src="@imageSrc" width="480" height="480" alt="@Model.FileName" />
+        <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
+    </div>
+    }
+}
+

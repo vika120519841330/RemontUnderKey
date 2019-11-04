@@ -1,0 +1,17 @@
+﻿@using RemontUnderKey.Web.Models
+@model Upload_View
+
+    <div>
+        @{
+            if (Model.File != null)
+            {
+                int lenthoffile = Model.File.Length;
+                string imageBase64 = Convert.ToBase64String(Model.File);
+                string imageType = Model.FileType;
+                string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
+                <a href="@Url.Action("GetFile", "Upload", new {id =  @Model.Id} )">
+                    <img class="img-circle" src="@imageSrc" width="150" height="150" />
+                </a>
+            }
+        }
+    </div>

@@ -25,27 +25,27 @@
                     </div>
                 </div>
                 <p> &emsp; </p>
-                <div>
-                    @Html.Action("AllUploadsByNameOfUser", new { UserName = @User.Identity.Name })
-                </div>
-                <p> &emsp; </p>
-                <div>
-                    @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id })
-                </div>
-                <p> &emsp; </p>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="ОТПРАВИТЬ" class="eraserbutton" />
                     </div>
                 </div>
+                <p> &emsp; </p>
+                <div style="padding-top: 1%;">
+                    @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id })
+                </div>
+                <p> &emsp; </p>
+                <div style="height:auto;">
+                    @Html.Action("AllUploadsByNameOfUser")
+                </div>
             </div>
         </div>
     }
-    <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
+    <div style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
         @ViewBag.Result
-    </p>
-    <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
+    </div>
+    <div style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
         @ViewBag.ResultFromUpload
-    </p>
+    </div>
 
 }

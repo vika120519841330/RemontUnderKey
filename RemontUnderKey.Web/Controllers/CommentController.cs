@@ -54,13 +54,15 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         [HttpGet]
-        [Route("Comment/GetComment")]
-        public Comment_View GetComment(int id)
+        [Route("Comment/GetComment/id")]
+        public ActionResult GetComment(int id)
         {
+            ViewBag.Salute = "ОТЗЫВ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ViewBag.Title = "ПРОСМОТР ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
             Comment_View comment = service.GetComment(id)
                 .CommentFromDomainToView()
                 ;
-            return comment;
+            return View(comment);
         }
 
         //Опубликовать отзыв на сайте вправе только зарегистрированный пользователь
@@ -123,12 +125,6 @@ namespace RemontUnderKey.Web.Controllers
             string resultUpload = res;
             Comment_View comment = service.GetComment(commentId).CommentFromDomainToView();
             int idofComment = comment.Id;
-            //List<Upload_View> temp = upservice.GetAllUploadByIdOfComment(idofComment)
-            //                                .Select(_ => _.UploadFromDomainToView())
-            //                                .ToList()
-            //                                ;
-            //string nameOfLastUpload = temp.Last().FileName;
-            //ViewBag.UploadName = nameOfLastUpload;
             ViewBag.ResultFromUpload = resultUpload;
             return View("CreateComment", comment);
         }
@@ -267,7 +263,7 @@ namespace RemontUnderKey.Web.Controllers
                 listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
                                                  .Select(_ => _.UploadFromDomainToView())
                                                  .ToList();
-                ViewBag.Result = $"РАНЕЕ ЗАГРУЖЕННЫЕ ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {UserName} ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
+                ViewBag.Result = $"ИЗОБРАЖЕНИЯ ИЛИ ФОТО, ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ: {UserName}";
                 return PartialView("AllUploadsByNameOfUser", listOfAllUploadsOfUser);
             }
             #region
@@ -291,6 +287,60 @@ namespace RemontUnderKey.Web.Controllers
                 ViewBag.Result = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
                 return PartialView("AllFilesByNameOfUserWithoutPhoto");
             }
-        }        
+        }
+
+        // Вспомогательный метод - возвращает коллекцию всех загруженных пользователум файлов по id комментария
+        public PartialViewResult AllUploadsByIdOfComment(int id)
+        {
+            Comment_View comment = service.GetComment(id).CommentFromDomainToView();
+            List<Upload_View> listOfAllUploadsOfUser = new List<Upload_View>();
+            var temp = upservice.GetAllUploadByIdOfComment(id);
+                listOfAllUploadsOfUser = upservice.GetAllUploadByIdOfComment(id)
+                                                 .Select(_ => _.UploadFromDomainToView())
+                                                 .ToList();
+                ViewBag.Result = $"ИЗОБРАЖЕНИЯ ИЛИ ФОТО, ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ {comment.UserName}";
+                return PartialView("AllUploadsByIdOfComment", listOfAllUploadsOfUser);
+        }
+
+        // Вспомогательный метод - возвращает коллекцию всех загруженных файлов по id пользователя
+        public PartialViewResult FirstOrDefaultUploadByIdOfUser(string id)
+        {
+            if (id == null)
+            {
+                return PartialView("DefaultImgSrc");
+            }
+            Upload_View firstupload;
+            List<Comment_View> listOfAllCommentsByUserId = new List<Comment_View>();
+            List<Upload_View> listOfAllUplosdsByCommentId = new List<Upload_View>();
+            listOfAllCommentsByUserId = service.GetAllComments()
+                        .Where(_ => _.UserId == id)
+                        .Select(_ => _.CommentFromDomainToView())
+                        .ToList();
+            if ((listOfAllCommentsByUserId != null) && (listOfAllCommentsByUserId.Count() > 0))
+            {
+                foreach(Comment_View comment in listOfAllCommentsByUserId)
+                {
+                    listOfAllUplosdsByCommentId.AddRange(upservice.GetAllUploadByIdOfComment(comment.Id)
+                                                        .Select(_ => _.UploadFromDomainToView())
+                                                        .ToList()
+                                                        );
+                }
+                if (listOfAllUplosdsByCommentId != null && listOfAllUplosdsByCommentId.Count() > 0)
+                {
+                    firstupload = listOfAllUplosdsByCommentId.FirstOrDefault();
+                    return PartialView("FirstOrDefaultUploadByIdOfUser", firstupload);
+                }
+                else
+                {
+                    return PartialView("DefaultImgSrc");
+                }
+            }
+            else
+            {
+                return PartialView("DefaultImgSrc");
+            }
+        }
+
+
     }
 }

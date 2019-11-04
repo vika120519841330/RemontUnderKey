@@ -1,14 +1,16 @@
-﻿
-body {
+﻿body {
     margin: 0;
     padding: 0 !important;
     font-size: 13px;
     font-family: Tahoma, Geneva, sans-serif;
 }
-    #gamucto-necagus {
+
+#gamucto-necagus {
     padding: 0 10px 30px 10px;
     margin-top: 30px 0px 0px;
 }
+
+
 
     #gamucto-necagus .carousel-control {
         background: none;
@@ -18,13 +20,19 @@ body {
         margin-top: 30px;
     }
 
+
+
         #gamucto-necagus .carousel-control.left {
             left: -12px;
         }
 
+
+
         #gamucto-necagus .carousel-control.right {
             right: -12px !important;
         }
+
+
 
     #gamucto-necagus .carousel-indicators {
         right: 50%;
@@ -33,13 +41,19 @@ body {
         margin-right: -19px;
     }
 
+
+
         #gamucto-necagus .carousel-indicators li {
             background: #d0cbcb;
         }
 
+
+
         #gamucto-necagus .carousel-indicators .active {
             background: #312f2f;
         }
+
+
 
     #gamucto-necagus img {
         width: 100px;
@@ -48,14 +62,20 @@ body {
         box-shadow: 0px 0px 1px 1px #656161;
     }
 
+
+
 .item blockquote {
     border-left: none;
     margin: 0;
 }
 
+
+
     .item blockquote img {
         margin-bottom: 10px;
     }
+
+
 
     .item blockquote p:before {
         content: "\f10d";
@@ -64,7 +84,10 @@ body {
         margin-right: 10px;
     }
 
+
+
 @media (min-width: 768px) {
+
     #gamucto-necagus {
         margin-bottom: 0;
         padding: 0 40px 30px 40px;
@@ -72,11 +95,17 @@ body {
     }
 }
 
+
+
 @media (max-width: 768px) {
+
+
 
     #gamucto-necagus .carousel-indicators {
         bottom: -20px !important;
     }
+
+
 
         #gamucto-necagus .carousel-indicators li {
             display: inline-block;
@@ -84,6 +113,8 @@ body {
             width: 15px;
             height: 15px;
         }
+
+
 
             #gamucto-necagus .carousel-indicators li.active {
                 margin: 0px 5px;

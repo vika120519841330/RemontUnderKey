@@ -1,0 +1,37 @@
+﻿@using RemontUnderKey.Web.Models
+@model List<Upload_View>
+
+<div style="text-align: center; font-size: large;">
+    @ViewBag.Result
+</div>
+<p> &emsp; </p>
+<div>
+    @for (int i = 0; i < @Model.ToList().Count(); i = i + 1)
+    {
+        string imageBase64 = Convert.ToBase64String(@Model.ToList()[i].File);
+        string imageType = @Model.ToList()[i].FileType;
+        string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
+        //@*<a href="@Url.Action("GetFile", "Upload", new {id =  @Model.ToList()[i].Id} )">*@
+    <span class="block" style="margin: 2px 2px 2px 2px;">
+        <a href="#@Model.ToList()[i].Id">
+            <img src="@imageSrc" width="150" height="150" alt="@Model.ToList()[i].FileName" title="@Model.ToList()[i].FileName" />
+        </a>
+    </span>
+    }
+</div>
+<p> &emsp; </p>
+<div>
+    <!-- Модальное окно -->
+    @for (int i = 0; i < @Model.ToList().Count(); i = i + 1)
+    {
+        string imageBase64_2 = Convert.ToBase64String(@Model.ToList()[i].File);
+        string imageType_2 = @Model.ToList()[i].FileType;
+        string imageSrc_2 = string.Format("data:{1};base64,{0}", imageBase64_2, imageType_2);
+        <a href="#x" class="overlay" id="@Model.ToList()[i].Id"></a>
+        <div class="popup"style="width: 640px; height: auto;">
+            <img class="block" src="@imageSrc_2" width="300" height="300" alt="@Model.ToList()[i].FileName" title = "@Model.ToList()[i].FileName" />
+            <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
+        </div>
+    }
+</div>
+<p> &emsp; </p>
