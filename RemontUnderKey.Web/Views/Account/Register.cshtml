@@ -1,41 +1,40 @@
 ﻿@model RemontUnderKey.Web.Models.RegisterViewModel
-@{
-    ViewBag.Title = "Register";
+
+@section Header{
+    @Styles.Render("~/Content/mycss")
 }
+@section Body {
+    <div class="salute" style="color: white; font-size: xx-large; text-align: center; margin-left: 3%; margin-bottom: -3%;">@ViewBag.Warning</div>
+    <div class="rain">
+        <div class="border start">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                <br />
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
 
-<h2>@ViewBag.Title.</h2>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "eraser", @style = "border-radius: 10px; background: #000;", @placeholder = "***@***.**" })
+                @Html.ValidationMessageFor(m => m.Email, "")
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "eraser", @style = "border-radius: 10px; background: #000;", @placeholder = "ВВЕДИТЕ ПАРОЛЬ" })
+                @Html.ValidationMessageFor(m => m.Password, "")
+
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "eraser", @style = "border-radius: 10px; background: #000;", @placeholder = "ПОВТОРНО ВВЕДИТЕ ПАРОЛЬ" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "")
+
+                <div class="salute" style="margin-bottom: 15px; margin-top: 20px;">
+                    @Html.ActionLink("ВОЙТИ НА САЙТ", "Login")
+                </div>
+
+                <input type="submit" value="РЕГИСТРАЦИЯ" />
+            }
         </div>
     </div>
 }
-
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Login.js")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 }

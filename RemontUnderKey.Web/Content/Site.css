@@ -476,6 +476,7 @@ a:hover {
 /* Базовые стили слоя затемнения и модального окна  */
 .overlay {
     text-align: center;
+    vertical-align: central;
     top: 0;
     right: 0;
     bottom: 0;
@@ -494,7 +495,7 @@ a:hover {
 /* стили модального окна */
 .popup {
     text-align: center;
-    top: -10%;
+    top: -3%;
     right: 0;
     left: 50%;
     z-index: 20;
@@ -730,8 +731,8 @@ textarea.createComment {
     overflow: no-display;
     max-width: 800px;
     max-height: 700px;
-    min-width: 90%;
-    min-height: 250px;
+    min-width: 70%;
+    min-height: 150px;
     word-spacing: normal;
     text-wrap: none; /*перенос слов на другую строку выключен*/
     color: black;
@@ -792,8 +793,70 @@ div.mydiv_ReadComment {
     width: 80%;
     min-height: 500px;
     border-radius: 10px;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 div.mydiv_ReadComment:hover {
     opacity: 1;
 }
+
+/* стили модального окна */
+.popup2 {
+    text-align: center;
+    vertical-align: central;
+    bottom:2%;
+    right: 0;
+    left: 50%;
+    z-index: 20;
+    margin: 0;
+    width: 50%;
+    height: auto;
+    /* фиксированное позиционирование, окно стабильно при прокрутке */
+    position: fixed;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #383838;
+    background: #000000;
+    /* скругление углов */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    /* внешняя тень */
+    -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -webkit-transform: translate(-50%, -500%);
+    -ms-transform: translate(-50%, -500%);
+    -o-transform: translate(-50%, -500%);
+    transform: translate(-50%, -500%);
+    -webkit-transition: -webkit-transform 0.6s ease-out;
+    -moz-transition: -moz-transform 0.6s ease-out;
+    -o-transition: -o-transform 0.6s ease-out;
+    transition: transform 0.6s ease-out;
+}
+/* активируем модальный блок */
+.overlay:target + .popup2 {
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 20%;
+}
+/* изображения внутри окна */
+.popup2 img {
+    vertical-align: central;
+    text-align: center;
+}
+
+.brighten img {
+    -webkit-filter: brightness(50%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+    .brighten img:hover {
+        -webkit-filter: brightness(100%);
+    }

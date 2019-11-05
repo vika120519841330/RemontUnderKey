@@ -22,8 +22,8 @@
         string imageType_2 = @Model.ToList()[i].FileType;
         string imageSrc_2 = string.Format("data:{1};base64,{0}", imageBase64_2, imageType_2);
         <a href="#x" class="overlay" id="@Model.ToList()[i].Id"></a>
-        <div class="popup">
-            <img class="block" src="@imageSrc_2" width="300" alt="@Model.ToList()[i].FileName" title="@Model.ToList()[i].FileName" />
+        <div class="popup2">
+            <img src="@imageSrc_2" alt="@Model.ToList()[i].FileName" height="550" title="@Model.ToList()[i].FileName" />
             <a class="close" title="ЗАКРЫТЬ" href="#close"></a>
         </div>
     }

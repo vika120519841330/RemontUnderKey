@@ -5,41 +5,41 @@
     <div style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
         @ViewBag.ResultFromUpload
     </div>
+    @using (Html.BeginForm("CreateComment", "Comment", FormMethod.Post))
+    {
         <div class="mydiv_createComment">
-            @using (Html.BeginForm("CreateComment", "Comment", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-                <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font; ">@ViewBag.Salute</p>
-                <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div style=" font-family: My_Flex_font;">
-                        @ViewBag.Message
-                    </div>
-                    @Html.HiddenFor(x => x.Id)
-                    @Html.HiddenFor(x => x.UserId)
-                    @Html.HiddenFor(x => x.UserName)
-                    <div class="eraser">
-                        <div style=" padding-bottom: 10px;">
-                            @Html.LabelFor(model => model.MessageFromUser, htmlAttributes: new { @class = "control-label col-md-2" })
-                        </div>
-                        <div style=" padding-bottom: 10px;">
-                            @Html.TextAreaFor(model => model.MessageFromUser, new { @class = "createComment" })
-                        </div>
-                        <div style=" padding-bottom: 10px;">
-                            @Html.ValidationMessageFor(model => model.MessageFromUser, "", new { @class = "text-danger" })
-                        </div>
-                        <p> &emsp; </p>
-                        <div>
-                            <input type="submit" value="ОТПРАВИТЬ" class="eraserbuttonindex" />
-                        </div>
-                        <p> &emsp; </p>
-                        <div style="padding-top: 1%;" class="upload">
-                            @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id }, new { @class = "upload"})
-                        </div>
-                        <p> &emsp; </p>
-                    </div>
+            @Html.AntiForgeryToken()
+            <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font; ">@ViewBag.Salute</p>
+            <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div style=" font-family: My_Flex_font;">
+                    @ViewBag.Message
                 </div>
-            }
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.UserId)
+                @Html.HiddenFor(x => x.UserName)
+                <div class="eraser">
+                    <div style=" padding-bottom: 10px;">
+                        @Html.LabelFor(model => model.MessageFromUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+                    <div style=" padding-bottom: 10px;">
+                        @Html.TextAreaFor(model => model.MessageFromUser, new { @class = "createComment" })
+                    </div>
+                    <div style=" padding-bottom: 10px;">
+                        @Html.ValidationMessageFor(model => model.MessageFromUser, "", new { @class = "text-danger" })
+                    </div>
+                    <p> &emsp; </p>
+                    <div>
+                        <input type="submit" value="ОТПРАВИТЬ" class="eraserbuttonindex" />
+                    </div>
+                    <p> &emsp; </p>
+                    <div style="padding-top: 1%;" class="upload">
+                        @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id }, new { @class = "upload" })
+                    </div>
+                    <p> &emsp; </p>
+                </div>
+            </div>
+
             <div style="height:auto;">
                 @Html.Action("AllUploadsByNameOfUser")
             </div>
@@ -50,4 +50,5 @@
                 @ViewBag.Mess
             </div>
         </div>
+    }
 }

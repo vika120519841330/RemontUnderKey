@@ -124,6 +124,8 @@ namespace RemontUnderKey.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Warning = $"РЕГИСТРАЦИЯ НА САЙТЕ";
+            ViewBag.Title = $"СОЗДАНИЕ АККАУНТА";
             return View();
         }
 

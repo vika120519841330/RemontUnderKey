@@ -854,6 +854,7 @@
     <Content Include="Views\Comment\GetComment.cshtml" />
     <Content Include="Views\Upload\GetFile.cshtml" />
     <Content Include="Views\Comment\AllUploadsByIdOfComment.cshtml" />
+    <Content Include="Views\Account\Register _OLD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
