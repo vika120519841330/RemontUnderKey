@@ -21,6 +21,11 @@ namespace RemontUnderKey.Web.Controllers
         private static TelegramBotClient tg_client;
         private string redirectMessage;
         private ApplicationUserManager userManager;
+        private Comment_View comment;
+        Upload_View upload;
+        List<Comment_View> listComments = new List<Comment_View>();
+        List<Upload_View> listUplosds = new List<Upload_View>();
+
 
         public CommentController(IComment _service, IUpload _upservice, ApplicationUserManager _userManager)
         {
@@ -32,6 +37,7 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Comment/GetAllComments")]
         public ActionResult GetAllComments()
         {
+            ViewBag.Title = "ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ";
             IEnumerable<Comment_View> comments = service.GetAllComments()
                 .Where(_ => _.ApprovalForPublishing == true)
                 .Select(_ => _.CommentFromDomainToView())
@@ -57,7 +63,7 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Comment/GetComment/id")]
         public ActionResult GetComment(int id)
         {
-            ViewBag.Title = "ПРОСМОТР ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ViewBag.Title = "ПРОСМОТР ОТЗЫВА";
             Comment_View comment = service.GetComment(id)
                 .CommentFromDomainToView()
                 ;
@@ -80,38 +86,33 @@ namespace RemontUnderKey.Web.Controllers
                 //проверяем, есть ли у текущего пользователя ранее оставленные комментарии по его логину
                 string UserName = GetDataAboutUser().ElementAt(1).ToString();
                 string UserId = GetDataAboutUser().ElementAt(0).ToString();
-                IEnumerable<Comment_View> ListOfCommentsOfCurrentUser = service.AllCommentsByNameOfUser(UserName)
+                listComments = service.AllCommentsByNameOfUser(UserName)
                                                                         .Select(_ => _.CommentFromDomainToView())
                                                                         .ToList()
                                                                         ;
                 //если сохраненных отзывов нет - создаем новые
                 string lengthOfAllCommentsOfUser = "";
-                foreach (Comment_View tempComment in ListOfCommentsOfCurrentUser)
+                foreach (Comment_View tempcomment in listComments)
                 {
-                    lengthOfAllCommentsOfUser = String.Concat(lengthOfAllCommentsOfUser, tempComment.MessageFromUser);
+                    lengthOfAllCommentsOfUser = String.Concat(lengthOfAllCommentsOfUser, tempcomment.MessageFromUser);
                 }
                 if (lengthOfAllCommentsOfUser.Length == 0)
                 {
                     ViewBag.Salute = $"ПОЛЬЗОВАТЕЛЬ {UserName} ОСТАВЬТЕ, ПОЖАЛУЙСТА, СВОЙ ПЕРВЫЙ ОТЗЫВ НА САЙТЕ!";
-                    Comment_View inst = new Comment_View();
-                    inst.UserId = UserId;
-                    inst.UserName = UserName;
-                    int? tempIdOfComment = service.CreateComment(inst.CommentFromViewToDomain());
-                    inst = service.GetComment(tempIdOfComment).CommentFromDomainToView();
-                    return View("CreateComment", inst);
+                    comment = new Comment_View();
+                    comment.UserId = UserId;
+                    comment.UserName = UserName;
+                    int? tempIdOfComment = service.CreateComment(comment.CommentFromViewToDomain());
+                    comment = service.GetComment(tempIdOfComment).CommentFromDomainToView();
+                    return View("CreateComment", comment);
                 }
                 else
                 {
                     //если сохраненные отзывовы есть - редактируем последний(заменяем старый на новый), дабы пользователь не мог оставить более одного отзыва на сайте
                     ViewBag.Salute = $"ПОЛЬЗОВАТЕЛЬ {UserName} МОЖЕТЕ ОСТАВИТЬ ЕЩЕ ОДИН ОТЗЫВ НА НАШЕМ САЙТЕ!";
                     // Получение последного оставленного текущим пользователем отзыва
-                    Comment_View inst = ListOfCommentsOfCurrentUser.Last();
-                    // Рендеринг одного или другого уведомления в зависимости от того, загружал текущий пользователь фото или нет
-                    List<Upload_View> tempUpload = upservice.AllUploadsByNameOfUser(UserName)
-                                            .Select(_ => _.UploadFromDomainToView())
-                                            .ToList()
-                                            ;
-                    return View("CreateComment", inst);
+                    comment = listComments.Last();                                            ;
+                    return View("CreateComment", comment);
                 }
             }
         }
@@ -122,7 +123,7 @@ namespace RemontUnderKey.Web.Controllers
         {
             int commentId = id;
             string resultUpload = res;
-            Comment_View comment = service.GetComment(commentId).CommentFromDomainToView();
+            comment = service.GetComment(commentId).CommentFromDomainToView();
             int idofComment = comment.Id;
             ViewBag.ResultFromUpload = resultUpload;
             return View("CreateComment", comment);
@@ -132,8 +133,8 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Comment/CreateComment/")]
         public async Task<ViewResult> CreateComment([System.Web.Http.FromBody]Comment_View inst)
         {
-            ViewBag.Title = "ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ";
-            ViewBag.Salute = $"{inst.UserName} НЕ ЗАБУДЬТЕ ОСТАВИТЬ СВОЙ ОТЗЫВ!";
+            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {inst.UserName}";
+            ViewBag.Salute = $"{inst.UserName} МЫ БУДЕМ РАДЫ ВАШЕМУ ОТЗЫВУ!";
             if (inst.MessageFromUser.Length == 0)
             {
                 ModelState.AddModelError("CreateCommentNull", "Вы не добавили свой отзыв!!!");
@@ -150,7 +151,7 @@ namespace RemontUnderKey.Web.Controllers
             {
                 service.UpdateComment(inst.CommentFromViewToDomain());
                 ViewBag.Result = "Thank you! Your feedback is accepted and sent for moderation!";
-                // Сформировать текстовое сообщение для перенаправления в telegram-группу
+                // Сформировать текстовое сообщение для перенаправления в telegram и viber
                 redirectMessage = (DateTime.Now.ToString() + " " + inst.UserName + " " + " ОТЗЫВ: " + inst.MessageFromUser + ";").ToString();
                 //Инициализировать массив синхронных задач
                 var taskList = new Task[2]
@@ -170,11 +171,11 @@ namespace RemontUnderKey.Web.Controllers
                                                                         ;
                 foreach (var comment in AllCommentsByUser)
                 {
-                    var AllUploadsByAllCommentsByUser = upservice.GetAllUploadByIdOfComment(comment.Id)
+                    listUplosds = upservice.GetAllUploadByIdOfComment(comment.Id)
                                                                         .Select(_ => _.UploadFromDomainToView())
                                                                         .ToList()
                                                                         ;
-                    if ((comment.MessageFromUser.Length == 0) && (AllUploadsByAllCommentsByUser.Count == 0))
+                    if ((comment.MessageFromUser.Length == 0) && (listUplosds.Count == 0))
                     {
                         service.DeleteComment(comment.Id);
                     }
@@ -220,31 +221,32 @@ namespace RemontUnderKey.Web.Controllers
             return ListOfUsersIdName;
         }
 
-        //вспомогательный метод - возвращает идентификац.номер текущего пользователя для дальнейшей передачи в представление 
+        //вспомогательный метод - возвращает идентификац.номер комментария для дальнейшей передачи в представление 
         public RedirectToRouteResult AddFileRedirect(int id)
         {
+            comment = service.GetComment(id).CommentFromDomainToView();
+            ViewBag.Title = $"ДОБАВЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННЫМ ПОЛЬЗОВАТЕЛЕМ {comment.UserName}";
+            ViewBag.Salute = $"{comment.UserName} МЫ БУДЕМ РАДЫ ВАШЕМУ ОТЗЫВУ!";
             int temp = id;
             return RedirectToAction("AddFile", "Upload", new { id = temp });
         }
 
         //вспомогательный метод - возвращает текст отзыва пользователя
-        [HttpGet]
-        [Route("Comment/GetCommentText")]
         public string GetCommentText(int id)
         {
-            Comment_View comment = service.GetComment(id)
+            comment = service.GetComment(id)
                 .CommentFromDomainToView()
                 ;
             string text = comment.MessageFromUser;
             return text;
         }
 
-        //вспомогательный метод - возвращает имя пользователя
+        //вспомогательный метод - возвращает имя пользователя по id комментария
         [HttpGet]
         [Route("Comment/GetCommentUserName")]
         public string GetCommentUserName(int id)
         {
-            Comment_View comment = service.GetComment(id)
+            comment = service.GetComment(id)
                 .CommentFromDomainToView()
                 ;
             string name = comment.UserName;
@@ -255,25 +257,24 @@ namespace RemontUnderKey.Web.Controllers
         public PartialViewResult AllUploadsByNameOfUser()
         {
             string UserName = GetDataAboutUser().ElementAt(1).ToString();
-            List<Upload_View> listOfAllUploadsOfUser = new List<Upload_View>();
             var temp = upservice.AllUploadsByNameOfUser(UserName);
             if ((temp != null) && (temp.Count() > 0))
             {
-                listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
+                listUplosds = upservice.AllUploadsByNameOfUser(UserName)
                                                  .Select(_ => _.UploadFromDomainToView())
                                                  .ToList();
-                ViewBag.Result = $"ИЗОБРАЖЕНИЯ ИЛИ ФОТО, ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ: {UserName}";
-                return PartialView("AllUploadsByNameOfUser", listOfAllUploadsOfUser);
+                ViewBag.Mess = $"ИЗОБРАЖЕНИЯ ИЛИ ФОТО, ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ: {UserName}";
+                return PartialView("AllUploadsByNameOfUser", listUplosds);
             }
             #region
             // 2-ой способ 
             //закомментированно, т.к. при deploy on azure will fail
             //{ 
-            //    listOfAllUploadsOfUser = upservice.AllUploadsByNameOfUser(UserName)
+            //    listUplosds = upservice.AllUploadsByNameOfUser(UserName)
             //                                     .Select(_ => _.UploadFromDomainToView())
             //                                     .ToList();
             //    List<string> ListFileStringPath = new List<string>();
-            //    foreach (Upload_View tempUpl in listOfAllUploadsOfUser)
+            //    foreach (Upload_View tempUpl in listUplosds)
             //    {
             //        ListFileStringPath.Add(tempUpl.FileName);
             //    }
@@ -283,22 +284,21 @@ namespace RemontUnderKey.Web.Controllers
             #endregion
             else
             {
-                ViewBag.Result = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
+                ViewBag.Mess = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
                 return PartialView("AllFilesByNameOfUserWithoutPhoto");
             }
         }
 
-        // Вспомогательный метод - возвращает коллекцию всех загруженных пользователум файлов по id комментария
+        // Вспомогательный метод - возвращает коллекцию всех загруженных пользователем файлов по id комментария
         public PartialViewResult AllUploadsByIdOfComment(int id)
         {
-            Comment_View comment = service.GetComment(id).CommentFromDomainToView();
-            List<Upload_View> listOfAllUploadsOfUser = new List<Upload_View>();
+            comment = service.GetComment(id).CommentFromDomainToView();
             var temp = upservice.GetAllUploadByIdOfComment(id);
-                listOfAllUploadsOfUser = upservice.GetAllUploadByIdOfComment(id)
+            listUplosds = upservice.GetAllUploadByIdOfComment(id)
                                                  .Select(_ => _.UploadFromDomainToView())
                                                  .ToList();
                 ViewBag.Result = $"ИЗОБРАЖЕНИЯ ИЛИ ФОТО, ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ {comment.UserName}";
-                return PartialView("AllUploadsByIdOfComment", listOfAllUploadsOfUser);
+                return PartialView("AllUploadsByIdOfComment", listUplosds);
         }
 
         // Вспомогательный метод - возвращает коллекцию всех загруженных файлов по id пользователя
@@ -308,26 +308,23 @@ namespace RemontUnderKey.Web.Controllers
             {
                 return PartialView("DefaultImgSrc");
             }
-            Upload_View firstupload;
-            List<Comment_View> listOfAllCommentsByUserId = new List<Comment_View>();
-            List<Upload_View> listOfAllUplosdsByCommentId = new List<Upload_View>();
-            listOfAllCommentsByUserId = service.GetAllComments()
+            listComments = service.GetAllComments()
                         .Where(_ => _.UserId == id)
                         .Select(_ => _.CommentFromDomainToView())
                         .ToList();
-            if ((listOfAllCommentsByUserId != null) && (listOfAllCommentsByUserId.Count() > 0))
+            if ((listComments != null) && (listComments.Count() > 0))
             {
-                foreach(Comment_View comment in listOfAllCommentsByUserId)
+                foreach(Comment_View comment in listComments)
                 {
-                    listOfAllUplosdsByCommentId.AddRange(upservice.GetAllUploadByIdOfComment(comment.Id)
+                    listUplosds.AddRange(upservice.GetAllUploadByIdOfComment(comment.Id)
                                                         .Select(_ => _.UploadFromDomainToView())
                                                         .ToList()
                                                         );
                 }
-                if (listOfAllUplosdsByCommentId != null && listOfAllUplosdsByCommentId.Count() > 0)
+                if (listUplosds != null && listUplosds.Count() > 0)
                 {
-                    firstupload = listOfAllUplosdsByCommentId.FirstOrDefault();
-                    return PartialView("FirstOrDefaultUploadByIdOfUser", firstupload);
+                    upload = listUplosds.FirstOrDefault();
+                    return PartialView("FirstOrDefaultUploadByIdOfUser", upload);
                 }
                 else
                 {
@@ -339,7 +336,5 @@ namespace RemontUnderKey.Web.Controllers
                 return PartialView("DefaultImgSrc");
             }
         }
-
-
     }
 }

@@ -2,54 +2,50 @@
 @model Upload_View
 
 @section Body{
-    @using (Html.BeginForm("AddFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-        <hr class="eraser" />
-        <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font;" >@ViewBag.Title</p>
-        <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <p style="font-family: My_eraser_font;">
-                @ViewBag.Message
-            </p>
-            @Html.HiddenFor(m => m.Comment_ViewId, new { @Value = (int)@TempData["IdOfComment"] })
-            @Html.HiddenFor(m => m.FileType)
-            @Html.HiddenFor(m => m.Id)
-            <div class="eraser" style="padding-top: 20px;">
-                <p style="font-family: My_eraser_font; font-size:larger;">
-                    @ViewBag.Salute
+    <div class="mydiv_addFile">
+        @using (Html.BeginForm("AddFile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <p style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">@ViewBag.Salute</p>
+            <div class="form-horizontal" style="padding-left: 3%; padding-top: 2%; padding-right: 3%; padding-bottom: 3%">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <p style="font-family: My_eraser_font;">
+                    @ViewBag.Message
                 </p>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <p> &emsp; </p>
-                    <div class="col-md-10">
-                        <input id="fileupload" name="fileupload" type="file" />
+                @Html.HiddenFor(m => m.Comment_ViewId, new { @Value = (int)@TempData["IdOfComment"] })
+                @Html.HiddenFor(m => m.FileType)
+                @Html.HiddenFor(m => m.Id)
+                <div class="eraser" style="padding-top: 20px;">
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })*@
                         <p> &emsp; </p>
-                        @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                        <div class="col-md-10">
+                            <input id="fileupload" name="fileupload" type="file" style="font-family: My_eraser_font; width: 99%; color: white;" />
+                            <p> &emsp; </p>
+                            @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.HiddenFor(model => model.FileName, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
-                    @Html.HiddenFor(model => model.FileName, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-                <p> &emsp; </p>
-                <div>
-                    <input type="submit" value="ЗАГРУЗИТЬ" class="eraserbutton" />
+                    <p> &emsp; </p>
+                    <p> &emsp; </p>
+                    <div>
+                        <input type="submit" value="ЗАГРУЗИТЬ" class="eraserbutton" />
+                    </div>
                 </div>
             </div>
+        }
+        <div>
+            @ViewBag.ResultFromUpload
         </div>
-    }
-    <div>
-        @ViewBag.LengthOfFile
+        <div>
+            @ViewBag.Result
+        </div>
+        <p> &emsp; </p>
+        <p> &emsp; </p>
+        <p> &emsp; </p>
+        <div style="margin-bottom: 2px;">
+            @Html.ActionLink("НЕ ЗАГРУЖАТЬ, ВЕРНУТЬСЯ НАЗАД", "CreateComment", new { controller = "Comment", action = "CreateComment" }, new { @class = "eraserbutton" })
+        </div>
     </div>
-    <div>
-        @ViewBag.ResultFromUpload
-    </div>
-    <div>
-        @ViewBag.Result
-    </div>
-    <div>
-        <button class="eraserbutton">
-            @Html.ActionLink("НЕ ЗАГРУЖАТЬ, ВЕРНУТЬСЯ НАЗАД", "CreateComment", "Comment")
-        </button>
-    </div>
-
 }
 

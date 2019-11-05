@@ -1,12 +1,12 @@
 ﻿@using RemontUnderKey.Web.Models
 @model List<Upload_View>
 
-<div style="text-align: center; font-size: large;">
+<div style="text-align: center; font-size: x-large; font-family:My_Flex_font; color: white;">
     @ViewBag.Result
 </div>
 <p> &emsp; </p>
 <div>
-    @for (int i = 0; i < 5; i = i + 1)
+    @for (int i = 0; i < @Model.Count(); i = i + 1)
     {
         string imageBase64 = Convert.ToBase64String(@Model.ToList()[i].File);
         string imageType = @Model.ToList()[i].FileType;
@@ -22,7 +22,7 @@
 <p> &emsp; </p>
 <div>
     <!-- Модальное окно -->
-    @for (int i = 0; i < 5; i = i + 1)
+    @for (int i = 0; i < @Model.Count(); i = i + 1)
     {
         string imageBase64_2 = Convert.ToBase64String(@Model.ToList()[i].File);
         string imageType_2 = @Model.ToList()[i].FileType;
