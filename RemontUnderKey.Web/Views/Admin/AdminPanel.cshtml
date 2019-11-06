@@ -1,8 +1,72 @@
 ﻿
 @{
-    ViewBag.Title = "AdminPanel";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
+@section Body{
 
-<h2>AdminPanel</h2>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>РОЛИ</th>
+                    <th>ОТЗЫВЫ</th>
+                    <th>ЗАЯВКИ НА ЗВОНОК</th>
+                    <th>ФОТОГАЛЕРЕЯ</th>
+                    <th>РАБОТЫ</th>
+                    <th>РАСЦЕНКИ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                </tr>
+                <tr>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                </tr>
+                <tr>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                </tr>
+                <tr>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                </tr>
+                <tr>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                </tr>
+                <tr>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
+}

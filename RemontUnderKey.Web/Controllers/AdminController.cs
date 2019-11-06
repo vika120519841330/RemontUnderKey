@@ -13,6 +13,7 @@ namespace RemontUnderKey.Web.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult AdminPanel()
         {
+            ViewBag.Title = "АДМИН-ПАНЕЛЬ";
             return View("AdminPanel");
         }
     }

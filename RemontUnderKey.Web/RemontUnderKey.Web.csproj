@@ -823,7 +823,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Job\AllJobsByIdOfkind.cshtml" />
     <Content Include="Views\Kind\GetAllKinds.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Unit\GetUnit.cshtml" />
     <Content Include="Views\CallMee\GetAllCallMee.cshtml" />
     <Content Include="Views\CallMee\CreateCallMee.cshtml" />
@@ -860,6 +860,9 @@
     <Content Include="Views\OLD\Register _OLD.cshtml" />
     <Content Include="Views\Admin\AdminPanel.cshtml" />
     <Content Include="Views\Role\AllRoles.cshtml" />
+    <Content Include="Views\Role\AddNewRole_Success.cshtml" />
+    <Content Include="Views\Role\AddNewRole.cshtml" />
+    <Content Include="Views\Role\AddNewRole_Post.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

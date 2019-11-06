@@ -30,18 +30,25 @@ namespace RemontUnderKey.Web.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title = "ДОМАШНЯЯ СТРАНИЦА";
-            ViewBag.Salute = "ПОД КЛЮЧ В МИНСКЕ И МИНСКОЙ ОБЛАСТИ";
-            ViewBag.TD1 = "Бесплатный выезд специалиста и смета на в течение одной недели";
-            ViewBag.TD2 = "Фиксированная стоимость, согласно условиям договора";
-            ViewBag.TD3 = "Средняя стоимость ремонта 250 бел. руб за м2";
-            ViewBag.Salute2 = "РЕМОНТ - 6 ШАГОВ И КОМФОРТ НА ДЕСЯТКИ ЛЕТ!";
-            ViewBag.Salute3 = "КТО ОТВЕЧАЕТ ЗА КАЧЕСТВО ВАШЕГО РЕМОНТА?";
-            ViewBag.AboutMee = "КОРОТКО ОБО МНЕ:";
-            ViewBag.Help = "ЧЕМ МОГУ ПОМОЧЬ БЫСТРО И БЕСПЛАТНО:";
-            TempData["RepsonseList"] = ResponseList;
-            TempData["AboutSpecList"] = AboutSpecList;
-            return View();
+            if (User.IsInRole("admin"))
+            {
+                return RedirectToRoute(new { controller = "Admin", action = "AdminPanel" });
+            }
+            else
+            {
+                ViewBag.Title = "ДОМАШНЯЯ СТРАНИЦА";
+                ViewBag.Salute = "ПОД КЛЮЧ В МИНСКЕ И МИНСКОЙ ОБЛАСТИ";
+                ViewBag.TD1 = "Бесплатный выезд специалиста и смета на в течение одной недели";
+                ViewBag.TD2 = "Фиксированная стоимость, согласно условиям договора";
+                ViewBag.TD3 = "Средняя стоимость ремонта 250 бел. руб за м2";
+                ViewBag.Salute2 = "РЕМОНТ - 6 ШАГОВ И КОМФОРТ НА ДЕСЯТКИ ЛЕТ!";
+                ViewBag.Salute3 = "КТО ОТВЕЧАЕТ ЗА КАЧЕСТВО ВАШЕГО РЕМОНТА?";
+                ViewBag.AboutMee = "КОРОТКО ОБО МНЕ:";
+                ViewBag.Help = "ЧЕМ МОГУ ПОМОЧЬ БЫСТРО И БЕСПЛАТНО:";
+                TempData["RepsonseList"] = ResponseList;
+                TempData["AboutSpecList"] = AboutSpecList;
+                return View("Index");
+            }
         }
         public ActionResult Certificate()
         {

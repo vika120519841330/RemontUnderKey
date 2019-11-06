@@ -76,26 +76,26 @@ namespace RemontUnderKey.Web.Controllers
         [HttpPost]
         [Route("Role/AddNewRole")]
         [Authorize(Roles = "admin")]
-        public ActionResult AddNewRole(string name, string role)
+        public ActionResult AddNewRole_Post(string name, string role)
         {
             ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
             ApplicationUser foundUser = userManager.FindByName(name);
             if (foundUser == null)
             {
                 ViewBag.Result = "Пользователь с таким логином не зарегистрирован!!";
-                return View("AddNewRole");
+                return View("AddNewRole_Post");
             }
             // проверить - возможно у запрашиваемого пользователя уже есть эта роль
             if (userManager.IsInRole(foundUser.Id, role))
             {
                 ViewBag.Result = "Пользователь уже наделен правами запрашиваемой роли!!";
-                return View("AddNewRole");
+                return View("AddNewRole_Post");
             }
             var foundRole = roleManager.FindByName(role);
             if (foundRole == null)
             {
                 ViewBag.Result = "Роль с таким наименованием не зарегистрирована!!";
-                return View("AddNewRole");
+                return View("AddNewRole_Post");
             }
             else
             {

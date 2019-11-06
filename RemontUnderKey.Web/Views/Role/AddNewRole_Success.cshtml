@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@section Body{
+    <div>
+        @ViewBag.Result
+    </div>
+    <table align="center" border="1">
+        <thead>
+            <tr>
+                <th>
+                    USER
+                </th>
+                <th>
+                    ROLE
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in @ViewBag.listofrolesofuser)
+            {
+                <tr>
+                    <td>@(++ViewBag.Num)</td>
+                    <td>@r.RoleId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        @Html.ActionLink("К СПИСКУ", "AllRoles", "Role")
+    </div>
+}

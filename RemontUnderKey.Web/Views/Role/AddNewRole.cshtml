@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@section Body{
+
+    @using (Html.BeginForm("AddNewRole_Post", "Role", FormMethod.Post))
+    {
+        <div class="form-horizontal" align="center">
+            <p>Имя пользователя: </p>
+            @Html.TextBox("name", @TempData["NameOfUser"])
+            <p>Выберите роль :</p>
+            @Html.TextBox("role", "Выберите роль")
+            <p><input type="submit" value="ДОБАВИТЬ" /></p>
+        </div>
+    }
+
+    <p></p>
+
+    <div style="text-align: center;">
+        @Html.ActionLink("АДМИН-ПАНЕЛЬ", "AdminPanel", "Admin")
+    </div>
+
+}
+
