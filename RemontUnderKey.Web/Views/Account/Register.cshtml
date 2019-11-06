@@ -11,19 +11,18 @@
             {
                 <br />
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary("", new { @class = "text-danger" })
 
                 @Html.LabelFor(m => m.Email)
                 @Html.TextBoxFor(m => m.Email, new { @class = "eraser", @style = "border-radius: 10px; background: #000;", @placeholder = "***@***.**" })
-                @Html.ValidationMessageFor(m => m.Email, "")
+                @Html.ValidationMessageFor(m => m.Email, "", new { @style = "color: red;" })
 
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password, new { @class = "eraser", @style = "border-radius: 10px; background: #000;", @placeholder = "ВВЕДИТЕ ПАРОЛЬ" })
-                @Html.ValidationMessageFor(m => m.Password, "")
+                @Html.ValidationMessageFor(m => m.Password, "", new { @style = "color: red;" })
 
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "eraser", @style = "border-radius: 10px; background: #000;", @placeholder = "ПОВТОРНО ВВЕДИТЕ ПАРОЛЬ" })
-                @Html.ValidationMessageFor(m => m.ConfirmPassword, "")
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @style = "color: red;" })
 
                 <div class="salute" style="margin-bottom: 15px; margin-top: 20px;">
                     @Html.ActionLink("ВОЙТИ НА САЙТ", "Login")
