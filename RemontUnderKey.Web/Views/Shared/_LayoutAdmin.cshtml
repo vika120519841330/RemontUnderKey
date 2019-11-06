@@ -4,49 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/ADMIN/Admin_Styles.css")
+
+    @RenderSection("Header", required: false)
 
 </head>
 <body>
-    <div class="mybardiv">
-        <a href="@Url.Action( "Index", "Home")">
-            <img class="leftimg" src="~/Content/LabelMain_2.png" />
-        </a>
-        <ul class="mybar" style="float: right">
-            <li class="mybar">@Html.Partial("_LoginPartial")</li>
-        </ul>
-        <br />
-        <br />
-        <ul class="mybar">
-            <li class="mybar">@Html.ActionLink("ГЛАВНАЯ", "Index", "Home")</li>
-            <li class="mybar">@Html.ActionLink("ЦЕНЫ", "GetAllKinds", "Kind")</li>
-            <li class="mybar">@Html.ActionLink("ФОТОГАЛЕРЕЯ", "GetAllPhotos", "Photo")</li>
-            <li class="mybar">@Html.ActionLink("ОТЗЫВЫ", "Comments", "Comment")</li>
-            <li class="mybar">@Html.ActionLink("ДОКУМЕНТАЦИЯ", "Certificate", "Contact")</li>
-            <li class="mybar">@Html.ActionLink("ЗАКАЗАТЬ ЗВОНОК", "CreateCallMee", "CallMee")</li>
-            <li class="mybar">@Html.ActionLink("КОНТАКТЫ", "Contacts", "Contact")</li>
-        </ul>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <ul class="topnav">
+        <li class="active">@Html.ActionLink("КОНТАКТЫ", "Contacts", "Home")</li>
+        <li class="active">@Html.ActionLink("РОЛИ", "AllRoles", "Role")</li>
+        <li class="right">@Html.Partial("_LoginPartial")</li>
 
+    </ul>
     @RenderBody()
-    <div style="color: white; font-size: small; padding-left: 20px; padding-right: 20px">
-        <hr />
-        <footer>
-            <p>
-                &copy; @DateTime.Now.Year - @ViewBag.Title
-            </p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Body", required: false)
+    @RenderSection("Footer", required: false)
     @RenderSection("scripts", required: false)
 </body>
 </html>

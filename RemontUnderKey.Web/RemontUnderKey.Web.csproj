@@ -262,6 +262,7 @@
     <Compile Include="Attributes\CurrencyDisplayAttribute.cs" />
     <Compile Include="Commands_Telegram\Command_Telegram.cs" />
     <Compile Include="Commands_Telegram\HelloCommand_Telegram.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CallMeeController.cs" />
     <Compile Include="Controllers\HookController.cs" />
@@ -269,6 +270,7 @@
     <Compile Include="Controllers\KindController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StageController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
@@ -700,6 +702,7 @@
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\mini\7.jpg" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\mini\8.jpg" />
     <Content Include="Content\3_reg_Minskij_ag_Semkovo\mini\9.jpg" />
+    <Content Include="Content\ADMIN\Admin_Styles.css" />
     <Content Include="Content\Advertising\bar.jpg" />
     <Content Include="Content\Advertising\flat.jpg" />
     <Content Include="Content\Advertising\garage.jpg" />
@@ -804,7 +807,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login_OLD.cshtml" />
+    <Content Include="Views\OLD\Login_OLD.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -854,7 +857,9 @@
     <Content Include="Views\Comment\GetComment.cshtml" />
     <Content Include="Views\Upload\GetFile.cshtml" />
     <Content Include="Views\Comment\AllUploadsByIdOfComment.cshtml" />
-    <Content Include="Views\Account\Register _OLD.cshtml" />
+    <Content Include="Views\OLD\Register _OLD.cshtml" />
+    <Content Include="Views\Admin\AdminPanel.cshtml" />
+    <Content Include="Views\Role\AllRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

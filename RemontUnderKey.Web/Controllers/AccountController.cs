@@ -38,19 +38,21 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         // Вспомогательный метод - для определения относится ли зарегистрированный ользователь к определеноой роли?
-        //public bool CheckAccountIsInRole(string email, string role)
-        //{
-        //    var user = userManager.Users.FirstOrDefault(_ => _.Email == email);
-        //    var inrole = userManager.IsInRole(user.Id, role);
-        //    return inrole;
-        //}
+        public bool CheckAccountIsInRole(string email, string role)
+        {
+            var user = userManager.Users.FirstOrDefault(_ => _.Email == email);
+            var inrole = userManager.IsInRole(user.Id, role);
+            return inrole;
+        }
 
+        private bool isAdmin;
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+       
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -61,11 +63,15 @@ namespace RemontUnderKey.Web.Controllers
             {
                 case SignInStatus.Success:
                     {
-                        //if (this.CheckAccountIsInRole(model.Email, "admin"))
-                        //{
-                        //    return View("~/Views/Home/Index_Admin.cshtml");
-                        //}
-                        return RedirectToLocal(returnUrl);
+                        if (this.CheckAccountIsInRole(model.Email, "admin"))
+                        {
+                            isAdmin = true;
+                        }
+                        else
+                        {
+                            isAdmin = false;
+                        }
+                        return RedirectToLocal(returnUrl, isAdmin);
                     }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -110,7 +116,7 @@ namespace RemontUnderKey.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
+                    return RedirectToLocal(model.ReturnUrl, isAdmin);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
@@ -295,7 +301,7 @@ namespace RemontUnderKey.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl, isAdmin);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -336,7 +342,7 @@ namespace RemontUnderKey.Web.Controllers
                     if (result.Succeeded)
                     {
                         await signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToLocal(returnUrl, isAdmin);
                     }
                 }
                 AddErrors(result);
@@ -402,13 +408,20 @@ namespace RemontUnderKey.Web.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        private ActionResult RedirectToLocal(string returnUrl, bool isAdmin)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            if (isAdmin == true)
+            {
+                return RedirectToAction("AdminPanel", "Admin");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
