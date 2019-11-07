@@ -14,56 +14,54 @@
                     <th>ФОТОГАЛЕРЕЯ</th>
                     <th>РАБОТЫ</th>
                     <th>РАСЦЕНКИ</th>
+                    <th>ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЯ/ФОТО</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
-                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
-                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ ПРАВ/РОЛЕЙ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ВСЕХ ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
                     <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
-                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
-                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РЕМОНТНЫХ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РЕМОНТНЫХ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЯ/ФОТО">@Html.ActionLink("ПРОСМОТР ЗАГРУЖЕННЫХ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЙ/ФОТО", "GetFile", "Upload")</td>
                 </tr>
                 <tr>
-                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
-                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
-                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
-                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
-                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
-                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="РОЛИ">@Html.ActionLink("ДОБАВИТЬ У ПОЛЬЗОВАТЕЛЯ/УДАЛИТЬ У ПОЛЬЗОВАТЕЛЯ ПРАВА/РОЛЬ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ДОБАВИТЬ ОТЗЫВ ОТ ИМЕНИ ПОЛЬЗОВАТЕЛЯ", "AllComments_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСТАВИТЬ ОТМЕТКУ О ТОМ, ЧТО ОБРАТНЫЙ ЗВОНОК ПРОИЗВЕДЕН", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ЗАГРУЗИТЬ ФОТО В ГАЛЕРЕЮ", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("ДОБАВИТЬ НОВУЮ РАЗНОВИДНОСТЬ РЕМОНТНЫХ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ДОБАВИТЬ ПОДВИД РЕМОНТНЫХ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЯ/ФОТО">@Html.ActionLink("Х", "GetFile", "Upload")</td>
                 </tr>
                 <tr>
-                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
-                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
-                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
-                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
-                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
-                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="РОЛИ">@Html.ActionLink("ДОБАВИТЬ / УДАЛИТЬ РОЛЬ ИЗ БАЗЫ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("УДАЛИТЬ НЕ ОТВЕЧАЮЩИЙ ТРЕБОВАНИЯМ ОТЗЫВ", "AllCallMee_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("УДАЛИТЬ ОТРАБОТАННУЮ ЗАЯВКУ НА ОБРАТНЫЙ ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("УДАЛИТЬ ФОТО", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("УДАЛИТЬ РАЗНОВИДНОСТЬ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("УДАЛИТЬ ПОДВИД РЕМОНТНЫХ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЯ/ФОТО">@Html.ActionLink("Х", "GetFile", "Upload")</td>
                 </tr>
                 <tr>
-                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
-                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
-                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
-                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
-                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
-                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="РОЛИ">@Html.ActionLink("РЕДАКТИРОВАТЬ НАИМЕНОВАНИЕ РОЛИ В БАЗЕ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ОДОБРИТЬ ПУБЛИКАЦИЮ ОТЗЫВА, РЕДАКТИРОВАТЬ ОТЗЫВ", "AllCallMee_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ВНЕСТИ КОММЕНТАРИЙ ОТНОСИТЕЛЬНО ЗАЯВКИ НА ОБРАТНЫЙ ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("РЕДАКТИРОВАТЬ ИДЕНТИФИКАЦИОННЫЙ НОМЕР ОБЬЕКТА РЕМОНТА, К КОТОРОМУ ОТНОСИТСЯ ФОТО", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("РЕДАКТИРОВАТЬ НАИМЕНОВАНИЕ ИЛИ ОПИСАНИЕ РАЗНОВИДНОСТИ РЕМОНТНЫХ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("РЕДАКТИРОВАТЬ НАИМЕНОВАНИЕ ИЛИ СТОИМОСТЬ ПОДВИДА РЕМОНТНЫХ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЯ/ФОТО">@Html.ActionLink("Х", "GetFile", "Upload")</td>
                 </tr>
                 <tr>
-                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
-                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
-                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
-                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
-                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
-                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
-                </tr>
-                <tr>
-                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ", "AllRoles", "Role")</td>
-                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЛЕЙ", "AllComments_Admin", "Comment")</td>
-                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("ПРОСМОТР ЗАЯВОК НА ЗВОНОК", "AllCallMee_Admin", "CallMee")</td>
-                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("ПРОСМОТР ВСЕХ ФОТО ИЗ ГАЛЕРЕИ", "AllPhotos_Admin", "Photo")</td>
-                    <td data-label="РАБОТЫ">@Html.ActionLink("ПРОСМОТР ВСЕХ РАЗНОВИДНОСТЕЙ РАБОТ", "AllKindsOfJob_Admin", "Kind")</td>
-                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("ПРОСМОТР РАСЦЕНОК НА ПОДВИДЫ РАБОТ", "AllJobs_Admin", "Job")</td>
+                    <td data-label="РОЛИ">@Html.ActionLink("ПРОСМОТР ВСЕХ РОЛЕЙ В БАЗЕ", "AllRoles", "Role")</td>
+                    <td data-label="ОТЗЫВЫ">@Html.ActionLink("БЛОКИРОВКА ПОСТУПАЮЩИХ ОТЗЫВОВ ОТ НЕБЛАГОНАДЕЖНОГО ПОЛЬЗОВАТЕЛЯ(по IP клиента)", "AllCallMee_Admin", "Comment")</td>
+                    <td data-label="ЗАЯВКИ НА ЗВОНОК">@Html.ActionLink("БЛОКИРОВКА ЗАЯВОК НА ОБРАТНЫЙ ЗВОНОК ОТ ОПРЕДЕЛЕННОГО ПОЛЬЗОВАТЕЛЯ(по IP клиента)", "AllCallMee_Admin", "CallMee")</td>
+                    <td data-label="ФОТОГАЛЕРЕЯ">@Html.ActionLink("Х", "AllPhotos_Admin", "Photo")</td>
+                    <td data-label="РАБОТЫ">@Html.ActionLink("Х", "AllKindsOfJob_Admin", "Kind")</td>
+                    <td data-label="РАСЦЕНКИ">@Html.ActionLink("Х", "AllJobs_Admin", "Job")</td>
+                    <td data-label="ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЯМИ ИЗОБРАЖЕНИЯ/ФОТО">@Html.ActionLink("Х", "GetFile", "Upload")</td>
                 </tr>
             </tbody>
         </table>

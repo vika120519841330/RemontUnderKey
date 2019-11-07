@@ -2,7 +2,7 @@
 @model Comment_View
 
 @section Body{
-    <div style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">
+    <div style="font-size:xx-large; text-align: center; font-family:My_Flex_font; color: red;">
         @ViewBag.ResultFromUpload
     </div>
     @using (Html.BeginForm("CreateComment", "Comment", FormMethod.Post))
@@ -33,14 +33,13 @@
                         <input type="submit" value="ОТПРАВИТЬ" class="eraserbuttonindex" />
                     </div>
                     <p> &emsp; </p>
-                    <div style="padding-top: 1%;" class="upload">
-                        @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id }, new { @class = "upload" })
+                    <div style="padding-top: 1%;">
+                        @Html.ActionLink("ЗАГРУЗИТЬ ФАЙЛ / ИЗОБРАЖЕНИЕ", "AddFileRedirect", new { id = Model.Id }, new { @class="eraserbuttonindex"})
                     </div>
                     <p> &emsp; </p>
                 </div>
             </div>
-
-            <div style="height:auto;">
+            <div style="height:auto; text-align: center;">
                 @Html.Action("AllUploadsByNameOfUser")
             </div>
             <div style="font-size:xx-large; text-align: center; font-family:My_Flex_font;">

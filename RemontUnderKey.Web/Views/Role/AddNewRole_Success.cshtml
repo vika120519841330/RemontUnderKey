@@ -10,19 +10,19 @@
         <thead>
             <tr>
                 <th>
-                    USER
+                    №П/П
                 </th>
                 <th>
-                    ROLE
+                    РОЛЬ
                 </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var r in @ViewBag.listofrolesofuser)
+            @foreach (string role in @ViewBag.listofrolesofuser)
             {
                 <tr>
                     <td>@(++ViewBag.Num)</td>
-                    <td>@r.RoleId</td>
+                    <td>@role</td>
                 </tr>
             }
         </tbody>

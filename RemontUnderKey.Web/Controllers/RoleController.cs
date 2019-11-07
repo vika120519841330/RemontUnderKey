@@ -15,19 +15,73 @@ namespace RemontUnderKey.Web.Controllers
     {
         private ApplicationUserManager userManager;
         private RoleManager<IdentityRole> roleManager;
+        private ApplicationDbContext context;
+        private IdentityRole role;
+        private string result;
+        private List<IdentityRole> ListRoles;
 
-        public RoleController(ApplicationUserManager userManager,
-                            RoleManager<IdentityRole> roleManager)
+        public RoleController(ApplicationUserManager _userManager,
+                            RoleManager<IdentityRole> _roleManager,
+                            ApplicationDbContext _context)
         {
-            this.userManager = userManager;
-            this.roleManager = roleManager;
+            this.userManager = _userManager;
+            this.roleManager = _roleManager;
+            this.context = _context;
         }
 
+        //Добавить новую роль в БД
         [HttpGet]
-        [Route("Role/AllRoles")]
+        [Route("Role/AddNewRoleInDB_Admin")]
         [Authorize(Roles = "admin")]
-        public ActionResult AllRoles()
+        public ActionResult AddNewRoleInDB_Admin()
         {
+            ViewBag.ResultPartial = "ДОБАВИТЬ НОВУЮ РОЛЬ В БД";
+            return PartialView("AddNewRoleInDB_Admin");
+        }
+        //Добавить новую роль в БД
+        [HttpPost]
+        [Route("Role/AddNewRoleInDB_Admin/titleRole")]
+        [Authorize(Roles = "admin")]
+        public ActionResult AddNewRoleInDB_Admin(string titleRole)
+        {
+            //проверяем, может подобное наименование роли уже существует в БД
+            List<IdentityRole> listRoles = roleManager.Roles.ToList();
+            bool exist = false;
+            foreach(IdentityRole tempRole in listRoles)
+            {
+                if (tempRole.Name.CompareTo(titleRole) == 0)
+                {
+                    exist = true;
+                }
+            }
+            // если новое наименование роли уникальное
+            if (!exist)
+            {
+                // создаем роль
+                role = new IdentityRole { Name = titleRole };
+                // добавляем роль в бд
+                roleManager.Create(role);
+                result = $"РОЛЬ {role.Name} УСПЕШНО ДОБАВЛЕНА В БАЗУ ДАННЫХ !";
+            }
+            else
+            {
+                result = $"РОЛЬ {role} УЖЕ СУЩЕСТВУЕТ В БАЗЕ ДАННЫХ ! ПОПРОБУЙТЕ ДОБАВИТЬ ДРУГУЮ РОЛЬ !";
+            }
+            return RedirectToRoute(new { controller = "Role", action = "AllRoles", res = result });
+
+        }
+
+        //Все роли в сопоставлении с пользователями, которые находятся в этих ролях
+        [HttpGet]
+        [Route("Role/AllRoles/res")]
+        [Authorize(Roles = "admin")]
+        public ActionResult AllRoles(string res=" ")
+        {
+            string resRedir = res;
+            if (resRedir != null && resRedir.Length > 0)
+            {
+                TempData["resredir"] = resRedir;
+            }
             // Коллекция ролей в сопоставлении с пользователями, которые находятся в этих ролях
             Dictionary<string, List<string>> rolesANDusers = new Dictionary<string, List<string>>();
             // Коллекция id пользоватлей
@@ -55,19 +109,42 @@ namespace RemontUnderKey.Web.Controllers
                 }
                 allUsersId.Add(user.Id);
             }
-            ViewBag.Num = 0;
+            int n = 0;
+            int n2 = 0;
+            ViewBag.Num = n;
+            ViewBag.Num2 = n2;
             ViewBag.ListUserId = allUsersId;
             ViewBag.Header = "СПИСОК ВСЕХ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ:";
             return View("AllRoles", rolesANDusers);
         }
 
-        //Добавление для пользователя новой роли - по логину пользователя
+        //Все роли, которые существуют в БД
+        [HttpGet]
+        [Route("Role/AllRolesInDB_Admin")]
+        [Authorize(Roles = "admin")]
+        public List<IdentityRole> AllRolesInDB_Admin()
+        {
+            ListRoles = roleManager.Roles.ToList();
+            return ListRoles;
+        }
+
+        //Все роли, которые существуют в БД
+        [Authorize(Roles = "admin")]
+        public SelectList GetSelectList_Roles()
+        {
+            ListRoles = AllRolesInDB_Admin();
+            SelectList SelectListRoles = new SelectList(ListRoles, "Name", "Name");
+            return SelectListRoles;
+        }
+
+        //Добавление для пользователя новой роли - по ID пользователя
         [HttpGet]
         [Route("Role/AddNewRole")]
         [Authorize(Roles = "admin")]
         public ActionResult AddNewRole(string id)
         {
             ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ViewBag.Roles = GetSelectList_Roles();
             ApplicationUser foundUser = userManager.FindById(id);
             TempData["NameOfUser"] = foundUser.UserName;
             return View("AddNewRole");
@@ -83,42 +160,37 @@ namespace RemontUnderKey.Web.Controllers
             if (foundUser == null)
             {
                 ViewBag.Result = "Пользователь с таким логином не зарегистрирован!!";
+                ViewBag.Roles = GetSelectList_Roles();
                 return View("AddNewRole_Post");
             }
             // проверить - возможно у запрашиваемого пользователя уже есть эта роль
             if (userManager.IsInRole(foundUser.Id, role))
             {
                 ViewBag.Result = "Пользователь уже наделен правами запрашиваемой роли!!";
+                ViewBag.Roles = GetSelectList_Roles();
                 return View("AddNewRole_Post");
             }
-            var foundRole = roleManager.FindByName(role);
-            if (foundRole == null)
+            //var foundRole = roleManager.FindByName(role);
+            int n = 0;
+            int n2 = 0;
+            ViewBag.Num = n;
+            ViewBag.Num2 = n2;
+            //Присвоение текущему пользователю выбранной роли
+            userManager.AddToRole(foundUser.Id, role);
+            // Коллекция всех идентификационных номеров ролей
+            IList<IdentityUserRole> listOfIdOfRolesOfUser = foundUser.Roles.ToList();
+            // Коллекция всех наименований ролей
+            IList<string> listOfNameOfRolesOfUser = new List<string>();
+            // По окончании выполнения цикла - готовая коллекция наименований всех ролей пользователя
+            foreach (var t in listOfIdOfRolesOfUser)
             {
-                ViewBag.Result = "Роль с таким наименованием не зарегистрирована!!";
-                return View("AddNewRole_Post");
+                string tempRoleId = t.RoleId;
+                var tempRoleName = roleManager.Roles.FirstOrDefault(_ => _.Id == tempRoleId).Name;
+                listOfNameOfRolesOfUser.Add(tempRoleName);
             }
-            else
-            {
-                const int num = 0;
-                ViewBag.Num = num;
-                //Присвоение текущему пользователю выбранной роли
-                userManager.AddToRole(foundUser.Id, role);
-                // Коллекция всех идентификационных номеров ролей
-                IList<IdentityUserRole> listOfIdOfRolesOfUser = foundUser.Roles.ToList();
-                // Коллекция всех наименований ролей
-                IList<string> listOfNameOfRolesOfUser = new List<string>();
-                // По окончании выполнения цикла - готовая коллекция наименований всех ролей пользователя
-                foreach (var t in listOfIdOfRolesOfUser)
-                {
-                    string tempRoleId = t.RoleId;
-                    var tempRoleName = roleManager.Roles.FirstOrDefault(_ => _.Id == tempRoleId).Name;
-                    listOfNameOfRolesOfUser.Add(tempRoleName);
-                }
-
-                ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
-                ViewBag.Result = $"Пользователь с именем: {foundUser.UserName}\0\0 обладает следующими ролями:";
-                return View("AddNewRole_Success");
-            }
+            ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
+            ViewBag.Result = $"Пользователь с именем: {foundUser.UserName}\0\0 обладает следующими ролями:";
+            return View("AddNewRole_Success");
         }
     }
 }

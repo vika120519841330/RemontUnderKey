@@ -7,18 +7,19 @@
 
     @using (Html.BeginForm())
     {
-        <div class="form-horizontal" align="center">
-            <p>Имя пользователя: </p>
-            @Html.Editor("name", "Имя пользователя")
-            <p>Выберите требуемую роль:</p>
-            @Html.Editor("role", "Название роли")
-            <p></p>
-            <p>@ViewBag.Result</p>
-            <br />
-            <p><input type="submit" value="ПОПРОБОВАТЬ ДОБАВИТЬ ЕЩЕ РАЗ" /></p>
-        </div>
-    }
-    <div style="text-align: center;">
-        @Html.ActionLink("К СПИСКУ РОЛЕЙ", "AllRoles", "Role")
+    <div class="form-horizontal" align="center">
+        <p>Имя пользователя: </p>
+        @Html.Editor("name", "Имя пользователя")
+        <p>Выберите требуемую роль:</p>
+        @*@Html.Editor("role", "Название роли")*@
+        @Html.DropDownList("role", ViewBag.Roles as SelectList)
+        <p></p>
+        <p>@ViewBag.Result</p>
+        <br />
+        <p><input type="submit" value="ПОПРОБОВАТЬ ДОБАВИТЬ ЕЩЕ РАЗ" /></p>
     </div>
+    }
+<div style="text-align: center;">
+    @Html.ActionLink("НАЗАД К СПИСКУ РОЛЕЙ", "AllRoles", "Role")
+</div>
 }

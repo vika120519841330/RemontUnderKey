@@ -284,7 +284,7 @@ namespace RemontUnderKey.Web.Controllers
             #endregion
             else
             {
-                ViewBag.Mess = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО:";
+                ViewBag.Mess = $"ПОЛЬЗОВАТЕЛЬ {UserName} ПОКА НЕ ЗАГРУЗИЛ НИ ОДНОГО ИЗОБРАЖЕНИЯ ИЛИ ФОТО";
                 return PartialView("AllFilesByNameOfUserWithoutPhoto");
             }
         }

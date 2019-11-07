@@ -1,0 +1,19 @@
+﻿@model string
+
+<div>@ViewBag.ResultPartial</div>
+@using (Html.BeginForm("AddNewRoleInDB_Admin", "Role", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal" align="center">
+    <br />
+    @Html.TextBox("titleRole")
+    <div>
+        <input type="submit" value="ДОБАВИТЬ РОЛЬ" />
+    </div>
+</div>
+}
+
+
+
+
+

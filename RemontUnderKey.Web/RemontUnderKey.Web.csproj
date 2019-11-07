@@ -863,6 +863,7 @@
     <Content Include="Views\Role\AddNewRole_Success.cshtml" />
     <Content Include="Views\Role\AddNewRole.cshtml" />
     <Content Include="Views\Role\AddNewRole_Post.cshtml" />
+    <Content Include="Views\Role\AddNewRoleInDB_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

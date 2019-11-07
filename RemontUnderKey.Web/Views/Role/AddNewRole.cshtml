@@ -10,7 +10,8 @@
             <p>Имя пользователя: </p>
             @Html.TextBox("name", @TempData["NameOfUser"])
             <p>Выберите роль :</p>
-            @Html.TextBox("role", "Выберите роль")
+            @Html.DropDownList("role", ViewBag.Roles as SelectList)
+            @*@Html.TextBox("role", "Выберите роль")*@
             <p><input type="submit" value="ДОБАВИТЬ" /></p>
         </div>
     }
@@ -18,7 +19,7 @@
     <p></p>
 
     <div style="text-align: center;">
-        @Html.ActionLink("АДМИН-ПАНЕЛЬ", "AdminPanel", "Admin")
+        @Html.ActionLink("НАЗАД К СПИСКУ РОЛЕЙ", "AllRoles", "Role")
     </div>
 
 }

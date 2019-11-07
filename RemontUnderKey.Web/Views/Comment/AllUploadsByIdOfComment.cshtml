@@ -5,18 +5,18 @@
     @ViewBag.Result
 </div>
 <p> &emsp; </p>
-<div>
+<div style="height:auto; text-align: center;">
     @for (int i = 0; i < @Model.Count(); i = i + 1)
     {
         string imageBase64 = Convert.ToBase64String(@Model.ToList()[i].File);
         string imageType = @Model.ToList()[i].FileType;
         string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
         //@*<a href="@Url.Action("GetFile", "Upload", new {id =  @Model.ToList()[i].Id} )">*@
-    <span class="block" style="margin: 2px 2px 2px 2px;">
-        <a href="#@Model.ToList()[i].Id" class="brighten">
-            <img src="@imageSrc" width="150" height="150" alt="@Model.ToList()[i].FileName" title="@Model.ToList()[i].FileName" />
-        </a>
-    </span>
+        <span class="block" style="margin: 2px 2px 2px 2px;">
+            <a href="#@Model.ToList()[i].Id" class="brighten">
+                <img src="@imageSrc" width="150" height="150" alt="@Model.ToList()[i].FileName" title="@Model.ToList()[i].FileName" />
+            </a>
+        </span>
     }
 </div>
 <p> &emsp; </p>
