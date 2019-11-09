@@ -5,8 +5,12 @@
 {
     @Html.AntiForgeryToken()
 <div class="form-horizontal" align="center">
-    <br />
+    <div style="text-align: center;  margin-top: 15px; margin-bottom: 10px; color: black; font-size: smaller;">
+        Введите наименование для создаваемой роли :
+    </div>
     @Html.TextBox("titleRole")
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
     <div>
         <input type="submit" value="ДОБАВИТЬ РОЛЬ" />
     </div>

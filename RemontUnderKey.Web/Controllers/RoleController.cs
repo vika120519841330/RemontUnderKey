@@ -38,6 +38,7 @@ namespace RemontUnderKey.Web.Controllers
             ViewBag.ResultPartial = "ДОБАВИТЬ НОВУЮ РОЛЬ В БД";
             return PartialView("AddNewRoleInDB_Admin");
         }
+
         //Добавить новую роль в БД
         [HttpPost]
         [Route("Role/AddNewRoleInDB_Admin/titleRole")]
@@ -47,7 +48,7 @@ namespace RemontUnderKey.Web.Controllers
             //проверяем, может подобное наименование роли уже существует в БД
             List<IdentityRole> listRoles = roleManager.Roles.ToList();
             bool exist = false;
-            foreach(IdentityRole tempRole in listRoles)
+            foreach (IdentityRole tempRole in listRoles)
             {
                 if (tempRole.Name.CompareTo(titleRole) == 0)
                 {
@@ -75,7 +76,7 @@ namespace RemontUnderKey.Web.Controllers
         [HttpGet]
         [Route("Role/AllRoles/res")]
         [Authorize(Roles = "admin")]
-        public ActionResult AllRoles(string res=" ")
+        public ActionResult AllRoles(string res = " ")
         {
             string resRedir = res;
             if (resRedir != null && resRedir.Length > 0)
@@ -139,11 +140,11 @@ namespace RemontUnderKey.Web.Controllers
 
         //Добавление для пользователя новой роли - по ID пользователя
         [HttpGet]
-        [Route("Role/AddNewRole")]
+        [Route("Role/AddNewRole/id")]
         [Authorize(Roles = "admin")]
         public ActionResult AddNewRole(string id)
         {
-            ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ЗАРЕГИСТРИРОВАННОМУ ПОЛЬЗОВАТЕЛЮ";
             ViewBag.Roles = GetSelectList_Roles();
             ApplicationUser foundUser = userManager.FindById(id);
             TempData["NameOfUser"] = foundUser.UserName;
@@ -151,11 +152,11 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         [HttpPost]
-        [Route("Role/AddNewRole")]
+        [Route("Role/AddNewRole/name/role")]
         [Authorize(Roles = "admin")]
         public ActionResult AddNewRole_Post(string name, string role)
         {
-            ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ViewBag.TODO = "РЕЗУЛЬТАТ ДОБАВЛЕНИЯ НОВОЙ РОЛИ ЗАРЕГИСТРИРОВАННОМУ ПОЛЬЗОВАТЕЛЮ";
             ApplicationUser foundUser = userManager.FindByName(name);
             if (foundUser == null)
             {
@@ -191,6 +192,82 @@ namespace RemontUnderKey.Web.Controllers
             ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
             ViewBag.Result = $"Пользователь с именем: {foundUser.UserName}\0\0 обладает следующими ролями:";
             return View("AddNewRole_Success");
+        }
+
+        //Удаление у пользователя роли - по ID пользователя
+        [HttpGet]
+        [Route("Role/DeleteRole/id")]
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteRole(string id)
+        {
+            ViewBag.TODO = "УДАЛЕНИЕ РОЛИ У ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ViewBag.Roles = GetSelectList_Roles();
+            ApplicationUser foundUser = userManager.FindById(id);
+            TempData["NameOfUser"] = foundUser.UserName;
+            return View("DeleteRole");
+        }
+
+        [HttpPost]
+        [Route("Role/DeleteRole/name/role")]
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteRole_Post(string name, string role)
+        {
+            ViewBag.TODO = "РЕЗУЛЬТАТ УДАЛЕНИЯ РОЛИ У ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            ApplicationUser foundUser = userManager.FindByName(name);
+            if (foundUser == null)
+            {
+                ViewBag.Result = "Пользователь с таким логином не зарегистрирован!!";
+                ViewBag.Roles = GetSelectList_Roles();
+                return View("DeleteRole_Post");
+            }
+            // проверить - возможно у запрашиваемого пользователя уже есть эта роль
+            if (!(userManager.IsInRole(foundUser.Id, role)))
+            {
+                ViewBag.Result = "Пользователь не обладает правами запрашиваемой роли!!";
+                ViewBag.Roles = GetSelectList_Roles();
+                return View("DeleteRole_Post");
+            }
+            int n = 0;
+            ViewBag.Num = n;
+            //Удаление у текущего пользователя выбранной роли
+            userManager.RemoveFromRole(foundUser.Id, role);
+            // Коллекция всех идентификационных номеров ролей
+            IList<IdentityUserRole> listOfIdOfRolesOfUser = foundUser.Roles.ToList();
+            // Коллекция всех наименований ролей
+            IList<string> listOfNameOfRolesOfUser = new List<string>();
+            // По окончании выполнения цикла - готовая коллекция наименований всех ролей пользователя
+            foreach (var t in listOfIdOfRolesOfUser)
+            {
+                string tempRoleId = t.RoleId;
+                var tempRoleName = roleManager.Roles.FirstOrDefault(_ => _.Id == tempRoleId).Name;
+                listOfNameOfRolesOfUser.Add(tempRoleName);
+            }
+            ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
+            ViewBag.Result = $"После удаления выбранной роли, пользователь с именем: {foundUser.UserName}\0\0 обладает следующими правами:";
+            return View("DeleteNewRole_Success");
+        }
+
+        //Удалить роль из БД
+        [HttpGet]
+        [Route("Role/DeleteRoleFromDB_Admin")]
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteRoleFromDB_Admin()
+        {
+            ViewBag.ResultPartial = "УДАЛИТЬ РОЛЬ ИЗ БД";
+            ViewBag.Roles = GetSelectList_Roles();
+            return PartialView("DeleteRoleFromDB_Admin");
+        }
+        //Удалить роль из БД
+        [HttpPost]
+        [Route("Role/DeleteRoleFromDB_Admin/titleRole")]
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteRoleFromDB_Admin(string titleRole)
+        {
+            role = roleManager.Roles.FirstOrDefault(_ => _.Name == titleRole);
+            string tempRolesName = role.Name;
+            roleManager.Delete(role);
+            result = $"РОЛЬ {tempRolesName} УСПЕШНО УДАЛЕНА ИЗ БАЗЫ ДАННЫХ !";
+            return RedirectToRoute(new { controller = "Role", action = "AllRoles", res = result });
         }
     }
 }

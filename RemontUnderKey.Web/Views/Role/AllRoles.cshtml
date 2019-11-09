@@ -50,27 +50,20 @@
                     @Html.DisplayFor(modelItem => item.Value)
                 </td>
                 <td>
-                    <table border="0" cellpadding="0" align="center">
-                        <tr>
+                    <table border="0" align="center">
+                        <tr valign="top">
                             <td align="center">
-                                <form>
-                                    <button type="button">
-                                        <p>
-                                            @Html.ActionLink("Добавить новую роль", "AddNewRole", new { id = @ViewBag.ListUserId[num2] })
-                                        </p>
-                                    </button>
-                                </form>
+                                <button>
+                                    @Html.ActionLink("Добавить новую роль", "AddNewRole", new { id = @ViewBag.ListUserId[num2] })
+                                </button>
                             </td>
                             <td align="center">
-                                <form>
-                                    <button type="button">
-                                        <p>
-                                        <p>
-                                            @Html.ActionLink("Удалить существующую роль", "", new { id = @ViewBag.ListUserId[num2] })
-                                        </p>
-                                    </button>
-                                </form>
-                                @(num2 = num2 + 1)
+                                <button>
+                                    @Html.ActionLink("Удалить существующую роль", "DeleteRole", new { id = @ViewBag.ListUserId[num2] })
+                                </button>
+                                <span style="color: white;">
+                                    @(num2 = num2 + 1)
+                                </span>
                             </td>
                         </tr>
                     </table>
@@ -80,17 +73,30 @@
     </table>
 
     <p></p>
-
-    <div style="text-align: center;  margin-top: 5px; color: red;">
-        @TempData["resredir"]
-    </div>
-
-    <div style="text-align: center;  margin-top: 15px;">
-        @Html.Action("AddNewRoleInDB_Admin")
-    </div>
-
+    <table>
+        <tr>
+            <td style="width:50%; vertical-align: top;">
+                <div style="text-align: center;  margin-top: 15px; color: red; ">
+                    @TempData["resredir"]
+                </div>
+                <div style="display: block; text-align: center;">
+                    @Html.Action("AddNewRoleInDB_Admin")
+                </div>
+            </td>
+            <td style="width:50%; vertical-align: top;">
+                <div style="text-align: center;  margin-top: 15px; color: red;">
+                    @TempData["resredir"]
+                </div>
+                <div style="display: block; text-align: center;">
+                    @Html.Action("DeleteRoleFromDB_Admin")
+                </div>
+            </td>
+        </tr>
+    </table>
     <div style="text-align: center; margin-top: 15px;">
-        @Html.ActionLink("АДМИН-ПАНЕЛЬ", "AdminPanel", "Admin")
+        <button>
+            @Html.ActionLink("АДМИН-ПАНЕЛЬ", "AdminPanel", "Admin")
+        </button>
     </div>
 }
 

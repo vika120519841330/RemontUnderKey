@@ -108,3 +108,60 @@ table {
             }
 }
 /*стиль для адаптивной таблицы - конец*/
+
+button {
+    padding: 5px 20px; /* Добавляем поля */
+    text-decoration: none; /* Убираем подчёркивание у ссылки */
+    text-align: center;
+    cursor: pointer; /* Курсор в виде руки */
+    background-color: black; /* Фон для браузеров*/
+    color: white; /* Цвет текста и ссылки */
+    border-radius: 10px; /* Скругляем уголки */
+    border: 1px solid black; /* Добавляем синюю рамку */
+}
+    button:hover {
+        background-color: white; /* Фон для браузеров*/
+        color: black; /* Цвет текста и ссылки */
+    }
+a {
+    background-color: black; /* Фон для браузеров*/
+    color: white; /* Цвет текста и ссылки */
+    font-size: medium;
+    font-family: My_Flex_font;
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+}
+    a:hover {
+        background-color: white; /* Фон для браузеров*/
+        color: black; /* Цвет текста и ссылки */
+    }
+input[type="submit"] {
+    padding: 5px 20px; /* Добавляем поля */
+    text-decoration: none; /* Убираем подчёркивание у ссылки */
+    text-align: center;
+    cursor: pointer; /* Курсор в виде руки */
+    background-color: black; /* Фон для браузеров*/
+    color: white; /* Цвет текста и ссылки */
+    border-radius: 10px; /* Скругляем уголки */
+    border: 1px solid black; /* Добавляем синюю рамку */
+    font-size: medium;
+    font-family: My_Flex_font;
+}
+
+    input[type="submit"] :hover {
+        background-color: white; /* Фон для браузеров*/
+        color: black; /* Цвет текста и ссылки */
+    }
+    input[type="submit"] a {
+        background-color: black; /* Фон для браузеров*/
+        color: white; /* Цвет текста и ссылки */
+        border-radius: 10px; /* Скругляем уголки */
+        border: 1px solid black; /* Добавляем синюю рамку */
+        font-size: medium;
+        font-family: My_Flex_font;
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+
+    input[type="submit"] a:hover {
+        background-color: white; /* Фон для браузеров*/
+        color: black; /* Цвет текста и ссылки */
+    }

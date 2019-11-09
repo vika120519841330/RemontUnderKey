@@ -9,14 +9,14 @@
     <div style="text-align: center;  margin-top: 5px; margin-bottom: 5px; color: red; font-size: medium;">
         @ViewBag.Result
     </div>
-    @using (Html.BeginForm("AddNewRole_Post", "Role", FormMethod.Post))
+    @using (Html.BeginForm("DeleteRole_Post", "Role", FormMethod.Post))
     {
         <div class="form-horizontal" align="center">
             <p>Имя пользователя: </p>
             @Html.TextBox("name", @TempData["NameOfUser"])
-            <p>Выберите роль :</p>
+            <p>Выберите роль для удаления :</p>
             @Html.DropDownList("role", ViewBag.Roles as SelectList)
-            <p><input type="submit" value="ДОБАВИТЬ" /></p>
+            <p><input type="submit" value="УДАЛИТЬ РОЛЬ" /></p>
         </div>
     }
 
