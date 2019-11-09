@@ -66,7 +66,7 @@ namespace RemontUnderKey.Web.Controllers
             }
             else
             {
-                result = $"РОЛЬ {role} УЖЕ СУЩЕСТВУЕТ В БАЗЕ ДАННЫХ ! ПОПРОБУЙТЕ ДОБАВИТЬ ДРУГУЮ РОЛЬ !";
+                result = $"РОЛЬ {titleRole} УЖЕ СУЩЕСТВУЕТ В БАЗЕ ДАННЫХ ! ПОПРОБУЙТЕ ДОБАВИТЬ ДРУГУЮ РОЛЬ !";
             }
             return RedirectToRoute(new { controller = "Role", action = "AllRoles", res = result });
 
@@ -119,9 +119,20 @@ namespace RemontUnderKey.Web.Controllers
             return View("AllRoles", rolesANDusers);
         }
 
-        //Все роли, которые существуют в БД
+        //Возвращает в чатичное представление все роли, которые существуют в БД
         [HttpGet]
-        [Route("Role/AllRolesInDB_Admin")]
+        [Route("Role/AllRolesInDBToPartial_Admin")]
+        [Authorize(Roles = "admin")]
+        public ActionResult AllRolesInDBToPartial_Admin()
+        {
+            ViewBag.Header = "СПИСОК РОЛЕЙ, СОХРАНЕННЫХ В БАЗУ ДАННЫХ :";
+            int num = 0;
+            ViewBag.Num = num;
+            ListRoles = roleManager.Roles.ToList();
+            return PartialView(ListRoles);
+        }
+
+        //Вспомогательный метод - возвращает все роли, которые существуют в БД
         [Authorize(Roles = "admin")]
         public List<IdentityRole> AllRolesInDB_Admin()
         {
@@ -129,7 +140,7 @@ namespace RemontUnderKey.Web.Controllers
             return ListRoles;
         }
 
-        //Все роли, которые существуют в БД
+        //Список всех ролей, которые существуют в БД, для передачи в представление в виде выпадающего списка
         [Authorize(Roles = "admin")]
         public SelectList GetSelectList_Roles()
         {
@@ -171,7 +182,6 @@ namespace RemontUnderKey.Web.Controllers
                 ViewBag.Roles = GetSelectList_Roles();
                 return View("AddNewRole_Post");
             }
-            //var foundRole = roleManager.FindByName(role);
             int n = 0;
             int n2 = 0;
             ViewBag.Num = n;
@@ -190,13 +200,16 @@ namespace RemontUnderKey.Web.Controllers
                 listOfNameOfRolesOfUser.Add(tempRoleName);
             }
             ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
+            TempData["IdOfUser"] = foundUser.Id.ToString();
+            TempData["NameOfUser"] = foundUser.UserName;
             ViewBag.Result = $"Пользователь с именем: {foundUser.UserName}\0\0 обладает следующими ролями:";
+            ViewBag.Result0 = $"Роль\0\0 {role}\0\0 успешно добавлена пользователю {foundUser.UserName} !";
             return View("AddNewRole_Success");
         }
 
         //Удаление у пользователя роли - по ID пользователя
         [HttpGet]
-        [Route("Role/DeleteRole/id")]
+        [Route("Role/DeleteRole/{id:string}")]
         [Authorize(Roles = "admin")]
         public ActionResult DeleteRole(string id)
         {
@@ -243,8 +256,11 @@ namespace RemontUnderKey.Web.Controllers
                 listOfNameOfRolesOfUser.Add(tempRoleName);
             }
             ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
+            TempData["IdOfUser"] = foundUser.Id.ToString();
+            TempData["NameOfUser"] = foundUser.UserName.ToString();
             ViewBag.Result = $"После удаления выбранной роли, пользователь с именем: {foundUser.UserName}\0\0 обладает следующими правами:";
-            return View("DeleteNewRole_Success");
+            ViewBag.Result0 = $"Роль\0\0 {role}\0\0 успешно удалена у пользователя {foundUser.UserName} !";
+            return View("DeleteRole_Success");
         }
 
         //Удалить роль из БД

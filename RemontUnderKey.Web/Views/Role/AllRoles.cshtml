@@ -72,27 +72,28 @@
         }
     </table>
 
-    <p></p>
+    <div style="text-align: center;  margin-top: 15px; color: red; font-size: large;">
+        @TempData["resredir"]
+    </div>
     <table>
         <tr>
             <td style="width:50%; vertical-align: top;">
-                <div style="text-align: center;  margin-top: 15px; color: red; ">
-                    @TempData["resredir"]
-                </div>
                 <div style="display: block; text-align: center;">
                     @Html.Action("AddNewRoleInDB_Admin")
                 </div>
             </td>
             <td style="width:50%; vertical-align: top;">
-                <div style="text-align: center;  margin-top: 15px; color: red;">
-                    @TempData["resredir"]
-                </div>
                 <div style="display: block; text-align: center;">
                     @Html.Action("DeleteRoleFromDB_Admin")
                 </div>
             </td>
         </tr>
     </table>
+
+    <div style="text-align: center; width: 50%; margin-left: 25%; margin-top: 10px;">
+        @Html.Action("AllRolesInDBToPartial_Admin")
+    </div>
+
     <div style="text-align: center; margin-top: 15px;">
         <button>
             @Html.ActionLink("АДМИН-ПАНЕЛЬ", "AdminPanel", "Admin")

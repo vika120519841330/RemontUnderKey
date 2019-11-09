@@ -18,17 +18,11 @@
             <p>Выберите требуемую роль:</p>
             @Html.DropDownList("role", ViewBag.Roles as SelectList)
             <br />
-            <br />
-            <br />
-            <div style="text-align: center; color: red; font-size: medium;">
-                @ViewBag.Result
-            </div>
-            <br />
             <p><input type="submit" value="ПОПРОБОВАТЬ ДОБАВИТЬ ЕЩЕ РАЗ" /></p>
         </div>
     }
-    <div style="height: 15px; text-align: center;"></div>
-    <div style="text-align: center;">
+    <div style="height: 15px; text-align: center; margin-top: 15px;"></div>
+    <div style="text-align: center; margin-top: 35px;">
         <button>
             @Html.ActionLink("НАЗАД К СПИСКУ РОЛЕЙ", "AllRoles", "Role")
         </button>

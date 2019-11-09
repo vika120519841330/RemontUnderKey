@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework;
+@model List<IdentityRole>
+
+    <table class="table" border="1" cellspacing="0" align="center" style="margin-top: 5px;">
+        <tr align="center">
+            <th colspan="3" align="center" valign="middle">
+                @ViewBag.Header
+            </th>
+        </tr>
+        <tr align="center">
+            <th align="center">
+                № П/П
+            </th>
+            <th align="center">
+                @Html.LabelFor(model => model[0].Id)
+            </th>
+            <th align="center">
+                @Html.LabelFor(model => model[0].Name)
+            </th>
+        </tr>
+        @{
+            int num = ViewBag.Num;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="15%">
+                    @(num = num + 1)
+                </td>
+                <td width="50%">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td width="35%">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+

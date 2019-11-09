@@ -866,8 +866,9 @@
     <Content Include="Views\Role\AddNewRoleInDB_Admin.cshtml" />
     <Content Include="Views\Role\DeleteRole.cshtml" />
     <Content Include="Views\Role\DeleteRole_Post.cshtml" />
-    <Content Include="Views\Role\DeleteNewRole_Success.cshtml" />
+    <Content Include="Views\Role\DeleteRole_Success.cshtml" />
     <Content Include="Views\Role\DeleteRoleFromDB_Admin.cshtml" />
+    <Content Include="Views\Role\AllRolesInDBToPartial_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
