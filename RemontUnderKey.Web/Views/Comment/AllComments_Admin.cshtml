@@ -1,0 +1,225 @@
+﻿@using RemontUnderKey.Web.Models
+@model CommentPublishNotPublish_View
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+@section Header {
+    <style>
+        /* Базовые стили слоя затемнения и модального окна  */
+        .overlay {
+            text-align: center;
+            vertical-align: central;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            display: none; /*модальное окно скрыто, пока пользователь не кликнет ссылку*/
+            /* фон затемнения */
+            background-color: rgba(0, 0, 0, 0.65);
+            position: fixed; /* фиксированное поцизионирование */
+            cursor: default; /* тип курсара */
+        }
+            /* активируем слой затемнения */
+            .overlay:target {
+                display: block;
+            }
+        /* стили модального окна */
+        .popup {
+            text-align: center;
+            top: -3%;
+            right: 0;
+            left: 50%;
+            z-index: 20;
+            margin: 0;
+            width: 50%;
+            height: auto;
+            /* фиксированное позиционирование, окно стабильно при прокрутке */
+            position: fixed;
+            padding: 5px 5px 5px 5px;
+            border: 1px solid #383838;
+            background: #000000;
+            /* скругление углов */
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            border-radius: 4px;
+            /* внешняя тень */
+            -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+            -webkit-transform: translate(-50%, -500%);
+            -ms-transform: translate(-50%, -500%);
+            -o-transform: translate(-50%, -500%);
+            transform: translate(-50%, -500%);
+            -webkit-transition: -webkit-transform 0.6s ease-out;
+            -moz-transition: -moz-transform 0.6s ease-out;
+            -o-transition: -o-transform 0.6s ease-out;
+            transition: transform 0.6s ease-out;
+        }
+        /* активируем модальный блок */
+        .overlay:target + .popup {
+            -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            -o-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            top: 20%;
+        }
+
+        .close {
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            padding: 0;
+            font-size: medium;
+            border: 2px solid #ccc;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            -ms-border-radius: 15px;
+            -o-border-radius: 15px;
+            border-radius: 15px;
+            background-color: rgba(61, 61, 61, 0.8);
+            -webkit-box-shadow: 0px 0px 10px #000;
+            -moz-box-shadow: 0px 0px 10px #000;
+            box-shadow: 0px 0px 10px #000;
+            text-align: center;
+            text-decoration: none;
+            -webkit-transition: all ease .8s;
+            -moz-transition: all ease .8s;
+            -ms-transition: all ease .8s;
+            -o-transition: all ease .8s;
+            transition: all ease .8s;
+        }
+
+            .close:before {
+                color: rgba(255, 255, 255, 0.9);
+                content: "X";
+                text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+            }
+
+            .close:hover {
+                background-color: rgba(252, 20, 0, 0.8);
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        /* изображения внутри окна */
+        .popup img {
+            width: auto;
+            height: auto;
+            text-align: center;
+            vertical-align: top;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .block {
+            display: block;
+            float: left;
+            opacity: 1;
+            -webkit-transform: scale(1,1);
+            -webkit-transition-timing-function: ease-out;
+            -webkit-transition-duration: 550ms;
+            -moz-transform: scale(1,1);
+            -moz-transition-timing-function: ease-out;
+            -moz-transition-duration: 550ms;
+        }
+
+            .block:hover {
+                -webkit-transform: scale(1.2,1.2);
+                -webkit-transition-timing-function: ease-out;
+                -webkit-transition-duration: 550ms;
+                -moz-transform: scale(1.2,1.2);
+                -moz-transition-timing-function: ease-out;
+                -moz-transition-duration: 550ms;
+            }
+    </style>
+}
+@section Body {
+    <table class="table" border="1" cellspacing="0" align="center" style="margin-top: 5px;">
+        <tr align="center">
+            <th colspan="4" align="center" valign="middle">
+                @ViewBag.TODO
+            </th>
+        </tr>
+        <tr align="center">
+            <th align="center">
+                № П/П
+            </th>
+            <th align="center">
+                ЛОГИН ПОЛЬЗОВАТЕЛЯ
+            </th>
+            <th align="center">
+                ОТЗЫВ ПОЛЬЗОВАТЕЛЯ
+            </th>
+            <th align="center">
+                ИЗОБРАЖЕНИЯ / ФОТО, ЗАГРУЖЕННЫЕ ПОЛЬЗОВАТЕЛЕМ
+            </th>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @ViewBag.Name1
+            </td>
+        </tr>
+        @{
+            int num = ViewBag.Num;
+        }
+        @foreach (var item in Model.NotPublished)
+        {
+            <tr>
+                <td width="2%">
+                    @(num = num + 1)
+                </td>
+                <td width="8%">
+                    @Html.DisplayFor(modelItem => item.Key.UserName)
+                </td>
+                <td width="45%">
+                    @Html.DisplayFor(modelItem => item.Key.MessageFromUser)
+                </td>
+                <td width="45%">
+                    @foreach (Upload_View upload in item.Value)
+                    {
+                        @Html.Action("GetFile_Admin", new { Controller = "Upload", Action = "GetFile_Admin", id = upload.Id })
+                    }
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="4"></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @ViewBag.Name2
+            </td>
+        </tr>
+        @foreach (var item in Model.Published)
+        {
+            <tr>
+                <td width="2%">
+                    @(num = num + 1)
+                </td>
+                <td width="8%">
+                    @Html.DisplayFor(modelItem => item.Key.UserName)
+                </td>
+                <td width="45%">
+                    @Html.TextAreaFor(modelItem => item.Key.MessageFromUser)
+                </td>
+                <td width="45%">
+                    @foreach (Upload_View upload in item.Value)
+                    {
+                        <span>
+                            @Html.Action("GetFile_Admin", new { Controller = "Upload", Action = "GetFile_Admin", id = upload.Id })
+                        </span>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+

@@ -20,12 +20,11 @@ namespace RemontUnderKey.Web.Controllers
         private HookController hc;
         private static TelegramBotClient tg_client;
         private string redirectMessage;
-        private ApplicationUserManager userManager;
+        private readonly ApplicationUserManager userManager;
         private Comment_View comment;
-        Upload_View upload;
-        List<Comment_View> listComments = new List<Comment_View>();
-        List<Upload_View> listUplosds = new List<Upload_View>();
-
+        private Upload_View upload;
+        private List<Comment_View> listComments = new List<Comment_View>();
+        private List<Upload_View> listUplosds = new List<Upload_View>();
 
         public CommentController(IComment _service, IUpload _upservice, ApplicationUserManager _userManager)
         {
@@ -96,7 +95,7 @@ namespace RemontUnderKey.Web.Controllers
                 {
                     lengthOfAllCommentsOfUser = String.Concat(lengthOfAllCommentsOfUser, tempcomment.MessageFromUser);
                 }
-                if (lengthOfAllCommentsOfUser.Length == 0)
+                if (listComments.Count() == 0)
                 {
                     ViewBag.Salute = $"ПОЛЬЗОВАТЕЛЬ {UserName} ОСТАВЬТЕ, ПОЖАЛУЙСТА, СВОЙ ПЕРВЫЙ ОТЗЫВ НА САЙТЕ!";
                     comment = new Comment_View();
@@ -111,7 +110,7 @@ namespace RemontUnderKey.Web.Controllers
                     //если сохраненные отзывовы есть - редактируем последний(заменяем старый на новый), дабы пользователь не мог оставить более одного отзыва на сайте
                     ViewBag.Salute = $"ПОЛЬЗОВАТЕЛЬ {UserName} МОЖЕТЕ ОСТАВИТЬ ЕЩЕ ОДИН ОТЗЫВ НА НАШЕМ САЙТЕ!";
                     // Получение последного оставленного текущим пользователем отзыва
-                    comment = listComments.Last();                                            ;
+                    comment = listComments.Last();                                            
                     return View("CreateComment", comment);
                 }
             }
@@ -335,6 +334,47 @@ namespace RemontUnderKey.Web.Controllers
             {
                 return PartialView("DefaultImgSrc");
             }
+        }
+        [HttpGet]
+        [Route("Comment/AllComments_Admin")]
+        public ActionResult AllComments_Admin()
+        {
+            ViewBag.Num = 0;
+            ViewBag.TODO = "ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ";
+            //все отзывы, НЕ одобренные админом для публикации на сайте
+            List<Comment_View> NotPublished_Comments = service.GetAllComments()
+                                                    .Where(_ => _.ApprovalForPublishing == false)
+                                                    .Select(_ => _.CommentFromDomainToView())
+                                                    .ToList()
+                                                    ;
+            ViewBag.Name1 = "ОТЗЫВЫ, ПОКА НЕ ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ";
+            //по окончании всех итераций - готовая коллекция комментариев в связке с загруженными файлами(пока не опубликованных)
+            Dictionary<Comment_View, List<Upload_View>> listNotPublished = new Dictionary<Comment_View, List<Upload_View>>();
+            foreach (Comment_View  tempComm in NotPublished_Comments)
+            {
+
+                listNotPublished.Add(tempComm, upservice.GetAllUploadByIdOfComment(tempComm.Id).Select(_ => _.UploadFromDomainToView()).ToList());
+            }
+            //все отзывы, одобренные админом для публикации на сайте
+            List<Comment_View> Published_Comments = service.GetAllComments()
+                                                    .Where(_ => _.ApprovalForPublishing == true)
+                                                    .Select(_ => _.CommentFromDomainToView())
+                                                    .ToList()
+                                                    ;
+            ViewBag.Name2 = "ОТЗЫВЫ, ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ";
+            //по окончании всех итераций - готовая коллекция комментариев в связке с загруженными файлами(опубликованные)
+            Dictionary<Comment_View, List<Upload_View>> listPublished = new Dictionary<Comment_View, List<Upload_View>>();
+            foreach (Comment_View tempComm in Published_Comments)
+            {
+                listPublished.Add(tempComm, upservice.GetAllUploadByIdOfComment(tempComm.Id).Select(_ => _.UploadFromDomainToView()).ToList());
+            }
+            //добавить во вьюмодель для передачи в представление
+            CommentPublishNotPublish_View allComments = new CommentPublishNotPublish_View
+            {
+                NotPublished = listNotPublished,
+                Published = listPublished
+            };
+            return View(allComments);
         }
     }
 }

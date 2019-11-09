@@ -306,6 +306,7 @@
     <Compile Include="Models\AppSettings_Telegram.cs" />
     <Compile Include="Models\Bot_Telegram.cs" />
     <Compile Include="Models\CallMee_View.cs" />
+    <Compile Include="Models\CommentPublishNotPublish_View.cs" />
     <Compile Include="Models\Comment_View.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job_View.cs" />
@@ -869,6 +870,8 @@
     <Content Include="Views\Role\DeleteRole_Success.cshtml" />
     <Content Include="Views\Role\DeleteRoleFromDB_Admin.cshtml" />
     <Content Include="Views\Role\AllRolesInDBToPartial_Admin.cshtml" />
+    <Content Include="Views\Comment\AllComments_Admin.cshtml" />
+    <Content Include="Views\Upload\GetFile_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

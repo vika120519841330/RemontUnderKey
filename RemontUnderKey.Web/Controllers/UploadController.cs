@@ -129,5 +129,12 @@ namespace RemontUnderKey.Web.Controllers
                 }
             }
         }
+        [HttpGet]
+        [Route("upload/getfile_admin/id")]
+        public PartialViewResult GetFile_Admin(int id)
+        {
+            upload = service.GetUpload(id).UploadFromDomainToView();
+            return PartialView(upload);
+        }
     }
 }
