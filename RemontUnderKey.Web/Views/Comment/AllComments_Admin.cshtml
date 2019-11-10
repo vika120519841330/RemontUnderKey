@@ -179,10 +179,13 @@
                 <td width="8%">
                     @Html.DisplayFor(modelItem => item.Key.UserName)
                 </td>
-                <td width="45%">
-                    @Html.DisplayFor(modelItem => item.Key.MessageFromUser)
+                <td width="45%" align="left" valign="top" style="text-align: left; vertical-align: top;">
+                    @Html.TextAreaFor(modelItem => item.Key.MessageFromUser)
                 </td>
                 <td width="45%">
+                    <div>
+                        @ViewBag.Content
+                    </div>
                     @foreach (Upload_View upload in item.Value)
                     {
                         @Html.Action("GetFile_Admin", new { Controller = "Upload", Action = "GetFile_Admin", id = upload.Id })

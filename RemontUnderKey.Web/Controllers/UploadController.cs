@@ -136,5 +136,20 @@ namespace RemontUnderKey.Web.Controllers
             upload = service.GetUpload(id).UploadFromDomainToView();
             return PartialView(upload);
         }
+
+        [HttpGet]
+        [Route("upload/deletefile_admin/id")]
+        public ActionResult DeleteFile_Admin(int id)
+        {
+            Upload_View file = service.GetUpload(id).UploadFromDomainToView();
+            string tempName = file.FileName;
+            service.DeleteUpload(id);
+            string content = $"УДАЛЕНИЕ ЗАГРУЖЕННОГО ФАЙЛА {tempName} ПРОШЛО УСПЕШНО!";
+            //var content = Content("<script language='javascript' type='text/javascript'>alert('Save Successfully');</script>");
+            //return RedirectToRoute(new { controller = "Comment", action = "AllCommentsRedirect_Admin", cont = content });
+            return RedirectToRoute(new { controller = "Comment", action = "AllCommentsRedirect_Admin", cont = content });
+
+        }
+
     }
 }
