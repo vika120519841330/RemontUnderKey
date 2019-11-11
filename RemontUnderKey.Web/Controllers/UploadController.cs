@@ -147,7 +147,7 @@ namespace RemontUnderKey.Web.Controllers
             string content = $"УДАЛЕНИЕ ЗАГРУЖЕННОГО ФАЙЛА {tempName} ПРОШЛО УСПЕШНО!";
             //var content = Content("<script language='javascript' type='text/javascript'>alert('Save Successfully');</script>");
             //return RedirectToRoute(new { controller = "Comment", action = "AllCommentsRedirect_Admin", cont = content });
-            return RedirectToRoute(new { controller = "Comment", action = "AllCommentsRedirect_Admin", cont = content });
+            return RedirectToRoute(new { controller = "Comment", action = "AllComments_Admin", cont = content });
 
         }
 

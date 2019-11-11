@@ -1,0 +1,30 @@
+﻿@using RemontUnderKey.Web.Models
+@model Comment_View
+
+@section Body{
+    @using (Html.BeginForm("UpdateComment_Admin", "Comment", FormMethod.Post))
+    {
+        <div class="mydiv_updateComment">
+            @Html.AntiForgeryToken()
+            <p style="font-size:large; text-align: center; font-family:My_Flex_font; ">@ViewBag.TODO</p>
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.UserId)
+                    @Html.HiddenFor(x => x.UserName)
+                    @Html.HiddenFor(x => x.ApprovalForPublishing)
+
+                    <div style=" padding-bottom: 10px;">
+                        @Html.LabelFor(model => model.MessageFromUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+                    <div style=" padding-bottom: 10px;">
+                        @Html.TextAreaFor(model => model.MessageFromUser)
+                    </div>
+                    <div style=" padding-bottom: 10px;">
+                        @Html.ValidationMessageFor(model => model.MessageFromUser, "", new { @class = "text-danger" })
+                    </div>
+                    <p> &emsp; </p>
+                    <div>
+                        <input type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ" class="button_admin" />
+                    </div>
+        </div>
+    }
+}

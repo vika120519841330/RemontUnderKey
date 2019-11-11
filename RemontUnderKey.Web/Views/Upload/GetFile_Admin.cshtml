@@ -15,15 +15,15 @@
             <a href="#@Model.Id">
                 <img src="@imageSrc" width="150" height="150" alt="@Model.FileName" />
             </a>
-        </span>
-        <div class="block3">
+            <button>
             @Html.ActionLink("УДАЛИТЬ", "DeleteFile_Admin", new { id = Model.Id })
+            </button>
+        </span>
+        <!-- Модальное окно -->
+        <a href="#x" class="overlay3" id="@Model.Id"></a>
+        <div class="popup3">
+            <img src="@imageSrc" alt="@Model.FileName" height="550" />
+            <a class="close3" title="ЗАКРЫТЬ" href="#close"></a>
         </div>
-            <!-- Модальное окно -->
-            <a href="#x" class="overlay3" id="@Model.Id"></a>
-            <div class="popup3">
-                <img src="@imageSrc" alt="@Model.FileName" height="550" />
-                <a class="close3" title="ЗАКРЫТЬ" href="#close"></a>
-            </div>
-        }
+    }
 }

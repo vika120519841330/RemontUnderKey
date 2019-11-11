@@ -142,6 +142,7 @@
     </style>
 }
 @section Body {
+    <br />
     <table class="table" border="1" cellspacing="0" align="center" style="margin-top: 5px;">
         <tr align="center">
             <th colspan="4" align="center" valign="middle">
@@ -164,6 +165,13 @@
         </tr>
         <tr>
             <td colspan="4">
+                <div style="color: red; margin-bottom: 5px; margin-top: 5px; font-size: large; text-align: center;">
+                    @ViewBag.Content
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
                 @ViewBag.Name1
             </td>
         </tr>
@@ -172,20 +180,38 @@
         }
         @foreach (var item in Model.NotPublished)
         {
-            <tr>
+            <tr style="text-align: left; vertical-align: top;">
                 <td width="2%">
                     @(num = num + 1)
                 </td>
                 <td width="8%">
-                    @Html.DisplayFor(modelItem => item.Key.UserName)
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <button>
+                            @Html.ActionLink("ОДОБРИТЬ ПУБЛИКАЦИЮ ОТЗЫВА", "PublishComment_Admin", new { Controller = "Comment", Action = "PublishComment_Admin", id = item.Key.Id })
+                        </button>
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.Key.UserName)
+                    </div>
                 </td>
                 <td width="45%" align="left" valign="top" style="text-align: left; vertical-align: top;">
-                    @Html.TextAreaFor(modelItem => item.Key.MessageFromUser)
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <span style="width: 50%;">
+                            <button>
+                                @Html.ActionLink("РЕДАКТИРОВАТЬ ОТЗЫВ", "UpdateComment_Admin", new { Controller = "Comment", Action = "UpdateComment_Admin", id = item.Key.Id })
+                            </button>
+                        </span>
+                        <span style="width: 50%;">
+                            <button>
+                                @Html.ActionLink("УДАЛИТЬ БЕЗВОЗВРАТНО ОТЗЫВ", "DeleteComment_Admin", new { Controller = "Comment", Action = "DeleteComment_Admin", id = item.Key.Id })
+                            </button>
+                        </span>
+                    </div>
+                    <div style="text-align:center;">
+                        @Html.TextAreaFor(modelItem => item.Key.MessageFromUser)
+                    </div>
                 </td>
                 <td width="45%">
-                    <div>
-                        @ViewBag.Content
-                    </div>
                     @foreach (Upload_View upload in item.Value)
                     {
                         @Html.Action("GetFile_Admin", new { Controller = "Upload", Action = "GetFile_Admin", id = upload.Id })
@@ -203,15 +229,34 @@
         </tr>
         @foreach (var item in Model.Published)
         {
-            <tr>
+            <tr style="vertical-align: top;">
                 <td width="2%">
                     @(num = num + 1)
                 </td>
                 <td width="8%">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <button>
+                            @Html.ActionLink("ОДОБРИТЬ ПУБЛИКАЦИЮ ОТЗЫВА", "PublishComment_Admin", new { Controller = "Comment", Action = "PublishComment_Admin", id = item.Key.Id })
+                        </button>
+                    </div>
                     @Html.DisplayFor(modelItem => item.Key.UserName)
                 </td>
-                <td width="45%">
-                    @Html.TextAreaFor(modelItem => item.Key.MessageFromUser)
+                <td width="45%" align="left" valign="top" style="text-align: left; vertical-align: top;">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <span style="width: 50%;">
+                            <button>
+                                @Html.ActionLink("РЕДАКТИРОВАТЬ ОТЗЫВ", "UpdateComment_Admin", new { Controller = "Comment", Action = "UpdateComment_Admin", id = item.Key.Id })
+                            </button>
+                        </span>
+                        <span style="width: 50%;">
+                            <button>
+                                @Html.ActionLink("УДАЛИТЬ БЕЗВОЗВРАТНО ОТЗЫВ", "DeleteComment_Admin", new { Controller = "Comment", Action = "DeleteComment_Admin", id = item.Key.Id })
+                            </button>
+                        </span>
+                    </div>
+                    <div style="text-align:center;">
+                        @Html.TextAreaFor(modelItem => item.Key.MessageFromUser)
+                    </div>
                 </td>
                 <td width="45%">
                     @foreach (Upload_View upload in item.Value)
@@ -224,5 +269,8 @@
             </tr>
         }
     </table>
+<br />
+<br />
+
 }
 

@@ -337,9 +337,10 @@ namespace RemontUnderKey.Web.Controllers
         }
         [HttpGet]
         [Route("Comment/AllComments_Admin")]
-        public ActionResult AllComments_Admin()
+        public ActionResult AllComments_Admin(string cont=" ")
         {
             ViewBag.Num = 0;
+            ViewBag.Content = cont;
             ViewBag.TODO = "ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ";
             //все отзывы, НЕ одобренные админом для публикации на сайте
             List<Comment_View> NotPublished_Comments = service.GetAllComments()
@@ -347,7 +348,7 @@ namespace RemontUnderKey.Web.Controllers
                                                     .Select(_ => _.CommentFromDomainToView())
                                                     .ToList()
                                                     ;
-            ViewBag.Name1 = "ОТЗЫВЫ, ПОКА НЕ ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ";
+            ViewBag.Name1 = "ОТЗЫВЫ, ПОКА НЕ ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ :";
             //по окончании всех итераций - готовая коллекция комментариев в связке с загруженными файлами(пока не опубликованных)
             Dictionary<Comment_View, List<Upload_View>> listNotPublished = new Dictionary<Comment_View, List<Upload_View>>();
             foreach (Comment_View  tempComm in NotPublished_Comments)
@@ -361,7 +362,7 @@ namespace RemontUnderKey.Web.Controllers
                                                     .Select(_ => _.CommentFromDomainToView())
                                                     .ToList()
                                                     ;
-            ViewBag.Name2 = "ОТЗЫВЫ, ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ";
+            ViewBag.Name2 = "ОТЗЫВЫ, ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ :";
             //по окончании всех итераций - готовая коллекция комментариев в связке с загруженными файлами(опубликованные)
             Dictionary<Comment_View, List<Upload_View>> listPublished = new Dictionary<Comment_View, List<Upload_View>>();
             foreach (Comment_View tempComm in Published_Comments)
@@ -378,47 +379,36 @@ namespace RemontUnderKey.Web.Controllers
         }
 
         [HttpGet]
-        [Route("Comment/AllCommentsRedirect_Admin")]
-        public ActionResult AllCommentsRedirect_Admin(string cont)
+        [Route("Comment/UpdateComment_Admin")]
+        public ActionResult UpdateComment_Admin(int id)
         {
-            ViewBag.Content = cont;
-            ViewBag.Num = 0;
-            ViewBag.TODO = "ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ";
-            //все отзывы, НЕ одобренные админом для публикации на сайте
-            List<Comment_View> NotPublished_Comments = service.GetAllComments()
-                                                    .Where(_ => _.ApprovalForPublishing == false)
-                                                    .Select(_ => _.CommentFromDomainToView())
-                                                    .ToList()
-                                                    ;
-            ViewBag.Name1 = "ОТЗЫВЫ, ПОКА НЕ ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ";
-            //по окончании всех итераций - готовая коллекция комментариев в связке с загруженными файлами(пока не опубликованных)
-            Dictionary<Comment_View, List<Upload_View>> listNotPublished = new Dictionary<Comment_View, List<Upload_View>>();
-            foreach (Comment_View tempComm in NotPublished_Comments)
-            {
-
-                listNotPublished.Add(tempComm, upservice.GetAllUploadByIdOfComment(tempComm.Id).Select(_ => _.UploadFromDomainToView()).ToList());
-            }
-            //все отзывы, одобренные админом для публикации на сайте
-            List<Comment_View> Published_Comments = service.GetAllComments()
-                                                    .Where(_ => _.ApprovalForPublishing == true)
-                                                    .Select(_ => _.CommentFromDomainToView())
-                                                    .ToList()
-                                                    ;
-            ViewBag.Name2 = "ОТЗЫВЫ, ПОЛУЧИВШИЕ ОДОБРЕНИЕ НА ПУБЛИКАЦИЮ";
-            //по окончании всех итераций - готовая коллекция комментариев в связке с загруженными файлами(опубликованные)
-            Dictionary<Comment_View, List<Upload_View>> listPublished = new Dictionary<Comment_View, List<Upload_View>>();
-            foreach (Comment_View tempComm in Published_Comments)
-            {
-                listPublished.Add(tempComm, upservice.GetAllUploadByIdOfComment(tempComm.Id).Select(_ => _.UploadFromDomainToView()).ToList());
-            }
-            //добавить во вьюмодель для передачи в представление
-            CommentPublishNotPublish_View allComments = new CommentPublishNotPublish_View
-            {
-                NotPublished = listNotPublished,
-                Published = listPublished
-            };
-            return View("AllComments_Admin", allComments);
+            comment = service.GetComment(id).CommentFromDomainToView();
+            ViewBag.TODO = $"РЕДАКТИРОВАНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {comment.UserName}";
+            return View(comment);
         }
+        [HttpPost]
+        [Route("Comment/UpdateComment_Admin")]
+        public ActionResult UpdateComment_Admin(Comment_View comm)
+        {
+            comment = comm as Comment_View;
+            ViewBag.TODO = $"РЕДАКТИРОВАНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {comment.UserName}:";
+            service.UpdateComment(comment.CommentFromViewToDomain());
+            string result = "ОТРЕДАКТИРОВАННЫЙ ОТЗЫВ СОХРАНЕН!";
+            return RedirectToAction("AllComments_Admin", "Comment", new { cont = result});
+        }
+
+        [HttpGet]
+        [Route("Comment/PublishComment_Admin")]
+        public ActionResult PublishComment_Admin(int id)
+        {
+            comment = service.GetComment(id).CommentFromDomainToView();
+            comment.ApprovalForPublishing = true;
+            service.UpdateComment(comment.CommentFromViewToDomain());
+            ViewBag.TODO = $"ПРЕДОСТАВЛЕНИЕ ОДОБРЕНИЯ НА ПУБЛИКАЦИЮ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {comment.UserName}";
+            string result = $"ПУБЛИКАЦИЯ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {comment.UserName} ОДОБРЕНА !";
+            return RedirectToAction("AllComments_Admin", "Comment", new { cont = result });
+        }
+
 
     }
 }

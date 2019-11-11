@@ -872,6 +872,7 @@
     <Content Include="Views\Role\AllRolesInDBToPartial_Admin.cshtml" />
     <Content Include="Views\Comment\AllComments_Admin.cshtml" />
     <Content Include="Views\Upload\GetFile_Admin.cshtml" />
+    <Content Include="Views\Comment\UpdateComment_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
