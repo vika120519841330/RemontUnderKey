@@ -13,10 +13,8 @@ namespace RemontUnderKey.Infrastructure.Models
         public string TitleOfJob { get; set; }
         public double PriceOfUnitOfJob { get; set; }
         // Это свойство будет использоваться как внешний ключ
-        [ForeignKey("KindOfJob_Infra")]
         public int KindOfJob_InfraId { get; set; }
         // Это свойство будет использоваться как внешний ключ
-        [ForeignKey("UnitOfJob_Infra")]
         public int UnitOfJob_InfraId { get; set; }
 
     }

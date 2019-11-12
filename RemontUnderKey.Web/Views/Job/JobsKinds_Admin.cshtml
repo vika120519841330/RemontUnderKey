@@ -1,0 +1,99 @@
+﻿@using RemontUnderKey.Web.Models
+@model Dictionary<string, List<Job_View>>
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+@section Body {
+    <span style="text-align: center; margin-right: 10px;">
+        @Html.Action("DeleteKind_Admin", new { Controller = "Kind", Action = "DeleteKind_Admin" })
+    </span>
+    <span style="text-align: center; margin-right: 10px;">
+        @Html.Action("AddKind_Admin", new { Controller = "Kind", Action = "AddKind_Admin" })
+    </span>
+    <br />
+    <div style="color: red; margin-bottom: 5px; margin-top: 5px; font-size: large; text-align: center;">
+        @ViewBag.Result
+    </div>
+    <table class="table" border="1" cellspacing="0" align="center" style="margin-top: 5px;">
+        <tr align="center">
+            <th colspan="6" align="center" valign="middle">
+                @ViewBag.TODO
+            </th>
+        </tr>
+        <tr align="center">
+            <th align="center">
+                № П/П
+            </th>
+            <th align="center">
+                НАИМЕНОВАНИЕ ВИДА РСР
+            </th>
+            <th align="center">
+                ЕДИНИЦА ИЗМЕРЕНИЯ
+            </th>
+            <th align="center">
+                СТОИМОСТЬ, У.Е. ПО КУРСУ НБРБ
+            </th>
+            <th align="center">
+                ID
+            </th>
+            <th align="center">
+                ДЕЙСТВИЯ
+            </th>
+        </tr>
+        @{
+            int num = 0;
+        }
+        @foreach (string key in Model.Keys)
+        {
+            using (Html.BeginForm("JobsKinds_Admin", "Job", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <tr>
+                    <th colspan="6">
+                        <span style=" margin-bottom: 5px; margin-top: 5px; font-size: large; text-align: center; margin-right: 10px;">
+                            @key
+                        </span>
+                    </th>
+                </tr>
+                foreach (Job_View job in Model[key])
+                {
+                    <tr style="text-align: left; vertical-align: top;">
+                        <td width="1%">
+                            @(num = num + 1)
+                            @Html.Hidden("KindOfJob_ViewId", @job.KindOfJob_ViewId)
+                            @Html.Hidden("UnitOfJob_ViewId", @job.UnitOfJob_ViewId)
+                        </td>
+                        <td width="58%" style="text-align: left;">
+                            <input type="text" name="TitleOfJob" value="@job.TitleOfJob" style="width: 98%; word-break: break-all; margin-left: 1%; margin-right: 1%;">
+                        </td>
+                        <td width="2%">
+                            @Html.Action("GetTitleOfUnit", "Unit", new { id = job.UnitOfJob_ViewId })
+                        </td>
+                        <td width="2%">
+                            <input inputmode="numeric" name="PriceOfUnitOfJob" value="@job.PriceOfUnitOfJob">
+                        </td>
+                        <td width="1%">
+                            @job.Id
+                        </td>
+                        <td width="36%" style="text-align: center;">
+                            <span style="margin-left: 1px; text-align: left;">
+                                <input type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ" />
+                            </span>
+                            <span style="margin-right: 1px; text-align: right;">
+                                <button>
+                                    @Html.ActionLink("УДАЛИТЬ РАСЦЕНКУ", "DeleteJobs_Admin", new { id = job.Id })
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+}
+

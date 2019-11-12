@@ -33,6 +33,17 @@ namespace RemontUnderKey.Web.Controllers
             return PartialView(unit);
         }
 
+        //Возвращает единицу измерения по её id
+        public string GetTitleOfUnit(int id)
+        {
+            string unit = service.GetUnit(id)
+                .UnitOfJobFromDomainToView()
+                .TitleOfUnit
+                ;
+            return unit;
+        }
+
+
         public void CreateUnit(UnitOfJob_View inst)
         {
             service.CreateUnit(inst.UnitOfJobFromViewToDomain());

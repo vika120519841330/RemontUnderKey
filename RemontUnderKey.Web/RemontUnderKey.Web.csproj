@@ -310,6 +310,7 @@
     <Compile Include="Models\CommentPublishNotPublish_View.cs" />
     <Compile Include="Models\Comment_View.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Views\OLD\JobKind_View.cs" />
     <Compile Include="Models\Job_View.cs" />
     <Compile Include="Models\KindOfJob_View.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -875,6 +876,8 @@
     <Content Include="Views\Upload\GetFile_Admin.cshtml" />
     <Content Include="Views\Comment\UpdateComment_Admin.cshtml" />
     <Content Include="Views\CallMee\EditeCallMee_Admin.cshtml" />
+    <Content Include="Views\Job\JobsKinds_Admin.cshtml" />
+    <Content Include="Views\Kind\DeleteKind_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

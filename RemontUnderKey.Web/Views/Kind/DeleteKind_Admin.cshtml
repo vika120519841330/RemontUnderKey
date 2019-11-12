@@ -1,0 +1,19 @@
+﻿<br />
+<div style="text-align: center;">
+    @using (Html.BeginForm("DeleteKind_Admin", "Kind", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+    <div class="form-horizontal" align="center">
+        <div style="text-align: center;  margin-top: 5px; margin-bottom: 10px; color: black; font-size: smaller;">
+            ВЫБЕРИТЕ РАЗНОВИДНОСТЬ РСР:
+        </div>
+            @Html.DropDownList("title", ViewBag.Kinds as SelectList)
+            <p><input type="submit" value="УДАЛИТЬ РАЗНОВИДНОСТЬ РСР" /></p>
+        </div>
+    }
+    </div>
+<br />
+
+
+
+

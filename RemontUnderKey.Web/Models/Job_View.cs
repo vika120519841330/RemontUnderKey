@@ -26,9 +26,8 @@ namespace RemontUnderKey.Web.Models
         public string TitleOfJob { get; set; }
 
         [Display(Name = "Стоимость, долл. по курсу НБ РБ:")]
-        //[CurrencyDisplay("en-us")]
-        [UIHint("Decimal")]
         [ConfigurationProperty("Стоимость, долл. по курсу НБ РБ:", IsRequired = true, DefaultValue = "Укажите стоимость в долл.")]
+        [UIHint("Decimal")]
         public double PriceOfUnitOfJob { get; set; }
 
         [ScaffoldColumn(false)]
