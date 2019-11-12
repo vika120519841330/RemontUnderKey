@@ -305,6 +305,7 @@
     <Compile Include="Models\AppSettings_Viber.cs" />
     <Compile Include="Models\AppSettings_Telegram.cs" />
     <Compile Include="Models\Bot_Telegram.cs" />
+    <Compile Include="Models\CallMeeDoneNotDone_View.cs" />
     <Compile Include="Models\CallMee_View.cs" />
     <Compile Include="Models\CommentPublishNotPublish_View.cs" />
     <Compile Include="Models\Comment_View.cs" />
@@ -826,7 +827,7 @@
     <Content Include="Views\Kind\GetAllKinds.cshtml" />
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Unit\GetUnit.cshtml" />
-    <Content Include="Views\CallMee\GetAllCallMee.cshtml" />
+    <Content Include="Views\CallMee\AllCallMee_Admin.cshtml" />
     <Content Include="Views\CallMee\CreateCallMee.cshtml" />
     <Content Include="Views\CallMee\CreateCallMee_Success.cshtml" />
     <Content Include="Views\Photo\GetAllPhotos.cshtml" />
@@ -873,6 +874,7 @@
     <Content Include="Views\Comment\AllComments_Admin.cshtml" />
     <Content Include="Views\Upload\GetFile_Admin.cshtml" />
     <Content Include="Views\Comment\UpdateComment_Admin.cshtml" />
+    <Content Include="Views\CallMee\EditeCallMee_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

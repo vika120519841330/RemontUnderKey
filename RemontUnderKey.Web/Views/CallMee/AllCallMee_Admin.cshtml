@@ -1,0 +1,144 @@
+﻿@using RemontUnderKey.Web.Models
+@model CallMeeDoneNotDone_View
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+@section Body {
+    <table class="table" border="1" cellspacing="0" align="center" style="margin-top: 5px;">
+        <tr align="center">
+            <th colspan="5" align="center" valign="middle">
+                @ViewBag.TODO
+            </th>
+        </tr>
+        <tr align="center">
+            <th align="center">
+                № П/П
+            </th>
+            <th align="center">
+                ДАТА И ВРЕМЯ ПОСТУПЛЕНИЯ ЗАЯВКИ
+            </th>
+            <th align="center">
+                ИМЯ ПОЛЬЗОВАТЕЛЯ
+            </th>
+            <th align="center">
+                ТЕЛЕФОН ПОЛЬЗОВАТЕЛЯ
+            </th>
+            <th align="center">
+                КОММЕНТАРИЙ / ПОЖЕЛАНИЯ К ОБРАТНОМУ ЗВОНКУ, ОСТАВЛЕННЫЕ ПОЛЬЗОВАТЕЛЕМ
+            </th>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <div style="color: red; margin-bottom: 5px; margin-top: 5px; font-size: large; text-align: center;">
+                    @ViewBag.Result
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                @ViewBag.Name1
+            </td>
+        </tr>
+        @{
+            int num = ViewBag.Num;
+        }
+        @foreach (CallMee_View item in Model.NotDoneCallMee)
+        {
+            <tr style="text-align: left; vertical-align: top;">
+                <td width="3%">
+                    @(num = num + 1)
+                </td>
+                <td width="7%">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <button>
+                            @Html.ActionLink("УДАЛИТЬ ЗАЯВКУ", "DeleteCallMee_Admin", new { Controller = "CallMee", Action = "DeleteCallMee_Admin", id = item.Id })
+                        </button>
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.DateStamp)
+                    </div>
+                </td>
+                <td width="20%">
+                    <div style="text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </div>
+                </td>
+                <td width="15%">
+                    <div style="text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Telephone)
+                    </div>
+                </td>
+                <td width="55%">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <span style="text-align: center; margin-bottom: 10px; margin-right: 10%;">
+                            <button>
+                                @Html.ActionLink("ПОСТАВИТЬ ОТМЕТКУ, ЧТО ЗВОНОК СДЕЛАН", "MarkDoneCallMee_Admin", new { Controller = "CallMee", Action = "MarkDoneCallMee_Admin", id = item.Id })
+                            </button>
+                        </span>
+                        <span style="text-align: center; margin-bottom: 10px;">
+                            <button>
+                                @Html.ActionLink("РЕДАКТИРОВАТЬ", "EditeCallMee_Admin", new { Controller = "CallMee", Action = "EditeCallMee_Admin", id = item.Id })
+                            </button>
+                        </span>
+                    </div>
+                    <div style="text-align:center;">
+                        @Html.TextAreaFor(modelItem => item.Comments)
+                    </div>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="5">
+                @ViewBag.Name2
+            </td>
+        </tr>
+        @{
+            int num2 = ViewBag.Num;
+        }
+        @foreach (CallMee_View item in Model.DoneCallMee)
+        {
+            <tr style="text-align: left; vertical-align: top;">
+                <td width="3%">
+                    @(num = num2 + 1)
+                </td>
+                <td width="7%">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <button>
+                            @Html.ActionLink("УДАЛИТЬ ЗАЯВКУ", "DeleteCallMee_Admin", new { Controller = "CallMee", Action = "DeleteCallMee_Admin", id = item.Id })
+                        </button>
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.DateStamp)
+                    </div>
+                </td>
+                <td width="20%">
+                    <div style="text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </div>
+                </td>
+                <td width="15%">
+                    <div style="text-align:center;">
+                        @Html.DisplayFor(modelItem => item.Telephone)
+                    </div>
+                </td>
+                <td width="55%">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <span style="text-align: center; margin-bottom: 10px; margin-right: 10%;">
+                            <button>
+                                @Html.ActionLink("УБРАТЬ ОТМЕТКУ, ЧТО ЗВОНОК СДЕЛАН", "MarkDoneCallMee_Admin", new { Controller = "CallMee", Action = "MarkDoneCallMee_Admin", id = item.Id })
+                            </button>
+                        </span>
+                        <span style="text-align: center; margin-bottom: 10px;">
+                            <button>
+                                @Html.ActionLink("РЕДАКТИРОВАТЬ", "EditeCallMee_Admin", new { Controller = "CallMee", Action = "EditeCallMee_Admin", id = item.Id })
+                            </button>
+                        </span>
+                    </div>
+                    <div style="text-align:center;">
+                        @Html.TextAreaFor(modelItem => item.Comments)
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+}

@@ -38,20 +38,26 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
 
         public void UpdateCallMee(CallMee_Infra inst)
         {
-            var tempInst = context.Calls.FirstOrDefault(_ => _.Id == inst.Id);
-            tempInst.Id = inst.Id;
-            tempInst.Name = inst.Name;
-            tempInst.Telephone = inst.Telephone;
-            tempInst.DateStamp = inst.DateStamp;
-            tempInst.Comments = inst.Comments;
-            tempInst.CallIsDone = inst.CallIsDone;
-            context.SaveChanges();
+            if (inst != null)
+            {
+                var tempInst = context.Calls.FirstOrDefault(_ => _.Id == inst.Id);
+                tempInst.Id = inst.Id;
+                tempInst.Name = inst.Name;
+                tempInst.Telephone = inst.Telephone;
+                tempInst.DateStamp = inst.DateStamp;
+                tempInst.Comments = inst.Comments;
+                tempInst.CallIsDone = inst.CallIsDone;
+                context.SaveChanges();
+            }
         }
         public void DeleteCallMee(int id)
         {
             var tmp = context.Calls.Find(id);
-            context.Calls.Remove(tmp);
-            context.SaveChanges();
+            if(tmp != null)
+            {
+                context.Calls.Remove(tmp);
+                context.SaveChanges();
+            }
         }
     }
 }

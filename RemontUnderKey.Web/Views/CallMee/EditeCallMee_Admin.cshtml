@@ -1,0 +1,56 @@
+﻿@using RemontUnderKey.Web.Models
+@model CallMee_View
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@section Body {
+    <div style="text-align: center;">
+        @using (Html.BeginForm("EditeCallMee_Admin", "CallMee", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <p> &emsp; </p>
+            <p style="font-size:xx-large; text-align: center;" class="eraser">@ViewBag.TODO</p>
+            <br />
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @style = "border-radius: 10px;", @placeholder = "Имя:" })
+                        @Html.ValidationMessageFor(model => model.Name, "")
+                    </div>
+                </div>
+                <p> &emsp; </p>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Telephone, new { @style = "border-radius: 10px;", placeholder = Html.DisplayNameFor(m => m.Telephone) })
+                        @Html.ValidationMessageFor(model => model.Telephone, "")
+                    </div>
+                </div>
+                <p> &emsp; </p>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" style="width: 100%; box-sizing: border-box;">
+                        @Html.TextAreaFor(model => model.Comments, 5, 200, new { @style = "border-radius: 5px;" })
+                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <p> &emsp; </p>
+                <div>
+                    <div>
+                        <input class="button_admin" type="submit" value="СОХРАНИТЬ ОТРЕДАКТИРОВАННУЮ ЗАЯВКУ" />
+                    </div>
+                </div>
+                <br />
+                <div style="text-align: center;">
+                    <button>
+                        @Html.ActionLink("НАЗАД К СПИСКУ ЗАЯВОК", "AllCallMee_Admin", "CallMee")
+                    </button>
+                </div>
+                <br />
+            </div>
+        }
+    </div>
+}

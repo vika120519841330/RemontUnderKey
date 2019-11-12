@@ -339,6 +339,8 @@ namespace RemontUnderKey.Web.Controllers
                 return PartialView("DefaultImgSrc");
             }
         }
+
+        [Authorize(Roles = "admin")]
         [HttpGet]
         [Route("Comment/AllComments_Admin")]
         public ActionResult AllComments_Admin(string cont=" ")
@@ -382,6 +384,7 @@ namespace RemontUnderKey.Web.Controllers
             return View(allComments);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         [Route("Comment/UpdateComment_Admin")]
         public ActionResult UpdateComment_Admin(int id)
@@ -390,6 +393,8 @@ namespace RemontUnderKey.Web.Controllers
             ViewBag.TODO = $"РЕДАКТИРОВАНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {comment.UserName}";
             return View(comment);
         }
+
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("Comment/UpdateComment_Admin")]
         public ActionResult UpdateComment_Admin(Comment_View comm)
@@ -401,6 +406,7 @@ namespace RemontUnderKey.Web.Controllers
             return RedirectToAction("AllComments_Admin", "Comment", new { cont = result});
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         [Route("Comment/PublishComment_Admin")]
         public ActionResult PublishComment_Admin(int id)
@@ -413,6 +419,7 @@ namespace RemontUnderKey.Web.Controllers
             return RedirectToAction("AllComments_Admin", "Comment", new { cont = result });
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         [Route("Comment/DeleteComment_Admin")]
         public ActionResult DeleteComment_Admin(int id)
