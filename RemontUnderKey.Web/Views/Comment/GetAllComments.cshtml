@@ -1,5 +1,5 @@
 ﻿@using RemontUnderKey.Web.Models
-@model IEnumerable<Comment_View>
+@model List<Comment_View>
 
 @section Header {
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -32,10 +32,14 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <p style="font-size: larger;">
-                                            @Html.Action("GetCommentText", new { id = 1 })
+                                            @{ 
+                                                Comment_View firstComment = TempData["FirstComment"] as Comment_View;
+                                                int tId = firstComment.Id;
+                                            }
+                                            @Html.Action("GetCommentText", new { id = tId })
                                         </p>
                                         <small>
-                                            @Html.Action("GetCommentUserName", new { id = 1 })
+                                            @Html.Action("GetCommentUserName", new { id = tId })
                                         </small>
                                     </div>
                                 </div>

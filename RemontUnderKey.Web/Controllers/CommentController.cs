@@ -37,13 +37,17 @@ namespace RemontUnderKey.Web.Controllers
         public ActionResult GetAllComments()
         {
             ViewBag.Title = "ПРОСМОТР ОТЗЫВОВ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ";
-            IEnumerable<Comment_View> comments = service.GetAllComments()
+            listComments = service.GetAllComments()
                 .Where(_ => _.ApprovalForPublishing == true)
                 .Select(_ => _.CommentFromDomainToView())
-                .OrderBy(t => t.Id)
+                .OrderBy(_ => _.Id)
                 .ToList()
                 ;
-            return View(comments);
+            if (listComments.Count > 0)
+            {
+                TempData["FirstComment"] = listComments.First();
+            }
+            return View(listComments);
         }
 
         [HttpGet]
@@ -409,6 +413,36 @@ namespace RemontUnderKey.Web.Controllers
             return RedirectToAction("AllComments_Admin", "Comment", new { cont = result });
         }
 
-
+        [HttpGet]
+        [Route("Comment/DeleteComment_Admin")]
+        public ActionResult DeleteComment_Admin(int id)
+        {
+            //до удаления комментария сохранить имя пользователя в промежуточную переменную 
+            string userName = service.GetComment(id).UserName;
+            ViewBag.TODO = $"УДАЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {userName}";
+            //перед удалением главной сущности, удалить все зависимые сущности
+            listUplosds = upservice.GetAllUploadByIdOfComment(id)
+                                                                 .Select(_ => _.UploadFromDomainToView())
+                                                                 .ToList()
+                                                                 ;
+            foreach(Upload_View upl in listUplosds)
+            {
+                upservice.DeleteUpload(upl.Id);
+            }
+            string result = "";
+            //предотвратить удаление самого первого комментария, оставленного админом, дабы хотя бы один отзыв отображался на странице
+            if (id == 1)
+            {
+                result = $"УДАЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {userName} НЕВОЗМОЖНО !" +
+                    $"\nЭТО ОТЗЫВ, ОСТАВЛЕННЫЙ АДМИНИСТРАТОРОМ САЙТА !";
+            }
+            else
+            {
+                //удалить главную сущность
+                service.DeleteComment(id);
+                result = $"УДАЛЕНИЕ ОТЗЫВА ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ {userName} ПРОШЛО УСПЕШНО !";
+            }
+            return RedirectToAction("AllComments_Admin", "Comment", new { cont = result });
+        }
     }
 }
