@@ -39,6 +39,9 @@ namespace RemontUnderKey.DependencyInjection.Modules
             container.RegisterType<IUpload, Upload_Service>(
                 //new HierarchicalLifetimeManager()
                 );
+            container.RegisterType<IUploadPhoto, UploadPhoto_Service>(
+                //new HierarchicalLifetimeManager()
+                );
 
         }
     }

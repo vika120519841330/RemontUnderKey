@@ -58,6 +58,10 @@ namespace RemontUnderKey.DependencyInjection.Modules
             container.RegisterType<IUpload_Repository, Upload_Repository>(
             //new ContainerControlledLifetimeManager()
             );
+            container.RegisterType<IUploadPhoto_Repository, UploadPhoto_Repository>(
+            //new ContainerControlledLifetimeManager()
+            );
+
         }
     }
 }

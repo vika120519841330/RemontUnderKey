@@ -11,5 +11,7 @@ namespace RemontUnderKey.Domain.Interfaces
         void CreateRepareobject(Repareobject_Domain item); // создание объекта
         void UpdateRepareobject(Repareobject_Domain item); // обновление объекта
         void DeleteRepareobject(int id); // удаление объекта по id
+        string GetTitleOfObjectById(int? id); // вспомогательный метод - получение наименования обьекта ремонта (Repareobject) по его ID
+
     }
 }

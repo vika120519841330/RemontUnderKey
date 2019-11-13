@@ -29,6 +29,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
         public DbSet<Stage_Infra> Stages { get; set; }
         //Этапы работ
         public DbSet<Upload_Infra> Uploads { get; set; }
+        //Фото выполненных ремонтных работ(загружаемые через админ-панель)
+        public DbSet<UploadPhoto_Infra> UploadPhotos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -3075,6 +3077,17 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
             #endregion
 
+            //UploadPhoto
+            #region
+            UploadPhoto_Infra uph1 = new UploadPhoto_Infra
+            {
+                Id = 1,
+                File = new byte[0],
+                FileName = "Тестовый загрузочный пустой файл",
+                FileType = null,
+                Repareobject_InfraId = 1
+            };
+            #endregion
 
             #region
             modelBuilder.Entity<Job_Infra>().HasData(j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18, j19, j20,
@@ -3109,6 +3122,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
 
             modelBuilder.Entity<CallMee_Infra>().HasData(cm1);
 
+            modelBuilder.Entity<UploadPhoto_Infra>().HasData(uph1);
+
             modelBuilder.Entity<Stage_Infra>().HasData(s1, s2, s3, s4, s5, s6);
 
             modelBuilder.ApplyConfiguration<Job_Infra>(new Job_Configuration());
@@ -3130,6 +3145,8 @@ namespace RemontUnderKey.InfrastructureServices.Context
             modelBuilder.ApplyConfiguration<CallMee_Infra>(new CallMee_Configuration());
 
             modelBuilder.ApplyConfiguration<Upload_Infra>(new Upload_Configuration());
+
+            modelBuilder.ApplyConfiguration<UploadPhoto_Infra>(new UploadPhoto_Configuration());
 
             base.OnModelCreating(modelBuilder);
             #endregion

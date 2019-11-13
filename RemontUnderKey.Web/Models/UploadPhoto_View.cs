@@ -8,38 +8,39 @@ using System.Web.Mvc;
 
 namespace RemontUnderKey.Web.Models
 {
-    public class Upload_View
+    public class UploadPhoto_View
     {
         // Идентификатор
         [Key]
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
-        [ConfigurationProperty("Идентификатор загруженного файла:", IsRequired = false, IsKey = true)]
         [Display(Name = "Идентификатор загруженного файла:")]
         public int? Id { get; set; }
 
-        //Поле для связи с отзывом, вместе с которым был загружен файл
+        //Свойство для связи с обьектом ремонта (по id), к которому относится загружаемое фото
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
-        [ConfigurationProperty("Идентификатор отзыва, вместе с которым загружен файл:", IsRequired = false, IsKey = false)]
-        [Display(Name = "Идентификатор  отзыва, вместе с которым загружен файл:")]
-        public int? Comment_ViewId { get; set; }
+        [Display(Name = "Идентификационный номер обьекта ремонта:")]
+        [Required(ErrorMessage = "Выберите обьекта ремонта!")]
+        public int Repareobject_ViewId { get; set; }
+
+        //Свойство для связи с обьектом ремонта (по наименованию), к которому относится загружаемое фото
+        [DataType(DataType.Text)]
+        [UIHint("String")]
+        public string TitleOfRepareObject { get; set; }
 
         //Байтовый массив, который будет хранить загруженный файл
-        [ConfigurationProperty("Загружаемый файл:", IsRequired = true, DefaultValue = "Выберите файл для последующей загрузки")]
         [DataType(DataType.Upload)]
         [Display(Name = "Загружаемый файл:")]
         [Required(ErrorMessage = "Выберите файл для последующей загрузки!")]
         public byte[] File { get; set; }
 
         //Наименование загруженного файла
-        [ConfigurationProperty("Наименование файла:", IsRequired = true, DefaultValue = "stone.jpg")]
         [DataType(DataType.Text)]
         [Display(Name = "Наименование файла:")]
         public string FileName { get; set; }
 
         //MIME-тип загруженного файла
-        [ConfigurationProperty("Тип загружаемого файла:", IsRequired = true, DefaultValue = "image/jpg")]
         [DataType(DataType.Text)]
         [Display(Name = "Тип загружаемого файла:")]
         public string FileType { get; set; }

@@ -1,0 +1,26 @@
+﻿@using RemontUnderKey.Web.Models
+@model IEnumerable<UploadPhoto_View>
+
+@foreach (UploadPhoto_View item in Model)
+{
+        if (item != null)
+        {
+            int lenthoffile = item.File.Length;
+            string imageBase64 = Convert.ToBase64String(item.File);
+            string imageType = item.FileType;
+            string imageSrc = string.Format("data:{1};base64,{0}", imageBase64, imageType);
+            <div style="text-align: center;">
+                <span class="block3">
+                    <a href="#@item.Id">
+                        <img src="@imageSrc" width="150" height="150" alt="@item.FileName" />
+                    </a>
+                </span>
+            </div>
+            <!-- Модальное окно -->
+            <a href="#x" class="overlay3" id="@item.Id"></a>
+            <div class="popup3">
+                <img src="@imageSrc" alt="@item.FileName" height="300" />
+                <a class="close3" title="ЗАКРЫТЬ" href="#close"></a>
+            </div>
+        }
+}

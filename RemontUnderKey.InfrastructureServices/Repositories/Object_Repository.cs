@@ -32,7 +32,7 @@ namespace RemontUnderKey.InfrastructureServices.Repositories
             return repObjects;
         }
 
-        public Repareobject_Infra GetRepareobject(int id)
+        public Repareobject_Infra GetRepareobject(int? id)
         {
             var repObject = context.Repareobjects
                 .FirstOrDefault(_ => _.Id == id)

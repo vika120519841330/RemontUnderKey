@@ -26,6 +26,13 @@ namespace RemontUnderKey.DomainServices.Services
             return objectsOfType;
         }
 
+        //Вспомогательный метод - получение наименования обьекта ремонта (Repareobject) по его ID
+        public string GetTitleOfObjectById(int? id)
+        {
+            string upload = repository.GetRepareobject(id).AddressOfRepareobject;
+            return upload;
+        }
+
         public IEnumerable<Repareobject_Domain> GetAllRepareobject()
         {
             var repObjects = repository.GetAllRepareobject()

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\UploadPhoto_Infra_Domain.cs" />
     <Compile Include="Mappers\Upload_Infra_Domain.cs" />
     <Compile Include="Mappers\CallMee_Infra_Domain.cs" />
     <Compile Include="Mappers\Stage_Infra_Domain.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Mappers\Job_Infra_Domain.cs" />
     <Compile Include="Mappers\Comment_Infra_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UploadPhoto_Service.cs" />
     <Compile Include="Services\Upload_Service.cs" />
     <Compile Include="Services\CallMee_Service.cs" />
     <Compile Include="Services\Stage_Service.cs" />

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IUploadPhoto.cs" />
     <Compile Include="Interfaces\IUpload.cs" />
     <Compile Include="Interfaces\ICallMee.cs" />
     <Compile Include="Interfaces\IComment.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Models\Repareobject_Domain.cs" />
     <Compile Include="Models\TypeOfObject_Domain.cs" />
     <Compile Include="Models\UnitOfJob_Domain.cs" />
+    <Compile Include="Models\UploadPhoto_Domain.cs" />
     <Compile Include="Models\Upload_Domain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

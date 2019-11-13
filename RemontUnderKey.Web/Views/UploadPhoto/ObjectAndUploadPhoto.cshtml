@@ -1,0 +1,25 @@
+﻿@using RemontUnderKey.Web.Models
+@model IEnumerable<Repareobject_View>
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<table>
+    <tr>
+        <th width="20%">
+            @Html.DisplayNameFor(model => model.AddressOfRepareobject)
+        </th>
+        <th width="20%">
+            @Html.DisplayNameFor(model => model.TypeOfObject_ViewId)
+        </th>
+        <th width="60%">
+            ФОТО ОБЬЕКТА РСР
+        </th>
+    </tr>
+@foreach (Repareobject_View item in Model) {
+    <tr>
+        <td>
+            @Html.Action("UploadPhotosByIdOfObject", "UploadPhoto", new { objId = @item.Id})
+        </td>
+    </tr>
+}
+</table>

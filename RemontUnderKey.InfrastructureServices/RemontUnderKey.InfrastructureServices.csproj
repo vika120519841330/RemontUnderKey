@@ -124,6 +124,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\UploadPhoto_Configuration.cs" />
     <Compile Include="Configurations\Upload_Configuration.cs" />
     <Compile Include="Configurations\CallMee_Configuration.cs" />
     <Compile Include="Configurations\Comment_Configuration.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Configurations\Repareobject_Configuration.cs" />
     <Compile Include="Context\MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UploadPhoto_Repository.cs" />
     <Compile Include="Repositories\Upload_Repository.cs" />
     <Compile Include="Repositories\CallMee_Repository.cs" />
     <Compile Include="Repositories\Stage_Repository.cs" />

@@ -275,6 +275,7 @@
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Controllers\UploadPhotoController.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -292,6 +293,7 @@
     <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Initializer\UserRoleDbInitializer.cs" />
     <Compile Include="Mappers\CallMee_Domain_View.cs" />
+    <Compile Include="Mappers\UploadPhoto_Domain_View.cs" />
     <Compile Include="Mappers\Stage_Domain_View.cs" />
     <Compile Include="Mappers\Repareobject_Domain_View.cs" />
     <Compile Include="Mappers\Comment_Domain_View.cs" />
@@ -310,6 +312,7 @@
     <Compile Include="Models\CommentPublishNotPublish_View.cs" />
     <Compile Include="Models\Comment_View.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\UploadPhoto_View.cs" />
     <Compile Include="Views\OLD\JobKind_View.cs" />
     <Compile Include="Models\Job_View.cs" />
     <Compile Include="Models\KindOfJob_View.cs" />
@@ -880,6 +883,9 @@
     <Content Include="Views\Kind\DeleteKind_Admin.cshtml" />
     <Content Include="Views\Kind\AddKind_Admin.cshtml" />
     <Content Include="Views\Job\AddJob_Admin.cshtml" />
+    <Content Include="Views\UploadPhoto\UploadPhotosByIdOfObject.cshtml" />
+    <Content Include="Views\UploadPhoto\ObjectAndUploadPhoto.cshtml" />
+    <Content Include="Views\UploadPhoto\UploadPhotosByIdOfObject_withoutUploads.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
