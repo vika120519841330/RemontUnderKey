@@ -88,14 +88,22 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Kind/AddKind_Admin")]
         public ActionResult AddKind_Admin([System.Web.Http.FromBody]KindOfJob_View kind)
         {
-            string result;
+            string result = " ";
             if (kind == null)
             {
                 result = $"РАЗНОВИДНОСТЬ РСР ДОЛЖНА СОДЕРЖАТЬ ЗАПОЛНЕННЫЕ ПОЛЯ ДЛЯ ДОБАВЛЕНИЯ В БАЗУ !";
                 return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
             }
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("AddKind_Admin", "Указанные для создания новой разновидности РСР данные не валидны!!!");
+                ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                result = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            }
             else
             {
+
                 result = $"РАЗНОВИДНОСТЬ РСР <<{kind.TitleOfKindOfJob}>> УСПЕШНО ДОБАВЛЕНА В БАЗУ !";
                 service.CreateKind(kind.KindOfJobFromViewToDomain());
                 return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });

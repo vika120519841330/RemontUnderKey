@@ -16,13 +16,14 @@ namespace RemontUnderKey.Web.Models
         [Key]
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
-        [ConfigurationProperty("Идентификационный номер:", IsRequired = true, IsKey = true)]
+        [ConfigurationProperty("Идентификационный номер:", IsRequired = false, IsKey = true)]
         [Display(Name = "Идентификационный номер:")]
         public int Id { get; set; }
 
         [ConfigurationProperty("Наименование единицы измерения:", IsRequired = true, DefaultValue = "Выберите единицу измерения:")]
         [DataType(DataType.Text)]
         [UIHint("String")]
+        [Required(ErrorMessage = "Выберите единицу измерения !")]
         public string TitleOfUnit { get; set; }
     }
 }

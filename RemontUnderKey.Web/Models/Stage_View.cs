@@ -15,7 +15,7 @@ namespace RemontUnderKey.Web.Models
         [Key]
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
-        [ConfigurationProperty("Идентификационный номер:", IsRequired = true, IsKey = true)]
+        [ConfigurationProperty("Идентификационный номер:", IsRequired = false, IsKey = true)]
         [Display(Name = "Идентификационный номер:")]
         public int Id { get; set; }
 
@@ -23,12 +23,14 @@ namespace RemontUnderKey.Web.Models
         [ConfigurationProperty("Путь к картинке:", IsRequired = true)]
         [DataType(DataType.ImageUrl)]
         [UIHint("Url")]
+        [Required(ErrorMessage = "Укажите путь к картинке !")]
         public string ImgSrc { get; set; }
 
         //Содержание этапа работ
         [ConfigurationProperty("Содержание этапа работ:", IsRequired = true, DefaultValue = "Укажите содержание этапа работ")]
         [DataType(DataType.Text)]
         [UIHint("String")]
+        [Required(ErrorMessage = "Укажите содержание этапа работ !")]
         public string DescriptionOfStage { get; set; }
 
     }

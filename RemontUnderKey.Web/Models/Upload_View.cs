@@ -26,9 +26,10 @@ namespace RemontUnderKey.Web.Models
         public int? Comment_ViewId { get; set; }
 
         //Коллекция байтовых массивов, каждый из которых будет хранить загруженный файл
-        [ConfigurationProperty("Загружаемый файл:", IsRequired = false, DefaultValue = "Выберите файл для последующей загрузки")]
+        [ConfigurationProperty("Загружаемый файл:", IsRequired = true, DefaultValue = "Выберите файл для последующей загрузки")]
         [DataType(DataType.Upload)]
         [Display(Name = "Загружаемый файл:")]
+        [Required(ErrorMessage = "Выберите файл для последующей загрузки!")]
         public byte[] File { get; set; }
 
         //Наименование загруженного файла

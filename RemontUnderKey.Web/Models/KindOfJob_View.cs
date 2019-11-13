@@ -15,7 +15,7 @@ namespace RemontUnderKey.Web.Models
         [Key]
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
-        [ConfigurationProperty("Идентификационный номер:", IsRequired = true, IsKey = true)]
+        [ConfigurationProperty("Идентификационный номер:", IsRequired = false, IsKey = true)]
         [Display(Name = "Идентификационный номер:")]
         public int Id { get; set; }
 
@@ -23,12 +23,16 @@ namespace RemontUnderKey.Web.Models
         [ConfigurationProperty("Разновидность ремонтных работ:", IsRequired = true, DefaultValue = "Выберите разновидность ремонтных работ")]
         [DataType(DataType.Text)]
         [UIHint("String")]
+        [Required(ErrorMessage = "Укажите разновидность ремонтных работ !")]
+
         public string TitleOfKindOfJob { get; set; }
 
         //Описание разновидности ремонтных работ
         [ConfigurationProperty("Описание разновидности ремонтных работ:", IsRequired = true, DefaultValue = "Укажите описание разновидности ремонтных работ")]
         [DataType(DataType.Text)]
         [UIHint("String")]
+        [Required(ErrorMessage = "Укажите описание разновидности ремонтных работ !")]
+
         public string DescriptionOfKindOfJob { get; set; }
     }
 }

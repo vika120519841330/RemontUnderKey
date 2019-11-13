@@ -167,9 +167,20 @@ namespace RemontUnderKey.Web.Controllers
                 return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
 
             }
-            service.CreateJob(job.JobFromViewToDomain());
-            result = $"ДОБАВЛЕНИЕ ВИДА РСР С ID №{job.Id} УСПЕШНО ПРОИЗВЕДЕНО !";
-            return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("AddJob_Admin", "Указанные для создания нового вида РСР данные не валидны!!!");
+                ViewBag.Message = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                result = "Валидация НЕ пройдена! Проверьте введенные сведения на достоверность!";
+                return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            }
+            else
+            {
+                service.CreateJob(job.JobFromViewToDomain());
+                int jobid = service.GetAllJobs().Where(_ => _.TitleOfJob == job.TitleOfJob).First().Id;
+                result = $"ДОБАВЛЕНИЕ ВИДА РСР С ID №{jobid} УСПЕШНО ПРОИЗВЕДЕНО !";
+                return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            }
         }
     }
 }

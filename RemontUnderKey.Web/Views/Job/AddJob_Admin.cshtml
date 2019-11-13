@@ -18,7 +18,7 @@
                     @Html.TextAreaFor(model => model.TitleOfJob, new { @style = "border-radius: 10px;  min-width: 500px; min-height: 50px;", @placeholder = "НАИМЕНОВАНИЕ ВИДА РСР" })
                 </div>
                 <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
-                    @Html.ValidationMessageFor(model => model.TitleOfJob, "", new { @style = "color: red;" })
+                    @Html.ValidationMessageFor(model => model.TitleOfJob, "Укажите наименование вида работы !", new { @style = "color: red;" })
                 </div>
 
                 <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
@@ -28,7 +28,7 @@
                     @Html.DropDownListFor(model => model.UnitOfJob_ViewId, @ViewBag.Units as SelectList)
                 </div>
                 <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
-                    @Html.ValidationMessageFor(model => model.UnitOfJob_ViewId, "", new { @style = "color: red;" })
+                    @Html.ValidationMessageFor(model => model.UnitOfJob_ViewId, "Укажите единицу измерения !", new { @style = "color: red;" })
                 </div>
 
                 <div align="center">
@@ -38,7 +38,7 @@
                     <input inputmode="numeric" name="PriceOfUnitOfJob" style = "border-radius: 10px;">
                 </div>
                 <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
-                    @Html.ValidationMessageFor(model => model.PriceOfUnitOfJob, "", new { @style = "color: red;" })
+                    @Html.ValidationMessageFor(model => model.PriceOfUnitOfJob, "Укажите стоимость в у.е.", new { @style = "color: red;" })
                 </div>
 
                 <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
@@ -48,7 +48,7 @@
                     @Html.DropDownListFor(model => model.KindOfJob_ViewId, @ViewBag.Kinds as SelectList)
                 </div>
                 <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
-                    @Html.ValidationMessageFor(model => model.KindOfJob_ViewId, "", new { @style = "color: red;" })
+                    @Html.ValidationMessageFor(model => model.KindOfJob_ViewId, "Укажите разновидность работ !", new { @style = "color: red;" })
                 </div>
 
 

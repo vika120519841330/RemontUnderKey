@@ -78,8 +78,10 @@ namespace RemontUnderKey.Web.Controllers
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
+                    ModelState.AddModelError("", "ПРОВЕРЬТЕ ВВЕДЕННЫЕ ЛОГИН И ПАРОЛЬ НА ДОСТОВЕРНОСТЬ!");
+                    return View(model);
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "ПРОВЕРЬТЕ ВВЕДЕННЫЕ ЛОГИН И ПАРОЛЬ НА ДОСТОВЕРНОСТЬ!");
                     return View(model);
             }
         }
