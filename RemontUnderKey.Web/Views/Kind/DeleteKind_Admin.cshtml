@@ -1,18 +1,23 @@
-﻿<br />
-<div style="text-align: center;">
+﻿<div style="text-align: center;">
+    <div style="text-align: center; margin-bottom: 30px; ">
+        <u>@ViewBag.TODO</u>
+    </div>
     @using (Html.BeginForm("DeleteKind_Admin", "Kind", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-    <div class="form-horizontal" align="center">
-        <div style="text-align: center;  margin-top: 5px; margin-bottom: 10px; color: black; font-size: smaller;">
-            ВЫБЕРИТЕ РАЗНОВИДНОСТЬ РСР:
-        </div>
-            @Html.DropDownList("title", ViewBag.Kinds as SelectList)
-            <p><input type="submit" value="УДАЛИТЬ РАЗНОВИДНОСТЬ РСР" /></p>
+        <div align="center">
+            <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px; font-size: small;">
+                ВЫБЕРИТЕ РАЗНОВИДНОСТЬ РСР:
+            </div>
+            <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px; font-size: small;">
+                @Html.DropDownList("title", ViewBag.Kinds as SelectList)
+            </div>
+            <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px; font-size: small;">
+                <input type="submit" value="УДАЛИТЬ РАЗНОВИДНОСТЬ РСР" />
+            </div>
         </div>
     }
-    </div>
-<br />
+</div>
 
 
 

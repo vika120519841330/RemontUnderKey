@@ -878,6 +878,8 @@
     <Content Include="Views\CallMee\EditeCallMee_Admin.cshtml" />
     <Content Include="Views\Job\JobsKinds_Admin.cshtml" />
     <Content Include="Views\Kind\DeleteKind_Admin.cshtml" />
+    <Content Include="Views\Kind\AddKind_Admin.cshtml" />
+    <Content Include="Views\Job\AddJob_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,40 @@
+﻿@using RemontUnderKey.Web.Models
+@model KindOfJob_View
+
+    <div style="text-align: center; ">
+        <div style="text-align: center;  margin-bottom: 30px; ">
+            <u>@ViewBag.TODO</u>
+        </div>
+        @using (Html.BeginForm("AddKind_Admin", "Kind", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <div align="center">
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    ВВЕДИТЕ НАИМЕНОВАНИЕ РАЗНОВИДНОСТИ РСР:
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.TextBoxFor(model => model.TitleOfKindOfJob, new { @style = "border-radius: 10px;", @placeholder = "НАИМЕНОВАНИЕ РАЗНОВИДНОСТИ РСР" })
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.ValidationMessageFor(model => model.TitleOfKindOfJob, "", new { @style = "color: red;" })
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    ВВЕДИТЕ ОПИСАНИЕ РАЗНОВИДНОСТИ РСР:
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.TextBoxFor(model => model.DescriptionOfKindOfJob, new { @style = "border-radius: 10px;", @placeholder = "ОПИСАНИЕ РАЗНОВИДНОСТИ РСР" })
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.ValidationMessageFor(model => model.DescriptionOfKindOfJob, "", new { @style = "color: red;" })
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    <input type="submit" value="ДОБАВИТЬ РАЗНОВИДНОСТЬ РСР" />
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+

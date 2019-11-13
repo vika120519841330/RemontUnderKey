@@ -1,0 +1,64 @@
+﻿@using RemontUnderKey.Web.Models
+@model Job_View
+
+    <div style="text-align: center; ">
+        <div style="text-align: center;  margin-bottom: 30px; ">
+            <u>@ViewBag.TODO</u>
+        </div>
+        <div>
+            @using (Html.BeginForm("AddJob_Admin", "Job", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+
+                <div align="center">
+                    @Html.LabelFor(model => model.TitleOfJob, new { @style = "font-size: small;"})
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.TextAreaFor(model => model.TitleOfJob, new { @style = "border-radius: 10px;  min-width: 500px; min-height: 50px;", @placeholder = "НАИМЕНОВАНИЕ ВИДА РСР" })
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.ValidationMessageFor(model => model.TitleOfJob, "", new { @style = "color: red;" })
+                </div>
+
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.LabelFor(model => model.UnitOfJob_ViewId, new { @style = "font-size: small;"})
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.DropDownListFor(model => model.UnitOfJob_ViewId, @ViewBag.Units as SelectList)
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.ValidationMessageFor(model => model.UnitOfJob_ViewId, "", new { @style = "color: red;" })
+                </div>
+
+                <div align="center">
+                    @Html.LabelFor(model => model.PriceOfUnitOfJob, new { @style = "font-size: small;"})
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    <input inputmode="numeric" name="PriceOfUnitOfJob" style = "border-radius: 10px;">
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.ValidationMessageFor(model => model.PriceOfUnitOfJob, "", new { @style = "color: red;" })
+                </div>
+
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.LabelFor(model => model.KindOfJob_ViewId)
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.DropDownListFor(model => model.KindOfJob_ViewId, @ViewBag.Kinds as SelectList)
+                </div>
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    @Html.ValidationMessageFor(model => model.KindOfJob_ViewId, "", new { @style = "color: red;" })
+                </div>
+
+
+                <div style="text-align: center;  margin-top: 10px; margin-bottom: 10px;  font-size: small;">
+                    <input type="submit" value="ДОБАВИТЬ ВИД РСР" />
+                </div>
+            }
+        </div>
+     </div>
+
+
+
+

@@ -12,10 +12,13 @@ namespace RemontUnderKey.Web.Controllers
     {
         private readonly IJob service;
         private readonly IKind kservice;
-        public JobController(IJob _service, IKind _kservice)
+        private readonly IUnit uservice;
+
+        public JobController(IJob _service, IKind _kservice, IUnit _uservice)
         {
             this.service = _service;
             this.kservice = _kservice;
+            this.uservice = _uservice;
         }
         //Вспомогательный метод - возвращает коллекцию всех подвидов ремонтных работ, относящихся к определенному виду работ (KindOfJob)
         public PartialViewResult AllJobsByIdOfkind(int id)
@@ -115,5 +118,58 @@ namespace RemontUnderKey.Web.Controllers
             return SelectListJobs;
         }
 
+        //Список всех Units, которые существуют в БД, для передачи в представление в виде выпадающего списка
+        [Authorize(Roles = "admin")]
+        public SelectList GetSelectList_Units()
+        {
+            List<UnitOfJob_View> ListUnits = uservice.GetAllUnits()
+                                             .Select(_ => _.UnitOfJobFromDomainToView())
+                                             .ToList()
+                                             ;
+            SelectList SelectListUnits = new SelectList(ListUnits, "Id", "TitleOfUnit");
+            return SelectListUnits;
+        }
+
+        //Список всех Kinds, которые существуют в БД, для передачи в представление в виде выпадающего списка
+        [Authorize(Roles = "admin")]
+        public SelectList GetSelectList_Kinds()
+        {
+            List<KindOfJob_View> ListKinds = kservice.GetAllKinds()
+                                             .Select(_ => _.KindOfJobFromDomainToView())
+                                             .ToList()
+                                             ;
+            SelectList SelectListKinds = new SelectList(ListKinds, "Id", "TitleOfKindOfJob");
+            return SelectListKinds;
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        [Route("Job/AddJob_Admin")]
+        public PartialViewResult AddJob_Admin()
+        {
+            ViewBag.TODO = "ДОБАВЛЕНИЕ ВИДА РСР";
+            SelectList SelectListKinds = GetSelectList_Kinds();
+            ViewBag.Kinds = SelectListKinds;
+            SelectList SelectListUnits = GetSelectList_Units();
+            ViewBag.Units = SelectListUnits;
+            return PartialView("AddJob_Admin");
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        [Route("Job/AddJob_Admin")]
+        public ActionResult AddJob_Admin([System.Web.Http.FromUri][Bind(Exclude = "Id", Include = "TitleOfJob, PriceOfUnitOfJob, KindOfJob_ViewId, UnitOfJob_ViewId")]Job_View job)
+        {
+            string result = " ";
+            if (job== null)
+            {
+                result = $"ДЛЯ ДОБАВЛЕНИЯ ВИДА РСР Д.Б. ЗАПОЛНЕНЫ ВСЕ ПОЛЯ !";
+                return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+
+            }
+            service.CreateJob(job.JobFromViewToDomain());
+            result = $"ДОБАВЛЕНИЕ ВИДА РСР С ID №{job.Id} УСПЕШНО ПРОИЗВЕДЕНО !";
+            return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+        }
     }
 }

@@ -5,14 +5,21 @@
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 @section Body {
-    <span style="text-align: center; margin-right: 10px;">
-        @Html.Action("DeleteKind_Admin", new { Controller = "Kind", Action = "DeleteKind_Admin" })
-    </span>
-    <span style="text-align: center; margin-right: 10px;">
-        @Html.Action("AddKind_Admin", new { Controller = "Kind", Action = "AddKind_Admin" })
-    </span>
+    <table style="background: none; border: none;">
+        <tr style="vertical-align: top;">
+            <td width="30%" style="text-align: center;">
+                @Html.Action("DeleteKind_Admin", new { Controller = "Kind", Action = "DeleteKind_Admin" })
+            </td>
+            <td width="40%" style="text-align: center;">
+                @Html.Action("AddJob_Admin", new { Controller = "job", Action = "AddJob_Admin" })
+            </td>
+            <td width="30%" style="text-align: center;">
+                @Html.Action("AddKind_Admin", new { Controller = "Kind", Action = "AddKind_Admin" })
+            </td>
+        </tr>
+    </table>
     <br />
-    <div style="color: red; margin-bottom: 5px; margin-top: 5px; font-size: large; text-align: center;">
+    <div style="color: red; margin-bottom: 5px; font-size: medium; text-align: center;">
         @ViewBag.Result
     </div>
     <table class="table" border="1" cellspacing="0" align="center" style="margin-top: 5px;">

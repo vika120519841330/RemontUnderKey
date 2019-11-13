@@ -47,6 +47,7 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Kind/DeleteKind_Admin")]
         public PartialViewResult DeleteKind_Admin()
         {
+            ViewBag.TODO = "УДАЛЕНИЕ РАЗНОВИДНОСТИ РСР";
             ViewBag.Kinds = GetSelectList_Kinds();
             return PartialView("DeleteKind_Admin");
         }
@@ -78,17 +79,27 @@ namespace RemontUnderKey.Web.Controllers
         [Route("Kind/DeleteKind_Admin")]
         public PartialViewResult AddKind_Admin()
         {
+            ViewBag.TODO = "ДОБАВЛЕНИЕ РАЗНОВИДНОСТИ РСР";
             return PartialView("AddKind_Admin");
         }
+
 
         [HttpPost]
         [Route("Kind/AddKind_Admin")]
         public ActionResult AddKind_Admin([System.Web.Http.FromBody]KindOfJob_View kind)
         {
             string result;
-            result = $"РАЗНОВИДНОСТЬ РСР <<{kind.TitleOfKindOfJob}>> УСПЕШНО ДОБАВЛЕНА В БАЗУ !";
-            return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            if (kind == null)
+            {
+                result = $"РАЗНОВИДНОСТЬ РСР ДОЛЖНА СОДЕРЖАТЬ ЗАПОЛНЕННЫЕ ПОЛЯ ДЛЯ ДОБАВЛЕНИЯ В БАЗУ !";
+                return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            }
+            else
+            {
+                result = $"РАЗНОВИДНОСТЬ РСР <<{kind.TitleOfKindOfJob}>> УСПЕШНО ДОБАВЛЕНА В БАЗУ !";
+                service.CreateKind(kind.KindOfJobFromViewToDomain());
+                return RedirectToRoute(new { controller = "Job", action = "JobsKinds_Admin", res = result });
+            }
         }
-
     }
 }
